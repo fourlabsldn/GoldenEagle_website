@@ -1,0 +1,13 @@
+.gew_home-landing {
+  @include fullPageSection();
+  background-image: url('/images/landing.jpg');
+}
+.gew_home-listings {
+  @include pageSection();
+}
+.gew_home-about {
+  @include pageSection();
+}
+.gew_home-register {
+  @include pageSection();
+}

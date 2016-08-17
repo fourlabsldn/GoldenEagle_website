@@ -1,0 +1,12 @@
+.navbar {
+  background-color: $gray-base;
+
+  .navbar-nav > li > a{
+    color: $white;
+    font-weight: lighter;
+
+    &:hover {
+      color: darken($gray-lighter, 50%);
+    }
+  }
+}
