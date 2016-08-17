@@ -6,4 +6,5 @@
 
 @mixin fullPageSection() {
   @include pageSection();
+  height: 100vh;
 }

@@ -6,7 +6,7 @@ exports = module.exports = function (req, res) {
 
   // locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'Home';
+	locals.section = 'home';
 	locals.data = {};
 
 	// Load page content from database
@@ -14,7 +14,6 @@ exports = module.exports = function (req, res) {
 
   const viewName = 'index';
 	// Render the view
-  locals.section = viewName;
 	view.render(viewName);
 };
 

@@ -5824,17 +5824,23 @@ button.close {
     display: none !important; } }
 
 .navbar {
-  background-color: #000; }
+  background-color: #000;
+  border: 0; }
   .navbar .navbar-nav > li > a {
     color: #fff;
     font-weight: lighter; }
     .navbar .navbar-nav > li > a:hover {
       color: #927251; }
 
+.gew_home .navbar {
+  background-color: transparent;
+  margin-bottom: -125px; }
+
 .gew_home-landing {
   width: 100%;
   min-height: 400px;
   background-size: cover;
+  height: 100vh;
   background-image: url("/images/landing.jpg"); }
 
 .gew_home-listings {

@@ -1,3 +1,8 @@
+.gew_home .navbar{
+  background-color: transparent;
+  margin-bottom: -$navbar-height;
+}
+
 .gew_home-landing {
   @include fullPageSection();
   background-image: url('/images/landing.jpg');
