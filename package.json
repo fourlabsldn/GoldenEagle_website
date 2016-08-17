@@ -11,7 +11,7 @@
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.5",
     "node-sass": "^3.3.2",
-    "node-sass-middleware": "^0.9.7", 
+    "node-sass-middleware": "^0.9.7",
     "dotenv": "^2.0.0"
   },
   "devDependencies": {
@@ -19,10 +19,9 @@
     "eslint-config-keystone": "^2.3.1",
     "eslint-plugin-react": "^5.1.1",
     "gulp": "^3.7.0",
+    "gulp-sass": "^2.0.4",
     "gulp-shell": "^0.5.0",
-    "gulp-watch": "^4.3.5",
-    "gulp-sass": "^2.0.4"
-    
+    "gulp-watch": "^4.3.5"
   },
   "scripts": {
     "lint": "eslint .",

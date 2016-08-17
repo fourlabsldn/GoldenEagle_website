@@ -4,7 +4,6 @@ var shell = require('gulp-shell')
 
 var sass = require('gulp-sass');
 
-
 var paths = {
 	'src':['./models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json']
 
