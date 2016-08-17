@@ -7,8 +7,8 @@ const Types = keystone.Field.Types;
  */
 
 const Home = new keystone.List('Home', {
-	nocreate: true,
-	nodelete: true,
+	// nocreate: true,
+	// nodelete: true,
 	plural: 'Home', // Never show 'Homes' in admin UI
 	label: 'Home', // Use'Home' in admin UI
 	map: { name: 'title' },
