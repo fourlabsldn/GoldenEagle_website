@@ -5823,6 +5823,9 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+h2 {
+  font-weight: 600; }
+
 .gew-verticalCenter-wrapper {
   height: 100%;
   width: 100%;
@@ -5850,6 +5853,39 @@ button.close {
   font-family: "Playfair Display", serif;
   font-size: 20px;
   line-height: 1.35em; }
+
+.gew_titleWithButtons {
+  position: relative; }
+  .gew_titleWithButtons .gew_titleWithButtons-left {
+    left: 0; }
+  .gew_titleWithButtons .gew_titleWithButtons-right {
+    right: 0; }
+  .gew_titleWithButtons .gew_titleWithButtons-left,
+  .gew_titleWithButtons .gew_titleWithButtons-right {
+    position: absolute;
+    top: 0;
+    margin: auto;
+    padding: .7em 5em .8em;
+    line-height: 1em;
+    height: 2.5em; }
+    @media (max-width: 992px) {
+      .gew_titleWithButtons .gew_titleWithButtons-left,
+      .gew_titleWithButtons .gew_titleWithButtons-right {
+        position: static;
+        width: 100%; } }
+
+.gew_home-listings-titleRow-viewAllBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: auto;
+  padding: .7em 5em .8em;
+  line-height: 1em;
+  height: 2.5em; }
+  @media (max-width: 992px) {
+    .gew_home-listings-titleRow-viewAllBtn {
+      position: static;
+      width: 100%; } }
 
 .navbar {
   background-color: #000;
@@ -5959,6 +5995,9 @@ button.close {
   width: 100%;
   min-height: 400px;
   background-size: cover; }
+
+.gew_home-listings-titleRow {
+  margin-top: 20vh; }
 
 .gew_home-about {
   width: 100%;

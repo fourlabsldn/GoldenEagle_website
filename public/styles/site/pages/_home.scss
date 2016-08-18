@@ -6,6 +6,8 @@
   width: 100%;
 }
 
+// --------------- Section 1 ---------------------//
+
 .gew_home-landing {
   @include fullPageSection();
   background-image: url('/images/landing.jpg');
@@ -58,9 +60,16 @@
   padding-top: $navbar-height;
 }
 
+// --------------- Section 2 ---------------------//
+
 .gew_home-listings {
   @include pageSection();
 }
+
+.gew_home-listings-titleRow {
+  margin-top: 20vh;
+}
+
 .gew_home-about {
   @include pageSection();
 }

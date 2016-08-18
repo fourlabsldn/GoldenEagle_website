@@ -30,3 +30,9 @@
     @content;
   }
 }
+
+@mixin small-screen() {
+  @media (max-width: $screen-md-min) {
+    @content;
+  }
+}
