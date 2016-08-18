@@ -7,6 +7,7 @@
   min-height: 400px;
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
 }
 
 @mixin fullPageSection() {

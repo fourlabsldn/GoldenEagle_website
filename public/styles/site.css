@@ -6056,6 +6056,7 @@ h2 {
   min-height: 400px;
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
   min-height: 100vh;
   background-image: url("/images/landing.jpg");
   display: flex;
@@ -6107,6 +6108,7 @@ h2 {
   min-height: 400px;
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
   padding-top: 10vh;
   padding-bottom: 5vh; }
 
@@ -6123,6 +6125,7 @@ h2 {
   min-height: 400px;
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
   background-color: #eeac00; }
 
 .gew_home-register {
@@ -6130,6 +6133,7 @@ h2 {
   min-height: 400px;
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
   background-image: url("/images/home.register.jpg");
   padding-top: 15vh;
   padding-bottom: 15vh; }
