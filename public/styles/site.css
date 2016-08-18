@@ -2869,27 +2869,27 @@ fieldset[disabled] a.btn {
     background-color: #333; }
 
 .btn-primary {
-  color: #fff;
+  color: #000;
   background-color: #eeac00;
   border-color: #d59a00; }
   .btn-primary:focus, .btn-primary.focus {
-    color: #fff;
+    color: #000;
     background-color: #bb8700;
     border-color: #553d00; }
   .btn-primary:hover {
-    color: #fff;
+    color: #000;
     background-color: #bb8700;
     border-color: #976d00; }
   .btn-primary:active, .btn-primary.active,
   .open > .btn-primary.dropdown-toggle {
-    color: #fff;
+    color: #000;
     background-color: #bb8700;
     border-color: #976d00; }
     .btn-primary:active:hover, .btn-primary:active:focus, .btn-primary:active.focus, .btn-primary.active:hover, .btn-primary.active:focus, .btn-primary.active.focus,
     .open > .btn-primary.dropdown-toggle:hover,
     .open > .btn-primary.dropdown-toggle:focus,
     .open > .btn-primary.dropdown-toggle.focus {
-      color: #fff;
+      color: #000;
       background-color: #976d00;
       border-color: #553d00; }
   .btn-primary:active, .btn-primary.active,
@@ -2906,7 +2906,7 @@ fieldset[disabled] a.btn {
     border-color: #d59a00; }
   .btn-primary .badge {
     color: #eeac00;
-    background-color: #fff; }
+    background-color: #000; }
 
 .btn-success {
   color: #fff;
@@ -5823,6 +5823,34 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.gew-verticalCenter-wrapper {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  /* align the inline(-block) elements horizontally */
+  font: 0/0 a;
+  /* remove the gap between inline(-block) elements */ }
+
+.gew-verticalCenter-wrapper:before {
+  /* create a full-height line*/
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%; }
+
+.gew-verticalCenter-wrapper > .gew-verticalCenter-content {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  /* vertical alignment of the inline element */
+  /* reset the font property */
+  font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+.gew_heroText {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  line-height: 1.35em; }
+
 .navbar {
   background-color: #000;
   border: 0; }
@@ -5834,14 +5862,66 @@ button.close {
 
 .gew_home .navbar {
   background-color: transparent;
-  margin-bottom: -125px; }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; }
 
 .gew_home-landing {
   width: 100%;
   min-height: 400px;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url("/images/landing.jpg"); }
+
+.gew_home-landing-contentWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-top: 125px;
+  padding-bottom: 125px;
+  text-align: center;
+  min-height: 100vh; }
+
+.gew_home-landing-text {
+  max-width: 25em;
+  color: #fff;
+  margin: auto auto 0; }
+
+.gew_home-landing-search {
+  display: block;
+  margin: 10vh auto auto;
+  max-width: 90%;
+  width: 300px; }
+
+.gew_home-landing-search-element {
+  height: 50px;
+  padding: 0 25px;
+  box-sizing: border-box;
+  background-color: #eeac00;
+  color: #000;
+  border: 0; }
+  .gew_home-landing-search-element::-webkit-input-placeholder {
+    color: #000; }
+  .gew_home-landing-search-element:-moz-placeholder {
+    /* Firefox 18- */
+    color: #000; }
+  .gew_home-landing-search-element::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #000; }
+  .gew_home-landing-search-element:-ms-input-placeholder {
+    color: #000; }
+  .gew_home-landing-search-element:focus {
+    border: 0;
+    outline: 0;
+    box-shadow: none; }
+
+.gew_home-landing-goDown {
+  height: 3em;
+  margin-top: -3em;
+  font-size: 2em;
+  text-align: center;
+  color: #fff;
+  padding-bottom: .5em; }
 
 .gew_home-listings {
   width: 100%;

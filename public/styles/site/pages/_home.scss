@@ -1,12 +1,65 @@
 .gew_home .navbar{
   background-color: transparent;
-  margin-bottom: -$navbar-height;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .gew_home-landing {
   @include fullPageSection();
   background-image: url('/images/landing.jpg');
 }
+
+.gew_home-landing-contentWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-top: $navbar-height; // To compensate for the navbar's negative margin.
+  padding-bottom: $navbar-height; // To compensate for arrow
+  text-align: center;
+  min-height: 100vh;
+}
+
+.gew_home-landing-text {
+  max-width: 25em;
+  color: $white;
+  margin: auto auto 0;
+}
+
+.gew_home-landing-search {
+  display: block;
+  margin: 10vh auto auto;
+  max-width: 90%;
+  width: 300px;
+}
+
+.gew_home-landing-search-element {
+  height: 50px;
+  padding: 0 25px;
+  box-sizing: border-box;
+  background-color: $brand-primary;
+  color: $gray-base;
+  border: 0;
+  @include placeholder {
+    color: $gray-base;
+  }
+
+  &:focus {
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+.gew_home-landing-goDown {
+  height: 3em;
+  margin-top: -3em;
+  font-size: 2em;
+  text-align: center;
+  color: $white;
+  padding-bottom: .5em;
+}
+
 .gew_home-listings {
   @include pageSection();
 }

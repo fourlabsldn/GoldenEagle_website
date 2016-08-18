@@ -1,3 +1,7 @@
+//--------------------------------------
+//    Mixins
+//--------------------------------------
+
 @mixin pageSection() {
   width: 100%;
   min-height: 400px;
@@ -6,5 +10,61 @@
 
 @mixin fullPageSection() {
   @include pageSection();
-  height: 100vh;
+  min-height: 100vh;
+}
+
+@mixin placeholder() {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    @content;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+
+// --------------------------------------
+//  Utility classes
+// --------------------------------------
+
+//  --- vertically aligning ---
+
+.gew-verticalCenter-wrapper {
+  height:100%;
+  width:100%;
+
+  text-align: center;  /* align the inline(-block) elements horizontally */
+  font: 0/0 a;         /* remove the gap between inline(-block) elements */
+}
+
+.gew-verticalCenter-wrapper:before {    /* create a full-height line*/
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.gew-verticalCenter-wrapper > .gew-verticalCenter-content {
+  max-width: 100%;
+
+  display: inline-block;
+  vertical-align: middle;  /* vertical alignment of the inline element */
+                           /* reset the font property */
+  font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+// --- end of vertically-aligning --- /;
+.gew_heroText {
+  font-family: $font-family-serif;
+  font-size: $font-size-h1;
+  line-height: 1.35em;
 }
