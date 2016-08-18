@@ -2,7 +2,7 @@
   display: inline-block;
   width: 100%;
   padding: 1.6em;
-  @include small-screen {
+  @include sm-screen {
     padding: 0em;
   }
 

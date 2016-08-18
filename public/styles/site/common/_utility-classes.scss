@@ -38,7 +38,7 @@
     line-height: 1em;
     height: 2.5em;
 
-    @include small-screen {
+    @include sm-screen {
       position: static;
       width: 100%;
     }
