@@ -1,0 +1,43 @@
+.gew_propertyCard {
+  display: inline-block;
+  width: 400px;
+  padding: 1.6em;
+
+  &:hover {
+    background-color: $gray-light;
+  }
+}
+.gew_propertyCard-image {
+  width: 100%;
+  margin-bottom: 45px;
+}
+.gew_propertyCard-info-addressWrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.gew_propertyCard-info-address {
+  display: inline-block;
+  max-width: calc(100% - 6em);
+  margin-bottom: 1em;
+}
+
+.gew_propertyCard-info-address-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  margin: .2em;
+}
+
+.gew_propertyCard-info-viewBtn {
+  display: inline-block;
+  margin-left: auto; // Go to the right;
+  padding-left: 1.8em;
+  padding-right: 1.8em;
+  align-self: baseline;
+}
+
+.gew_propertyCard-price {
+  font-weight: lighter;
+}

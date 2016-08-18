@@ -1,0 +1,30 @@
+<!-- go through this and replace "buy.price" for something that could give
+the buy price or the rent price -->
+
+<div class="gew_propertyCard">
+  <a href="/property/{{#if buy.featured}}buy/{{else}}rent/{{/if}}{{slug}}">
+    <img
+      class="gew_propertyCard-image"
+      srcset="{{srcSet images.[0] 1240 1020 820 620 310}}"
+      sizes="(max-width: 768px) 100vw, 50vw"
+      src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
+      alt="{{location.street1}}"
+    />
+  </a>
+
+  <div class="gew_propertyCard-info-addressWrapper">
+    <div class="gew_propertyCard-info-address">
+      <p class="gew_propertyCard-info-address-line">
+        {{location.street1}}
+      </p>
+      <p class="gew_propertyCard-info-address-line">
+        {{location.suburb}}
+      </p>
+    </div>
+    <button class="btn btn-primary gew_propertyCard-info-viewBtn">View</button>
+  </div>
+
+  <p class="gew_propertyCard-price">
+    Price {{formatCurrency buy.price}}
+  </p>
+</div>

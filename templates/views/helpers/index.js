@@ -40,6 +40,7 @@ module.exports = function () {
 	// Custom Helpers
 	// =========================================================================
   _helpers.srcSet = require('./custom/srcSet');
+  _helpers.formatCurrency = require('./custom/formatCurrency');
 
 	// Register library helpers
 	const helperRegisterer = {
