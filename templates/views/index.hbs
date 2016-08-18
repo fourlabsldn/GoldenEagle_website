@@ -22,6 +22,20 @@
     </h2>
     <button class="btn btn-default gew_titleWithButtons-right">View all</button>
   </div>
+
+  <section class="page-section image-tiles">
+    {{#each featuredProperties}}
+      <a href="/property/{{#if buy.featured}}buy/{{else}}rent/{{/if}}{{slug}}" class="tile">
+        <img
+        	srcset="{{srcSet images.[0] 1240 1020 820 620 310}}"
+        	sizes="(max-width: 768px) 100vw, 50vw"
+          src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
+          alt="{{location.street1}}"
+        />
+        <button class="flat-btn">{{location.street1}}</button>
+      </a>
+    {{/each}}
+  </section>
 </div>
 
 <div class="container gew_home-about">
