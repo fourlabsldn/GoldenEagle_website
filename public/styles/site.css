@@ -5838,34 +5838,49 @@ h2 {
   padding-top: 5vh;
   padding-bottom: 10vh;
   padding-left: calc((100vw - 1500px) / 2);
-  padding-right: calc((100vw - 1500px) / 2); }
+  padding-right: calc((100vw - 1500px) / 2);
+  text-align: center; }
+
+.gew_formField {
+  background-color: transparent;
+  padding: 1em 1.2em;
+  line-height: 1.4em;
+  height: 3.5em;
+  display: inline-block;
+  font-weight: lighter;
+  margin: 2px; }
+
+.gew_formField-light {
+  border-color: white;
+  color: #fff; }
+  .gew_formField-light::-webkit-input-placeholder {
+    color: #fff; }
+  .gew_formField-light:-moz-placeholder {
+    /* Firefox 18- */
+    color: #fff; }
+  .gew_formField-light::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #fff; }
+  .gew_formField-light:-ms-input-placeholder {
+    color: #fff; }
+
+.gew_formField-dark {
+  border-color: #000;
+  color: #000; }
+  .gew_formField-dark::-webkit-input-placeholder {
+    color: #000; }
+  .gew_formField-dark:-moz-placeholder {
+    /* Firefox 18- */
+    color: #000; }
+  .gew_formField-dark::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #000; }
+  .gew_formField-dark:-ms-input-placeholder {
+    color: #000; }
 
 .gew_center {
   margin: auto;
   display: block; }
-
-.gew-verticalCenter-wrapper {
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  /* align the inline(-block) elements horizontally */
-  font: 0/0 a;
-  /* remove the gap between inline(-block) elements */ }
-
-.gew-verticalCenter-wrapper:before {
-  /* create a full-height line*/
-  content: " ";
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%; }
-
-.gew-verticalCenter-wrapper > .gew-verticalCenter-content {
-  max-width: 100%;
-  display: inline-block;
-  vertical-align: middle;
-  /* vertical alignment of the inline element */
-  /* reset the font property */
-  font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 .gew_heroText {
   font-family: "Playfair Display", serif;
@@ -5993,6 +6008,7 @@ h2 {
   width: 100%;
   min-height: 400px;
   background-size: cover;
+  background-position: center center;
   min-height: 100vh;
   background-image: url("/images/landing.jpg");
   display: flex;
@@ -6043,6 +6059,7 @@ h2 {
   width: 100%;
   min-height: 400px;
   background-size: cover;
+  background-position: center center;
   padding-top: 10vh;
   padding-bottom: 5vh; }
 
@@ -6058,9 +6075,18 @@ h2 {
   width: 100%;
   min-height: 400px;
   background-size: cover;
+  background-position: center center;
   background-color: #eeac00; }
 
 .gew_home-register {
   width: 100%;
   min-height: 400px;
-  background-size: cover; }
+  background-size: cover;
+  background-position: center center;
+  background-image: url("/images/home.register.jpg");
+  padding-top: 15vh;
+  padding-bottom: 15vh; }
+
+.gew_home-register-text {
+  color: #fff;
+  margin-bottom: 5vh; }

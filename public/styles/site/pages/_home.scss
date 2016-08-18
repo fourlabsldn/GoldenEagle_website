@@ -85,4 +85,12 @@
 // --------------- Section 4 ---------------------//
 .gew_home-register {
   @include pageSection();
+  background-image: url('/images/home.register.jpg');
+  padding-top: 15vh;
+  padding-bottom: 15vh;
+}
+
+.gew_home-register-text {
+  color: $white;
+  margin-bottom: 5vh;
 }

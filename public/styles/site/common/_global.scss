@@ -17,4 +17,31 @@ h2 {
   padding-bottom: 10vh;
   padding-left: calc((100vw - 1500px) / 2);
   padding-right: calc((100vw - 1500px) / 2);
+  text-align: center;
+}
+
+.gew_formField {
+  background-color: transparent;
+  padding: 1em 1.2em;
+  line-height: 1.4em;
+  height: 3.5em;
+  display: inline-block;
+  font-weight: lighter;
+  margin: 2px;
+}
+
+.gew_formField-light {
+  border-color: white;
+  color: $white;
+  @include placeholder {
+    color: $white;
+  }
+}
+
+.gew_formField-dark {
+  border-color: $gray-base;
+  color: $gray-base;
+  @include placeholder {
+    color: $gray-base;
+  }
 }
