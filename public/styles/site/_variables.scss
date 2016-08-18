@@ -1,9 +1,9 @@
 // Override Bootstrap variables in this file, e.g.
 $font-size-base: 16px;
 
-$border-radius-base: 0px;
-$border-radius-large: 0px;
-$border-radius-small: 0px;
+$border-radius-base: 1px;
+$border-radius-large: 2px;
+$border-radius-small: 1px;
 
 $navbar-height: 125px;
 
@@ -12,6 +12,8 @@ $gray-light: #f4ede7;
 $gray-lighter: #f5f1ed;
 $white: #fff;
 
+$body-bg: $gray-lighter;
+
 $brand-primary: rgb(238, 172, 0);
 $btn-primary-color: $gray-base;
 
@@ -19,3 +21,5 @@ $font-family-sans-serif: 'Open Sans', sans-serif;
 $font-family-serif: 'Playfair Display', serif;
 
 $navbar-bg: $gray-base;
+
+$btn-default-border: $brand-primary;
