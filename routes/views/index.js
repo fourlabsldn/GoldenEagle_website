@@ -18,11 +18,20 @@ exports = module.exports = function (req, res) {
 };
 
 function loadHomeContent(next, locals) {
+  const queries = [
+    keystone.list('Home').getAll(),
+    keystone.list('Property').getFeatured(),
+  ];
+
   // Add loaded content to 'locals' to make it accessible to the view
-  keystone.list('Home').getAll()
-  .then((homeContent) => {
+  Promise.all(queries)
+  .then(([homeContent, featuredProperties]) => {
     if (Array.isArray(homeContent)) {
       locals.data = homeContent[0];
+    }
+
+    if (Array.isArray(featuredProperties)) {
+      locals.featuredProperties = featuredProperties;
     }
 
     return next();
