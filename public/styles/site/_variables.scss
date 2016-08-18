@@ -6,6 +6,10 @@ $border-radius-base: 1px;
 $border-radius-large: 2px;
 $border-radius-small: 1px;
 
+$btn-border-radius-base: 0px;
+$btn-border-radius-large: 0px;
+$btn-border-radius-small: 0px;
+
 $navbar-height: 125px;
 
 $gray-base: #000;
@@ -13,6 +17,7 @@ $gray-light: #f2e9e0;
 $gray-lighter: #f5f1ed;
 $white: #fff;
 
+$text-color: $gray-base;
 $body-bg: $gray-lighter;
 
 $brand-primary: rgb(238, 172, 0);
@@ -27,3 +32,7 @@ $btn-default-bg: $gray-lighter;
 $btn-default-border: $brand-primary;
 
 $btn-primary-border: $brand-primary;
+
+$btn-info-bg: $gray-base;
+$btn-info-border: $gray-base;
+$btn-info-color: $white;

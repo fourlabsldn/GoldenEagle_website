@@ -2,6 +2,19 @@ h2 {
   font-weight: 600;
 }
 
+.btn {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.btn-lg {
+  padding: 1em 3em;
+}
+
 .gew_sectionContent {
-  max-width: 1500px;
+  width: 100%;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+  padding-left: calc((100vw - 1500px) / 2);
+  padding-right: calc((100vw - 1500px) / 2);
 }

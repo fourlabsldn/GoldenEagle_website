@@ -15,8 +15,9 @@
   <i class="glyphicon glyphicon-chevron-down gew_home-landing-goDown"></i>
 </div>
 
-<div class="gew_home-listings">
-  <div class="container-fluid gew_sectionContent">
+<div class="gew_home-listings gew_sectionContent">
+  <div class="container-fluid">
+
     <div class="gew_titleWithButtons gew_home-listings-titleRow">
       <h2 class="text-center">
         Recent Listings
@@ -34,9 +35,11 @@
   </div>
 </div>
 
-<div class="container gew_home-about">
-  {{ data.section_2.content }}
-  <button class="btn btn-default"> Testing </button>
+<div class="gew_home-about gew_sectionContent">
+    <p class="gew_home-about-text gew_heroText">
+      {{ data.section_2.content }}
+    </p>
+    <button class="btn btn-info btn-lg gew_center"> More about us </button>
 </div>
 
 <div class="container gew_home-register">

@@ -17,10 +17,8 @@
 }
 
 .gew_home-landing-text {
-  max-width: 25em;
   color: $white;
   margin: auto auto 0; // push all elements downwards with top margin
-  text-align: center;
 }
 
 .gew_home-landing-search {
@@ -64,10 +62,12 @@
 
 .gew_home-listings {
   @include pageSection();
+  padding-top: 10vh;
+  padding-bottom: 5vh;
 }
 
 .gew_home-listings-titleRow {
-  margin: 20vh 1.6em 2em; // the side margins is to account for the image cards
+  margin: 0 1.6em 2em; // the side margins is to account for the image cards
   padding-bottom: 1px; //avoid collapsing margins below
   @include small-screen {
     margin-left: 0em;
@@ -75,9 +75,14 @@
   }
 }
 
+// --------------- Section 3 ---------------------//
+
 .gew_home-about {
   @include pageSection();
+  background-color: $brand-primary;
 }
+
+// --------------- Section 4 ---------------------//
 .gew_home-register {
   @include pageSection();
 }

@@ -2,6 +2,11 @@
 //  Utility classes
 // --------------------------------------
 
+// Horizontally align
+.gew_center {
+  margin: auto;
+  display: block;
+}
 //  --- vertically aligning ---
 
 .gew-verticalCenter-wrapper {
@@ -31,8 +36,12 @@
 // --- end of vertically-aligning --- /;
 .gew_heroText {
   font-family: $font-family-serif;
-  font-size: $font-size-h2;
+  font-size: $font-size-h1;
   line-height: 1.35em;
+  display: block;
+  margin: 60px auto;
+  max-width: 22em;
+  text-align: center;
 }
 
 .gew_titleWithButtons {
@@ -58,23 +67,5 @@
       position: static;
       width: 100%;
     }
-  }
-}
-
-.gew_home-listings-titleRow {
-}
-
-.gew_home-listings-titleRow-viewAllBtn {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: auto;
-  padding: .7em 5em .8em;
-  line-height: 1em;
-  height: 2.5em;
-
-  @include small-screen {
-    position: static;
-    width: 100%;
   }
 }
