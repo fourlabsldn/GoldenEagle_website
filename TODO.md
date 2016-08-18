@@ -1,0 +1,2 @@
+ - On focus animation in landing section search bar
+ - Appropriate styles for navbar
