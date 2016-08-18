@@ -67,7 +67,12 @@
 }
 
 .gew_home-listings-titleRow {
-  margin-top: 20vh;
+  margin: 20vh 1.6em 2em; // the side margins is to account for the image cards
+  padding-bottom: 1px; //avoid collapsing margins below
+  @include small-screen {
+    margin-left: 0em;
+    margin-right: 0em;
+  }
 }
 
 .gew_home-about {

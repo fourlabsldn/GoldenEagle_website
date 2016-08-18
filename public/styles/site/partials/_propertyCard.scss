@@ -1,7 +1,10 @@
 .gew_propertyCard {
   display: inline-block;
-  width: 400px;
+  width: 100%;
   padding: 1.6em;
+  @include small-screen {
+    padding: 0em;
+  }
 
   &:hover {
     background-color: $gray-light;

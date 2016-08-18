@@ -15,19 +15,23 @@
   <i class="glyphicon glyphicon-chevron-down gew_home-landing-goDown"></i>
 </div>
 
-<div class="container gew_home-listings">
-  <div class="gew_titleWithButtons gew_home-listings-titleRow">
-    <h2 class="text-center">
-      Recent Listings
-    </h2>
-    <button class="btn btn-default gew_titleWithButtons-right">View all</button>
-  </div>
+<div class="gew_home-listings">
+  <div class="container-fluid gew_sectionContent">
+    <div class="gew_titleWithButtons gew_home-listings-titleRow">
+      <h2 class="text-center">
+        Recent Listings
+      </h2>
+      <button class="btn btn-default gew_titleWithButtons-right">View all</button>
+    </div>
 
-  <section class="page-section image-tiles">
-    {{#each featuredProperties}}
-      {{> propertyCard this}}
-    {{/each}}
-  </section>
+    <div class="row">
+      {{#each featuredProperties}}
+      <div class="col-sm-6 col-md-4">
+        {{> propertyCard this}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
 </div>
 
 <div class="container gew_home-about">
