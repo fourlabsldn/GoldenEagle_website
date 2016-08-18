@@ -2830,27 +2830,27 @@ fieldset[disabled] a.btn {
 
 .btn-default {
   color: #333;
-  background-color: #fff;
+  background-color: #f5f1ed;
   border-color: #eeac00; }
   .btn-default:focus, .btn-default.focus {
     color: #333;
-    background-color: #e6e6e6;
+    background-color: #e3d8cc;
     border-color: #6f5000; }
   .btn-default:hover {
     color: #333;
-    background-color: #e6e6e6;
+    background-color: #e3d8cc;
     border-color: #b18000; }
   .btn-default:active, .btn-default.active,
   .open > .btn-default.dropdown-toggle {
     color: #333;
-    background-color: #e6e6e6;
+    background-color: #e3d8cc;
     border-color: #b18000; }
     .btn-default:active:hover, .btn-default:active:focus, .btn-default:active.focus, .btn-default.active:hover, .btn-default.active:focus, .btn-default.active.focus,
     .open > .btn-default.dropdown-toggle:hover,
     .open > .btn-default.dropdown-toggle:focus,
     .open > .btn-default.dropdown-toggle.focus {
       color: #333;
-      background-color: #d4d4d4;
+      background-color: #d6c6b5;
       border-color: #6f5000; }
   .btn-default:active, .btn-default.active,
   .open > .btn-default.dropdown-toggle {
@@ -2862,10 +2862,10 @@ fieldset[disabled] a.btn {
   fieldset[disabled] .btn-default.focus,
   fieldset[disabled] .btn-default:active,
   fieldset[disabled] .btn-default.active {
-    background-color: #fff;
+    background-color: #f5f1ed;
     border-color: #eeac00; }
   .btn-default .badge {
-    color: #fff;
+    color: #f5f1ed;
     background-color: #333; }
 
 .btn-primary {
