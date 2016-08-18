@@ -5848,7 +5848,7 @@ button.close {
 
 .gew_heroText {
   font-family: "Playfair Display", serif;
-  font-size: 41px;
+  font-size: 34px;
   line-height: 1.35em; }
 
 .navbar {
@@ -5860,7 +5860,7 @@ button.close {
     font-weight: lighter;
     margin: 0 .5vw; }
     .navbar .navbar-nav > li > a:hover {
-      color: #927251; }
+      color: #eeac00; }
 
 .gew_navbar-logo {
   height: 70px;

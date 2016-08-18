@@ -9,7 +9,7 @@
     margin: 0 .5vw;
 
     &:hover {
-      color: darken($gray-lighter, 50%);
+      color: $brand-primary;
     }
   }
 }
