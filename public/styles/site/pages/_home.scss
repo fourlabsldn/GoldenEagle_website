@@ -9,31 +9,27 @@
 .gew_home-landing {
   @include fullPageSection();
   background-image: url('/images/landing.jpg');
-}
-
-.gew_home-landing-contentWrapper {
   display: flex;
   flex-flow: column nowrap;
   padding-top: $navbar-height; // To compensate for the navbar's negative margin.
-  padding-bottom: $navbar-height; // To compensate for arrow
-  text-align: center;
-  min-height: 100vh;
 }
 
 .gew_home-landing-text {
   max-width: 25em;
   color: $white;
-  margin: auto auto 0;
+  margin: auto auto 0; // push all elements downwards with top margin
+  text-align: center;
 }
 
 .gew_home-landing-search {
   display: block;
-  margin: 10vh auto auto;
+  margin: 10vh auto 0;
   max-width: 90%;
   width: 300px;
 }
 
-.gew_home-landing-search-element {
+// This includes the input field and the search icon
+.gew_home-landing-search-component {
   height: 50px;
   padding: 0 25px;
   box-sizing: border-box;
@@ -52,12 +48,14 @@
 }
 
 .gew_home-landing-goDown {
-  height: 3em;
-  margin-top: -3em;
+  // Push other elements upwards thus keeping itself at the
+  // bottom and other elements centered
+  margin: auto auto 0;
   font-size: 2em;
   text-align: center;
   color: $white;
-  padding-bottom: .5em;
+  padding-bottom: .1em;
+  padding-top: $navbar-height;
 }
 
 .gew_home-listings {

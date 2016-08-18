@@ -1,20 +1,18 @@
 {{!< default}}
 <div class="container gew_home-landing">
-  <div class="gew_home-landing-contentWrapper">
-    <p class="gew_heroText gew_home-landing-text">
-      {{ data.section_1.content }}
-    </p>
+  <p class="gew_heroText gew_home-landing-text">
+    {{ data.section_1.content }}
+  </p>
 
-    <form class="form-group input-group gew_home-landing-search" action="/blog">
-      <div class="input-group">
-        <input type="text" class="form-control gew_home-landing-search-element" placeholder="Search">
-        <div class="input-group-addon gew_home-landing-search-element"><i class="glyphicon glyphicon-search"></i></div>
-      </div>
-    </form>
-  </div>
-  <div class="gew_home-landing-goDown">
-    <i class="glyphicon glyphicon-chevron-down"></i>
-  </div>
+  <!-- Search button -->
+  <form class="form-group input-group gew_home-landing-search" action="/blog">
+    <div class="input-group">
+      <input type="text" class="form-control gew_home-landing-search-component" placeholder="Search">
+      <div class="input-group-addon gew_home-landing-search-component"><i class="glyphicon glyphicon-search"></i></div>
+    </div>
+  </form>
+
+  <i class="glyphicon glyphicon-chevron-down gew_home-landing-goDown"></i>
 </div>
 
 <div class="container gew_home-listings">

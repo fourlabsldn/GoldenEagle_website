@@ -5908,56 +5908,52 @@ button.close {
   min-height: 400px;
   background-size: cover;
   min-height: 100vh;
-  background-image: url("/images/landing.jpg"); }
-
-.gew_home-landing-contentWrapper {
+  background-image: url("/images/landing.jpg");
   display: flex;
   flex-flow: column nowrap;
-  padding-top: 125px;
-  padding-bottom: 125px;
-  text-align: center;
-  min-height: 100vh; }
+  padding-top: 125px; }
 
 .gew_home-landing-text {
   max-width: 25em;
   color: #fff;
-  margin: auto auto 0; }
+  margin: auto auto 0;
+  text-align: center; }
 
 .gew_home-landing-search {
   display: block;
-  margin: 10vh auto auto;
+  margin: 10vh auto 0;
   max-width: 90%;
   width: 300px; }
 
-.gew_home-landing-search-element {
+.gew_home-landing-search-component {
   height: 50px;
   padding: 0 25px;
   box-sizing: border-box;
   background-color: #eeac00;
   color: #000;
   border: 0; }
-  .gew_home-landing-search-element::-webkit-input-placeholder {
+  .gew_home-landing-search-component::-webkit-input-placeholder {
     color: #000; }
-  .gew_home-landing-search-element:-moz-placeholder {
+  .gew_home-landing-search-component:-moz-placeholder {
     /* Firefox 18- */
     color: #000; }
-  .gew_home-landing-search-element::-moz-placeholder {
+  .gew_home-landing-search-component::-moz-placeholder {
     /* Firefox 19+ */
     color: #000; }
-  .gew_home-landing-search-element:-ms-input-placeholder {
+  .gew_home-landing-search-component:-ms-input-placeholder {
     color: #000; }
-  .gew_home-landing-search-element:focus {
+  .gew_home-landing-search-component:focus {
     border: 0;
     outline: 0;
     box-shadow: none; }
 
 .gew_home-landing-goDown {
-  height: 3em;
-  margin-top: -3em;
+  margin: auto auto 0;
   font-size: 2em;
   text-align: center;
   color: #fff;
-  padding-bottom: .5em; }
+  padding-bottom: .1em;
+  padding-top: 125px; }
 
 .gew_home-listings {
   width: 100%;
