@@ -2,6 +2,17 @@
 //    Mixins
 //--------------------------------------
 
+// To be included in classes on the body tag.
+@mixin transparentNavbar {
+  .navbar{
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
 @mixin pageSection() {
   width: 100%;
   min-height: 400px;

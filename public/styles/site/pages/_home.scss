@@ -1,19 +1,11 @@
-.gew_home .navbar{
-  background-color: transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.gew_home {
+  @include transparentNavbar();
 }
 
 // --------------- Section 1 ---------------------//
 
 .gew_home-landing {
-  @include fullPageSection();
   background-image: url('/images/landing.jpg');
-  display: flex;
-  flex-flow: column nowrap;
-  padding-top: $navbar-height; // To compensate for the navbar's negative margin.
 }
 
 .gew_home-landing-text {
