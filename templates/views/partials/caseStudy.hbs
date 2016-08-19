@@ -1,0 +1,18 @@
+<div class="gew_caseStudy">
+  <div class="gew_caseStudy-leftCol">
+    <img
+    class="gew_caseStudy-image"
+    srcset="{{srcSet images.[0] 1240 1020 820 620 310}}"
+    sizes="(max-width: 768px) 100vw, 50vw"
+    src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
+    alt="Property photo"
+    />
+  </div>
+  <div class="gew_caseStudy-rightCol">
+    <h3>{{title}}</h3>
+    <p class="gew_caseStudy-text">
+      {{truncate short_description 400 "..."}}
+    </p>
+    <a class="btn btn-primary gew_caseStudy-moreInfoBtn">More Information</a>
+  </div>
+</div>
