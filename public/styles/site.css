@@ -5989,7 +5989,17 @@ h2 {
   position: relative;
   top: -30px; }
 
+.navbar-right li:first-child a {
+  position: relative; }
+  .navbar-right li:first-child a:after {
+    color: #fff;
+    content: '|';
+    position: absolute;
+    right: -.65em; }
+
 @media (max-width: 1150px) {
+  .navbar-right li:first-child a:after {
+    display: none; }
   .navbar-header {
     float: none; }
   .navbar-left, .navbar-right {

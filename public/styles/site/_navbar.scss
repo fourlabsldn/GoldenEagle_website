@@ -25,7 +25,25 @@
   top: -30px;
 }
 
+// white divider bar
+.navbar-right {
+  li:first-child a {
+    position: relative;
+    &:after {
+      color: $white;
+      content: '|';
+      position: absolute;
+      right: -.65em;
+    }
+  }
+}
+
+// Make navbar collapse at 1150px
 @media (max-width: 1150px) {
+    // hide divider
+   .navbar-right li:first-child a:after {
+     display: none;
+   }
     .navbar-header {
         float: none;
     }
