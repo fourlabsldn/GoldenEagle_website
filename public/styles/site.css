@@ -5827,7 +5827,7 @@ button.close {
   margin: auto;
   display: block; }
 
-.gew_heroText, .gew_landingSection .gew_landingSection-text {
+.gew_heroText, .gew_landingSection .gew_landingSection-text, .gew_home-landing .gew_landingSection-text {
   font-family: "Playfair Display", serif;
   font-size: 35.1px;
   line-height: 1.35em;
@@ -5929,18 +5929,19 @@ h3 {
   .gew_formField-dark:-ms-input-placeholder {
     color: #000; }
 
-.gew_landingSection {
+.gew_landingSection, .gew_home-landing {
   width: 100%;
   min-height: 400px;
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
-  min-height: 100vh;
+  min-height: 60vh;
+  height: 700px;
   display: flex;
   flex-flow: column nowrap;
   padding-top: 125px;
   padding-bottom: 125px; }
-  .gew_landingSection .gew_landingSection-text {
+  .gew_landingSection .gew_landingSection-text, .gew_home-landing .gew_landingSection-text {
     margin: auto 0 auto 5vw;
     color: #fff;
     text-align: left;
@@ -6060,6 +6061,9 @@ h3 {
       .navbar .navbar-nav > li a:hover,
       .navbar .navbar-nav > li.active a:hover {
         color: #eeac00; }
+      .navbar .navbar-nav > li a:focus,
+      .navbar .navbar-nav > li.active a:focus {
+        color: inherit; }
   .navbar .navbar-toggle:focus {
     background-color: transparent; }
   .navbar .navbar-toggle:active, .navbar .navbar-toggle:hover {
@@ -6166,6 +6170,7 @@ h3 {
 
 .gew_home-landing {
   background-image: url("/images/landing.jpg");
+  min-height: 100vh;
   padding-bottom: 0; }
 
 .gew_home-landing-text {
@@ -6245,3 +6250,13 @@ h3 {
 
 .gew_developments-landing {
   background-image: url("/images/developments.landing.jpg"); }
+
+.gew_investments .navbar {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; }
+
+.gew_investments-landing {
+  background-image: url("/images/investments.landing.jpg"); }

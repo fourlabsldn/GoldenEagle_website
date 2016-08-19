@@ -71,7 +71,9 @@ h3 {
 
 // Landing section where navbar is
 .gew_landingSection {
-  @include fullPageSection();
+  @include pageSection();
+  min-height: 60vh;
+  height: 700px;
   display: flex;
   flex-flow: column nowrap;
   padding-top: $navbar-height; // To compensate for the navbar's negative margin.

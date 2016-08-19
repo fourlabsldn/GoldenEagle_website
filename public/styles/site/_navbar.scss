@@ -21,13 +21,16 @@
       &:hover {
         color: $brand-primary;
       }
+      &:focus {
+        color: inherit;
+      }
     }
   }
 
   // Toggle button
   .navbar-toggle {
     &:focus {
-      background-color: transparent;  
+      background-color: transparent;
     }
     &:active, &:hover {
       background-color: $brand-primary;
