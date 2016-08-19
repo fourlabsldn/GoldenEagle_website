@@ -23,7 +23,8 @@ CaseStudy.add({
     label: 'Short description (one paaragraph)',
   },
   expanded_description: {
-    type: Types.Textarea,
+    type: Types.Html,
+    wysiwyg: true,
     height: 500,
     label: 'Expanded description',
   },

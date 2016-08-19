@@ -1199,10 +1199,10 @@ h1, .h1 {
   font-size: 39px; }
 
 h2, .h2 {
-  font-size: 20px; }
+  font-size: 17px; }
 
 h3, .h3 {
-  font-size: 18px; }
+  font-size: 15px; }
 
 h4, .h4 {
   font-size: 19px; }
@@ -5883,10 +5883,10 @@ h3 {
     .gew_sectionContent {
       padding-left: 3em;
       padding-right: 3em; } }
-  @media (min-width: 1500px) {
+  @media (min-width: 1200px) {
     .gew_sectionContent {
-      padding-left: calc((100vw - 1500px) / 2);
-      padding-right: calc((100vw - 1500px) / 2); } }
+      padding-left: calc((100vw - 1200px) / 2);
+      padding-right: calc((100vw - 1200px) / 2); } }
 
 .gew_formField {
   background-color: transparent;
@@ -6214,13 +6214,33 @@ h3 {
   margin: auto auto 0; }
 
 .gew_developments_caseStudy {
-  background-color: white; }
+  background-color: white;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  margin: 4em 0; }
 
 .gew_developments_caseStudy-leftCol {
-  padding-left: 0; }
+  position: relative;
+  flex: 1 2 380px;
+  padding-left: 0;
+  min-height: 10em;
+  overflow: hidden; }
 
 .gew_developments_caseStudy-rightCol {
-  padding: 2em; }
+  flex: 1 2 380px;
+  padding: 2em 3em; }
 
 .gew_developments_caseStudy-image {
-  max-width: 100%; }
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0); }
+
+.gew_developments_caseStudy-text {
+  line-height: 1.4em; }
+
+.gew_developments_caseStudy-moreInfoBtn {
+  margin-top: 2.5em; }

@@ -13,14 +13,38 @@
 
 .gew_developments_caseStudy {
   background-color: white;
+  display:flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  margin: 4em 0;
 }
+
 // Remove padding from columns' extremes
 .gew_developments_caseStudy-leftCol {
+  position: relative;
+  flex: 1 2 380px;
   padding-left: 0;
+  min-height: 10em;
+  overflow: hidden;
 }
+
 .gew_developments_caseStudy-rightCol {
-  padding: 2em;
+  flex: 1 2 380px;
+  padding: 2em 3em;
 }
+
 .gew_developments_caseStudy-image {
-  max-width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.gew_developments_caseStudy-text {
+  line-height: 1.4em;
+}
+.gew_developments_caseStudy-moreInfoBtn {
+  margin-top: 2.5em;
 }
