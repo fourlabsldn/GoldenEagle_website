@@ -11,16 +11,22 @@ const Developments = new keystone.List('Developments', {
 	// nodelete: true,
 	plural: 'Developments', // Never show 'Developmentss' in admin UI
 	label: 'Developments', // Use'Developments' in admin UI
-	map: { name: 'title' },
-	autokey: { path: 'slug', from: 'title',	unique: true },
+	map: {
+		name: 'title',
+	},
+	autokey: {
+		path: 'slug',
+		from: 'title',
+		unique: true
+	},
 });
 
 Developments.add({
-  	title: {
-  		type: String,
-  		required: true,
-  	},
-  },
+		title: {
+			type: String,
+			required: true,
+		},
+	},
 	'Landing Section', {
 		section_1: {
 			content: {
@@ -33,12 +39,14 @@ Developments.add({
 	'Section 2', {
 		section_2: {
 			content1: {
-				type: Types.Textarea,
+				type: Types.Html,
+				wysiwyg: true,
 				height: 500,
 				label: 'Small paragraph',
 			},
-      content2: {
-				type: Types.Textarea,
+			content2: {
+				type: Types.Html,
+				wysiwyg: true,
 				height: 500,
 				label: 'Longer text',
 			},

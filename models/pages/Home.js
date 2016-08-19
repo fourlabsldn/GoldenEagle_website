@@ -24,7 +24,8 @@ Home.add({
 	'Landing Section', {
 		section_1: {
 			content: {
-				type: Types.Textarea,
+        type: Types.Html,
+        wysiwyg: true,
 				height: 500,
 				label: 'Content',
 			},
@@ -33,7 +34,8 @@ Home.add({
 	'Who we are paragraph', {
 		section_2: {
 			content: {
-				type: Types.Textarea,
+        type: Types.Html,
+        wysiwyg: true,
 				height: 500,
 				label: 'Content',
 			},
