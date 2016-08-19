@@ -5,3 +5,8 @@
 .gew_developments-landing {
   background-image: url('/images/developments.landing.jpg');
 }
+
+.gew_home-landing-text {
+  color: $white;
+  margin: auto auto 0; // push all elements downwards with top margin
+}

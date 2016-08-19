@@ -62,4 +62,14 @@ h2 {
   display: flex;
   flex-flow: column nowrap;
   padding-top: $navbar-height; // To compensate for the navbar's negative margin.
+  padding-bottom: $navbar-height; // To compensate for the navbar's negative margin.
+
+
+  .gew_landingSection-text {
+    margin: auto 0 auto 5vw;
+    color: $white;
+    @extend .gew_heroText;
+    text-align: left;
+    max-width: 70%;
+  }
 }

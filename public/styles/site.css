@@ -5823,6 +5823,39 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.gew_center {
+  margin: auto;
+  display: block; }
+
+.gew_heroText, .gew_landingSection .gew_landingSection-text {
+  font-family: "Playfair Display", serif;
+  font-size: 35.1px;
+  line-height: 1.35em;
+  display: block;
+  margin: 60px auto;
+  max-width: 22em;
+  text-align: center; }
+
+.gew_titleWithButtons {
+  position: relative; }
+  .gew_titleWithButtons .gew_titleWithButtons-left {
+    left: 0; }
+  .gew_titleWithButtons .gew_titleWithButtons-right {
+    right: 0; }
+  .gew_titleWithButtons .gew_titleWithButtons-left,
+  .gew_titleWithButtons .gew_titleWithButtons-right {
+    position: absolute;
+    top: 0;
+    margin: auto;
+    padding: .7em 5em .8em;
+    line-height: 1em;
+    height: 2.5em; }
+    @media (max-width: 992px) {
+      .gew_titleWithButtons .gew_titleWithButtons-left,
+      .gew_titleWithButtons .gew_titleWithButtons-right {
+        position: static;
+        width: 100%; } }
+
 h2 {
   font-weight: 600; }
 
@@ -5895,40 +5928,13 @@ h2 {
   min-height: 100vh;
   display: flex;
   flex-flow: column nowrap;
-  padding-top: 125px; }
-
-.gew_center {
-  margin: auto;
-  display: block; }
-
-.gew_heroText {
-  font-family: "Playfair Display", serif;
-  font-size: 39px;
-  line-height: 1.35em;
-  display: block;
-  margin: 60px auto;
-  max-width: 22em;
-  text-align: center; }
-
-.gew_titleWithButtons {
-  position: relative; }
-  .gew_titleWithButtons .gew_titleWithButtons-left {
-    left: 0; }
-  .gew_titleWithButtons .gew_titleWithButtons-right {
-    right: 0; }
-  .gew_titleWithButtons .gew_titleWithButtons-left,
-  .gew_titleWithButtons .gew_titleWithButtons-right {
-    position: absolute;
-    top: 0;
-    margin: auto;
-    padding: .7em 5em .8em;
-    line-height: 1em;
-    height: 2.5em; }
-    @media (max-width: 992px) {
-      .gew_titleWithButtons .gew_titleWithButtons-left,
-      .gew_titleWithButtons .gew_titleWithButtons-right {
-        position: static;
-        width: 100%; } }
+  padding-top: 125px;
+  padding-bottom: 125px; }
+  .gew_landingSection .gew_landingSection-text {
+    margin: auto 0 auto 5vw;
+    color: #fff;
+    text-align: left;
+    max-width: 70%; }
 
 .gew_propertyCard {
   display: inline-block;
@@ -6098,7 +6104,8 @@ h2 {
   width: 100%; }
 
 .gew_home-landing {
-  background-image: url("/images/landing.jpg"); }
+  background-image: url("/images/landing.jpg");
+  padding-bottom: 0; }
 
 .gew_home-landing-text {
   color: #fff;
@@ -6184,3 +6191,7 @@ h2 {
 
 .gew_developments-landing {
   background-image: url("/images/developments.landing.jpg"); }
+
+.gew_home-landing-text {
+  color: #fff;
+  margin: auto auto 0; }

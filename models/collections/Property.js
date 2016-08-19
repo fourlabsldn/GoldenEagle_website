@@ -98,11 +98,15 @@ Property.schema.pre('save', setPropertyCoordinates);
  * @return {Promise} Will resolve into an array or featured properties
  */
 Property.getFeatured = function () {
-  const results = this.findWhere({ $or: [{ 'buy.featured': true }, { 'rent.featured': true }] });
-  if (!Array.isArray(results)) {
-    return [];
-  }
-  return results;
+  return this.findWhere({
+    $or: [{ 'buy.featured': true }, { 'rent.featured': true }]
+  })
+  .then(results => {
+    if (!Array.isArray(results)) {
+      return [];
+    }
+    return results;
+  });
 };
 
 

@@ -13,15 +13,15 @@ exports = module.exports = function (req, res) {
 	view.on('init', next => {
 		// Add loaded content to 'locals' to make it accessible to the view
 		Promise.all([
-				keystone.list('Home').getAll(),
-				keystone.list('Property').getFeatured(),
-			])
-			.then(([homeContent, featuredProperties]) => {
-				locals.data = homeContent[0];
-				locals.featuredProperties = featuredProperties;
-				return next();
-			})
-			.catch(next);
+			keystone.list('Home').getAll(),
+			keystone.list('Property').getFeatured(),
+		])
+		.then(([homeContent, featuredProperties]) => {
+			locals.data = homeContent[0];
+			locals.featuredProperties = featuredProperties;
+			return next();
+		})
+		.catch(next);
 	});
 
 	const viewName = 'index';
