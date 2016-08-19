@@ -5888,6 +5888,10 @@ h3 {
       padding-left: calc((100vw - 1200px) / 2);
       padding-right: calc((100vw - 1200px) / 2); } }
 
+.gew_sectionContent-extraPadding {
+  padding-top: 120px;
+  padding-bottom: 160px; }
+
 .gew_formField {
   background-color: transparent;
   padding: 1em 1.2em;
@@ -6230,15 +6234,7 @@ h3 {
   background-color: #eeac00; }
 
 .gew_home-register {
-  width: 100%;
-  min-height: 400px;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  background-image: url("/images/home.register.jpg");
-  padding-top: 15vh;
-  padding-bottom: 15vh;
-  text-align: center; }
+  background-image: url("/images/home.register.jpg"); }
 
 .gew_developments .navbar {
   background-color: transparent;
