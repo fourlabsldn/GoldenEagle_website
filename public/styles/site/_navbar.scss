@@ -24,6 +24,20 @@
     }
   }
 
+  // Toggle button
+  .navbar-toggle {
+    &:focus {
+      background-color: transparent;  
+    }
+    &:active, &:hover {
+      background-color: $brand-primary;
+    }
+
+    .icon-bar {
+      background-color: white;
+    }
+  }
+
   // highlight active field
   .active a{
     background-color: transparent !important;

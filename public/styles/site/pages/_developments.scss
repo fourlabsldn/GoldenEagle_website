@@ -31,6 +31,9 @@
 .gew_developments_caseStudy-rightCol {
   flex: 1 2 380px;
   padding: 2em 3em;
+  @include xs-screen {
+    padding: 1em;
+  }
 }
 
 .gew_developments_caseStudy-image {
