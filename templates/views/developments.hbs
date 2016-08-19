@@ -1,5 +1,41 @@
 <div class="container gew_developments-landing gew_landingSection">
   <p class="gew_landingSection-text">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi a euismod lectus. Donec hendrerit, metus quis venenatis convallis.
+    {{data.section_1.content}}
   </p>
+</div>
+
+<div class="container gew_doubleColumn gew_sectionContent">
+  <div class="row">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.section_2.content1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.section_2.content2}}}
+    </div>
+  </div>
+</div>
+
+<div class="gew_sectionContent">
+  <h2>Case Studies</h2>
+  {{#each caseStudies}}
+    <div class="container-fluid gew_developments_caseStudy">
+      <div class="row">
+        <div class="col-sm-6 gew_developments_caseStudy-leftCol">
+          <img
+          class="gew_developments_caseStudy-image"
+          srcset="{{srcSet images.[0] 1240 1020 820 620 310}}"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
+          alt="Property photo"
+          />
+        </div>
+        <div class="col-sm-6 gew_developments_caseStudy-rightCol">
+          <h3>{{title}}</h3>
+          {{{short_description}}}
+          <a class="btn btn-primary">More Information</a>
+        </div>
+      </div>
+    </div>
+
+  {{/each}}
 </div>

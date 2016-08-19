@@ -1202,7 +1202,7 @@ h2, .h2 {
   font-size: 20px; }
 
 h3, .h3 {
-  font-size: 26px; }
+  font-size: 18px; }
 
 h4, .h4 {
   font-size: 19px; }
@@ -5856,8 +5856,15 @@ button.close {
         position: static;
         width: 100%; } }
 
+p {
+  line-height: 1.8em; }
+
 h2 {
   font-weight: 600; }
+
+h3 {
+  font-weight: 600;
+  margin-bottom: 1.5em; }
 
 .btn {
   padding-left: 2em;
@@ -5868,9 +5875,8 @@ h2 {
 
 .gew_sectionContent {
   width: 100%;
-  padding-top: 5vh;
-  padding-bottom: 10vh;
-  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 100px;
   padding-left: .5em;
   padding-right: .5em; }
   @media (min-width: 768px) {
@@ -5935,6 +5941,16 @@ h2 {
     color: #fff;
     text-align: left;
     max-width: 70%; }
+
+.gew_doubleColumn {
+  text-align: left;
+  background-color: #f2e9e0;
+  padding-top: 100px; }
+
+.gew_doubleColumn-col1 {
+  font-weight: bold;
+  padding-left: 5%;
+  padding-right: 10%; }
 
 .gew_propertyCard {
   display: inline-block;
@@ -6180,7 +6196,8 @@ h2 {
   background-attachment: fixed;
   background-image: url("/images/home.register.jpg");
   padding-top: 15vh;
-  padding-bottom: 15vh; }
+  padding-bottom: 15vh;
+  text-align: center; }
 
 .gew_developments .navbar {
   background-color: transparent;
@@ -6195,3 +6212,15 @@ h2 {
 .gew_home-landing-text {
   color: #fff;
   margin: auto auto 0; }
+
+.gew_developments_caseStudy {
+  background-color: white; }
+
+.gew_developments_caseStudy-leftCol {
+  padding-left: 0; }
+
+.gew_developments_caseStudy-rightCol {
+  padding: 2em; }
+
+.gew_developments_caseStudy-image {
+  max-width: 100%; }

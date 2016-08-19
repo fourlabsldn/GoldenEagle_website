@@ -10,3 +10,17 @@
   color: $white;
   margin: auto auto 0; // push all elements downwards with top margin
 }
+
+.gew_developments_caseStudy {
+  background-color: white;
+}
+// Remove padding from columns' extremes
+.gew_developments_caseStudy-leftCol {
+  padding-left: 0;
+}
+.gew_developments_caseStudy-rightCol {
+  padding: 2em;
+}
+.gew_developments_caseStudy-image {
+  max-width: 100%;
+}
