@@ -2,20 +2,20 @@ const keystone = require('keystone');
 const Types = keystone.Field.Types;
 
 /**
- * Home Model
+ * Developments Model
  * =============
  */
 
-const Home = new keystone.List('Home', {
+const Developments = new keystone.List('Developments', {
 	// nocreate: true,
 	// nodelete: true,
-	plural: 'Home', // Never show 'Homes' in admin UI
-	label: 'Home', // Use'Home' in admin UI
+	plural: 'Developments', // Never show 'Developmentss' in admin UI
+	label: 'Developments', // Use'Developments' in admin UI
 	map: { name: 'title' },
 	autokey: { path: 'slug', from: 'title',	unique: true },
 });
 
-Home.add({
+Developments.add({
   	title: {
   		type: String,
   		required: true,
@@ -30,16 +30,21 @@ Home.add({
 			},
 		},
 	},
-	'Who we are paragraph', {
+	'Section 2', {
 		section_2: {
-			content: {
+			content1: {
 				type: Types.Textarea,
 				height: 500,
-				label: 'Content',
+				label: 'Small paragraph',
+			},
+      content2: {
+				type: Types.Textarea,
+				height: 500,
+				label: 'Longer text',
 			},
 		},
 	}
 );
 
-Home.defaultColumns = 'section_1.content|40%, section_2.content|40%';
-Home.register();
+Developments.defaultColumns = 'section_1.content1';
+Developments.register();

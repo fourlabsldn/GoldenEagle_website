@@ -42,6 +42,8 @@ keystone.List.prototype.getAll = function getAll() {
     query.exec((err, results) => {
       if (err) {
         reject(err);
+      } else if (!Array.isArray(results)) {
+        reject('Returned an unexpected result');
       } else {
         resolve(results);
       }
