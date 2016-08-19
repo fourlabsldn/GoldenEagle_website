@@ -11,9 +11,13 @@ exports = module.exports = function developments(req, res) {
 
 	// Load page content from database
 	view.on('init', next => {
-		keystone.list('Developments').getAll()
-			.then(contents => {
-				locals.data = contents[0];
+		Promise.all([
+				keystone.list('Developments').getAll(),
+				keystone.list('CaseStudy').getAll()
+			])
+			.then(([pageContent, caseStudies]) => {
+				locals.data = pageContent[0];
+				locals.caseStudies = caseStudies;
 				return next();
 			})
 			.catch(next);

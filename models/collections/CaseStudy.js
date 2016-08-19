@@ -16,6 +16,7 @@ CaseStudy.add({
       type: String,
       required: true,
   },
+  images: { type: Types.CloudinaryImages },
   short_description: {
     type: Types.Textarea,
     height: 500,
