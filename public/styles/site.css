@@ -5988,12 +5988,27 @@ h2 {
   z-index: 100; }
   .navbar .collapsing, .navbar .collapse.in {
     background-color: #000; }
-  .navbar .navbar-nav > li > a {
-    color: #fff;
-    font-weight: lighter;
-    margin: 0 .5vw; }
-    .navbar .navbar-nav > li > a:hover {
-      color: #eeac00; }
+  .navbar .navbar-nav > li,
+  .navbar .navbar-nav > li.active {
+    color: #fff; }
+    .navbar .navbar-nav > li a,
+    .navbar .navbar-nav > li.active a {
+      color: inherit;
+      font-weight: lighter;
+      margin: 0 .5vw; }
+      .navbar .navbar-nav > li a:hover,
+      .navbar .navbar-nav > li.active a:hover {
+        color: #eeac00; }
+  .navbar .active a {
+    background-color: transparent !important;
+    color: inherit; }
+    .navbar .active a:after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      right: 0;
+      border-bottom: 1px solid #eeac00;
+      transform: translateY(1.7em); }
 
 .gew_navbar-logo {
   height: 70px;

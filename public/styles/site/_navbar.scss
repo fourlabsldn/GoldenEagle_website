@@ -9,13 +9,33 @@
     background-color: $navbar-bg;
   }
 
-  .navbar-nav > li > a{
+  // Set text options
+  .navbar-nav > li,
+  .navbar-nav > li.active {
     color: $white;
-    font-weight: lighter;
-    margin: 0 .5vw;
+    a {
+      color: inherit;
+      font-weight: lighter;
+      margin: 0 .5vw;
 
-    &:hover {
-      color: $brand-primary;
+      &:hover {
+        color: $brand-primary;
+      }
+    }
+  }
+
+  // highlight active field
+  .active a{
+    background-color: transparent !important;
+    color: inherit;
+
+    &:after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      right: 0;
+      border-bottom: 1px solid $brand-primary;
+      transform: translateY(1.7em);
     }
   }
 }
