@@ -5882,18 +5882,18 @@ h3 {
 .btn-lg, .btn-group-lg > .btn {
   padding: 1em 3em; }
 
-.gew_sectionContent {
+.gew_sectionContent, .gew_sectionContent-extraPadding {
   width: 100%;
   padding-top: 50px;
   padding-bottom: 100px;
   padding-left: 1em;
   padding-right: 1em; }
   @media (max-width: 768px) {
-    .gew_sectionContent {
-      padding-left: 3em;
-      padding-right: 3em; } }
+    .gew_sectionContent, .gew_sectionContent-extraPadding {
+      padding-left: 1.5em;
+      padding-right: 1.5em; } }
   @media (min-width: 1000px) {
-    .gew_sectionContent {
+    .gew_sectionContent, .gew_sectionContent-extraPadding {
       padding-left: calc((100vw - 1000px) / 2);
       padding-right: calc((100vw - 1000px) / 2); } }
 
@@ -5954,6 +5954,9 @@ h3 {
     color: #fff;
     text-align: left;
     max-width: 70%; }
+    @media (max-width: 768px) {
+      .gew_landingSection .gew_landingSection-text, .gew_home-landing .gew_landingSection-text {
+        max-width: none; } }
 
 .gew_doubleColumn {
   text-align: left;

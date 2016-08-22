@@ -32,8 +32,8 @@ h3 {
   padding-right: 1em;
 
   @include xs-screen {
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
   }
 
   @media (min-width: $max-section-width) {
@@ -43,6 +43,7 @@ h3 {
 }
 
 .gew_sectionContent-extraPadding {
+  @extend .gew_sectionContent;
   padding-top: 120px;
   padding-bottom: 160px;
 }
@@ -93,6 +94,10 @@ h3 {
     @extend .gew_heroText;
     text-align: left;
     max-width: 70%;
+
+    @include xs-screen {
+      max-width: none;
+    }
   }
 }
 
