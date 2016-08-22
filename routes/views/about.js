@@ -1,5 +1,12 @@
 const keystone = require('keystone');
 
+const staff = [
+  { photo: '/images/staff-1.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678'},
+  { photo: '/images/staff-2.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678'},
+  { photo: '/images/staff-3.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678'},
+  { photo: '/images/staff-4.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678'},
+];
+
 exports = module.exports = function about(req, res) {
 	const view = new keystone.View(req, res);
 	const locals = res.locals;
@@ -8,6 +15,7 @@ exports = module.exports = function about(req, res) {
 	// item in the header navigation.
 	locals.section = 'about';
 	locals.data = {};
+  locals.staff = staff;
 
 	// Load page content from database
 	view.on('init', next => {

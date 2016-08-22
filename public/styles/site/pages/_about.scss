@@ -11,4 +11,51 @@
   background-position: center;
   background-size: cover;
   color: white;
+  padding-bottom: 55px;
+}
+
+.gew_about-quoteSection-quote {
+  margin-bottom: 100px;
+}
+
+.gew_about-quoteSection-author {
+  display: block;
+  text-align: center;
+}
+
+.gew_about-quoteSection-role {
+  display: block;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.gew_about-staffCard {
+  margin-bottom: 2em;
+}
+
+.gew_about-staffCard-photo {
+  max-width: 100%;
+}
+
+.gew_about-staffCard-footer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  margin: 2em 0;
+}
+
+.gew_about-staffCard-info {
+  margin-right: auto;
+}
+
+.gew_about-staffCard-info-name {
+  display: block;
+}
+
+.gew_about-staffCard-info-tel {
+  display: block;
+  font-weight: lighter;
+}
+
+.gew_about-staffCard-buttons {
 }

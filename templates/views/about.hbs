@@ -7,30 +7,22 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs gew_tabs gew_sectionContent" role="tablist">
   <li role="presentation" class="active">
-    <a href="#home" aria-controls="home" role="tab" data-toggle="tab"
-      onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
-    >
+    <a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="gew.selectTab">
       {{data.tab_1.title}}
     </a>
   </li>
   <li role="presentation">
-    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"
-      onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
-    >
+    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="gew.selectTab">
       {{data.tab_2.title}}
     </a>
   </li>
   <li role="presentation">
-    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"
-      onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
-    >
+    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" onclick="gew.selectTab">
       {{data.tab_3.title}}
     </a>
   </li>
   <li role="presentation">
-    <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"
-      onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
-    >
+    <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" onclick="gew.selectTab">
       {{data.tab_4.title}}
     </a>
   </li>
@@ -72,8 +64,42 @@
   </div>
 </div>
 
+<!-- Paul's quote photos -->
 <div class="gew_about-quoteSection gew_sectionContent-extraPadding">
-  <div class="gew_heroText">
+  <div class="gew_heroText gew_about-quoteSection-quote">
     {{data.section_3.content_1}}
   </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <span class="gew_about-quoteSection-author">Radi Siha</span>
+      <span class="gew_about-quoteSection-role">Chairman &amp; CEO</span>
+    </div>
+    <div class="col-sm-6">
+      <span class="gew_about-quoteSection-author">Paul Siha</span>
+      <span class="gew_about-quoteSection-role">Managing Director</span>
+    </div>
+  </div>
+</div>
+
+<!-- Staff photos -->
+<div class="container gew_sectionContent">
+  <div class="row">
+    {{#each staff}}
+      <div class="col-sm-6 gew_about-staffCard">
+        <img alt="{{name}}" src="{{photo}}" class="gew_about-staffCard-photo"/>
+
+        <div class="gew_about-staffCard-footer">
+          <div class="gew_about-staffCard-info">
+            <span class="gew_about-staffCard-info-name">{{name}}</span>
+            <span class="gew_about-staffCard-info-tel">{{tel}}</span>
+          </div>
+          <div class="gew_about-staffCard-buttons">
+            <button type="button" name="button" class="btn btn-primary">Email</button>
+            <button type="button" name="button" class="btn btn-primary">Vcard</button>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
 </div>

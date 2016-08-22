@@ -5960,7 +5960,7 @@ h3 {
 
 .gew_doubleColumn {
   text-align: left;
-  padding-top: 100px; }
+  padding-top: 75px; }
   .gew_doubleColumn p {
     margin-bottom: 20px; }
   @media (max-width: 768px) {
@@ -6375,4 +6375,39 @@ h3 {
   background-image: url("/images/radiAndPaul.jpg");
   background-position: center;
   background-size: cover;
-  color: white; }
+  color: white;
+  padding-bottom: 55px; }
+
+.gew_about-quoteSection-quote {
+  margin-bottom: 100px; }
+
+.gew_about-quoteSection-author {
+  display: block;
+  text-align: center; }
+
+.gew_about-quoteSection-role {
+  display: block;
+  text-align: center;
+  font-weight: lighter; }
+
+.gew_about-staffCard {
+  margin-bottom: 2em; }
+
+.gew_about-staffCard-photo {
+  max-width: 100%; }
+
+.gew_about-staffCard-footer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  margin: 2em 0; }
+
+.gew_about-staffCard-info {
+  margin-right: auto; }
+
+.gew_about-staffCard-info-name {
+  display: block; }
+
+.gew_about-staffCard-info-tel {
+  display: block;
+  font-weight: lighter; }
