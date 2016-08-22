@@ -2,6 +2,14 @@
 //  Utility classes
 // --------------------------------------
 
+.gew_bg-lighter {
+  background-color: $gray-lighter;
+}
+
+.gew_bg-light {
+  background-color: $gray-light;
+}
+
 // Horizontally align
 .gew_center {
   margin: auto;

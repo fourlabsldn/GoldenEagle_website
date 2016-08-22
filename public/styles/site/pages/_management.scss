@@ -8,4 +8,22 @@
 
 .gew_management-quoteSection {
   background-image: url('/images/management.section.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.gew_management-table {
+  font-size: .8em;
+  margin: 5em auto 0;
+  max-width: 50em;
+
+  td {
+    font-weight: lighter;
+  }
+  th {
+    font-weight: normal;
+  }
+  td:not(:first-child), th:not(:first-child) {
+    text-align: center;
+  }
 }

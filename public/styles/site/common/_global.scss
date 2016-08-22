@@ -96,7 +96,6 @@ h3 {
 
 .gew_doubleColumn {
   text-align: left;
-  background-color: $gray-light;
   padding-top: 100px;
 
   p {
@@ -169,6 +168,27 @@ h3 {
     & > li.active > a {
       font-size: 1em;
       padding: 1em 0;
+    }
+  }
+}
+
+// ================== TABS =================== //
+.gew_table {
+  & > tbody > tr {
+    &:nth-of-type(odd) {
+      background-color: $gray-light;
+    }
+
+    &:nth-of-type(1) {
+      background-color: darken($gray-light, 3%);
+    }
+
+    &:nth-of-type(even) {
+      background-color: $gray-lighter;
+    }
+
+    td, th {
+      border: 0;
     }
   }
 }

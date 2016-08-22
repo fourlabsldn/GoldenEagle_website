@@ -111,11 +111,9 @@ Management.add({
 				height: 200,
 				label: 'Small paragraph',
 			},
-			content_2: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 200,
-				label: 'Longer text',
+			illustration: {
+				type: Types.CloudinaryImage,
+				label: 'Illustration',
 			},
 		},
 	},
