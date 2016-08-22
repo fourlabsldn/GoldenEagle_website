@@ -29,22 +29,22 @@ Investments.add({
 	},
 	'Landing Section', {
 		section_1: {
-			content: {
-				type: Types.Textarea,
-				height: 500,
+			content_1: {
+        type: Types.Textarea,
+				height: 200,
 				label: 'Content',
 			},
 		},
 	},
 	'Section 2', {
 		section_2: {
-			content1: {
+			content_1: {
 				type: Types.Html,
 				wysiwyg: true,
 				height: 500,
 				label: 'Small paragraph',
 			},
-			content2: {
+			content_2: {
 				type: Types.Html,
 				wysiwyg: true,
 				height: 500,

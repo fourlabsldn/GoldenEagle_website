@@ -28,18 +28,16 @@ Management.add({
 		},
 	},
 	'Landing section', {
-		landing_section: {
-			background_image: {
-				type: Types.CloudinaryImage,
-			},
-			section_1: {
-				content: {
-					type: Types.Textarea,
-					height: 200,
-					label: 'Content',
-				},
-			},
-		},
+  	section_1: {
+      background: {
+        type: Types.CloudinaryImage,
+      },
+  		content: {
+  			type: Types.Textarea,
+  			height: 200,
+  			label: 'Content',
+  		},
+  	},
 	},
 	'Tab 1', {
 		tab_1: {

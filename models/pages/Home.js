@@ -23,20 +23,17 @@ Home.add({
   },
 	'Landing Section', {
 		section_1: {
-			content: {
-        type: Types.Html,
-        wysiwyg: true,
-				height: 500,
+			content_1: {
+        type: Types.Textarea,
+				height: 200,
 				label: 'Content',
 			},
 		},
 	},
 	'Who we are paragraph', {
 		section_2: {
-			content: {
-        type: Types.Html,
-        wysiwyg: true,
-				height: 500,
+			content_1: {
+        type: Types.Text,
 				label: 'Content',
 			},
 		},
