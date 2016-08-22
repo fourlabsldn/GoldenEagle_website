@@ -4,24 +4,51 @@
   </p>
 </div>
 
-<div class="container gew_doubleColumn gew_sectionContent">
-  <div class="row">
-    <div class="col-sm-6 gew_doubleColumn-col1">
-      {{{data.section_2.content_1}}}
-    </div>
-    <div class="col-sm-6 gew_doubleColumn-col2">
-      {{{data.section_2.content_2}}}
-    </div>
+<div class="gew_management-tabsSection ">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs gew_management-tabs gew_sectionContent" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#home" aria-controls="home" role="tab" data-toggle="tab"
+        onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
+      >
+        {{data.tab_1.title}}
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"
+        onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
+      >
+        {{data.tab_2.title}}
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"
+        onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
+      >
+        {{data.tab_3.title}}
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"
+        onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
+      >
+        {{data.tab_4.title}}
+      </a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">...</div>
+    <div role="tabpanel" class="tab-pane" id="profile">...</div>
+    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
   </div>
+
 </div>
 
-<div class="gew_sectionContent">
-  <h2>Case Studies</h2>
-  {{#each caseStudies}}
-    {{>caseStudy this}}
-  {{/each}}
-</div>
-
-<div class="gew_sectionContent-extraPadding text-center bg-primary">
-  {{>subscribeFields color="light"}}
+<div class="gew_management-quoteSection gew_sectionContent-extraPadding text-center bg-primary">
+  <div class="gew_heroText">
+    {{data.section_3.content_1}}
+  </div>
 </div>

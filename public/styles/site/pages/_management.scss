@@ -3,5 +3,54 @@
 }
 
 .gew_management-landing {
-  background-image: url('/images/investments.landing.jpg');
+  background-image: url('/images/management.landing.jpg');
+}
+
+.gew_management-quoteSection {
+  background-image: url('/images/management.section.jpg');
+}
+
+.gew_management-tabsSection {
+
+}
+
+.gew_management-tabs {
+  background-color: $brand-primary;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  & > li > a,
+  & > li.active > a  {
+    background-color: transparent;
+    color: $gray-base;
+    border: 0;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin: 0;
+
+    &:focus {
+      background-color: $brand-primary;
+      color: $gray-base;
+      border: 0;
+    }
+
+    &:hover {
+      background-color: lighten($brand-primary, 4%);
+      color: $gray-base;
+      border: 0;
+    }
+
+    &:active {
+      background-color: darken($brand-primary, 2%);
+      border: 0;
+    }
+  }
+
+  & > li.active > a {
+    background-color: lighten($brand-primary, 3%);
+    border: 0;
+    &:focus , &:hover {
+      background-color: lighten($brand-primary, 3%);
+    }
+  }
 }

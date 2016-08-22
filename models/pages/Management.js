@@ -29,10 +29,7 @@ Management.add({
 	},
 	'Landing section', {
   	section_1: {
-      background: {
-        type: Types.CloudinaryImage,
-      },
-  		content: {
+  		content_1: {
   			type: Types.Textarea,
   			height: 200,
   			label: 'Content',
@@ -124,14 +121,9 @@ Management.add({
 	},
 	'Section 3', {
 		section_3: {
-			background: {
-				type: Types.CloudinaryImage,
-				label: 'Background image',
-			},
 			content_1: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 300,
+				type: Types.Textarea,
+				height: 200,
 				label: 'Small paragraph',
 			},
 		},

@@ -6269,4 +6269,39 @@ h3 {
   width: 100%; }
 
 .gew_management-landing {
-  background-image: url("/images/investments.landing.jpg"); }
+  background-image: url("/images/management.landing.jpg"); }
+
+.gew_management-quoteSection {
+  background-image: url("/images/management.section.jpg"); }
+
+.gew_management-tabs {
+  background-color: #eeac00;
+  padding-top: 0;
+  padding-bottom: 0; }
+  .gew_management-tabs > li > a,
+  .gew_management-tabs > li.active > a {
+    background-color: transparent;
+    color: #000;
+    border: 0;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin: 0; }
+    .gew_management-tabs > li > a:focus,
+    .gew_management-tabs > li.active > a:focus {
+      background-color: #eeac00;
+      color: #000;
+      border: 0; }
+    .gew_management-tabs > li > a:hover,
+    .gew_management-tabs > li.active > a:hover {
+      background-color: #ffb903;
+      color: #000;
+      border: 0; }
+    .gew_management-tabs > li > a:active,
+    .gew_management-tabs > li.active > a:active {
+      background-color: #e4a500;
+      border: 0; }
+  .gew_management-tabs > li.active > a {
+    background-color: #fdb700;
+    border: 0; }
+    .gew_management-tabs > li.active > a:focus, .gew_management-tabs > li.active > a:hover {
+      background-color: #fdb700; }
