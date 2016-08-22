@@ -4,47 +4,72 @@
   </p>
 </div>
 
-<div class="gew_management-tabsSection ">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs gew_management-tabs gew_sectionContent" role="tablist">
-    <li role="presentation" class="active">
-      <a href="#home" aria-controls="home" role="tab" data-toggle="tab"
-        onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
-      >
-        {{data.tab_1.title}}
-      </a>
-    </li>
-    <li role="presentation">
-      <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"
-        onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
-      >
-        {{data.tab_2.title}}
-      </a>
-    </li>
-    <li role="presentation">
-      <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"
-        onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
-      >
-        {{data.tab_3.title}}
-      </a>
-    </li>
-    <li role="presentation">
-      <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"
-        onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
-      >
-        {{data.tab_4.title}}
-      </a>
-    </li>
-  </ul>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs gew_tabs gew_sectionContent" role="tablist">
+  <li role="presentation" class="active">
+    <a href="#home" aria-controls="home" role="tab" data-toggle="tab"
+      onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
+    >
+      {{data.tab_1.title}}
+    </a>
+  </li>
+  <li role="presentation">
+    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"
+      onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
+    >
+      {{data.tab_2.title}}
+    </a>
+  </li>
+  <li role="presentation">
+    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"
+      onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
+    >
+      {{data.tab_3.title}}
+    </a>
+  </li>
+  <li role="presentation">
+    <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"
+      onclick="function (e) { e.preventDefault(); $(this).tab('show');}"
+    >
+      {{data.tab_4.title}}
+    </a>
+  </li>
+</ul>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">...</div>
-    <div role="tabpanel" class="tab-pane" id="profile">...</div>
-    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+<!-- Tab panes -->
+<div class="tab-content gew_doubleColumn gew_sectionContent">
+  <div role="tabpanel" class="row tab-pane active" id="home">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_1.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_1.content_2}}}
+    </div>
   </div>
-
+  <div role="tabpanel" class="row tab-pane" id="profile">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_2.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_2.content_2}}}
+    </div>
+  </div>
+  <div role="tabpanel" class="row tab-pane" id="messages">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_3.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_3.content_2}}}
+    </div>
+  </div>
+  <div role="tabpanel" class="row tab-pane" id="settings">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_4.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_4.content_2}}}
+    </div>
+  </div>
 </div>
 
 <div class="gew_management-quoteSection gew_sectionContent-extraPadding text-center bg-primary">

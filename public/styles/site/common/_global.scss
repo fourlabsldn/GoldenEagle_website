@@ -43,6 +43,8 @@ h3 {
   padding-bottom: 160px;
 }
 
+// ================== FORM FIELD =================== //
+
 .gew_formField {
   background-color: transparent;
   padding: 1em 1.2em;
@@ -69,11 +71,12 @@ h3 {
   }
 }
 
+// ================== Landing section =================== //
+
 // Landing section where navbar is
 .gew_landingSection {
   @include pageSection();
   min-height: 60vh;
-  height: 700px;
   display: flex;
   flex-flow: column nowrap;
   padding-top: $navbar-height; // To compensate for the navbar's negative margin.
@@ -89,17 +92,72 @@ h3 {
   }
 }
 
+// ================== Double Column =================== //
+
 .gew_doubleColumn {
   text-align: left;
   background-color: $gray-light;
   padding-top: 100px;
 }
 .gew_doubleColumn-col1 {
-  font-weight: bold;
-  padding-left: 5%;
+  // padding-left: 5%;
   padding-right: 10%;
 }
 
 .gew_doubleColumn-col2 {
+  font-weight: lighter;
+}
 
+// ================== TABS =================== //
+.gew_tabs {
+  background-color: $brand-primary;
+  padding-top: 2em;
+  padding-bottom: 2em;
+
+  & > li > a,
+  & > li.active > a  {
+    background-color: transparent;
+    color: $gray-base;
+    border: 0;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: .9em;
+
+    &:focus {
+      background-color: transparent;
+      color: $gray-base;
+      border: 0;
+      outline: 0;
+    }
+
+    &:hover {
+      background-color: lighten($brand-primary, 1%);
+      color: $gray-base;
+      border: 0;
+      outline: 0;
+    }
+
+    &:active {
+      background-color: darken($brand-primary, 1%);
+      border: 0;
+      outline: 0;
+    }
+  }
+
+  & > li.active > a {
+    font-weight: bold;
+  }
+
+  @include sm-screen {
+    & > li > a,
+    & > li.active > a {
+      font-size: 1em;
+    }
+
+    & > li {
+      padding: 1em 0;
+      width: 100%;
+    }
+  }
 }
