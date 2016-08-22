@@ -6260,3 +6260,13 @@ h3 {
 
 .gew_investments-landing {
   background-image: url("/images/investments.landing.jpg"); }
+
+.gew_management .navbar {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; }
+
+.gew_management-landing {
+  background-image: url("/images/investments.landing.jpg"); }
