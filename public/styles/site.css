@@ -5835,7 +5835,7 @@ button.close {
 
 .gew_heroText, .gew_landingSection .gew_landingSection-text, .gew_home-landing .gew_landingSection-text {
   font-family: "Playfair Display", serif;
-  font-size: 36.9px;
+  font-size: 30px;
   line-height: 1.35em;
   display: block;
   margin: 60px auto;
@@ -5871,6 +5871,9 @@ h2 {
 h3 {
   font-weight: 600;
   margin-bottom: 1.5em; }
+
+.bg-primary {
+  color: #000; }
 
 .btn {
   padding-left: 2em;
@@ -6340,7 +6343,8 @@ h3 {
 .gew_management-quoteSection {
   background-image: url("/images/management.section.jpg");
   background-size: cover;
-  background-position: center; }
+  background-position: center;
+  color: white; }
 
 .gew_management-table {
   font-size: .8em;

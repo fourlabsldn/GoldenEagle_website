@@ -72,7 +72,7 @@
   </div>
 </div>
 
-<div class="gew_management-quoteSection gew_sectionContent-extraPadding text-center bg-primary">
+<div class="gew_management-quoteSection gew_sectionContent-extraPadding">
   <div class="gew_heroText">
     {{data.section_3.content_1}}
   </div>
@@ -84,7 +84,13 @@
       {{{data.section_4.content_1}}}
     </div>
     <div class="col-sm-6 gew_doubleColumn-col2">
-      {{{data.section_4.content_2}}}
+      <img
+        style="max-width: 100%"
+        srcset="{{srcSet data.section_4.illustration 1240 1020 820 620 310}}"
+        sizes="(max-width: 768px) 100vw, 50vw"
+        src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
+        alt="{{location.street1}}"
+      />
     </div>
   </div>
 
@@ -146,5 +152,39 @@
         <td><i class="glyphicon glyphicon-ok glyphicon"></i></td>
       </tr>
     </table>
+  </div>
+</div>
+
+<div class="container gew_sectionContent gew_doubleColumn gew_bg-light">
+  <div class="row">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.section_5.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.section_5.content_2}}}
+    </div>
+  </div>
+</div>
+
+<div class="gew_sectionContent-extraPadding bg-primary">
+    <p class="gew_heroText">
+      {{ data.section_6.content_1 }}
+    </p>
+</div>
+
+<div class="container gew_doubleColumn gew_sectionContent gew_bg-lighter">
+  <div class="row">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.section_7.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      <img
+        style="max-width: 100%"
+        srcset="{{srcSet data.section_7.illustration 1240 1020 820 620 310}}"
+        sizes="(max-width: 768px) 100vw, 50vw"
+        src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
+        alt="{{location.street1}}"
+      />
+    </div>
   </div>
 </div>

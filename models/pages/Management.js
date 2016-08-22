@@ -105,15 +105,17 @@ Management.add({
 				type: Types.Text,
 				label: 'Title',
 			},
-			content_1: {
+      content_1: {
 				type: Types.Html,
 				wysiwyg: true,
 				height: 200,
 				label: 'Small paragraph',
 			},
-			illustration: {
-				type: Types.CloudinaryImage,
-				label: 'Illustration',
+			content_2: {
+				type: Types.Html,
+				wysiwyg: true,
+				height: 300,
+				label: 'Longer text',
 			},
 		},
 	},
@@ -134,37 +136,48 @@ Management.add({
 				height: 200,
 				label: 'Small paragraph',
 			},
-			content_2: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 300,
-				label: 'Longer text',
+      illustration: {
+				type: Types.CloudinaryImage,
+				label: 'Illustration',
 			},
 		},
 	},
 	'Section 5', {
 		section_5: {
-			content_1: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 300,
-				label: 'Small paragraph',
-			},
+      content_1: {
+        type: Types.Html,
+        wysiwyg: true,
+        height: 200,
+        label: 'Small paragraph',
+      },
+      content_2: {
+        type: Types.Html,
+        wysiwyg: true,
+        height: 200,
+        label: 'Longer text',
+      },
 		},
 	},
 	'Section 6', {
 		section_6: {
+      content_1: {
+				type: Types.Textarea,
+				height: 200,
+				label: 'Small paragraph',
+			},
+		},
+	},
+  'Section 7', {
+		section_7: {
 			content_1: {
 				type: Types.Html,
 				wysiwyg: true,
 				height: 200,
 				label: 'Small paragraph',
 			},
-			content_2: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 200,
-				label: 'Longer text',
+      illustration: {
+				type: Types.CloudinaryImage,
+				label: 'Illustration',
 			},
 		},
 	});
