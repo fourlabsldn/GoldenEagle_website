@@ -5879,7 +5879,7 @@ h3 {
   padding-bottom: 100px;
   padding-left: 1em;
   padding-right: 1em; }
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     .gew_sectionContent {
       padding-left: 3em;
       padding-right: 3em; } }
@@ -5950,6 +5950,12 @@ h3 {
   text-align: left;
   background-color: #f2e9e0;
   padding-top: 100px; }
+  .gew_doubleColumn p {
+    margin-bottom: 20px; }
+  @media (max-width: 768px) {
+    .gew_doubleColumn {
+      padding-top: 50px;
+      padding-bottom: 100px; } }
 
 .gew_doubleColumn-col1 {
   padding-right: 10%; }
@@ -5959,16 +5965,16 @@ h3 {
 
 .gew_tabs {
   background-color: #eeac00;
-  padding-top: 2em;
-  padding-bottom: 2em; }
+  padding-top: 0;
+  padding-bottom: 0; }
   .gew_tabs > li > a,
   .gew_tabs > li.active > a {
     background-color: transparent;
     color: #000;
     border: 0;
     margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 2em;
+    padding-bottom: 2em;
     font-size: .9em; }
     .gew_tabs > li > a:focus,
     .gew_tabs > li.active > a:focus {
@@ -5990,12 +5996,15 @@ h3 {
   .gew_tabs > li.active > a {
     font-weight: bold; }
   @media (max-width: 992px) {
-    .gew_tabs > li > a,
-    .gew_tabs > li.active > a {
-      font-size: 1em; }
-    .gew_tabs > li {
-      padding: 1em 0;
-      width: 100%; } }
+    .gew_tabs {
+      padding-top: 1em;
+      padding-bottom: 1em; }
+      .gew_tabs > li {
+        padding: 0; }
+      .gew_tabs > li > a,
+      .gew_tabs > li.active > a {
+        font-size: 1em;
+        padding: 1em 0; } }
 
 .gew_propertyCard {
   display: inline-block;

@@ -27,7 +27,7 @@ h3 {
   padding-left: 1em;
   padding-right: 1em;
 
-  @media (min-width: $screen-sm-min) {
+  @include xs-screen {
     padding-left: 3em;
     padding-right: 3em;
   }
@@ -98,6 +98,15 @@ h3 {
   text-align: left;
   background-color: $gray-light;
   padding-top: 100px;
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  @include xs-screen {
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
 }
 .gew_doubleColumn-col1 {
   // padding-left: 5%;
@@ -111,8 +120,8 @@ h3 {
 // ================== TABS =================== //
 .gew_tabs {
   background-color: $brand-primary;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: 0;
+  padding-bottom: 0;
 
   & > li > a,
   & > li.active > a  {
@@ -120,8 +129,8 @@ h3 {
     color: $gray-base;
     border: 0;
     margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 2em;
+    padding-bottom: 2em;
     font-size: .9em;
 
     &:focus {
@@ -150,14 +159,16 @@ h3 {
   }
 
   @include sm-screen {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    & > li {
+      padding: 0;
+    }
+
     & > li > a,
     & > li.active > a {
       font-size: 1em;
-    }
-
-    & > li {
       padding: 1em 0;
-      width: 100%;
     }
   }
 }
