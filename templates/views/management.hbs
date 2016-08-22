@@ -1,0 +1,27 @@
+<div class="container gew_developments-landing gew_landingSection">
+  <p class="gew_landingSection-text">
+    {{data.section_1.content}}
+  </p>
+</div>
+
+<div class="container gew_doubleColumn gew_sectionContent">
+  <div class="row">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.section_2.content1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.section_2.content2}}}
+    </div>
+  </div>
+</div>
+
+<div class="gew_sectionContent">
+  <h2>Case Studies</h2>
+  {{#each caseStudies}}
+    {{>caseStudy this}}
+  {{/each}}
+</div>
+
+<div class="gew_sectionContent-extraPadding text-center bg-primary">
+  {{>subscribeFields color="light"}}
+</div>
