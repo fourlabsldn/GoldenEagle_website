@@ -196,7 +196,12 @@ h3 {
       background-color: $gray-lighter;
     }
 
-    td, th {
+    td {
+      font-weight: lighter;
+      border: 0;
+    }
+    th {
+      font-weight: normal;
       border: 0;
     }
   }

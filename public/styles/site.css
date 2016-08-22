@@ -6026,7 +6026,12 @@ h3 {
 .gew_table > tbody > tr:nth-of-type(even) {
   background-color: #f5f1ed; }
 
-.gew_table > tbody > tr td, .gew_table > tbody > tr th {
+.gew_table > tbody > tr td {
+  font-weight: lighter;
+  border: 0; }
+
+.gew_table > tbody > tr th {
+  font-weight: normal;
   border: 0; }
 
 .gew_propertyCard {
@@ -6351,11 +6356,23 @@ h3 {
 
 .gew_management-table {
   font-size: .8em;
-  margin: 5em auto 0;
-  max-width: 50em; }
-  .gew_management-table td {
-    font-weight: lighter; }
-  .gew_management-table th {
-    font-weight: normal; }
+  max-width: 50em;
+  margin: 5em auto 0; }
   .gew_management-table td:not(:first-child), .gew_management-table th:not(:first-child) {
     text-align: center; }
+
+.gew_about .navbar {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; }
+
+.gew_about-landing {
+  background-image: url("/images/about.landing.jpg"); }
+
+.gew_about-quoteSection {
+  background-image: url("/images/radiAndPaul.jpg");
+  background-position: center;
+  background-size: cover;
+  color: white; }

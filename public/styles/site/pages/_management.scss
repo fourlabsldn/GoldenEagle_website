@@ -15,15 +15,9 @@
 
 .gew_management-table {
   font-size: .8em;
-  margin: 5em auto 0;
   max-width: 50em;
+  margin: 5em auto 0;
 
-  td {
-    font-weight: lighter;
-  }
-  th {
-    font-weight: normal;
-  }
   td:not(:first-child), th:not(:first-child) {
     text-align: center;
   }
