@@ -70,53 +70,28 @@
 }
 
 
-$history-entry-width: 25em;
-$history-point-height: 1.5em;
+$history-entry-width: 270px;
+$history-entry-height: 240px;
+$history-point-height: 15px;
 
 .gew_about-history {
   font-size: .8em;
   overflow: auto;
-}
-
-.gew_about-history-top,
-.gew_about-history-bottom {
-  margin: 0;
   white-space: nowrap;
 }
 
-.gew_about-history-top {
-  padding-left: $history-entry-width / 2;
-
-  & > .gew_about-history-entry::before {
-    bottom: 0;
-  }
-}
-
-.gew_about-history-bottom > .gew_about-history-entry {
-  &::before {
-    top: 0;
-  }
-
-  // Dividing line
-  &::after {
-    content: ' ';
-    display: block;
-    position: absolute;
-    top: 0;
-    width: calc(100% + 2em);
-    left: -1em;
-    border-top: 1px solid $gray;
-  }
-}
-
 .gew_about-history-entry {
+  box-sizing: border-box;
   display: inline-block;
   width: $history-entry-width;
+  height: ($history-entry-height + $history-point-height) * 2;
   position: relative;
   padding: $history-point-height;
   white-space: normal;
   text-align: center;
   line-height: 1.5em;
+  vertical-align: top;
+  margin-right: -($history-entry-width / 2);
 
   &::before {
     content: ' ';
@@ -128,6 +103,32 @@ $history-point-height: 1.5em;
     border-left: 1px solid $gray;
   }
 }
+
+.gew_about-history-entry:nth-child(odd) {
+  padding-top: $history-entry-height + $history-point-height;
+  &:before {
+    bottom: $history-entry-height;
+  }
+
+  &:after {
+    content: ' ';
+    position: absolute;
+    bottom: $history-entry-height + $history-point-height;
+    left: -1em;
+    display: block;
+    width: calc(100% + 2em);
+    height: 0;
+    border-top: 1px solid $gray;
+  }
+}
+
+.gew_about-history-entry:nth-child(even) {
+  padding-bottom: $history-entry-height + $history-point-height;
+  &:before {
+    top: $history-entry-height;
+  }
+}
+
 
 .gew_about-history-entry-title {
   margin-bottom: 1em;
