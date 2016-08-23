@@ -68,3 +68,68 @@
   display: block;
   text-align: center;
 }
+
+
+$history-entry-width: 25em;
+$history-point-height: 1.5em;
+
+.gew_about-history {
+  font-size: .8em;
+  overflow: auto;
+}
+
+.gew_about-history-top,
+.gew_about-history-bottom {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.gew_about-history-top {
+  padding-left: $history-entry-width / 2;
+
+  & > .gew_about-history-entry::before {
+    bottom: 0;
+  }
+}
+
+.gew_about-history-bottom > .gew_about-history-entry {
+  &::before {
+    top: 0;
+  }
+
+  // Dividing line
+  &::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: calc(100% + 2em);
+    left: -1em;
+    border-top: 1px solid $gray;
+  }
+}
+
+.gew_about-history-entry {
+  display: inline-block;
+  width: $history-entry-width;
+  position: relative;
+  padding: $history-point-height;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.5em;
+
+  &::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 50%;
+    width: 0;
+    height: $history-point-height;
+    border-left: 1px solid $gray;
+  }
+}
+
+.gew_about-history-entry-title {
+  margin-bottom: 1em;
+  font-size: 1.1em;
+}

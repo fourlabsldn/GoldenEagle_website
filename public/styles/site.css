@@ -5862,7 +5862,7 @@ button.close {
         position: static;
         width: 100%; } }
 
-p {
+body {
   line-height: 1.8em; }
 
 h2 {
@@ -6469,3 +6469,50 @@ h3 {
   color: #fff;
   display: block;
   text-align: center; }
+
+.gew_about-history {
+  font-size: .8em;
+  overflow: auto; }
+
+.gew_about-history-top,
+.gew_about-history-bottom {
+  margin: 0;
+  white-space: nowrap; }
+
+.gew_about-history-top {
+  padding-left: 12.5em; }
+  .gew_about-history-top > .gew_about-history-entry::before {
+    bottom: 0; }
+
+.gew_about-history-bottom > .gew_about-history-entry::before {
+  top: 0; }
+
+.gew_about-history-bottom > .gew_about-history-entry::after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 0;
+  width: calc(100% + 2em);
+  left: -1em;
+  border-top: 1px solid #555555; }
+
+.gew_about-history-entry {
+  display: inline-block;
+  width: 25em;
+  position: relative;
+  padding: 1.5em;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.5em; }
+  .gew_about-history-entry::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 50%;
+    width: 0;
+    height: 1.5em;
+    border-left: 1px solid #555555; }
+
+.gew_about-history-entry-title {
+  margin-bottom: 1em;
+  font-size: 1.1em; }
