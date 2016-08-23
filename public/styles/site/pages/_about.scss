@@ -29,6 +29,10 @@
   font-weight: lighter;
 }
 
+.gew_about-staffCards {
+  padding-bottom: 0px;
+}
+
 .gew_about-staffCard {
   margin-bottom: 2em;
 }
@@ -57,5 +61,10 @@
   font-weight: lighter;
 }
 
-.gew_about-staffCard-buttons {
+.gew_about-quoteSlider-quote ,
+.gew_about-quoteSlider-author,
+  .gew_about-quoteSlider-role {
+  color: $white;
+  display: block;
+  text-align: center;
 }

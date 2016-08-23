@@ -209,9 +209,10 @@ h3 {
 
 // ================== Slider =================== //
 .gew_slider {
-  white-space: nowrap;
-  overflow: hidden;
   position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .gew_slider-btn-prev,
@@ -239,11 +240,20 @@ h3 {
 }
 
 .gew_slider-btn-prev {
-  left: 0;
+  left: -1em;
 }
 
 .gew_slider-btn-next {
-  right: 0;
+  right: -1em;
+}
+
+.gew_slider-slides {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .gew_slider-slide {

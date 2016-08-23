@@ -82,7 +82,7 @@
 </div>
 
 <!-- Staff photos -->
-<div class="container gew_sectionContent">
+<div class="container gew_sectionContent gew_about-staffCards">
   <div class="row">
     {{#each staff}}
       <div class="col-sm-6 gew_about-staffCard">
@@ -103,28 +103,33 @@
   </div>
 </div>
 
-<div class="gew_sectionContent bg-primary">
+<div class="gew_sectionContent bg-primary gew_about-quoteSlider">
   <div class="gew_slider">
     <button class="gew_slider-btn-prev">◀</button>
     <button class="gew_slider-btn-next">▶</button>
 
-    <div class="gew_slider-slide gew_slider-slide--active">
-      <p class="gew_heroText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-      <p>AAA</p>
-    </div>
-    <div class="gew_slider-slide">
-      <p class="gew_heroText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-      <p>CCC</p>
-    </div>
-    <div class="gew_slider-slide">
-      <p class="gew_heroText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-      <p>BBB</p>
+    <div class="gew_slider-slides">
+      <div class="gew_slider-slide gew_slider-slide--active">
+        <p class="gew_heroText gew_about-quoteSlider-quote">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <span class="gew_about-quoteSlider-author">John Smith</span>
+        <span class="gew_about-quoteSlider-role">Company Position</span>
+      </div>
+      <div class="gew_slider-slide">
+        <p class="gew_heroText gew_about-quoteSlider-quote">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <span class="gew_about-quoteSlider-author">John Smith</span>
+        <span class="gew_about-quoteSlider-role">Company Position</span>
+      </div>
+      <div class="gew_slider-slide">
+        <p class="gew_heroText gew_about-quoteSlider-quote">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <span class="gew_about-quoteSlider-author">John Smith</span>
+        <span class="gew_about-quoteSlider-role">Company Position</span>
+      </div>
     </div>
   </div>
 </div>
