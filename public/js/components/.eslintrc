@@ -1,8 +1,7 @@
 {
-  "env": {
-    "es6": false
-  },
+  "extends": "eslint-config-airbnb-es5",
   "rules": {
-    "no-var": 0
+    "comma-dangle": [0],
+    "indent": [0, "tab"]
   }
 }

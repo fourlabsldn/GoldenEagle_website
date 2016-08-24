@@ -174,7 +174,7 @@ h3 {
     padding-top: 1em;
     padding-bottom: 1em;
     & > li {
-      padding: 0;
+      padding: 0 .5em;
     }
 
     & > li > a,
@@ -185,7 +185,7 @@ h3 {
   }
 }
 
-// ================== TABS =================== //
+// ================== TABLE =================== //
 .gew_table {
   & > tbody > tr {
     &:nth-of-type(odd) {
@@ -212,13 +212,14 @@ h3 {
 }
 
 // ================== Slider =================== //
-$arrow-size: 20px;
+$arrow-size: 15px;
 .gew_slider {
   position: relative;
   display: block;
   padding: 0 $arrow-size;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .gew_slider-btn-prev,
@@ -229,6 +230,7 @@ $arrow-size: 20px;
   top: 0;
   bottom: 0;
   border: 0;
+  padding: 0;
   background-color: transparent;
   transition: transform .1s ease-in-out;
   font-size: $arrow-size;
@@ -260,7 +262,7 @@ $arrow-size: 20px;
   width: 100%;
   height: 100%;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .gew_slider-slide {
@@ -269,4 +271,55 @@ $arrow-size: 20px;
   width: 100%;
   height: 100%;
   transition: transform .2s ease-in-out;
+}
+
+$slider2-arrow-size: 15px;
+// slider 2
+.gew_slider2 {
+  padding: 0 2 * $slider2-arrow-size;
+  position: relative;
+}
+
+.gew_slider2-contentWrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.gew_slider2-content {
+  transition: transform .2s ease-in-out;
+  overflow: visible;
+}
+
+.gew_slider2-btn-prev,
+.gew_slider2-btn-next {
+  position: absolute;
+  display: block;
+  width: $arrow-size;
+  top: 0;
+  bottom: 0;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  transition: transform .1s ease-in-out;
+  font-size: $arrow-size;
+  z-index: 1;
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.gew_slider2-btn-prev {
+  left: 0;
+}
+
+.gew_slider2-btn-next {
+  right: 0;
 }

@@ -6007,7 +6007,7 @@ h3 {
       padding-top: 1em;
       padding-bottom: 1em; }
       .gew_tabs > li {
-        padding: 0; }
+        padding: 0 .5em; }
       .gew_tabs > li > a,
       .gew_tabs > li.active > a {
         font-size: 1em;
@@ -6033,21 +6033,23 @@ h3 {
 .gew_slider {
   position: relative;
   display: block;
-  padding: 0 20px;
+  padding: 0 15px;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
 
 .gew_slider-btn-prev,
 .gew_slider-btn-next {
   position: absolute;
   display: block;
-  width: 20px;
+  width: 15px;
   top: 0;
   bottom: 0;
   border: 0;
+  padding: 0;
   background-color: transparent;
   transition: transform .1s ease-in-out;
-  font-size: 20px;
+  font-size: 15px;
   z-index: 1; }
   .gew_slider-btn-prev:hover,
   .gew_slider-btn-next:hover {
@@ -6071,7 +6073,7 @@ h3 {
   width: 100%;
   height: 100%;
   white-space: nowrap;
-  overflow: hidden; }
+  overflow: visible; }
 
 .gew_slider-slide {
   white-space: normal;
@@ -6079,6 +6081,47 @@ h3 {
   width: 100%;
   height: 100%;
   transition: transform .2s ease-in-out; }
+
+.gew_slider2 {
+  padding: 0 30px;
+  position: relative; }
+
+.gew_slider2-contentWrapper {
+  overflow: hidden;
+  position: relative; }
+
+.gew_slider2-content {
+  transition: transform .2s ease-in-out;
+  overflow: visible; }
+
+.gew_slider2-btn-prev,
+.gew_slider2-btn-next {
+  position: absolute;
+  display: block;
+  width: 15px;
+  top: 0;
+  bottom: 0;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  transition: transform .1s ease-in-out;
+  font-size: 15px;
+  z-index: 1; }
+  .gew_slider2-btn-prev:hover,
+  .gew_slider2-btn-next:hover {
+    transform: scale(1.2); }
+  .gew_slider2-btn-prev:active,
+  .gew_slider2-btn-next:active {
+    transform: scale(1); }
+  .gew_slider2-btn-prev:focus,
+  .gew_slider2-btn-next:focus {
+    outline: 0; }
+
+.gew_slider2-btn-prev {
+  left: 0; }
+
+.gew_slider2-btn-next {
+  right: 0; }
 
 .gew_propertyCard {
   display: inline-block;
@@ -6461,12 +6504,8 @@ h3 {
   display: block;
   text-align: center; }
 
-.gew_about-history-wrapper {
-  overflow-x: auto; }
-
 .gew_about-history {
   padding-bottom: 215px;
-  overflow-x: auto;
   white-space: nowrap; }
   .gew_about-history > * {
     white-space: normal; }
@@ -6507,7 +6546,7 @@ h3 {
 .gew_about-history-entry:nth-child(even) {
   justify-content: flex-end; }
   .gew_about-history-entry:nth-child(even):before {
-    bottom: -1px; }
+    bottom: 0px; }
 
 .gew_about-history-entry:last-child {
   margin-right: 0; }

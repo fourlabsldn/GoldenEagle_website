@@ -79,13 +79,8 @@ $history-point-height: 15px;
 $history-entry-width: 33%;
 $history-entry-height: 200px + $history-point-height;
 
-.gew_about-history-wrapper {
-  overflow-x: auto;
-}
-
 .gew_about-history {
   padding-bottom: $history-entry-height;
-  overflow-x: auto;
   white-space: nowrap;
   & > * {
     white-space: normal;
@@ -134,7 +129,7 @@ $history-entry-height: 200px + $history-point-height;
 .gew_about-history-entry:nth-child(even) {
   justify-content: flex-end;
   &:before {
-    bottom: -1px; // So that it overlaps the guiding line
+    bottom: 0px;
   }
 }
 
