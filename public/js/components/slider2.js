@@ -102,4 +102,16 @@ function gewSlider2(slider, userOptions) { // eslint-disable-line no-unused-vars
 	nextBtn.addEventListener('click', function nextBtnClick() {
     addScroll(getValueToScroll(options, contentWrapper), contentWrapper);
 	});
+
+
+  // Let's reset the scroll when the window is resized because whenever
+  // it goes to mobile mode we need to have no scroll at all.
+  var resizeTimeout;
+  var throttleTime = 500;
+  window.addEventListener('resize', function r() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function resetScroll() {
+      setTranslation(getContent(contentWrapper), 0);
+    }, throttleTime);
+  });
 }
