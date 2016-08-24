@@ -1,7 +1,6 @@
-(function gewSlider() {
+function gewSlider(slider, userOptions) { // eslint-disable-line no-unused-vars
 	var GLOBALS = {
 		classes: {
-			slider: 'gew_slider2-contentWrapper',
 			content: 'gew_slider2-content',
 			prevBtn: 'gew_slider2-btn-prev',
 			nextBtn: 'gew_slider2-btn-next',
@@ -76,19 +75,28 @@
 		setTranslation(getContent(element), -scrollVal);
 	}
 
-	var slider = document.querySelector(toSelector(GLOBALS.classes.slider));
+  function getValueToScroll(options, element) {
+    var scrollVal;
+    if (options.scrollType === 'paginated') {
+      scrollVal = getContent(element).clientWidth;
+    } else {
+      scrollVal = options.defaultScroll;
+    }
+    return scrollVal;
+  }
+
   var prevBtn = document.querySelector(toSelector(GLOBALS.classes.prevBtn));
   var nextBtn = document.querySelector(toSelector(GLOBALS.classes.nextBtn));
+	var options = Object.create({
+    scrollType: 'paginated',
+    defaultScroll: 200,
+  }, userOptions);
 
-	var options = {
-		scroll: 200,
-	};
-
-	prevBtn.addEventListener('click', function () {
-		addScroll(-options.scroll, slider);
+	prevBtn.addEventListener('click', function prevBtnClick() {
+		addScroll(-getValueToScroll(options, slider), slider);
 	});
 
-	nextBtn.addEventListener('click', function () {
-		addScroll(options.scroll, slider);
+	nextBtn.addEventListener('click', function nextBtnClick() {
+    addScroll(getValueToScroll(options, slider), slider);
 	});
-}());
+}
