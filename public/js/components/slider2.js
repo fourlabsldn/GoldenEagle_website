@@ -1,9 +1,10 @@
 function gewSlider(slider, userOptions) { // eslint-disable-line no-unused-vars
 	var GLOBALS = {
 		classes: {
-			content: 'gew_slider2-content',
-			prevBtn: 'gew_slider2-btn-prev',
-			nextBtn: 'gew_slider2-btn-next',
+      contentWrapper: 'js_gew_slider2-contentWrapper',
+			content: 'js_gew_slider2-content',
+			prevBtn: 'js_gew_slider2-btn-prev',
+			nextBtn: 'js_gew_slider2-btn-next',
 		}
 	};
 
@@ -85,18 +86,19 @@ function gewSlider(slider, userOptions) { // eslint-disable-line no-unused-vars
     return scrollVal;
   }
 
-  var prevBtn = document.querySelector(toSelector(GLOBALS.classes.prevBtn));
-  var nextBtn = document.querySelector(toSelector(GLOBALS.classes.nextBtn));
+  var prevBtn = slider.querySelector(toSelector(GLOBALS.classes.prevBtn));
+  var nextBtn = slider.querySelector(toSelector(GLOBALS.classes.nextBtn));
+  var contentWrapper = slider.querySelector(toSelector(GLOBALS.classes.contentWrapper));
 	var options = Object.create({
     scrollType: 'paginated',
     defaultScroll: 200,
   }, userOptions);
 
 	prevBtn.addEventListener('click', function prevBtnClick() {
-		addScroll(-getValueToScroll(options, slider), slider);
+		addScroll(-getValueToScroll(options, contentWrapper), contentWrapper);
 	});
 
 	nextBtn.addEventListener('click', function nextBtnClick() {
-    addScroll(getValueToScroll(options, slider), slider);
+    addScroll(getValueToScroll(options, contentWrapper), contentWrapper);
 	});
 }
