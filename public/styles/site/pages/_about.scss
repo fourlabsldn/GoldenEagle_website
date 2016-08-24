@@ -73,12 +73,16 @@
 // ==================== History Section ================== //
 
 $history-point-height: 15px;
-$history-entry-width: 270px;
+$history-entry-width: 33%;
 $history-entry-height: 200px + $history-point-height;
 
+.gew_about-history-wrapper {
+  overflow-x: auto;
+}
+
 .gew_about-history {
-  font-size: .8em;
-  overflow: auto;
+  padding-bottom: $history-entry-height;
+  overflow-x: auto;
   white-space: nowrap;
   & > * {
     white-space: normal;
@@ -86,61 +90,56 @@ $history-entry-height: 200px + $history-point-height;
 }
 
 .gew_about-history-entry {
-  // We use inline-flex so we can position the text
-  // to the bottom of the div.
-  display: inline-flex;
-  flex-flow: column nowrap;
-
-  position: relative;
   width: $history-entry-width;
-  height: $history-entry-height * 2;
-  box-sizing: border-box;
-  padding: $history-point-height;
+  padding: $history-point-height 30px;
+  position: relative;
   margin-right: -($history-entry-width / 2);
-
+  display: inline-block;
+  font-size: .7em;
+  line-height: 1.6em;
   text-align: center;
-  line-height: 1.5em;
-  vertical-align: top;
+  vertical-align: bottom;
 
-  &::before {
+  &:before {
     content: ' ';
     display: block;
-    position: absolute;
-    left: 50%;
     width: 0;
     height: $history-point-height;
+    position: absolute;
+    left: 50%;
     border-left: 1px solid $gray;
   }
 }
 
 .gew_about-history-entry:nth-child(odd) {
-  padding-top: $history-entry-height + $history-point-height;
+  transform: translateY(100%);
   &:before {
-    bottom: $history-entry-height - $history-point-height;
+    top: 0;
   }
-
   &:after {
     content: ' ';
-    position: absolute;
-    bottom: $history-entry-height;
-    left: -1em;
     display: block;
-    width: calc(100% + 2em);
     height: 0;
+    width: calc(100% + 1em);
+    position: absolute;
+    left: 0;
+    top: 0;
     border-top: 1px solid $gray;
   }
 }
 
 .gew_about-history-entry:nth-child(even) {
-  padding-bottom: $history-entry-height + $history-point-height;
   justify-content: flex-end;
   &:before {
-    top: $history-entry-height - $history-point-height;
+    bottom: -1px; // So that it overlaps the guiding line
   }
 }
 
+.gew_about-history-entry:last-child {
+  margin-right: 0;
+}
 
 .gew_about-history-entry-title {
-  margin: 1em 0;
+  margin: .5em 0;
   font-size: 1.1em;
 }
