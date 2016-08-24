@@ -75,6 +75,13 @@
 
 // ==================== History Section ================== //
 
+.gew_about-historySlider {
+  .gew_slider2-btn-prev,
+  .gew_slider2-btn-next {
+    color: $brand-primary;
+  }
+}
+
 $history-point-height: 15px;
 $history-entry-width: 33%;
 $history-entry-height: 200px + $history-point-height;

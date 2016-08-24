@@ -1,10 +1,11 @@
-function gewSlider(slider, userOptions) { // eslint-disable-line no-unused-vars
+// TODO: Make pagination return to beginning after the end, just like slider1
+function gewSlider2(slider, userOptions) { // eslint-disable-line no-unused-vars
 	var GLOBALS = {
 		classes: {
-      contentWrapper: 'js_gew_slider2-contentWrapper',
-			content: 'js_gew_slider2-content',
-			prevBtn: 'js_gew_slider2-btn-prev',
-			nextBtn: 'js_gew_slider2-btn-next',
+      contentWrapper: 'gew_slider2-contentWrapper',
+			content: 'gew_slider2-content',
+			prevBtn: 'gew_slider2-btn-prev',
+			nextBtn: 'gew_slider2-btn-next',
 		}
 	};
 
@@ -90,8 +91,8 @@ function gewSlider(slider, userOptions) { // eslint-disable-line no-unused-vars
   var nextBtn = slider.querySelector(toSelector(GLOBALS.classes.nextBtn));
   var contentWrapper = slider.querySelector(toSelector(GLOBALS.classes.contentWrapper));
 	var options = Object.create({
-    scrollType: 'paginated',
-    defaultScroll: 200,
+    scrollType: 'paginated', // Paginated scrolls 100% of the width each time.
+    defaultScroll: 200, // If scrollType is not paginated it will scroll defaultScroll each time
   }, userOptions);
 
 	prevBtn.addEventListener('click', function prevBtnClick() {

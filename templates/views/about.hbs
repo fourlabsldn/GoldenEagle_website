@@ -108,8 +108,8 @@
 </section>
 
 <section class="bg-primary ">
-  <div class="gew_sectionContent gew_about-quoteSlider">
-    <div class="gew_slider">
+  <div class="gew_sectionContent">
+    <div class="gew_slider js_gew_about-quoteSlider">
       <button class="gew_slider-btn-prev">◀</button>
       <button class="gew_slider-btn-next">▶</button>
 
@@ -139,15 +139,14 @@
     </div>
   </div>
 </section>
-
 <section class="gew_sectionContent">
   <h2 class="text-center">History</h2>
 
-  <div class="gew_slider2 js_gew_about-historySlider">
-    <button class="js_gew_slider2-btn-prev gew_slider2-btn-prev">◀</button>
-    <button class="js_gew_slider2-btn-next gew_slider2-btn-next">▶</button>
-    <div class="gew_slider2-contentWrapper js_gew_slider2-contentWrapper">
-      <div class="gew_slider2-content js_gew_slider2-content">
+  <div class="gew_slider2 gew_about-historySlider js_gew_about-historySlider">
+    <button class="gew_slider2-btn-prev">◀</button>
+    <button class="gew_slider2-btn-next">▶</button>
+    <div class="gew_slider2-contentWrapper">
+      <div class="gew_slider2-content">
 
         <div class="gew_about-history gew_slider2-content">
           <div class="gew_about-history-entry">
@@ -198,9 +197,9 @@
   </div>
 </section>
 
-<script type="text/javascript" src="/js/components/slider.js"></script>
+<script type="text/javascript" src="/js/components/slider1.js"></script>
 <script type="text/javascript" src="/js/components/slider2.js"></script>
 <script type="text/javascript">
-  // gewSlider(document.querySelector('.js_gew_about-historySlider'));
-  gewSlider(document.querySelector('.js_gew_about-historySlider'));
+  gewSlider1(document.querySelector('.js_gew_about-quoteSlider'));
+  gewSlider2(document.querySelector('.js_gew_about-historySlider'));
 </script>

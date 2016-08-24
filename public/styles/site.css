@@ -6504,6 +6504,10 @@ h3 {
   display: block;
   text-align: center; }
 
+.gew_about-historySlider .gew_slider2-btn-prev,
+.gew_about-historySlider .gew_slider2-btn-next {
+  color: #eeac00; }
+
 .gew_about-history {
   padding-bottom: 215px;
   white-space: nowrap; }

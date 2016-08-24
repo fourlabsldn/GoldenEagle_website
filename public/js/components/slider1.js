@@ -1,8 +1,8 @@
-(function gew_slider() {
+// TODO: Not use this slider and use only slider2
+function gewSlider1(slider) {
   var GLOBALS = {
     classes: {
       active: 'gew_slider-slide--active',
-      slider: 'gew_slider',
       slide: 'gew_slider-slide',
       prevBtn: 'gew_slider-btn-prev',
       nextBtn: 'gew_slider-btn-next',
@@ -78,7 +78,6 @@
 		setTranslation(el, translation.x + xAdd, translation.y + yAdd);
 	}
 
-  var slider = document.querySelector(toSelector(GLOBALS.classes.slider));
   var slides = document.querySelectorAll(toSelector(GLOBALS.classes.slide));
   var prevBtn = document.querySelector(toSelector(GLOBALS.classes.prevBtn));
   var nextBtn = document.querySelector(toSelector(GLOBALS.classes.nextBtn));
@@ -92,4 +91,4 @@
     var activeIndex = getActiveSlideIndex(slides);
     setActiveSlide(activeIndex + 1, slides);
   })
-}());
+}
