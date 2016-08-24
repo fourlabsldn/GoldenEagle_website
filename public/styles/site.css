@@ -5836,10 +5836,10 @@ button.close {
 .gew_heroText, .gew_landingSection .gew_landingSection-text, .gew_home-landing .gew_landingSection-text {
   font-family: "Playfair Display", serif;
   font-size: 30px;
-  line-height: 1.35em;
+  line-height: 1.45em;
   display: block;
   margin: 60px auto;
-  max-width: 22em;
+  max-width: 23em;
   text-align: center; }
 
 .gew_titleWithButtons {
@@ -5881,10 +5881,6 @@ h3 {
 
 .btn-lg, .btn-group-lg > .btn {
   padding: 1em 3em; }
-
-.gew_section {
-  width: 100%;
-  margin: 0; }
 
 .gew_sectionContent, .gew_sectionContent-extraPadding {
   width: 100%;
@@ -6356,14 +6352,6 @@ h3 {
     .gew_home-listings-titleRow {
       margin-left: 0em;
       margin-right: 0em; } }
-
-.gew_home-about {
-  width: 100%;
-  min-height: 400px;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  background-color: #eeac00; }
 
 .gew_home-register {
   background-image: url("/images/home.register.jpg"); }

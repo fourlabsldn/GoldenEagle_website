@@ -4,24 +4,28 @@
   </p>
 </div>
 
-<div class="container gew_sectionContent gew_doubleColumn gew_bg-light">
-  <div class="row">
-    <div class="col-sm-6 gew_doubleColumn-col1">
-      {{{data.section_2.content_1}}}
-    </div>
-    <div class="col-sm-6 gew_doubleColumn-col2">
-      {{{data.section_2.content_2}}}
+<section class="gew_bg-light">
+  <div class="container gew_sectionContent gew_doubleColumn">
+    <div class="row">
+      <div class="col-sm-6 gew_doubleColumn-col1">
+        {{{data.section_2.content_1}}}
+      </div>
+      <div class="col-sm-6 gew_doubleColumn-col2">
+        {{{data.section_2.content_2}}}
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="gew_sectionContent">
+<section class="gew_sectionContent">
   <h2>Case Studies</h2>
   {{#each caseStudies}}
     {{>caseStudy this}}
   {{/each}}
-</div>
+</section>
 
-<div class="gew_sectionContent-extraPadding text-center bg-primary">
-  {{>subscribeFields color="light"}}
-</div>
+<section class="bg-primary">
+  <div class="gew_sectionContent-extraPadding text-center">
+    {{>subscribeFields color="light"}}
+  </div>
+</section>

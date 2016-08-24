@@ -5,28 +5,30 @@
 </div>
 
 <!-- Nav tabs -->
-<ul class="nav nav-tabs gew_tabs gew_sectionContent" role="tablist">
-  <li role="presentation" class="active">
-    <a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="gew.selectTab">
-      {{data.tab_1.title}}
-    </a>
-  </li>
-  <li role="presentation">
-    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="gew.selectTab">
-      {{data.tab_2.title}}
-    </a>
-  </li>
-  <li role="presentation">
-    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" onclick="gew.selectTab">
-      {{data.tab_3.title}}
-    </a>
-  </li>
-  <li role="presentation">
-    <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" onclick="gew.selectTab">
-      {{data.tab_4.title}}
-    </a>
-  </li>
-</ul>
+<section class="gew_tabs-wrapper">
+  <ul class="nav nav-tabs gew_tabs gew_sectionContent" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="gew.selectTab">
+        {{data.tab_1.title}}
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="gew.selectTab">
+        {{data.tab_2.title}}
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" onclick="gew.selectTab">
+        {{data.tab_3.title}}
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" onclick="gew.selectTab">
+        {{data.tab_4.title}}
+      </a>
+    </li>
+  </ul>
+</section>
 
 <!-- Tab panes -->
 <div class="tab-content gew_doubleColumn gew_sectionContent">
@@ -64,13 +66,15 @@
   </div>
 </div>
 
-<div class="gew_management-quoteSection gew_sectionContent-extraPadding">
-  <div class="gew_heroText">
-    {{data.section_3.content_1}}
+<section class="gew_management-quoteSection">
+  <div class="gew_sectionContent-extraPadding">
+    <div class="gew_heroText">
+      {{data.section_3.content_1}}
+    </div>
   </div>
-</div>
+</section>
 
-<div class="container gew_doubleColumn gew_sectionContent gew_bg-lighter">
+<section class="container gew_doubleColumn gew_sectionContent gew_bg-lighter">
   <div class="row">
     <div class="col-sm-6 gew_doubleColumn-col1">
       {{{data.section_4.content_1}}}
@@ -145,24 +149,28 @@
       </tr>
     </table>
   </div>
-</div>
+</section>
 
-<div class="container gew_sectionContent gew_doubleColumn gew_bg-light">
-  <div class="row">
-    <div class="col-sm-6 gew_doubleColumn-col1">
-      {{{data.section_5.content_1}}}
-    </div>
-    <div class="col-sm-6 gew_doubleColumn-col2">
-      {{{data.section_5.content_2}}}
+<section class="gew_bg-light">
+  <div class="container gew_sectionContent gew_doubleColumn">
+    <div class="row">
+      <div class="col-sm-6 gew_doubleColumn-col1">
+        {{{data.section_5.content_1}}}
+      </div>
+      <div class="col-sm-6 gew_doubleColumn-col2">
+        {{{data.section_5.content_2}}}
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="gew_sectionContent-extraPadding bg-primary">
+<section class="bg-primary">
+  <div class="gew_sectionContent-extraPadding">
     <p class="gew_heroText">
       {{ data.section_6.content_1 }}
     </p>
-</div>
+  </div>
+</section>
 
 <div class="container gew_doubleColumn gew_sectionContent gew_bg-lighter">
   <div class="row">

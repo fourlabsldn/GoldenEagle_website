@@ -1,11 +1,11 @@
-<div class="container gew_about-landing gew_landingSection">
+<section class="container gew_about-landing gew_landingSection">
   <p class="gew_landingSection-text">
     {{data.section_1.content_1}}
   </p>
-</div>
+</section>
 
 <!-- Nav tabs -->
-<div class="gew_section gew_tabs-wrapper">
+<section class="gew_tabs-wrapper">
   <ul class="nav nav-tabs gew_tabs gew_sectionContent" role="tablist">
     <li role="presentation" class="active">
       <a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="gew.selectTab">
@@ -28,48 +28,46 @@
       </a>
     </li>
   </ul>
-</div>
+</section>
 
 <!-- Tab panes -->
-<div class="gew_section">
-  <div class="tab-content gew_doubleColumn gew_sectionContent">
-    <div role="tabpanel" class="row tab-pane active" id="home">
-      <div class="col-sm-6 gew_doubleColumn-col1">
-        {{{data.tab_1.content_1}}}
-      </div>
-      <div class="col-sm-6 gew_doubleColumn-col2">
-        {{{data.tab_1.content_2}}}
-      </div>
+<section class="tab-content gew_doubleColumn gew_sectionContent">
+  <div role="tabpanel" class="row tab-pane active" id="home">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_1.content_1}}}
     </div>
-    <div role="tabpanel" class="row tab-pane" id="profile">
-      <div class="col-sm-6 gew_doubleColumn-col1">
-        {{{data.tab_2.content_1}}}
-      </div>
-      <div class="col-sm-6 gew_doubleColumn-col2">
-        {{{data.tab_2.content_2}}}
-      </div>
-    </div>
-    <div role="tabpanel" class="row tab-pane" id="messages">
-      <div class="col-sm-6 gew_doubleColumn-col1">
-        {{{data.tab_3.content_1}}}
-      </div>
-      <div class="col-sm-6 gew_doubleColumn-col2">
-        {{{data.tab_3.content_2}}}
-      </div>
-    </div>
-    <div role="tabpanel" class="row tab-pane" id="settings">
-      <div class="col-sm-6 gew_doubleColumn-col1">
-        {{{data.tab_4.content_1}}}
-      </div>
-      <div class="col-sm-6 gew_doubleColumn-col2">
-        {{{data.tab_4.content_2}}}
-      </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_1.content_2}}}
     </div>
   </div>
-</div>
+  <div role="tabpanel" class="row tab-pane" id="profile">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_2.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_2.content_2}}}
+    </div>
+  </div>
+  <div role="tabpanel" class="row tab-pane" id="messages">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_3.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_3.content_2}}}
+    </div>
+  </div>
+  <div role="tabpanel" class="row tab-pane" id="settings">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_4.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_4.content_2}}}
+    </div>
+  </div>
+</section>
 
 <!-- Paul's quote photos -->
-<div class="gew_section gew_about-quoteSection">
+<section class="gew_about-quoteSection">
   <div class="gew_sectionContent">
     <div class="gew_heroText gew_about-quoteSection-quote">
       {{data.section_3.content_1}}
@@ -85,33 +83,31 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- Staff photos -->
-<div class="gew_section">
-  <div class="container gew_sectionContent gew_about-staffCards">
-    <div class="row">
-      {{#each staff}}
-        <div class="col-sm-6 gew_about-staffCard">
-          <img alt="{{name}}" src="{{photo}}" class="gew_about-staffCard-photo"/>
+<section class="container gew_sectionContent gew_about-staffCards">
+  <div class="row">
+    {{#each staff}}
+      <div class="col-sm-6 gew_about-staffCard">
+        <img alt="{{name}}" src="{{photo}}" class="gew_about-staffCard-photo"/>
 
-          <div class="gew_about-staffCard-footer">
-            <div class="gew_about-staffCard-info">
-              <span class="gew_about-staffCard-info-name">{{name}}</span>
-              <span class="gew_about-staffCard-info-tel">{{tel}}</span>
-            </div>
-            <div class="gew_about-staffCard-buttons">
-              <button type="button" name="button" class="btn btn-primary">Email</button>
-              <button type="button" name="button" class="btn btn-primary">Vcard</button>
-            </div>
+        <div class="gew_about-staffCard-footer">
+          <div class="gew_about-staffCard-info">
+            <span class="gew_about-staffCard-info-name">{{name}}</span>
+            <span class="gew_about-staffCard-info-tel">{{tel}}</span>
+          </div>
+          <div class="gew_about-staffCard-buttons">
+            <button type="button" name="button" class="btn btn-primary">Email</button>
+            <button type="button" name="button" class="btn btn-primary">Vcard</button>
           </div>
         </div>
-      {{/each}}
-    </div>
+      </div>
+    {{/each}}
   </div>
-</div>
+</section>
 
-<div class="gew_section bg-primary ">
+<section class="bg-primary ">
   <div class="gew_sectionContent gew_about-quoteSlider">
     <div class="gew_slider">
       <button class="gew_slider-btn-prev">◀</button>
@@ -142,57 +138,56 @@
       </div>
     </div>
   </div>
-</div>
-<div class="gew_section">
-  <div class="gew_sectionContent">
-    <h2 class="text-center">History</h2>
-    <div class="gew_about-history-wrapper">
-      <div class="gew_about-history">
-        <div class="gew_about-history-entry">
-          <h3 class="gew_about-history-entry-title">1978</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididuntt.
-          </p>
-        </div>
-        <div class="gew_about-history-entry">
-          <h3 class="gew_about-history-entry-title">1979</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-        <div class="gew_about-history-entry">
-          <h3 class="gew_about-history-entry-title">1980</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-          </p>
-        </div>
-        <div class="gew_about-history-entry">
-          <h3 class="gew_about-history-entry-title">1981</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-          </p>
-        </div>
-        <div class="gew_about-history-entry">
-          <h3 class="gew_about-history-entry-title">1982</h3>
-          <p>
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-        </div>
-        <div class="gew_about-history-entry">
-          <h3 class="gew_about-history-entry-title">1983</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-          </p>
-        </div>
-        <div class="gew_about-history-entry">
-          <h3 class="gew_about-history-entry-title">1984</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..
-          </p>
-        </div>
+</section>
+
+<section class="gew_sectionContent">
+  <h2 class="text-center">History</h2>
+  <div class="gew_about-history-wrapper">
+    <div class="gew_about-history">
+      <div class="gew_about-history-entry">
+        <h3 class="gew_about-history-entry-title">1978</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididuntt.
+        </p>
+      </div>
+      <div class="gew_about-history-entry">
+        <h3 class="gew_about-history-entry-title">1979</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+      <div class="gew_about-history-entry">
+        <h3 class="gew_about-history-entry-title">1980</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+        </p>
+      </div>
+      <div class="gew_about-history-entry">
+        <h3 class="gew_about-history-entry-title">1981</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+        </p>
+      </div>
+      <div class="gew_about-history-entry">
+        <h3 class="gew_about-history-entry-title">1982</h3>
+        <p>
+          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+      <div class="gew_about-history-entry">
+        <h3 class="gew_about-history-entry-title">1983</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+        </p>
+      </div>
+      <div class="gew_about-history-entry">
+        <h3 class="gew_about-history-entry-title">1984</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..
+        </p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <script type="text/javascript" src="/js/components/slider.js"></script>
