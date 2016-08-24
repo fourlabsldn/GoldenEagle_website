@@ -70,28 +70,37 @@
 }
 
 
-$history-entry-width: 270px;
-$history-entry-height: 240px;
+// ==================== History Section ================== //
+
 $history-point-height: 15px;
+$history-entry-width: 270px;
+$history-entry-height: 200px + $history-point-height;
 
 .gew_about-history {
   font-size: .8em;
   overflow: auto;
   white-space: nowrap;
+  & > * {
+    white-space: normal;
+  }
 }
 
 .gew_about-history-entry {
-  box-sizing: border-box;
-  display: inline-block;
-  width: $history-entry-width;
-  height: ($history-entry-height + $history-point-height) * 2;
+  // We use inline-flex so we can position the text
+  // to the bottom of the div.
+  display: inline-flex;
+  flex-flow: column nowrap;
+
   position: relative;
+  width: $history-entry-width;
+  height: $history-entry-height * 2;
+  box-sizing: border-box;
   padding: $history-point-height;
-  white-space: normal;
+  margin-right: -($history-entry-width / 2);
+
   text-align: center;
   line-height: 1.5em;
   vertical-align: top;
-  margin-right: -($history-entry-width / 2);
 
   &::before {
     content: ' ';
@@ -107,13 +116,13 @@ $history-point-height: 15px;
 .gew_about-history-entry:nth-child(odd) {
   padding-top: $history-entry-height + $history-point-height;
   &:before {
-    bottom: $history-entry-height;
+    bottom: $history-entry-height - $history-point-height;
   }
 
   &:after {
     content: ' ';
     position: absolute;
-    bottom: $history-entry-height + $history-point-height;
+    bottom: $history-entry-height;
     left: -1em;
     display: block;
     width: calc(100% + 2em);
@@ -124,13 +133,14 @@ $history-point-height: 15px;
 
 .gew_about-history-entry:nth-child(even) {
   padding-bottom: $history-entry-height + $history-point-height;
+  justify-content: flex-end;
   &:before {
-    top: $history-entry-height;
+    top: $history-entry-height - $history-point-height;
   }
 }
 
 
 .gew_about-history-entry-title {
-  margin-bottom: 1em;
+  margin: 1em 0;
   font-size: 1.1em;
 }

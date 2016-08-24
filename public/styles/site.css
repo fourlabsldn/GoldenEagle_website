@@ -6474,19 +6474,21 @@ h3 {
   font-size: .8em;
   overflow: auto;
   white-space: nowrap; }
+  .gew_about-history > * {
+    white-space: normal; }
 
 .gew_about-history-entry {
-  box-sizing: border-box;
-  display: inline-block;
-  width: 270px;
-  height: 510px;
+  display: inline-flex;
+  flex-flow: column nowrap;
   position: relative;
+  width: 270px;
+  height: 430px;
+  box-sizing: border-box;
   padding: 15px;
-  white-space: normal;
+  margin-right: -135px;
   text-align: center;
   line-height: 1.5em;
-  vertical-align: top;
-  margin-right: -135px; }
+  vertical-align: top; }
   .gew_about-history-entry::before {
     content: ' ';
     display: block;
@@ -6497,13 +6499,13 @@ h3 {
     border-left: 1px solid #555555; }
 
 .gew_about-history-entry:nth-child(odd) {
-  padding-top: 255px; }
+  padding-top: 230px; }
   .gew_about-history-entry:nth-child(odd):before {
-    bottom: 240px; }
+    bottom: 200px; }
   .gew_about-history-entry:nth-child(odd):after {
     content: ' ';
     position: absolute;
-    bottom: 255px;
+    bottom: 215px;
     left: -1em;
     display: block;
     width: calc(100% + 2em);
@@ -6511,10 +6513,11 @@ h3 {
     border-top: 1px solid #555555; }
 
 .gew_about-history-entry:nth-child(even) {
-  padding-bottom: 255px; }
+  padding-bottom: 230px;
+  justify-content: flex-end; }
   .gew_about-history-entry:nth-child(even):before {
-    top: 240px; }
+    top: 200px; }
 
 .gew_about-history-entry-title {
-  margin-bottom: 1em;
+  margin: 1em 0;
   font-size: 1.1em; }
