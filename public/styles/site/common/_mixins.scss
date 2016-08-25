@@ -55,3 +55,9 @@
     @content;
   }
 }
+
+@mixin lg-screen() {
+  @media (min-width: $screen-sm-max) {
+    @content;
+  }
+}

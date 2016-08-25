@@ -8,7 +8,10 @@
 
     <script type="text/javascript">
       var gew = {
-        selectTab: function (e) { e.preventDefault(); $(this).tab('show'); }
+        selectTab: function (e) { e.preventDefault(); $(this).tab('show'); },
+        toggleNavbarSubmenu: function () {
+          document.querySelector('.gew_navbar-submenu').classList.toggle('gew_navbar-submenu--visible');
+        }
       }
     </script>
 
@@ -36,6 +39,9 @@
 						</div>
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-left">
+                <li class="" onclick="gew.toggleNavbarSubmenu()">
+                  <a href="#">Test</a>
+                </li>
 									{{# each navLinks}}
 									<li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>
 										<a href="{{ href }}">{{ label }}</a>
@@ -46,8 +52,34 @@
 								<li><a>Language</a></li>
 								<li><a>Search</a></li>
 							</ul>
-						</div>
-					</div>
+            </div>
+
+            <div class="gew_navbar-submenu container">
+              <div onclick="gew.toggleNavbarSubmenu()" class="gew_navbar-submenu-pageOverlay"></div>
+              <div class="row">
+                <a href="#" class="col-sm-6  gew_navbar-submenu-btn">
+                  <img class="gew_navbar-submenu-background" src="/images/navbar-2.jpg" alt="Sales" />
+                  <div class="gew_navbar-submenu-overlay"></div>
+                  <span class="gew_navbar-submenu-title">Sales</span>
+                </a>
+                <a href="#" class="col-sm-6  gew_navbar-submenu-btn">
+                  <img class="gew_navbar-submenu-background" src="/images/navbar-1.jpg" alt="Lettings" />
+                  <div class="gew_navbar-submenu-overlay"></div>
+                  <span class="gew_navbar-submenu-title">Lettings</span>
+                </a>
+                <a href="#" class="col-sm-6  gew_navbar-submenu-btn">
+                  <img class="gew_navbar-submenu-background" src="/images/navbar-4.jpg" alt="Commercial" />
+                  <div class="gew_navbar-submenu-overlay"></div>
+                  <span class="gew_navbar-submenu-title">Commercial</span>
+                </a>
+                <a href="#" class="col-sm-6  gew_navbar-submenu-btn">
+                  <img class="gew_navbar-submenu-background" src="/images/navbar-3.jpg" alt="International" />
+                  <div class="gew_navbar-submenu-overlay"></div>
+                  <span class="gew_navbar-submenu-title">International</span>
+                </a>
+              </div>
+            </div>
+          </div>
 				</div>
 		</div>
 		<div id="body">

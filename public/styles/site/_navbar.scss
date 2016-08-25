@@ -3,6 +3,8 @@
   border: 0;
   padding: 0 5vw;
   z-index: 100;
+  position: relative;
+
 
   // Navbar expanded and expanding.
   .collapsing, .collapse.in {
@@ -75,8 +77,8 @@
   }
 }
 
-// Make navbar collapse at 1150px
-@media (max-width: 1150px) {
+// Make navbar collapse at specific width
+@media (max-width: $navbar-collapsing-width) {
     // hide divider
    .navbar-right li:first-child a:after {
      display: none;
@@ -115,4 +117,105 @@
     .collapse.in{
   		display:block !important;
 	}
+}
+
+// ============= SUBMENU ============== //
+$navbar-submenu-opacity-anim-duration: .3s;
+.gew_navbar-submenu {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .001s ease ($navbar-submenu-opacity-anim-duration + .1s),
+              opacity $navbar-submenu-opacity-anim-duration ease-in-out .001s;
+}
+
+.gew_navbar-submenu--visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity $navbar-submenu-opacity-anim-duration ease-in-out;
+}
+
+.gew_navbar-submenu-pageOverlay {
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  height: 400vh;
+  background-color: transparentize($white, .6);
+
+}
+
+.gew_navbar-submenu-btn {
+   overflow: hidden;
+   padding-bottom: 25%; // this will guarantee the height of the button
+   position: relative;
+
+   @include lg-screen {
+     padding-bottom: 15%; // this will guarantee the height of the button
+   }
+}
+
+.gew_navbar-submenu-background {
+  position: absolute;
+  width: 0;
+  min-width: 120%;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0)  scale(1.01);
+  transition: transform 0.4s ease;
+  will-change: transform;
+
+  .gew_navbar-submenu-btn:hover > & {
+    transform: translate3d(-50%, -50%, 0) scale(1.05) rotate(0.0001deg);
+  }
+}
+
+.gew_navbar-submenu-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  top: 0;
+  left: 0;
+  transition: background-color 0.4s ease;
+  .gew_navbar-submenu-btn:hover > & {
+    background-color: transparent;
+  }
+}
+
+.gew_navbar-submenu-title {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+  text-align: center;
+  font-weight: bold;
+  color: $white;
+  font-size: 1.6em;
+  text-shadow: 0 0 2px rgba(0, 0, 0, .5);
+}
+
+
+// Make navbar collapse at specific width
+@media (max-width: $navbar-collapsing-width) {
+  .gew_navbar-submenu {
+    top: 0;
+    // Let's not influence the animation of the navbar opening
+    overflow: hidden;
+    height: 0;
+  }
+
+  .gew_navbar-submenu--visible {
+    height: auto;
+    overflow: visible;
+  }
+
+  .gew_navbar-submenu-btn {
+     display: block;
+     width: 100%;
+   }
 }

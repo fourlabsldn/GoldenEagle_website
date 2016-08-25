@@ -6220,7 +6220,8 @@ h3 {
   background-color: #000;
   border: 0;
   padding: 0 5vw;
-  z-index: 100; }
+  z-index: 100;
+  position: relative; }
   .navbar .collapsing, .navbar .collapse.in {
     background-color: #000; }
   .navbar .navbar-nav > li,
@@ -6294,6 +6295,83 @@ h3 {
     padding-bottom: 10px; }
   .collapse.in {
     display: block !important; } }
+
+.gew_navbar-submenu {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.001s ease 0.4s, opacity 0.3s ease-in-out 0.001s; }
+
+.gew_navbar-submenu--visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out; }
+
+.gew_navbar-submenu-pageOverlay {
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  height: 400vh;
+  background-color: rgba(255, 255, 255, 0.4); }
+
+.gew_navbar-submenu-btn {
+  overflow: hidden;
+  padding-bottom: 25%;
+  position: relative; }
+  @media (min-width: 991px) {
+    .gew_navbar-submenu-btn {
+      padding-bottom: 15%; } }
+
+.gew_navbar-submenu-background {
+  position: absolute;
+  width: 0;
+  min-width: 120%;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0) scale(1.01);
+  transition: transform 0.4s ease;
+  will-change: transform; }
+  .gew_navbar-submenu-btn:hover > .gew_navbar-submenu-background {
+    transform: translate3d(-50%, -50%, 0) scale(1.05) rotate(0.0001deg); }
+
+.gew_navbar-submenu-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  transition: background-color 0.4s ease; }
+  .gew_navbar-submenu-btn:hover > .gew_navbar-submenu-overlay {
+    background-color: transparent; }
+
+.gew_navbar-submenu-title {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.6em;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5); }
+
+@media (max-width: 1150px) {
+  .gew_navbar-submenu {
+    top: 0;
+    overflow: hidden;
+    height: 0; }
+  .gew_navbar-submenu--visible {
+    height: auto;
+    overflow: visible; }
+  .gew_navbar-submenu-btn {
+    display: block;
+    width: 100%; } }
 
 .gew_footer {
   font-size: 20px;
