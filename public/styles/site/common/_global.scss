@@ -1,5 +1,6 @@
 body {
   line-height: 1.8em;
+  font-weight: lighter;
 }
 
 h2 {
@@ -48,6 +49,12 @@ h3 {
   @extend .gew_sectionContent;
   padding-top: 120px;
   padding-bottom: 160px;
+}
+
+.gew_sectionContent-smallPadding {
+  @extend .gew_sectionContent;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 // ================== FORM FIELD =================== //
@@ -121,10 +128,10 @@ h3 {
 .gew_doubleColumn-col1 {
   // padding-left: 5%;
   padding-right: 10%;
+  font-weight: normal;
 }
 
 .gew_doubleColumn-col2 {
-  font-weight: lighter;
 }
 
 // ================== TABS =================== //

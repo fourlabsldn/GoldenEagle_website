@@ -5863,7 +5863,8 @@ button.close {
         width: 100%; } }
 
 body {
-  line-height: 1.8em; }
+  line-height: 1.8em;
+  font-weight: lighter; }
 
 h2 {
   font-weight: 600; }
@@ -5882,7 +5883,7 @@ h3 {
 .btn-lg, .btn-group-lg > .btn {
   padding: 1em 3em; }
 
-.gew_sectionContent, .gew_sectionContent-extraPadding {
+.gew_sectionContent, .gew_sectionContent-extraPadding, .gew_sectionContent-smallPadding {
   width: 100%;
   padding-top: 50px;
   padding-bottom: 100px;
@@ -5894,6 +5895,10 @@ h3 {
 .gew_sectionContent-extraPadding {
   padding-top: 120px;
   padding-bottom: 160px; }
+
+.gew_sectionContent-smallPadding {
+  padding-top: 20px;
+  padding-bottom: 20px; }
 
 .gew_formField {
   background-color: transparent;
@@ -5963,10 +5968,8 @@ h3 {
       padding-bottom: 100px; } }
 
 .gew_doubleColumn-col1 {
-  padding-right: 10%; }
-
-.gew_doubleColumn-col2 {
-  font-weight: lighter; }
+  padding-right: 10%;
+  font-weight: normal; }
 
 .gew_tabs-wrapper {
   background-color: #eeac00; }
@@ -6457,7 +6460,7 @@ h3 {
   background-position: center;
   background-size: cover;
   color: white; }
-  .gew_about-quoteSection .gew_sectionContent, .gew_about-quoteSection .gew_sectionContent-extraPadding {
+  .gew_about-quoteSection .gew_sectionContent, .gew_about-quoteSection .gew_sectionContent-extraPadding, .gew_about-quoteSection .gew_sectionContent-smallPadding {
     padding-bottom: 55px; }
 
 .gew_about-quoteSection-quote {
@@ -6465,12 +6468,12 @@ h3 {
 
 .gew_about-quoteSection-author {
   display: block;
-  text-align: center; }
+  text-align: center;
+  font-weight: normal; }
 
 .gew_about-quoteSection-role {
   display: block;
-  text-align: center;
-  font-weight: lighter; }
+  text-align: center; }
 
 .gew_about-staffCards {
   padding-bottom: 0px; }
@@ -6491,18 +6494,19 @@ h3 {
   margin-right: auto; }
 
 .gew_about-staffCard-info-name {
-  display: block; }
+  display: block;
+  font-weight: normal; }
 
 .gew_about-staffCard-info-tel {
-  display: block;
-  font-weight: lighter; }
+  display: block; }
 
 .gew_about-quoteSlider-quote,
 .gew_about-quoteSlider-author,
 .gew_about-quoteSlider-role {
   color: #fff;
   display: block;
-  text-align: center; }
+  text-align: center;
+  font-weight: normal; }
 
 .gew_about-historySlider .gew_slider2-btn-prev,
 .gew_about-historySlider .gew_slider2-btn-next {
@@ -6579,3 +6583,30 @@ h3 {
   .gew_about-history-entry-title {
     margin: .5em 0;
     font-size: 1.1em; } }
+
+.gew_contact {
+  font-size: 15px;
+  line-height: 1.6em; }
+  .gew_contact p {
+    max-width: 19em;
+    font-size: inherit;
+    line-height: inherit; }
+  .gew_contact h3 {
+    font-weight: lighter;
+    font-size: 1.4em; }
+  .gew_contact .gew_subscribeFields-dark .gew_subscribeFields-text {
+    font-weight: lighter;
+    line-height: inherit;
+    margin: 2em 0 .5em;
+    font-size: inherit; }
+  .gew_contact .gew_subscribeFields-dark form * {
+    font-size: 12px; }
+  .gew_contact .btn {
+    font-weight: lighter;
+    margin: 0; }
+    @media (max-width: 768px) {
+      .gew_contact .btn {
+        margin: 2em auto; } }
+
+.gew_contact-info p {
+  margin-bottom: 0; }

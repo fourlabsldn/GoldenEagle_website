@@ -24,12 +24,12 @@
 .gew_about-quoteSection-author {
   display: block;
   text-align: center;
+  font-weight: normal;
 }
 
 .gew_about-quoteSection-role {
   display: block;
   text-align: center;
-  font-weight: lighter;
 }
 
 .gew_about-staffCards {
@@ -57,11 +57,11 @@
 
 .gew_about-staffCard-info-name {
   display: block;
+  font-weight: normal;
 }
 
 .gew_about-staffCard-info-tel {
   display: block;
-  font-weight: lighter;
 }
 
 .gew_about-quoteSlider-quote ,
@@ -70,6 +70,7 @@
   color: $white;
   display: block;
   text-align: center;
+  font-weight: normal;
 }
 
 
