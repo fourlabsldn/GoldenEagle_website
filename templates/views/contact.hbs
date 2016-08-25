@@ -1,8 +1,10 @@
 <section class="gew_sectionContent-smallPadding container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
       <h2>Golden Eagle International</h2>
       {{{data.contact_text}}}
+    </div>
+    <div class="col-sm-2">
     </div>
     <div class="col-sm-6">
       <img src="/images/contact.jpg" alt="Contact" style="max-width: 100%" />
@@ -13,11 +15,13 @@
 
 <section class="gew_sectionContent container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
       <h3>Careers</h3>
       {{{data.careers}}}
       <br>
-      <button class="btn btn-info gew_center">Current Vacancies</button>
+      <button class="btn btn-info btn-light">Current Vacancies</button>
+    </div>
+    <div class="col-sm-2">
     </div>
     <div class="col-sm-6  gew_contact-info">
       <h3>London</h3>
@@ -29,10 +33,13 @@
         </div>
         <div class="col-sm-6">
           <br>
-          <button class="btn btn-info gew_center">Meet the team</button>
+          <button class="btn btn-info btn-light">Meet the team</button>
         </div>
       </div>
-      {{>subscribeFields color="dark"}}
+
+      <div class="gew_contact-subscribe">
+        {{>subscribeFields color="dark"}}
+      </div>
     </div>
   </div>
 </section>
