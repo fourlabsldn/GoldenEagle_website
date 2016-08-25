@@ -1,0 +1,16 @@
+{
+	"src": [
+		"./models/**/*.js",
+    "./routes/**/*.js",
+    "keystone.js",
+    "package.json"
+	],
+	"style": {
+		"all": "./public/styles/**/*.scss",
+		"output": "./public/styles/"
+	},
+  "images": {
+    "raw": "./public/raw_images",
+    "dist": "./public/images"
+  }
+}
