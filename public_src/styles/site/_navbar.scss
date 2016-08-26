@@ -14,8 +14,9 @@
   // Set text options
   .navbar-nav > li,
   .navbar-nav > li.active {
+    position: static; // Allow submenu to expand to full page width
     color: $white;
-    a {
+    & > a {
       color: inherit;
       font-weight: lighter;
       margin: 0 .5vw;
@@ -129,6 +130,7 @@ $navbar-submenu-opacity-anim-duration: .3s;
   opacity: 0;
   transition: visibility .001s ease ($navbar-submenu-opacity-anim-duration + .1s),
               opacity $navbar-submenu-opacity-anim-duration ease-in-out .001s;
+  z-index: 1;
 }
 
 .gew_navbar-submenu--visible {
@@ -217,5 +219,6 @@ $navbar-submenu-opacity-anim-duration: .3s;
   .gew_navbar-submenu-btn {
      display: block;
      width: 100%;
+     padding-bottom: 25vh;
    }
 }

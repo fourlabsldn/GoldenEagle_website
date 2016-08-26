@@ -20,7 +20,14 @@ var _ = require('lodash');
 exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = [
 		{ label: 'About', key: 'about', href: '/about' },
-    { label: 'Properties', key: 'properties', href: '/properties' },
+    { label: 'Properties', key: 'properties', href: '#',
+      submenu: [
+        { label: 'Sales', href: '#', background: '/images/navbar-2.jpg' },
+        { label: 'Lettings', href: '#', background: '/images/navbar-1.jpg' },
+        { label: 'Commercial', href: '#', background: '/images/navbar-4.jpg' },
+        { label: 'International', href: '#', background: '/images/navbar-3.jpg' },
+      ]
+    },
     { label: 'Developments', key: 'developments', href: '/developments' },
 		{ label: 'Investments', key: 'investments', href: '/investments' },
     { label: 'Management', key: 'management', href: '/management' },

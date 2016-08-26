@@ -10,7 +10,7 @@
 		"dist": "./public/styles/"
 	},
   "images": {
-    "src": "./public/raw_images",
+    "src": "./public_src/images",
     "dist": "./public/images"
   },
   "static": {
