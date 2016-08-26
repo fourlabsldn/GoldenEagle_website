@@ -6,7 +6,7 @@
     "package.json"
 	],
 	"style": {
-		"src": "./public/styles/**/*.scss",
+		"src": "./public_src/styles/**/*.scss",
 		"dist": "./public/styles/"
 	},
   "images": {
