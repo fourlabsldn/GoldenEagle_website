@@ -1,3 +1,6 @@
+const taskName = 'resize-images';
+module.exports = taskName;
+
 const os = require('os');
 const path = require('path');
 const gulp = require('gulp');
@@ -10,17 +13,28 @@ const imageResize = require('gulp-image-resize');
 const origin = paths.images.src;
 const destiny = paths.images.dist;
 const imageWidths = [1240, 1020, 820, 620, 310];
+const extensions = ['jpg', 'png'];
+
+// NOTE: Not working and not showing any errors?
+// 			Check this line: .pipe(changed(toDir))
+// 			Only converts if there are changes
+
 
 // ================================================
 // Resizes images to specified image widths
 // ================================================
 
-gulp.task('resize-images', () => {
+gulp.task(taskName, () => {
 	imageWidths.forEach(w => resizeToWidth(w, origin, destiny));
 });
 
 function resizeToWidth(widthVal, fromDir, toDir) {
-	gulp.src(path.join(fromDir, '*.{jpg,png}'))
+	const globbingPaths = extensions.map(e => path.join(fromDir, `*.${e}`));
+	console.log('Resizing from:', globbingPaths);
+	console.log('Resizing to:', toDir);
+	console.log('With size:', widthVal);
+
+	gulp.src(globbingPaths)
 
 	// Only convert changed files
 	.pipe(changed(toDir))
@@ -38,7 +52,7 @@ function resizeToWidth(widthVal, fromDir, toDir) {
 
 	// Rename
 	.pipe(rename({
-		suffix: `-${widthVal}`
+		suffix: `-${widthVal}`,
 	}))
 
 	.pipe(gulp.dest(toDir));

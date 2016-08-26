@@ -1,2 +1,9 @@
+const taskName = 'default';
+module.exports = taskName;
+
 const gulp = require('gulp');
-gulp.task('default', ['watch', 'run-keystone']);
+const watch = require('./watch/watch');
+const runKeystone = require('./run-keystone');
+const build = require('./build');
+
+gulp.task(taskName, [build, watch, runKeystone]);

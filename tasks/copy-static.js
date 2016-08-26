@@ -1,3 +1,6 @@
+const taskName = 'copy-static';
+module.exports = taskName;
+
 const gulp = require('gulp');
 const paths = require('./paths.json');
 const path = require('path');
@@ -9,7 +12,7 @@ const excludeExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 const excludeFolders = ['js_es6', 'styles']; // Paths relative to origin
 const folderMapping = {	'js_static': 'js' }; // eslint-disable-line quote-props
 
-gulp.task('copy-static', () => {
+gulp.task(taskName, () => {
 	const mappedFolders = Object.keys(folderMapping);
 
 	const include = ['**/*'];

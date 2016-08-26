@@ -1,2 +1,7 @@
+const taskName = 'watch';
+module.exports = taskName;
+
 const gulp = require('gulp');
-gulp.task('watch', ['watch:sass']);
+const watchSass = require('./watch.sass');
+
+gulp.task(taskName, [watchSass]);

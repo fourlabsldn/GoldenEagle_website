@@ -1,2 +1,8 @@
+const taskName = 'build';
+module.exports = taskName;
+
 const gulp = require('gulp');
-gulp.task('build', ['resize-images']);
+const copyStatic = require('./copy-static');
+const resizeImages = require('./resize-images');
+
+gulp.task(taskName, [copyStatic, resizeImages]);
