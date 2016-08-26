@@ -7,20 +7,17 @@ const changed = require('gulp-changed');
 const parallel = require('concurrent-transform');
 const imageResize = require('gulp-image-resize');
 
-const origin = paths.images.raw;
+const origin = paths.images.src;
 const destiny = paths.images.dist;
 const imageWidths = [1240, 1020, 820, 620, 310];
 
-/**
- * Resizes images to specified image widths
- * @method exports
- * @return {[type]} [description]
- */
-module.exports = function resizeImages() {
-  imageWidths.forEach(
-    w => resizeToWidth(w, origin, destiny)
-  );
-};
+// ================================================
+// Resizes images to specified image widths
+// ================================================
+
+gulp.task('resize-images', () => {
+	imageWidths.forEach(w => resizeToWidth(w, origin, destiny));
+});
 
 function resizeToWidth(widthVal, fromDir, toDir) {
 	gulp.src(path.join(fromDir, '*.{jpg,png}'))
@@ -40,7 +37,9 @@ function resizeToWidth(widthVal, fromDir, toDir) {
 	))
 
 	// Rename
-	.pipe(rename({ suffix: `-${widthVal}`	}))
+	.pipe(rename({
+		suffix: `-${widthVal}`
+	}))
 
 	.pipe(gulp.dest(toDir));
 }

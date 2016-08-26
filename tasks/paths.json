@@ -6,11 +6,15 @@
     "package.json"
 	],
 	"style": {
-		"all": "./public/styles/**/*.scss",
-		"output": "./public/styles/"
+		"src": "./public/styles/**/*.scss",
+		"dist": "./public/styles/"
 	},
   "images": {
-    "raw": "./public/raw_images",
+    "src": "./public/raw_images",
     "dist": "./public/images"
+  },
+  "static": {
+    "src": "./public_src",
+    "dist": "./public"
   }
 }
