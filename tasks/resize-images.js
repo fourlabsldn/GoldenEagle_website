@@ -12,7 +12,7 @@ const imageResize = require('gulp-image-resize');
 
 const origin = paths.images.src;
 const destiny = paths.images.dist;
-const imageWidths = [1240, 1020, 820, 620, 310];
+const imageWidths = [1500, 1240, 1020, 820, 620, 310];
 const extensions = ['jpg', 'png'];
 
 // NOTE: Not working and not showing any errors?
@@ -30,14 +30,16 @@ gulp.task(taskName, () => {
 
 function resizeToWidth(widthVal, fromDir, toDir) {
 	const globbingPaths = extensions.map(e => path.join(fromDir, `*.${e}`));
-	console.log('Resizing from:', globbingPaths);
-	console.log('Resizing to:', toDir);
-	console.log('With size:', widthVal);
+
+	// We don't rename the maximum size to serve as a fallback in case
+	// there is no support for responsive-image in the browser
+	const maxSize = imageWidths[0];
+	const suffix = widthVal === maxSize ? '' : `-${widthVal}`;
 
 	gulp.src(globbingPaths)
 
 	// Only convert changed files
-	.pipe(changed(toDir))
+	// .pipe(changed(toDir))
 
 	// Execute computations in parallel
 	.pipe(parallel(
@@ -51,9 +53,7 @@ function resizeToWidth(widthVal, fromDir, toDir) {
 	))
 
 	// Rename
-	.pipe(rename({
-		suffix: `-${widthVal}`,
-	}))
+	.pipe(rename({ suffix }))
 
 	.pipe(gulp.dest(toDir));
 }
