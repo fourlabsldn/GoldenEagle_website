@@ -5,7 +5,7 @@ the buy price or the rent price -->
   <a href="/property/{{#if buy.featured}}buy/{{else}}rent/{{/if}}{{slug}}">
     <img
       class="gew_propertyCard-image"
-      srcset="{{srcSet images.[0] 1240 1020 820 620 310}}"
+      srcset="{{srcSet images.[0].url}}"
       sizes="(max-width: 768px) 100vw, 50vw"
       src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
       alt="{{location.street1}}"
