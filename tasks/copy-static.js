@@ -1,8 +1,8 @@
-const taskName = 'copy-static';
+const taskName = require('path').parse(__filename).name;
 module.exports = taskName;
 
 const gulp = require('gulp');
-const paths = require('./paths.json');
+const paths = require('./paths');
 
 // Config
 const origin = paths.static.src;

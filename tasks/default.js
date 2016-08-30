@@ -1,8 +1,8 @@
-const taskName = 'default';
+const taskName = require('path').parse(__filename).name;
 module.exports = taskName;
 
 const gulp = require('gulp');
-const watch = require('./watch/watch');
+const watch = require('./watch');
 const runKeystone = require('./run-keystone');
 const build = require('./build');
 

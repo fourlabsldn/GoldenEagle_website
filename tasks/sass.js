@@ -1,4 +1,4 @@
-const taskName = 'sass';
+const taskName = require('path').parse(__filename).name;
 module.exports = taskName;
 
 const gulp = require('gulp');

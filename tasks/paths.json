@@ -9,12 +9,19 @@
 		"src": "./public_src/styles/**/*.scss",
 		"dist": "./public/styles/"
 	},
-  "images": {
-    "src": "./public_src/images",
+  "resizeImages": {
+    "src": "./public_src/images/**/*.{jpg,jpeg,png}",
     "dist": "./public/images"
   },
   "static": {
-    "src": "./public_src",
-    "dist": "./public"
-  }
+    "src": "./public_src/**/*",
+    "dist": "./public",
+		"map": {
+			"./public_src/js_static/**/*": "public/js"
+		}
+  },
+	"es6": {
+		"src": "./public_src/js_es6/*.js",
+		"dist": "./public/js"
+	}
 }
