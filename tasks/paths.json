@@ -17,7 +17,7 @@
 		}
   },
 	"es6": {
-		"src": "./public_src/js_es6/*.js",
+		"src": "./public_src/js_es6/main.js",
 		"dist": "./public/js"
 	}
 }
