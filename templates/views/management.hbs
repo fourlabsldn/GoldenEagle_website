@@ -1,4 +1,11 @@
 <div class="container gew_management-landing gew_landingSection">
+  <img
+    class="gew_background-cover"
+    srcset="{{srcSet 'management.landing_ryhpsy.jpg'}}"
+    sizes="100vw"
+    src="{{srcSet 'management.landing_ryhpsy.jpg' 1000}}"
+  />
+
   <p class="gew_landingSection-text">
     {{data.section_1.content_1}}
   </p>
@@ -67,6 +74,13 @@
 </div>
 
 <section class="gew_management-quoteSection">
+  <img
+    class="gew_background-cover"
+    srcset="{{srcSet 'management.section_ze9qya.jpg'}}"
+    sizes="100vw"
+    src="{{srcSet 'management.section_ze9qya.jpg' 1000}}"
+  />
+
   <div class="gew_sectionContent-extraPadding">
     <div class="gew_heroText">
       {{data.section_3.content_1}}
@@ -82,9 +96,9 @@
     <div class="col-sm-6 gew_doubleColumn-col2">
       <img
         style="max-width: 100%"
-        srcset="{{srcSet data.section_4.illustration 1240 1020 820 620 310}}"
+        srcset="{{srcSet data.section_4.illustration.url}}"
         sizes="(max-width: 768px) 100vw, 50vw"
-        src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
+        src="{{srcSet data.section_4.illustration.url 700}}"
         alt="{{location.street1}}"
       />
     </div>
@@ -180,9 +194,9 @@
     <div class="col-sm-6 gew_doubleColumn-col2">
       <img
         style="max-width: 100%"
-        srcset="{{srcSet data.section_7.illustration 1240 1020 820 620 310}}"
+        srcset="{{srcSet data.section_7.illustration.url}}"
         sizes="(max-width: 768px) 100vw, 50vw"
-        src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
+        src="{{srcSet data.section_7.illustration.url 700}}"
         alt="{{location.street1}}"
       />
     </div>

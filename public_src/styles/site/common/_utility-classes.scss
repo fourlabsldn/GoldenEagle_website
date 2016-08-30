@@ -2,6 +2,17 @@
 //  Utility classes
 // --------------------------------------
 
+.gew_background-cover { // parent must be position relative and overflow hidden
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  margin: auto;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
 .gew_bg-lighter {
   background-color: $gray-lighter;
 }

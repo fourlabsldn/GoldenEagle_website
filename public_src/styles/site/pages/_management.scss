@@ -3,13 +3,10 @@
 }
 
 .gew_management-landing {
-  background-image: url('/images/management.landing.jpg');
 }
 
 .gew_management-quoteSection {
-  background-image: url('/images/management.section.jpg');
-  background-size: cover;
-  background-position: center;
+  @include pageSection();
   color: white;
 }
 

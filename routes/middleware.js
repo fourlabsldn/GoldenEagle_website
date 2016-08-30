@@ -22,10 +22,10 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'About', key: 'about', href: '/about' },
     { label: 'Properties', key: 'properties', href: '#',
       submenu: [
-        { label: 'Sales', href: '#', background: '/images/navbar-2.jpg' },
-        { label: 'Lettings', href: '#', background: '/images/navbar-1.jpg' },
-        { label: 'Commercial', href: '#', background: '/images/navbar-4.jpg' },
-        { label: 'International', href: '#', background: '/images/navbar-3.jpg' },
+        { label: 'Sales', href: '#', background: 'navbar-2_nigkjw.jpg' },
+        { label: 'Lettings', href: '#', background: 'navbar-1_tzsnp6.jpg' },
+        { label: 'Commercial', href: '#', background: 'navbar-4_cikuiu.jpg' },
+        { label: 'International', href: '#', background: 'navbar-3_efnlov.jpg' },
       ]
     },
     { label: 'Developments', key: 'developments', href: '/developments' },

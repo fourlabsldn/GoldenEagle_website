@@ -16,9 +16,10 @@
 @mixin pageSection() {
   width: 100%;
   min-height: 400px;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
+
+  // so that we can use gew_background-cover;
+  overflow: hidden;
+  position: relative;
 }
 
 @mixin fullPageSection() {

@@ -2,14 +2,9 @@
   @include transparentNavbar();
 }
 
-.gew_about-landing {
-  background-image: url('/images/about.landing.jpg');
-}
 
 .gew_about-quoteSection {
-  background-image: url('/images/radiAndPaul.jpg');
-  background-position: center;
-  background-size: cover;
+  @include pageSection();
   color: white;
 
   .gew_sectionContent {
