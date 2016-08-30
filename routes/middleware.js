@@ -25,7 +25,7 @@ exports.initLocals = function (req, res, next) {
         { label: 'Sales', href: '#', background: 'navbar-2_nigkjw.jpg' },
         { label: 'Lettings', href: '#', background: 'navbar-1_tzsnp6.jpg' },
         { label: 'Commercial', href: '/commercial', background: 'navbar-4_cikuiu.jpg' },
-        { label: 'International', href: '#', background: 'navbar-3_efnlov.jpg' },
+        { label: 'International', href: '/international', background: 'navbar-3_efnlov.jpg' },
       ]
     },
     { label: 'Developments', key: 'developments', href: '/developments' },

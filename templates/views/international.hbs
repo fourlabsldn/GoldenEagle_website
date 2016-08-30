@@ -1,0 +1,116 @@
+<div class="container gew_international-landing gew_landingSection">
+  <img
+    class="gew_background-cover"
+    srcset="{{srcSet 'international.landing_ryhpsy.jpg'}}"
+    sizes="100vw"
+    src="{{srcSet 'international.landing_ryhpsy.jpg' 1000}}"
+  />
+
+  <p class="gew_landingSection-text">
+    {{data.section_1.content_1}}
+  </p>
+</div>
+
+<!-- Nav tabs -->
+<section class="gew_tabs-wrapper">
+  <ul class="nav nav-tabs gew_tabs gew_sectionContent" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="gew.selectTab">
+        {{data.tab_1.title}}
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="gew.selectTab">
+        {{data.tab_2.title}}
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" onclick="gew.selectTab">
+        {{data.tab_3.title}}
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" onclick="gew.selectTab">
+        {{data.tab_4.title}}
+      </a>
+    </li>
+  </ul>
+</section>
+
+<!-- Tab panes -->
+<div class="tab-content gew_doubleColumn gew_sectionContent">
+  <div role="tabpanel" class="row tab-pane active" id="home">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_1.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_1.content_2}}}
+    </div>
+  </div>
+  <div role="tabpanel" class="row tab-pane" id="profile">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_2.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_2.content_2}}}
+    </div>
+  </div>
+  <div role="tabpanel" class="row tab-pane" id="messages">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_3.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_3.content_2}}}
+    </div>
+  </div>
+  <div role="tabpanel" class="row tab-pane" id="settings">
+    <div class="col-sm-6 gew_doubleColumn-col1">
+      {{{data.tab_4.content_1}}}
+    </div>
+    <div class="col-sm-6 gew_doubleColumn-col2">
+      {{{data.tab_4.content_2}}}
+    </div>
+  </div>
+</div>
+
+<section class="gew_bg-light">
+  <div class="container gew_sectionContent">
+    <div class="row">
+      <div class="col-sm-6">
+        {{{data.section_3.content_1}}}
+      </div>
+      <div class="col-sm-6">
+        {{{data.section_3.content_1}}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container gew_sectionContent">
+    <br>
+    <h2>The Apartments</h2>
+    <br>
+
+    <div class="row">
+      {{#each featuredProperties}}
+      <div class="col-sm-6 col-md-4">
+        {{> propertyCard this}}
+      </div>
+      {{/each}}
+    </div>
+</section>
+
+<section class="gew_bg-light">
+  <div class="container gew_sectionContent">
+    <br>
+    <h2>The Villas</h2>
+    <br>
+    <div class="row">
+      {{#each featuredProperties}}
+      <div class="col-sm-6 col-md-4">
+        {{> propertyCard this}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
