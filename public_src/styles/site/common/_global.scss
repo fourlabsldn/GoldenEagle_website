@@ -127,6 +127,12 @@ h3 {
     padding-bottom: 100px;
   }
 }
+
+.gew_doubleColumn-title {
+  font-size: $font-size-base;
+  font-weight: bold;
+  margin: 1em 0 3em;
+}
 .gew_doubleColumn-col1 {
   // padding-left: 5%;
   padding-right: 10%;
@@ -144,6 +150,8 @@ h3 {
 .gew_tabs {
   padding-top: 0;
   padding-bottom: 0;
+  border: 0;
+
   & > li > a,
   & > li.active > a  {
     background-color: transparent;

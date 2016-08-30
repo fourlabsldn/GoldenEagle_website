@@ -1,9 +1,9 @@
 <div class="container gew_international-landing gew_landingSection">
   <img
     class="gew_background-cover"
-    srcset="{{srcSet 'international.landing_ryhpsy.jpg'}}"
+    srcset="{{srcSet 'photo-1459600661907-3c72c54955de-2_jf3btc.jpg'}}"
     sizes="100vw"
-    src="{{srcSet 'international.landing_ryhpsy.jpg' 1000}}"
+    src="{{srcSet 'photo-1459600661907-3c72c54955de-2_jf3btc.jpg' 1000}}"
   />
 
   <p class="gew_landingSection-text">
@@ -38,8 +38,11 @@
 </section>
 
 <!-- Tab panes -->
-<div class="tab-content gew_doubleColumn gew_sectionContent">
+<div class="tab-content gew_sectionContent gew_doubleColumn">
   <div role="tabpanel" class="row tab-pane active" id="home">
+    <h2 class="col-sm-12 gew_doubleColumn-title" >
+      {{data.tab_1.title}}
+    </h2>
     <div class="col-sm-6 gew_doubleColumn-col1">
       {{{data.tab_1.content_1}}}
     </div>
@@ -47,7 +50,11 @@
       {{{data.tab_1.content_2}}}
     </div>
   </div>
+
   <div role="tabpanel" class="row tab-pane" id="profile">
+    <h2 class="col-sm-12 gew_doubleColumn-title" >
+      {{data.tab_2.title}}
+    </h2>
     <div class="col-sm-6 gew_doubleColumn-col1">
       {{{data.tab_2.content_1}}}
     </div>
@@ -56,6 +63,9 @@
     </div>
   </div>
   <div role="tabpanel" class="row tab-pane" id="messages">
+    <h2 class="col-sm-12 gew_doubleColumn-title" >
+      {{data.tab_3.title}}
+    </h2>
     <div class="col-sm-6 gew_doubleColumn-col1">
       {{{data.tab_3.content_1}}}
     </div>
@@ -64,6 +74,9 @@
     </div>
   </div>
   <div role="tabpanel" class="row tab-pane" id="settings">
+    <h2 class="col-sm-12 gew_doubleColumn-title" >
+      {{data.tab_4.title}}
+    </h2>
     <div class="col-sm-6 gew_doubleColumn-col1">
       {{{data.tab_4.content_1}}}
     </div>
@@ -80,7 +93,6 @@
         {{{data.section_3.content_1}}}
       </div>
       <div class="col-sm-6">
-        {{{data.section_3.content_1}}}
       </div>
     </div>
   </div>
