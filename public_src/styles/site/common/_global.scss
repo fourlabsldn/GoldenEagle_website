@@ -14,10 +14,6 @@ h3 {
   font-size: 1.4em;
 }
 
-.bg-primary {
-  color: $gray-base;
-}
-
 .btn {
   padding-left: 2em;
   padding-right: 2em;
@@ -336,4 +332,19 @@ $slider2-arrow-size: 15px;
 
 .gew_slider2-btn-next {
   right: 0;
+}
+
+// ==================== QUOTE ===================== //
+.gew_quote-text {
+
+}
+.gew_quote-author {
+  font-weight: normal;
+  text-align: center;
+  display: block;
+}
+.gew_quote-position {
+  text-align: center;
+  font-weight: lighter;
+  display: block;
 }

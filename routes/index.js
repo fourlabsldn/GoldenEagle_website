@@ -35,16 +35,17 @@ const routes = {
 // Setup Route Bindings
 exports = module.exports = function (app) {
   // gzip compress responses
-  app.use(compression());
+	app.use(compression());
 
   // Views
 	app.get('/', routes.views.index);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
-  app.get('/gallery', routes.views.gallery);
-  app.get('/developments', routes.views.developments);
-  app.get('/investments', routes.views.investments);
-  app.get('/management', routes.views.management);
+	app.get('/gallery', routes.views.gallery);
+	app.get('/commercial', routes.views.commercial);
+	app.get('/developments', routes.views.developments);
+	app.get('/investments', routes.views.investments);
+	app.get('/management', routes.views.management);
 	app.get('/about', routes.views.about);
 	app.all('/contact', routes.views.contact);
 

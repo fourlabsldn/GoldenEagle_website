@@ -1,0 +1,33 @@
+<div class="container gew_landingSection gew_commercial-landing">
+  <img
+    class="gew_background-cover"
+    srcset="{{srcSet 'photo-1461601422150-4efbaf4d8772-2_cdqvf6.jpg'}}"
+    sizes="100vw"
+    src="{{srcSet 'photo-1461601422150-4efbaf4d8772-2_cdqvf6.jpg' 1000}}"
+  />
+
+  <p class="gew_landingSection-text">
+    {{data.section_1.content_1}}
+  </p>
+</div>
+
+<section class="gew_bg-light">
+  <div class="container gew_sectionContent gew_doubleColumn">
+    <div class="row">
+      <div class="col-sm-6 gew_doubleColumn-col1">
+        {{{data.section_2.content_1}}}
+      </div>
+      <div class="col-sm-6 gew_doubleColumn-col2">
+        {{{data.section_2.content_2}}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary gew_light-text">
+  <div class="gew_sectionContent">
+		<p class="gew_heroText gew_quote-text">{{ data.section_3.quote }}</p>
+		<span class="gew_quote-author">{{ data.section_3.author }}</span>
+		<span class="gew_quote-position">{{ data.section_3.company_position }}</span>
+  </div>
+</section>
