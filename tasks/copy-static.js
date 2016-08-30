@@ -8,41 +8,31 @@ const path = require('path');
 // Config
 const origin = paths.static.src;
 const destiny = paths.static.dist;
-const excludeExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-const excludeFolders = ['js_es6', 'styles']; // Paths relative to origin
-const folderMapping = {	'js_static': 'js' }; // eslint-disable-line quote-props
+
+// All paths with an src
+const excludePaths = Object.keys(paths)
+	.map(k => paths[k])
+	.map(v => v.src)
+	.filter(p => p && p !== origin);
+
+// Paths relative to origin
+const folderMapping = {
+	'js_static/**/*': 'js', // eslint-disable-line quote-props
+};
 
 gulp.task(taskName, () => {
-	const mappedFolders = Object.keys(folderMapping);
-
+	const mapped = Object.keys(folderMapping);
 	const include = ['**/*'];
-	const fileExcludes = excludeExtensions.map(extensionMatch);
-	const foldersExcludes = [
-		...excludeFolders.map(folderMatch),
-		...mappedFolders.map(folderMatch),
-	];
-
-	// Copy as is
-	const exclude = [...fileExcludes, ...foldersExcludes];
+	const exclude = [...excludePaths, ...mapped];
 	copyFromTo(origin, destiny, include, exclude);
 
 	// Copy mapped
-	mappedFolders.forEach(f => {
-		const root = path.join(origin, f);
-		const dest = path.join(destiny, folderMapping[f]);
-		console.log(`Copying from ${root} to ${dest}`);
-		copyFromTo(root, dest, include, fileExcludes);
+	mapped.forEach(m => {
+		const root = path.join(origin, m);
+		const dest = path.join(destiny, folderMapping[m]);
+		copyFromTo(root, dest, include, excludePaths);
 	});
 });
-
-// Matches folders to be included and excluded propperly
-function folderMatch(folderPath) {
-	return `${folderPath}{,/**}`;
-}
-
-function extensionMatch(ext) {
-	return `**/*.{${ext}}`;
-}
 
 function excludePath(p) {
 	return `!${p}`;
@@ -53,10 +43,9 @@ function fromOrigin(root) {
 }
 
 function copyFromTo(root, dest, copy, exclude) {
-	const copyPaths = copy.map(fromOrigin(root));
-	const excludePaths = exclude.map(fromOrigin(root)).map(excludePath);
-
-	console.log('Copying:', [...copyPaths, ...excludePaths]);
-	gulp.src([...copyPaths, ...excludePaths])
+	const toCopy = copy.map(fromOrigin(root));
+	const toExclude = exclude.map(fromOrigin(root)).map(excludePath);
+	console.log('Copying:', toCopy, 'Excluding:', 'toExclude');
+	gulp.src([...toCopy, ...toExclude])
 		.pipe(gulp.dest(dest));
 }
