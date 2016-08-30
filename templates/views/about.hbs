@@ -90,7 +90,14 @@
   <div class="row">
     {{#each staff}}
       <div class="col-sm-6 gew_about-staffCard">
-        <img alt="{{name}}" src="{{photo}}" class="gew_about-staffCard-photo"/>
+
+        <img
+          class="gew_about-staffCard-photo"
+          srcset="{{srcSet photo}}"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          src="{{srcSet photo 700}}"
+          alt="{{name}}"
+        />
 
         <div class="gew_about-staffCard-footer">
           <div class="gew_about-staffCard-info">

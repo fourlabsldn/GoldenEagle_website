@@ -1,10 +1,10 @@
 const keystone = require('keystone');
 
 const staff = [
-  { photo: '/images/staff-1.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678'},
-  { photo: '/images/staff-2.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678'},
-  { photo: '/images/staff-3.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678'},
-  { photo: '/images/staff-4.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678'},
+  { photo: 'staff-2_v2fbvs.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678' },
+  { photo: 'staff-1_buu1u4.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678' },
+  { photo: 'staff-3_uexyxr.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678' },
+  { photo: 'staff-4_gajdol.jpg', name: 'John Smith', tel: '+44 (0)20 1234 5678' },
 ];
 
 exports = module.exports = function about(req, res) {
