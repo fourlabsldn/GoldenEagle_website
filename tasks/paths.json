@@ -9,10 +9,6 @@
 		"src": "./public_src/styles/**/*.scss",
 		"dist": "./public/styles/"
 	},
-  "resizeImages": {
-    "src": "./public_src/images/**/*.{jpg,jpeg,png}",
-    "dist": "./public/images"
-  },
   "static": {
     "src": "./public_src/**/*",
     "dist": "./public",
