@@ -11,6 +11,8 @@
         selectTab: function (e) { e.preventDefault(); $(this).tab('show'); },
         toggleNavbarSubmenu: function (el) {
           el.querySelector('.gew_navbar-submenu').classList.toggle('gew_navbar-submenu--visible');
+					const navbar = document.querySelector('.navbar.navbar-default');
+					navbar.classList.toggle('gew_navbar-background-opaque')
         }
       }
     </script>
@@ -79,56 +81,6 @@
 								<li><a>Language</a></li>
 								<li><a>Search</a></li>
 							</ul>
-            </div>
-
-            <div class="gew_navbar-submenu container">
-              <div onclick="gew.toggleNavbarSubmenu()" class="gew_navbar-submenu-pageOverlay"></div>
-              <div class="row">
-                <a href="#" class="col-sm-6  gew_navbar-submenu-btn">
-									<img
-										class="gew_navbar-submenu-background"
-										srcset="{{srcSet 'navbar-2_nigkjw.jpg'}}"
-										sizes="(max-width: 768px) 100vw, 50vw"
-										src="{{srcSet 'navbar-2_nigkjw.jpg' 700}}"
-										alt="Sales"
-									/>
-                  <div class="gew_navbar-submenu-overlay"></div>
-                  <span class="gew_navbar-submenu-title">Sales</span>
-                </a>
-                <a href="#" class="col-sm-6  gew_navbar-submenu-btn">
-									<img
-										class="gew_navbar-submenu-background"
-										srcset="{{srcSet 'navbar-1_tzsnp6.jpg'}}"
-										sizes="(max-width: 768px) 100vw, 50vw"
-										src="{{srcSet 'navbar-1_tzsnp6.jpg' 700}}"
-										alt="Lettings"
-									/>
-                  <div class="gew_navbar-submenu-overlay"></div>
-                  <span class="gew_navbar-submenu-title">Lettings</span>
-                </a>
-                <a href="#" class="col-sm-6  gew_navbar-submenu-btn">
-									<img
-										class="gew_navbar-submenu-background"
-										srcset="{{srcSet 'navbar-4_cikuiu.jpg'}}"
-										sizes="(max-width: 768px) 100vw, 50vw"
-										src="{{srcSet 'navbar-4_cikuiu.jpg' 700}}"
-										alt="Commercial"
-									/>
-                  <div class="gew_navbar-submenu-overlay"></div>
-                  <span class="gew_navbar-submenu-title">Commercial</span>
-                </a>
-                <a href="#" class="col-sm-6  gew_navbar-submenu-btn">
-									<img
-										class="gew_navbar-submenu-background"
-										srcset="{{srcSet 'navbar-3_efnlov.jpg'}}"
-										sizes="(max-width: 768px) 100vw, 50vw"
-										src="{{srcSet 'navbar-3_efnlov.jpg' 700}}"
-										alt="International"
-									/>
-                  <div class="gew_navbar-submenu-overlay"></div>
-                  <span class="gew_navbar-submenu-title">International</span>
-                </a>
-              </div>
             </div>
           </div>
 				</div>

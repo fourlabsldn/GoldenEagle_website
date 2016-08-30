@@ -74,5 +74,5 @@
 
 // --------------- Section 4 ---------------------//
 .gew_home-register {
-  background-image: url('/images/home.register.jpg');
+  @include pageSection();
 }
