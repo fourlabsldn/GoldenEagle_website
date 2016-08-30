@@ -16,7 +16,7 @@ const defaultWidths = [1500, 1240, 1020, 820, 620, 310];
 module.exports = function srcSet(imgUrl, ...args) {
 	// The last argument of args is the handlebars options object. Let's remove it.
 	const imgWidths = args.slice(0, args.length - 1);
-	const widths = imgWidths.length > 1 ? imgWidths : defaultWidths;
+	const widths = imgWidths.length > 0 ? imgWidths : defaultWidths;
 	const imgName = path.parse(imgUrl).base; // Looks like this: 'myImg.jpg'
 
 	const urlSet = widths
