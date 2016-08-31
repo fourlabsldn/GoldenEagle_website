@@ -95,14 +95,11 @@
       <div class="col-sm-6">
 
         <div class="image-slider"></div>
-
-        <!-- <script src="/js/module1.js"></script> -->
-        <!-- <script src="/js/module2.js"></script> -->
         <script type="text/javascript">
-          require(['module1'], function(module1) {
-            module1();
+          require(['imageSlider'], function(imageSlider) {
+            const sliderContainer = document.querySelector('.image-slider');
+            imageSlider(sliderContainer);
           })
-          // const sliderContainer = document.querySelector('.image-slider');
           // imgSlider(sliderContainer, [
           //   {{srcSet 'fsfbkfdgv6voxsltspce.jpg' 500}}
           //   {{srcSet 'ye62wu6rmgknc8ek5v1v.jpg' 500}}
