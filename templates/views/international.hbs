@@ -96,15 +96,19 @@
 
         <div class="image-slider"></div>
 
-        <script src="/js/imgSlider.js"></script>
+        <!-- <script src="/js/module1.js"></script> -->
+        <!-- <script src="/js/module2.js"></script> -->
         <script type="text/javascript">
-          const sliderContainer = document.querySelector('.image-slider');
-          imgSlider(sliderContainer, [
-            {{srcSet 'fsfbkfdgv6voxsltspce.jpg' 500}}
-            {{srcSet 'ye62wu6rmgknc8ek5v1v.jpg' 500}}
-            {{srcSet 'ajnxbirn9kzypelgvs0n.jpg' 500}}
-            {{srcSet 'j01ss71bjxklqvapxuew.jpg' 500}}
-          ]);
+          require(['module1'], function(module1) {
+            module1();
+          })
+          // const sliderContainer = document.querySelector('.image-slider');
+          // imgSlider(sliderContainer, [
+          //   {{srcSet 'fsfbkfdgv6voxsltspce.jpg' 500}}
+          //   {{srcSet 'ye62wu6rmgknc8ek5v1v.jpg' 500}}
+          //   {{srcSet 'ajnxbirn9kzypelgvs0n.jpg' 500}}
+          //   {{srcSet 'j01ss71bjxklqvapxuew.jpg' 500}}
+          // ]);
         </script>
       </div>
     </div>

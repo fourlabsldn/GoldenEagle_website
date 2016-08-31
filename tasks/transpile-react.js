@@ -27,10 +27,9 @@ const nodeResolve = require('rollup-plugin-node-resolve');
 
 const origin = paths.es6.src;
 const destiny = paths.es6.dist;
-const extenalDependencies = {
-	react: 'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js',
-	'react-dom': 'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js',
-};
+
+// Path resolution for these modules must be included in the pages' require.config
+const extenalDependencies = ['react', 'react-dom'];
 
 
 gulp.task(taskName, () => {
@@ -46,8 +45,7 @@ function doTranspilation(stream, file) {
 		sourceMap: true,
 		// Treat these imports as external dependencies and
 		// load them from the given paths
-		external: Object.keys(extenalDependencies),
-		paths: extenalDependencies,
+		external: extenalDependencies,
 		// Let's use AMD format to serve our files to the front-end
 		format: 'amd',
 		plugins: [
