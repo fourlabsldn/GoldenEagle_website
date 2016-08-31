@@ -1,19 +1,47 @@
+
+$imageSlider-imgSpacing: 10px;
+$imageSlider-bigImgHeight: 60%;
+
 .gew_imageSlider {
   width: 100%;
   position: relative;
   overflow: hidden;
 }
 
+.gew_imageSlider-image {
+  display: inline-block;
+  position: relative;
+  transition: transform .3s ease-in-out;
+  background-size: cover;
+  background-position: center;
+}
 
-.gew_imageSlider-proportionKeeper {
-  padding: 60% 0 0;
+.gew_imageSlider-bigImages {
+  margin-bottom: $imageSlider-imgSpacing;
+  position: relative;
+  white-space: nowrap;
+  line-height: 0;
+
+  .gew_imageSlider-image {
+    padding: $imageSlider-bigImgHeight 0 0;
+    width: 100%
+  }
+}
+
+.gew_imageSlider-thumbnails {
+  white-space: nowrap;
+  .gew_imageSlider-image {
+    padding: 20% 0 0;
+    width: calc(33.8% - #{$imageSlider-imgSpacing});
+    margin-right: $imageSlider-imgSpacing;
+  }
 }
 
 .gew_imageSlider-btn-next,
 .gew_imageSlider-btn-prev {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  font-size: 1.5em;
+  top: calc(#{$imageSlider-bigImgHeight} / 2 + .7em);
   background-color: transparent;
   color: $white;
   z-index: 2;
@@ -36,19 +64,4 @@
 
 .gew_imageSlider-btn-prev {
   left: 0;
-}
-
-.gew_imageSlider-imageContainer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  overflow: hidden;
-  transition: transform .3s ease-in-out;
-}
-
-.gew_imageSlider-image {
-  @include background-cover;
 }

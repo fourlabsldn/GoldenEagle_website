@@ -3,11 +3,12 @@ import css from './css';
 
 const Image = ({ url, displacement }) => (
   <div
-    className={css.imageContainer}
-    style={{ transform: `translateX(${displacement * 100}%)` }}
-  >
-    <img src={url} alt="Property" className={css.image} />
-  </ div>
+    className={css.image}
+    style={{
+      transform: `translateX(${displacement * -100}%)`,
+      backgroundImage: `url(${url})`,
+    }}
+  />
 );
 
 Image.propTypes = {

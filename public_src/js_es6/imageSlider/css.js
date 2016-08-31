@@ -8,5 +8,6 @@ export default {
   btnPrev: bem('btn', 'prev'),
   image: bem('image'),
   imageContainer: bem('imageContainer'),
-  proportionKeeper: bem('proportionKeeper'),
+  bigImages: bem('bigImages'),
+  thumbnails: bem('thumbnails'),
 };
