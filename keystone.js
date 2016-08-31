@@ -6,13 +6,14 @@ require('dotenv').config();
 var keystone = require('keystone');
 var handlebars = require('express-handlebars');
 
+
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
 keystone.init({
-	'name': 'GoldenEagle_website',
-	'brand': 'GoldenEagle_website',
+	'name': 'Golden Eagle',
+	'brand': 'Golden Eagle',
 
 	'sass': 'public',
 	'static': 'public',
@@ -36,6 +37,7 @@ keystone.init({
 	'user model': 'User',
 });
 
+
 // Load your project's Models
 keystone.import('models');
 
@@ -48,6 +50,7 @@ keystone.set('locals', {
 	utils: keystone.utils,
 	editable: keystone.content.editable,
 });
+
 
 // Load your project's Routes
 keystone.set('routes', require('./routes'));
@@ -73,17 +76,32 @@ keystone.set('email locals', {
 keystone.set('email tests', require('./routes/emails'));
 
 
-// Switch Keystone Email defaults to handlebars
-keystone.Email.defaults.templateExt = 'hbs';
-keystone.Email.defaults.templateEngine = require('handlebars');
+// FIXME: Why is this throwing an error?
+// // Switch Keystone Email defaults to handlebars
+// keystone.Email.defaults.templateExt = 'hbs';
+// keystone.Email.defaults.templateEngine = require('handlebars');
 
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
 	posts: ['posts', 'post-categories'],
-	galleries: 'galleries',
-	enquiries: 'enquiries',
-	users: 'users',
+	pages: [
+    'abouts',
+    'commercials',
+    'contacts',
+    'developments',
+    'homes',
+    'internationals',
+    'investments',
+    'managements'
+  ],
+  collections: [
+    'enquiries',
+    'properties',
+    'galleries',
+    'case-studies',
+  ],
+  users: 'users',
 });
 
 // Start Keystone to connect to your database and initialise the web server
