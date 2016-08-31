@@ -17,6 +17,7 @@
 		}
   },
 	"es6": {
+    "watch": "./public_src/js_es6/**/*.js",
 		"src": "./public_src/js_es6/*.js",
 		"dist": "./public/js"
 	}

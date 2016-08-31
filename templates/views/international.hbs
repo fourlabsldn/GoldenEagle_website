@@ -95,18 +95,20 @@
       <div class="col-sm-6">
 
         <div class="image-slider"></div>
+
         <script type="text/javascript">
           require(['imageSlider'], function(imageSlider) {
-            const sliderContainer = document.querySelector('.image-slider');
-            imageSlider(sliderContainer);
-          })
-          // imgSlider(sliderContainer, [
-          //   {{srcSet 'fsfbkfdgv6voxsltspce.jpg' 500}}
-          //   {{srcSet 'ye62wu6rmgknc8ek5v1v.jpg' 500}}
-          //   {{srcSet 'ajnxbirn9kzypelgvs0n.jpg' 500}}
-          //   {{srcSet 'j01ss71bjxklqvapxuew.jpg' 500}}
-          // ]);
+            const container = document.querySelector('.image-slider');
+            const urls = [
+              "{{srcSet 'fsfbkfdgv6voxsltspce.jpg' 500}}",
+              "{{srcSet 'ye62wu6rmgknc8ek5v1v.jpg' 500}}",
+              "{{srcSet 'ajnxbirn9kzypelgvs0n.jpg' 500}}",
+              "{{srcSet 'j01ss71bjxklqvapxuew.jpg' 500}}",
+            ];
+            imageSlider(urls, container);
+          });
         </script>
+
       </div>
     </div>
   </div>

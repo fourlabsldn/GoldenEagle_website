@@ -33,37 +33,37 @@ const extenalDependencies = ['react', 'react-dom'];
 
 
 gulp.task(taskName, () => {
-	return gulp.src(origin)
+  return gulp.src(origin)
 		.pipe(flatmap(doTranspilation)) // call doTranspilation for each file
 		.pipe(gulp.dest(destiny));
 });
 
 function doTranspilation(stream, file) {
-	const fileName = path.parse(file.path).base;
-	return rollup({
-		entry: file.path,
-		sourceMap: true,
-		// Treat these imports as external dependencies and
-		// load them from the given paths
-		external: extenalDependencies,
-		// Let's use AMD format to serve our files to the front-end
-		format: 'amd',
-		plugins: [
-			// Import modules with jsnext:main
-			nodeResolve({	jsnext: true, main: true }),
-			// Allow importing commonjs modules
-			commonjs(),
-			// Transpile our code to ES5
-			babel({
-				exclude: 'node_modules/**',
-				babelrc: false,
-				plugins: ['transform-async-to-generator', 'external-helpers-2'],
-				presets: ['es2015-rollup', 'react'],
-			}),
-			// TODO: Change this from 'development' to 'production' during production
-			replace({ 'process.env.NODE_ENV': JSON.stringify('development') }),
-		],
-	})
+  const fileName = path.parse(file.path).base;
+  return rollup({
+    entry: file.path,
+    sourceMap: true,
+    // Treat these imports as external dependencies and
+    // load them from the given paths
+    external: extenalDependencies,
+    // Let's use AMD format to serve our files to the front-end
+    format: 'amd',
+    plugins: [
+      // Import modules with jsnext:main
+      nodeResolve({	jsnext: true, main: true }),
+      // Allow importing commonjs modules
+      commonjs(),
+      // Transpile our code to ES5
+      babel({
+        exclude: 'node_modules/**',
+        babelrc: false,
+        plugins: ['transform-async-to-generator', 'external-helpers-2'],
+        presets: ['es2015-rollup', 'react'],
+      }),
+      // TODO: Change this from 'development' to 'production' during production
+      replace({ 'process.env.NODE_ENV': JSON.stringify('development') }),
+    ],
+  })
 	// point to the entry file.
 	.pipe(source(fileName))
 	// buffer the output. most gulp plugins, including gulp-sourcemaps, don't support streams.

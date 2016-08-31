@@ -1,0 +1,54 @@
+.gew_imageSlider {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.gew_imageSlider-proportionKeeper {
+  padding: 60% 0 0;
+}
+
+.gew_imageSlider-btn-next,
+.gew_imageSlider-btn-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  color: $white;
+  z-index: 2;
+  border: 0;
+  transition: all .1s ease;
+  transform-origin: center;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    transform: scale(.9);
+  }
+}
+
+.gew_imageSlider-btn-next {
+  right: 0;
+}
+
+.gew_imageSlider-btn-prev {
+  left: 0;
+}
+
+.gew_imageSlider-imageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  transition: transform .3s ease-in-out;
+}
+
+.gew_imageSlider-image {
+  @include background-cover;
+}
