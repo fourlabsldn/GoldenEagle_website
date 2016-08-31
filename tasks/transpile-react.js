@@ -1,3 +1,11 @@
+/**
+Hidden dependencies:
+	babel-preset-es2015-rollup
+	babel-preset-react
+	babel-plugin-transform-async-to-generator
+	babel-plugin-external-helpers-2
+ */
+
 // ============================================================================
 // Transpile ES7 react code into ES5. Includes support for async await.
 // ============================================================================
