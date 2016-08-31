@@ -1,5 +1,5 @@
-const imgSlider = (...args) => {
+const imgSlider = async (...args) => {
 	console.log(...args);
-}
+};
 
-export default imgSlider
+export default imgSlider;

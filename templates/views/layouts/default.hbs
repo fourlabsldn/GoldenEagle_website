@@ -17,6 +17,18 @@
       }
     </script>
 
+		<!-- RequireJS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+		<script type="text/javascript">
+			requirejs.config({
+				paths: {
+					React: 'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js',
+					ReactDOM: 'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js'
+				},
+			});
+		</script>
+
+
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link href="/styles/site.css" rel="stylesheet">
 		{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
