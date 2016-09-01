@@ -36,89 +36,26 @@ Management.add({
   		},
   	},
 	},
-	'Tab 1', {
-		tab_1: {
-			title: {
-				type: Types.Text,
-				label: 'Title',
-			},
-			content_1: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 200,
-				label: 'Small paragraph',
-			},
-			content_2: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 200,
-				label: 'Longer text',
-			},
-		},
-  },
-  'Tab 2',
-  {
-		tab_2: {
-			title: {
-				type: Types.Text,
-				label: 'Title',
-			},
-			content_1: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 200,
-				label: 'Small paragraph',
-			},
-			content_2: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 200,
-				label: 'Longer text',
-			},
-		},
-  },
-  'Tab 3',
-  {
-		tab_3: {
-			title: {
-				type: Types.Text,
-				label: 'Title',
-			},
-			content_1: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 200,
-				label: 'Small paragraph',
-			},
-			content_2: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 200,
-				label: 'Longer text',
-			},
-		},
-  },
-  'Tab 4',
-  {
-		tab_4: {
-			title: {
-				type: Types.Text,
-				label: 'Title',
-			},
+  'Section 2', {
+    section_2: {
+      title: {
+        type: Types.Text,
+        label: 'Title',
+      },
       content_1: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 200,
-				label: 'Small paragraph',
-			},
-			content_2: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 300,
-				label: 'Longer text',
-			},
-		},
-	},
+        type: Types.Html,
+        wysiwyg: true,
+        height: 500,
+        label: 'Small paragraph',
+      },
+      content_2: {
+        type: Types.Html,
+        wysiwyg: true,
+        height: 500,
+        label: 'Longer text',
+      },
+    },
+  },
 	'Section 3', {
 		section_3: {
 			content_1: {
@@ -128,36 +65,40 @@ Management.add({
 			},
 		},
 	},
-	'Section 4', {
-		section_4: {
-			content_1: {
-				type: Types.Html,
-				wysiwyg: true,
-				height: 200,
-				label: 'Small paragraph',
-			},
-      illustration: {
-				type: Types.CloudinaryImage,
-				label: 'Illustration',
-			},
-		},
-	},
-	'Section 5', {
-		section_5: {
+  'Section 4', {
+    section_4: {
+      title: {
+        type: Types.Text,
+        label: 'Title',
+      },
       content_1: {
-        type: Types.Html,
-        wysiwyg: true,
+        type: Types.Textarea,
         height: 200,
         label: 'Small paragraph',
       },
-      content_2: {
-        type: Types.Html,
-        wysiwyg: true,
-        height: 200,
-        label: 'Longer text',
+      illustration: {
+        type: Types.CloudinaryImage,
+        label: 'Illustration',
       },
-		},
-	},
+    },
+  },
+  'Section 5', {
+    section_5: {
+      title: {
+        type: Types.Text,
+        label: 'Title',
+      },
+      content_1: {
+        type: Types.Textarea,
+        height: 200,
+        label: 'Small paragraph',
+      },
+      illustration: {
+        type: Types.CloudinaryImage,
+        label: 'Illustration',
+      },
+    },
+  },
 	'Section 6', {
 		section_6: {
       content_1: {
@@ -169,6 +110,10 @@ Management.add({
 	},
   'Section 7', {
 		section_7: {
+      title: {
+        type: Types.Text,
+        label: 'Title',
+      },
 			content_1: {
 				type: Types.Html,
 				wysiwyg: true,
