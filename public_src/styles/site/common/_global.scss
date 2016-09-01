@@ -177,21 +177,28 @@ h3 {
   color: $gray-base;
   border: 0;
   margin: 0;
-  padding: 2em 1em;
+  padding: 2em 1.2em;
   font-size: .9em;
   letter-spacing: .02em;
   display: block;
+  font-weight: normal;
 
   &:hover {
     // When text goes thicker, it occupies more space,
     // corrected letter-spacing fixes that
-    font-weight: normal;
+    font-weight: bold;
     letter-spacing: .00em;
   }
 
   &, &:visited, &:focus, &:hover {
     color: $gray-base;
     text-decoration: none;
+  }
+}
+
+@media (max-width: $navbar-collapsing-width) {
+  .gew_stickyNav, .gew_stickyNavDummy {
+    display: none;
   }
 }
 //   & > li > a,

@@ -11,34 +11,23 @@
 </section>
 
 <!-- Nav tabs -->
-<section class="gew_tabs-wrapper">
-  <ul class="nav nav-tabs gew_tabs gew_sectionContent" role="tablist">
-    <li role="presentation" class="active">
-      <a href="#home" aria-controls="home" role="tab" data-toggle="tab" onclick="gew.selectTab">
-        {{data.tab_1.title}}
-      </a>
+<section class="gew_stickyNav">
+  <ul class="gew_sectionContent gew_stickyNav-list">
+    <li>
+      <a href="#section1" class="gew_stickyNav-list-item">{{data.tab_1.title}}</a>
     </li>
-    <li role="presentation">
-      <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="gew.selectTab">
-        {{data.tab_2.title}}
-      </a>
+    <li>
+      <a href="#section2" class="gew_stickyNav-list-item">{{data.tab_2.title}}</a>
     </li>
-    <li role="presentation">
-      <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" onclick="gew.selectTab">
-        {{data.tab_3.title}}
-      </a>
-    </li>
-    <li role="presentation">
-      <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" onclick="gew.selectTab">
-        {{data.tab_4.title}}
-      </a>
+    <li>
+      <a href="#section3" class="gew_stickyNav-list-item">{{data.tab_3.title}}</a>
     </li>
   </ul>
 </section>
+<div class="gew_stickyNavDummy"></div>
 
-<!-- Tab panes -->
-<section class="tab-content gew_doubleColumn gew_sectionContent">
-  <div role="tabpanel" class="row tab-pane active" id="home">
+<div class="gew_doubleColumn gew_sectionContent" id="section1">
+  <div class="row">
     <div class="col-sm-6 gew_doubleColumn-col1">
       {{{data.tab_1.content_1}}}
     </div>
@@ -46,31 +35,7 @@
       {{{data.tab_1.content_2}}}
     </div>
   </div>
-  <div role="tabpanel" class="row tab-pane" id="profile">
-    <div class="col-sm-6 gew_doubleColumn-col1">
-      {{{data.tab_2.content_1}}}
-    </div>
-    <div class="col-sm-6 gew_doubleColumn-col2">
-      {{{data.tab_2.content_2}}}
-    </div>
-  </div>
-  <div role="tabpanel" class="row tab-pane" id="messages">
-    <div class="col-sm-6 gew_doubleColumn-col1">
-      {{{data.tab_3.content_1}}}
-    </div>
-    <div class="col-sm-6 gew_doubleColumn-col2">
-      {{{data.tab_3.content_2}}}
-    </div>
-  </div>
-  <div role="tabpanel" class="row tab-pane" id="settings">
-    <div class="col-sm-6 gew_doubleColumn-col1">
-      {{{data.tab_4.content_1}}}
-    </div>
-    <div class="col-sm-6 gew_doubleColumn-col2">
-      {{{data.tab_4.content_2}}}
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- Paul's quote photos -->
 <section class="gew_about-quoteSection">
@@ -100,7 +65,7 @@
 </section>
 
 <!-- Staff photos -->
-<section class="container gew_sectionContent gew_about-staffCards">
+<section class="container gew_sectionContent gew_about-staffCards" id="section2">
   <div class="row">
     {{#each staff}}
       <div class="col-sm-6 gew_about-staffCard">
@@ -160,7 +125,7 @@
     </div>
   </div>
 </section>
-<section class="gew_sectionContent">
+<section class="gew_sectionContent" id="section3">
   <h2 class="text-center">History</h2>
 
   <div class="gew_slider2 gew_about-historySlider js_gew_about-historySlider">
