@@ -65,14 +65,14 @@
 							<ul class="nav navbar-nav navbar-left">
 									{{# each navLinks}}
   									<li class="{{#ifeq ../section key}}active{{/ifeq}}">
-  										<a href="{{ href }}">
-                        <span
+  										<a href="{{ href }}"
                           {{#if submenu}}
                             onmouseover="gew.toggleNavbarSubmenu('show')"
                             onclick="gew.toggleNavbarSubmenu('hide')"
                           {{/if}}
                         >
-                        {{ label }}</a>
+                        {{ label }}
+                      </a>
 
                       {{#if submenu}}
                         <div class="gew_navbar-submenu container">
