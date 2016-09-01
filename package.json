@@ -16,7 +16,8 @@
     "require-dir-all": "^0.4.9",
     "swag": "^0.7.0",
     "underscore": "^1.8.3",
-    "winston": "^2.2.0"
+    "winston": "^2.2.0",
+    "zenscroll": "^3.2.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
@@ -24,6 +25,7 @@
     "babel-plugin-transform-async-to-generator": "^6.8.0",
     "babel-preset-es2015-rollup": "^1.2.0",
     "babel-preset-react": "^6.11.1",
+    "dep-linker": "^1.0.24",
     "eslint": "^2.12.0",
     "eslint-config-keystone": "^2.3.1",
     "eslint-plugin-react": "^5.1.1",
