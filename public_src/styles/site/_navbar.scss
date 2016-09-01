@@ -1,8 +1,8 @@
 .navbar {
   background-color: $navbar-bg;
   border: 0;
+  z-index: $navbar-z-index;
   padding: 0 5vw;
-  z-index: 100;
   position: relative;
   transition: background-color .3s ease-in-out;
 
@@ -122,8 +122,10 @@
 
 // ============= SUBMENU ============== //
 
-.navbar.navbar-default.gew_navbar-background-opaque {
-  background-color: $navbar-bg;
+.gew_navbar-submenu--visible{
+  .navbar.navbar-default{
+    background-color: $navbar-bg;
+  }
 }
 
 $navbar-submenu-opacity-anim-duration: .3s;
@@ -131,26 +133,28 @@ $navbar-submenu-opacity-anim-duration: .3s;
   width: 100%;
   position: absolute;
   left: 0;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility .001s ease ($navbar-submenu-opacity-anim-duration + .1s),
-              opacity $navbar-submenu-opacity-anim-duration ease-in-out .001s;
-  z-index: 1;
-}
-
-.gew_navbar-submenu--visible {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity $navbar-submenu-opacity-anim-duration ease-in-out;
 }
 
 .gew_navbar-submenu-pageOverlay {
   position: fixed;
   width: 100vw;
   left: 0;
-  height: 400vh;
-  background-color: transparentize($white, .6);
+  height: 500vh;
+  background-color: transparentize($white, .2);
+  z-index: $navbar-z-index;
+}
 
+.gew_navbar-submenu-pageOverlay,
+.gew_navbar-submenu {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .001s ease ($navbar-submenu-opacity-anim-duration + .1s),
+              opacity $navbar-submenu-opacity-anim-duration ease-in-out .001s;
+  .gew_navbar-submenu--visible & {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity $navbar-submenu-opacity-anim-duration ease-in-out;
+  }
 }
 
 .gew_navbar-submenu-btn {
@@ -159,7 +163,7 @@ $navbar-submenu-opacity-anim-duration: .3s;
    padding-bottom: 25%; // this will guarantee the height of the button
 
    @include lg-screen {
-     padding-bottom: 15%; // this will guarantee the height of the button
+    //  padding-bottom: 15%; // this will guarantee the height of the button
    }
 }
 

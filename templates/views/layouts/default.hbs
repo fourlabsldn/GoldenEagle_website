@@ -10,12 +10,9 @@
       var gew = {
         selectTab: function (e) { e.preventDefault(); $(this).tab('show'); },
         toggleNavbarSubmenu: function (showHide) {
-          var submenu = document.querySelector('.gew_navbar-submenu');
-          var navbar = document.querySelector('.navbar.navbar-default');
+          var header = document.querySelector('#header');
           var method = showHide === 'show' ? 'add' : 'remove';
-
-          submenu.classList[method]('gew_navbar-submenu--visible');
-          navbar.classList[method]('gew_navbar-background-opaque');
+          header.classList[method]('gew_navbar-submenu--visible');
         }
       }
     </script>
@@ -44,6 +41,7 @@
 	</head>
 	<body class="gew_{{section}}">
 		<div id="header">
+        <div onclick="gew.toggleNavbarSubmenu('hide')" class="gew_navbar-submenu-pageOverlay"></div>
 				<div role="navigation" class="navbar navbar-default">
 					<div class="container-fluid">
 						<div class="navbar-header">
@@ -76,7 +74,6 @@
 
                       {{#if submenu}}
                         <div class="gew_navbar-submenu container">
-                          <div onclick="gew.toggleNavbarSubmenu('hide')" class="gew_navbar-submenu-pageOverlay"></div>
                           <div class="row">
                             {{#each submenu}}
                               <a href="{{ href }}" class="col-sm-6  gew_navbar-submenu-btn">
