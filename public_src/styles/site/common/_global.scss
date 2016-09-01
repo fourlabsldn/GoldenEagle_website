@@ -31,8 +31,8 @@ h3 {
   width: 100%;
   padding-top: 50px;
   padding-bottom: 100px;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 130px;
+  padding-right: 130px;
   max-width: $max-section-width;
   margin: 0 auto;
 
@@ -142,65 +142,94 @@ h3 {
 .gew_doubleColumn-col2 {
 }
 
-// ================== TABS =================== //
-.gew_tabs-wrapper {
+// ================== STICKY NAV =================== //
+.gew_stickyNav {
   background-color: $brand-primary;
+  position: sticky;
+  top: 0;
+  height: auto;
+  z-index: $navbar-z-index - 10;
 }
 
-.gew_tabs {
+.gew_stickyNav-list {
   padding-top: 0;
   padding-bottom: 0;
   border: 0;
+  list-style: none;
 
-  & > li > a,
-  & > li.active > a  {
-    background-color: transparent;
-    color: $gray-base;
-    border: 0;
+  li {
+    display: inline-block;
+    padding: 0;
     margin: 0;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    font-size: .9em;
-
-    &:focus {
-      background-color: transparent;
-      color: $gray-base;
-      border: 0;
-      outline: 0;
-    }
-
-    &:hover {
-      background-color: lighten($brand-primary, 1%);
-      color: $gray-base;
-      border: 0;
-      outline: 0;
-    }
-
-    &:active {
-      background-color: darken($brand-primary, 1%);
-      border: 0;
-      outline: 0;
-    }
   }
 
-  & > li.active > a {
-    font-weight: bold;
+  // @include sm-screen {
+  //   padding-top: 1em;
+  //   padding-bottom: 1em;
+  //   & > li {
+  //     padding: 0 .5em;
+  //   }
+  //
+  //   & > li > a,
+  //   & > li.active > a {
+  //     font-size: 1em;
+  //     padding: 1em 0;
+  //   }
+  // }
+}
+
+.gew_stickyNav-list-item {
+  background-color: transparent;
+  color: $gray-base;
+  border: 0;
+  margin: 0;
+  padding: 2em 1em;
+  font-size: .9em;
+  letter-spacing: .02em;
+  display: block;
+
+  &:hover {
+    // When text goes thicker, it occupies more space,
+    // corrected letter-spacing fixes that
+    font-weight: normal;
+    letter-spacing: .00em;
   }
 
-  @include sm-screen {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    & > li {
-      padding: 0 .5em;
-    }
-
-    & > li > a,
-    & > li.active > a {
-      font-size: 1em;
-      padding: 1em 0;
-    }
+  &, &:visited, &:focus, &:hover {
+    color: $gray-base;
+    text-decoration: none;
   }
 }
+//   & > li > a,
+//   & > li.active > a  {
+//
+//     &:focus {
+//       background-color: transparent;
+//       color: $gray-base;
+//       border: 0;
+//       outline: 0;
+//     }
+//
+//     &:hover {
+//       background-color: lighten($brand-primary, 1%);
+//       color: $gray-base;
+//       border: 0;
+//       outline: 0;
+//     }
+//
+//     &:active {
+//       background-color: darken($brand-primary, 1%);
+//       border: 0;
+//       outline: 0;
+//     }
+//   }
+//
+//   & > li.active > a {
+//     font-weight: bold;
+//   }
+//
+//
+// }
 
 // ================== TABLE =================== //
 .gew_table {

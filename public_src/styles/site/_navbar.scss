@@ -160,8 +160,8 @@ $navbar-submenu-opacity-anim-duration: .3s;
 .gew_navbar-submenu-btn {
    position: relative;
    overflow: hidden;
-   padding-bottom: 25%; // this will guarantee the height of the button
-
+   height: 25vw;
+   max-height: calc((100vh - #{$navbar-height}) / 2);
    @include lg-screen {
     //  padding-bottom: 15%; // this will guarantee the height of the button
    }
