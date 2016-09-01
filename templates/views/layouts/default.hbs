@@ -9,10 +9,13 @@
     <script type="text/javascript">
       var gew = {
         selectTab: function (e) { e.preventDefault(); $(this).tab('show'); },
-        toggleNavbarSubmenu: function (el) {
-          el.querySelector('.gew_navbar-submenu').classList.toggle('gew_navbar-submenu--visible');
-					const navbar = document.querySelector('.navbar.navbar-default');
-					navbar.classList.toggle('gew_navbar-background-opaque')
+        toggleNavbarSubmenu: function (showHide) {
+          var submenu = document.querySelector('.gew_navbar-submenu');
+          var navbar = document.querySelector('.navbar.navbar-default');
+          var method = showHide === 'show' ? 'add' : 'remove';
+
+          submenu.classList[method]('gew_navbar-submenu--visible');
+          navbar.classList[method]('gew_navbar-background-opaque');
         }
       }
     </script>
@@ -61,15 +64,19 @@
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-left">
 									{{# each navLinks}}
-  									<li
-                      {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}
-                      {{#if submenu}} onclick="gew.toggleNavbarSubmenu(this)" {{/if}}
-                      >
-  										<a href="{{ href }}">{{ label }}</a>
+  									<li class="{{#ifeq ../section key}}active{{/ifeq}}">
+  										<a href="{{ href }}">
+                        <span
+                          {{#if submenu}}
+                            onmouseover="gew.toggleNavbarSubmenu('show')"
+                            onclick="gew.toggleNavbarSubmenu('hide')"
+                          {{/if}}
+                        >
+                        {{ label }}</a>
 
                       {{#if submenu}}
                         <div class="gew_navbar-submenu container">
-                          <div onclick="gew.toggleNavbarSubmenu()" class="gew_navbar-submenu-pageOverlay"></div>
+                          <div onclick="gew.toggleNavbarSubmenu('hide')" class="gew_navbar-submenu-pageOverlay"></div>
                           <div class="row">
                             {{#each submenu}}
                               <a href="{{ href }}" class="col-sm-6  gew_navbar-submenu-btn">
