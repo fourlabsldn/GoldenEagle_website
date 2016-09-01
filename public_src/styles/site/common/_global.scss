@@ -36,15 +36,15 @@ h3 {
   max-width: $max-section-width;
   margin: 0 auto;
 
-  // @include xs-screen {
-  //   padding-left: 1.5em;
-  //   padding-right: 1.5em;
-  // }
-  //
-  // @media (min-width: $max-section-width) {
-  //   padding-left: calc((100vw - #{$max-section-width}) / 2);
-  //   padding-right: calc((100vw - #{$max-section-width}) / 2);
-  // }
+  @include xs-screen {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+
+  @media (min-width: $max-section-width) {
+    padding-left: calc((100vw - #{$max-section-width}) / 2);
+    padding-right: calc((100vw - #{$max-section-width}) / 2);
+  }
 }
 
 .gew_sectionContent-extraPadding {
@@ -143,12 +143,18 @@ h3 {
 }
 
 // ================== STICKY NAV =================== //
+
 .gew_stickyNav {
   background-color: $brand-primary;
   position: sticky;
-  top: 0;
-  height: auto;
+  position: absolute;
+  width: 100%;
   z-index: $navbar-z-index - 10;
+
+  &.stuck {
+    top: 0;
+    height: auto;
+  }
 }
 
 .gew_stickyNav-list {
@@ -162,23 +168,11 @@ h3 {
     padding: 0;
     margin: 0;
   }
-
-  // @include sm-screen {
-  //   padding-top: 1em;
-  //   padding-bottom: 1em;
-  //   & > li {
-  //     padding: 0 .5em;
-  //   }
-  //
-  //   & > li > a,
-  //   & > li.active > a {
-  //     font-size: 1em;
-  //     padding: 1em 0;
-  //   }
-  // }
 }
 
-.gew_stickyNav-list-item {
+// The dummy takes care of filling the nav position
+// when it goes fixed
+.gew_stickyNav-list-item, .gew_stickyNavDummy {
   background-color: transparent;
   color: $gray-base;
   border: 0;
