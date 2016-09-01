@@ -62,7 +62,7 @@
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-left">
 									{{# each navLinks}}
-  									<li class="{{#ifeq ../section key}}active{{/ifeq}}">
+  									<li class="{{#ifeq ../section key}}active{{/ifeq}} gew_navbar-button">
   										<a href="{{ href }}"
                           {{#if submenu}}
                             onmouseover="gew.toggleNavbarSubmenu('show')"
@@ -71,6 +71,10 @@
                         >
                         {{ label }}
                       </a>
+
+                        {{#ifeq ../section key}}
+                          <div class="gew_navbar-highlight">SSSS</div>
+                        {{/ifeq}}
 
                       {{#if submenu}}
                         <div class="gew_navbar-submenu container">
@@ -186,5 +190,15 @@
 		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
     <script src="/js/zenscroll/zenscroll-min.js"></script>
     <script src="/js/sticky-polyfill.js"></script>
+
+    <script type="text/javascript">
+      var higlight = document.querySelector('.gew_navbar-highlight');
+      var buttons = [].slice.call(document.querySelectorAll('.gew_navbar-button'));
+      var activeSelector = '.gew_navbar-button.active';
+      //
+      // require(['navbarHighlighter'], function(navbarHighlighter) {
+      //   navbarHighlighter(highlight, buttons, activeSelector);
+      // });
+    </script>
 	</body>
 </html>
