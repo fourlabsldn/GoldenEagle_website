@@ -28,35 +28,36 @@ About.add({
 		},
 	},
 	'Landing section', {
-  	section_1: {
-  		content_1: {
-  			type: Types.Textarea,
-  			height: 200,
-  			label: 'Content',
-  		},
-  	},
+		section_1: {
+			content_1: {
+				type: Types.Textarea,
+				height: 200,
+				label: 'Content',
+			},
+		},
 	},
-  'Section 2', {
-    section_2: {
-      title: {
-        type: Types.Text,
-        label: 'Title',
-      },
-      content_1: {
-        type: Types.Html,
-        wysiwyg: true,
-        height: 500,
-        label: 'Small paragraph',
-      },
-      content_2: {
-        type: Types.Html,
-        wysiwyg: true,
-        height: 500,
-        label: 'Longer text',
-      },
-    },
-  },
+	'Section 2', {
+		section_2: {
+			title: {
+				type: Types.Text,
+				label: 'Title',
+			},
+			content_1: {
+				type: Types.Html,
+				wysiwyg: true,
+				height: 500,
+				label: 'Small paragraph',
+			},
+			content_2: {
+				type: Types.Html,
+				wysiwyg: true,
+				height: 500,
+				label: 'Longer text',
+			},
+		},
+	},
 	'Radi and Paul\'s quote', {
+		section_3: {
 			content_1: {
 				type: Types.Textarea,
 				height: 200,
