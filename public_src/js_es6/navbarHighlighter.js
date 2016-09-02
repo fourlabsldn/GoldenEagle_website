@@ -1,35 +1,47 @@
-// import _ from 'lodash/fp';
-const curry = () => {};
 
-const centerPoint = (el) => {
-  return el.offsetLeft + el.offsetWidth / 2;
+const scheduler = (delay) => {
+  let timeout;
+  return (task, now = false) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(task, now ? 0 : delay);
+  };
 };
 
-const elementDistance = curry((el1, el2) => {
-  return Math.abs(centerPoint(el1) - centerPoint(el2));
-});
+const centerPoint = (el) => {
+  const rect = el.getBoundingClientRect()
+  return rect.left + rect.width / 2;
+};
+
+const elementDistance = (el1, el2) => {
+  return centerPoint(el2) - centerPoint(el1);
+};
 
 const getTranslationX = (el) => {
-  return el.dataset.x;
+  return parseInt(el.dataset.x, 10) || 0;
+}
+
+// Impure
+const setTranslationX = (el, translation) => {
+  el.dataset.x = translation; // eslint-disable-line no-param-reassign
+  el.style.transform = `translateX(${translation}px)`; // eslint-disable-line no-param-reassign
 };
 
 // Impure
-const setTranslationX = curry((el, translation) => {
-  el.dataset.x = translation; // eslint-disable-line no-param-reassign
-  el.style.transform = `translateX(${translation})`; // eslint-disable-line no-param-reassign
-});
+const setWidth = (el, width) => {
+  el.style.width = `${width}px`; // eslint-disable-line no-param-reassign
+};
 
 // Impure because of setTranslationX
-const translateToElement = curry((translatedEl, referenceEl) => {
-  const calcDistance = elementDistance(translatedEl);
-  const previousTranlation = () => getTranslationX(translatedEl);
-  const translateEL = setTranslationX(translatedEl);
+const translateToElement = (translatedEl, referenceEl) => {
+  const distance = elementDistance(translatedEl, referenceEl);
+  const previousTranslation = getTranslationX(translatedEl);
+  setTranslationX(translatedEl, distance + previousTranslation);
+};
 
-  [referenceEl]
-    .map(calcDistance)
-    .map(d => d - previousTranlation())
-    .map(translateEL);
-});
+const setHighlightedEl = (highlight, el) => {
+  translateToElement(highlight, el);
+  setWidth(highlight, el.clientWidth);
+};
 
 /**
  * Moves a highlight element under a menu item
@@ -41,10 +53,16 @@ const translateToElement = curry((translatedEl, referenceEl) => {
  */
 export default function handleHighlight(highlight, buttons, activeSelector) {
   const activeElement = document.querySelector(activeSelector);
-  const translateHighlightTo = translateToElement(highlight);
+  const now = true;
+  const schedule = scheduler(200); // ms
+  const translateHighlightTo = (el, immediate) => {
+    schedule(() => setHighlightedEl(highlight, el), immediate);
+  };
 
-  translateHighlightTo(activeElement);
+  translateHighlightTo(activeElement, now);
+  // translateHighlightTo(activeElement, now);
   buttons.forEach(btn => {
-    btn.addEventListener('mouseover', translateHighlightTo(btn));
+    btn.addEventListener('mouseover', () => translateHighlightTo(btn, now));
+    btn.addEventListener('mouseout', () => translateHighlightTo(activeElement));
   });
 }

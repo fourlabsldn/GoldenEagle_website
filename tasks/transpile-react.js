@@ -29,7 +29,7 @@ const origin = paths.es6.src;
 const destiny = paths.es6.dist;
 
 // Path resolution for these modules must be included in the pages' require.config
-const extenalDependencies = ['react', 'react-dom'];
+const extenalDependencies = ['react', 'react-dom', 'lodash/fp'];
 
 
 gulp.task(taskName, () => {
