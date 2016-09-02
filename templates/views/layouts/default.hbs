@@ -23,6 +23,8 @@
 			requirejs.config({
 				baseUrl: '/js',
 				paths: {
+          'moment': 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min',
+          'moment-timezone': 'https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.5/moment-timezone-with-data-2010-2020',
 					'react': 'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min',
 					'react-dom': 'https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min',
 				},
@@ -76,7 +78,7 @@
                         {{/if}}
                       >
                         {{ label }}
-                        
+
                         {{#ifeq ../section key}}
                         <div class="gew_navbar-highlight"></div>
                         {{/ifeq}}
@@ -150,7 +152,7 @@
       <div class="container gew_sectionContent">
         <div class="row">
           <div class="col-sm-6 gew_footer-col-left">
-            <p class="gew_footer-biggerFont">London 05:51pm</p>
+            <p class="gew_footer-biggerFont">London <span class="gew_timeInLondon"></span></p>
             <p>
               10 Portman Street </br>
               London, W1H 6DZ </br>
@@ -201,6 +203,20 @@
       require(['navbarHighlighter'], function(navbarHighlighter) {
         navbarHighlighter(highlight, buttons, activeSelector);
       });
+    </script>
+
+
+    <script>
+      // Update footer London time every minute
+      require(['moment-timezone'], function(moment) {
+        function setTime() {
+          var time = moment().tz('Europe/London').format('HH:mm');
+          document.querySelector('.gew_timeInLondon').innerHTML = time;
+        }
+
+        setTime();
+        setInterval(setTime, 60000);
+      })
     </script>
 	</body>
 </html>

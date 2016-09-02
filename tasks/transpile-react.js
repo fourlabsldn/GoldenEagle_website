@@ -14,6 +14,7 @@ const taskName = path.parse(__filename).name;
 module.exports = taskName;
 
 const gulp = require('gulp');
+const uglify = require('gulp-uglify');
 const paths = require('./paths.json');
 const buffer = require('vinyl-buffer');
 const flatmap = require('gulp-flatmap');
@@ -71,6 +72,7 @@ function doTranspilation(stream, file) {
 	// tell gulp-sourcemaps to load the inline sourcemap produced by rollup-stream.
 	.pipe(sourcemaps.init({ loadMaps: true }))
 	// Further modify the file here if needed
+  .pipe(uglify())
 	// write the sourcemap alongside the output file.
 	.pipe(sourcemaps.write('.'));
 }
