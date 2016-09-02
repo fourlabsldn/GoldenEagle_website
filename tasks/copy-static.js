@@ -1,33 +1,29 @@
-const taskName = require('path').parse(__filename).name;
-module.exports = taskName;
-
 const gulp = require('gulp');
 const paths = require('./paths');
+const straw = require('./straw');
 
-// Config
-const origin = paths.static.src;
-const destiny = paths.static.dist;
-const folderMapping = paths.static.map;
+module.exports = straw(paths, (task) => {
+  // All paths with an src
+  const excludePaths = Object.keys(paths)
+    .map(k => paths[k])
+    .map(v => v.src)
+    .filter(p => !task.src.includes(p));
 
-// All paths with an src
-const excludePaths = Object.keys(paths)
-	.map(k => paths[k])
-	.map(v => v.src)
-	.filter(p => p && p !== origin);
+  const folderMapping = task.map;
+  gulp.task(task.name, () => {
+    const mapped = Object.keys(folderMapping);
+    const exclude = [...excludePaths, ...mapped];
+    copy(task.src, task.dest, exclude);
 
-gulp.task(taskName, () => {
-	const mapped = Object.keys(folderMapping);
-	const exclude = [...excludePaths, ...mapped];
-	copy(origin, destiny, exclude);
-
-	// Copy mapped folders
-	mapped.forEach(p => copy(p, folderMapping[p], excludePaths));
+    // Copy mapped folders
+    mapped.forEach(p => copy(p, folderMapping[p], excludePaths));
+  });
 });
 
 
 function copy(orig, dest, exclude) {
-	const toExclude = exclude.map(p => `!${p}`);
+  const toExclude = exclude.map(p => `!${p}`);
 
-	gulp.src([orig, ...toExclude])
+  gulp.src([orig, ...toExclude])
 		.pipe(gulp.dest(dest));
 }

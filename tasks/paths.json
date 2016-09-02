@@ -5,20 +5,23 @@
     "keystone.js",
     "package.json"
 	],
-	"style": {
+	"sass": {
 		"src": "./public_src/styles/**/*.scss",
-		"dist": "./public/styles/"
+		"dest": "./public/styles/"
 	},
-  "static": {
+  "copy-static": {
     "src": "./public_src/**/*",
-    "dist": "./public",
+    "dest": "./public",
 		"map": {
 			"./public_src/js_static/**/*": "public/js"
 		}
   },
-	"es6": {
+	"transpile-react": {
     "watch": "./public_src/js_es6/**/*.js",
 		"src": "./public_src/js_es6/*.js",
-		"dist": "./public/js"
-	}
+		"dest": "./public/js"
+	},
+  "link-dependencies": {
+    "dest": "./public/js"
+  }
 }

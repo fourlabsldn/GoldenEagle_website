@@ -9,11 +9,8 @@ Hidden dependencies:
 // ============================================================================
 // Transpile ES7 react code into ES5. Includes support for async await.
 // ============================================================================
-const path = require('path');
-const taskName = path.parse(__filename).name;
-module.exports = taskName;
-
 const gulp = require('gulp');
+const path = require('path');
 const uglify = require('gulp-uglify');
 const paths = require('./paths.json');
 const buffer = require('vinyl-buffer');
@@ -25,19 +22,19 @@ const sourcemaps = require('gulp-sourcemaps');
 const replace = require('rollup-plugin-replace');
 const commonjs = require('rollup-plugin-commonjs');
 const nodeResolve = require('rollup-plugin-node-resolve');
-
-const origin = paths.es6.src;
-const destiny = paths.es6.dist;
+const straw = require('./straw');
 
 // Path resolution for these modules must be included in the pages' require.config
 const extenalDependencies = ['react', 'react-dom', 'lodash/fp'];
 
-
-gulp.task(taskName, () => {
-  return gulp.src(origin)
-		.pipe(flatmap(doTranspilation)) // call doTranspilation for each file
-		.pipe(gulp.dest(destiny));
+module.exports = straw(paths, (task) => {
+  gulp.task(task.name, () => {
+    return gulp.src(task.src)
+    .pipe(flatmap(doTranspilation)) // call doTranspilation for each file
+    .pipe(gulp.dest(task.dest));
+  });
 });
+
 
 function doTranspilation(stream, file) {
   const fileName = path.parse(file.path).base;

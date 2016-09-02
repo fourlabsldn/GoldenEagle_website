@@ -1,8 +1,8 @@
-const taskName = require('path').parse(__filename).name;
-module.exports = taskName;
-
 const gulp = require('gulp');
 const paths = require('../paths.json');
-const origin = paths.style.src;
 const sass = require('../sass');
-gulp.task(taskName, () => gulp.watch(origin, [sass]));
+const straw = require('../straw');
+
+module.exports = straw(paths, (task) => {
+  gulp.task(task.name, () => gulp.watch(task.src, [sass.name]));
+});

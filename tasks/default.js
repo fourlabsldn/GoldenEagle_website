@@ -1,9 +1,11 @@
-const taskName = require('path').parse(__filename).name;
-module.exports = taskName;
-
 const gulp = require('gulp');
 const watch = require('./watch');
 const runKeystone = require('./run-keystone');
 const build = require('./build');
+const straw = require('./straw');
 
-gulp.task(taskName, [build, watch, runKeystone]);
+const tasks = [build, watch, runKeystone].map(t => t.name);
+
+module.exports = straw({}, (task) => {
+  gulp.task(task.name, tasks);
+});
