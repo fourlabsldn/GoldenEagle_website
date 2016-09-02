@@ -7,13 +7,9 @@ const scheduler = (delay) => {
   };
 };
 
-const getPosition = (el) => {
-  return el.getBoundingClientRect().left;
-};
+const getPosition = (el) => el.getBoundingClientRect().left;
 
-const elementLeftDistance = (el1, el2) => {
-  return getPosition(el2) - getPosition(el1);
-};
+const elementLeftDistance = (el1, el2) => getPosition(el2) - getPosition(el1);
 
 // Impure
 const setTranslationX = (el, translation) => {
@@ -26,19 +22,21 @@ const setWidth = (el, width) => {
   el.style.width = `${width}px`; // eslint-disable-line no-param-reassign
 };
 
-// Impure because of setTranslationX
-const translateToElement = (translatedEl, referenceEl) => {
+const calcTranslationDistance = (translatedEl, referenceEl) => {
   // Because the highlighter is being
   // moved around, let's calculate the distance between it's
   // parent elemen and the referenceEl.
   const parent = translatedEl.parentElement;
   const distance = elementLeftDistance(parent, referenceEl);
-  setTranslationX(translatedEl, distance);
+  return distance;
 };
 
 const setHighlightedEl = (highlight, el) => {
-  translateToElement(highlight, el);
-  setWidth(highlight, el.clientWidth);
+  const distance = calcTranslationDistance(highlight, el);
+  setTranslationX(highlight, distance);
+
+  const width = el.clientWidth;
+  setWidth(highlight, width);
 };
 
 /**
