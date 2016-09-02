@@ -32,11 +32,15 @@ const calcTranslationDistance = (translatedEl, referenceEl) => {
 };
 
 const setHighlightedEl = (highlight, el) => {
-  const distance = calcTranslationDistance(highlight, el);
-  setTranslationX(highlight, distance);
+  if (el) {
+    const distance = calcTranslationDistance(highlight, el);
+    setTranslationX(highlight, distance);
 
-  const width = el.clientWidth;
-  setWidth(highlight, width);
+    const width = el.clientWidth;
+    setWidth(highlight, width);
+  } else {
+    setWidth(highlight, 0);
+  }
 };
 
 /**

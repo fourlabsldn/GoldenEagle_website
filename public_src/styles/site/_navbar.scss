@@ -59,6 +59,11 @@
     }
   }
 }
+
+.navbar-brand {
+  position: relative; // So that the hightlight is contained within it.
+}
+
 .gew_navbar-logo {
   height: 70px;
   position: relative;
@@ -74,7 +79,7 @@
   bottom: 2em;
   left: 0;
   height: 0px;
-  width: 100%;
+  width: 0px;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid $brand-primary;
@@ -234,7 +239,7 @@ $navbar-submenu-opacity-anim-duration: .3s;
     top: 0;
     // Let's not influence the animation of the navbar opening
     overflow: hidden;
-    height: 0;
+    z-index: 2;
   }
 
   .gew_navbar-submenu--visible {
