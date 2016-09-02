@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>GoldenEagle_website</title>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       var gew = {
         selectTab: function (e) { e.preventDefault(); $(this).tab('show'); },
         toggleNavbarSubmenu: function (showHide) {
@@ -15,7 +15,8 @@
           header.classList[method]('gew_navbar-submenu--visible');
         }
       }
-    </script>
+    </script> -->
+
 
 		<!-- RequireJS -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
@@ -28,6 +29,7 @@
 				},
 			});
 		</script>
+
 
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -183,22 +185,19 @@
 			//- you can upgrade to 2.1.4 (also bundled) for better performance.
 		--}}
 		<script src="/js/jquery/jquery-1.11.3.min.js"></script>
-		{{!--
-			//- Customise which Bootstrap javascript files are served by including
-			//- them specifically here, instead of bootstrap-3.3.5.min.js
-		--}}
 		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
-    <script src="/js/zenscroll/zenscroll-min.js"></script>
     <script src="/js/sticky-polyfill.js"></script>
+    <script>require(['zenscroll/zenscroll-min'])</script>
 
     <script type="text/javascript">
       var higlight = document.querySelector('.gew_navbar-highlight');
       var buttons = [].slice.call(document.querySelectorAll('.gew_navbar-button'));
       var activeSelector = '.gew_navbar-button.active';
-      //
-      // require(['navbarHighlighter'], function(navbarHighlighter) {
-      //   navbarHighlighter(highlight, buttons, activeSelector);
-      // });
+
+      require(['navbarHighlighter'], function(navbarHighlighter) {
+        console.log(arguments);
+        // navbarHighlighter(highlight, buttons, activeSelector);
+      });
     </script>
 	</body>
 </html>

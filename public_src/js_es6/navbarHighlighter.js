@@ -1,5 +1,5 @@
-import _ from 'lodash/fp';
-const curry = _.curry;
+// import _ from 'lodash/fp';
+const curry = () => {};
 
 const centerPoint = (el) => {
   return el.offsetLeft + el.offsetWidth / 2;
