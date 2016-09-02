@@ -7,18 +7,13 @@ const scheduler = (delay) => {
   };
 };
 
-const centerPoint = (el) => {
-  const rect = el.getBoundingClientRect()
-  return rect.left + rect.width / 2;
+const getPosition = (el) => {
+  return el.getBoundingClientRect().left;
 };
 
-const elementDistance = (el1, el2) => {
-  return centerPoint(el2) - centerPoint(el1);
+const elementLeftDistance = (el1, el2) => {
+  return getPosition(el2) - getPosition(el1);
 };
-
-const getTranslationX = (el) => {
-  return parseInt(el.dataset.x, 10) || 0;
-}
 
 // Impure
 const setTranslationX = (el, translation) => {
@@ -33,9 +28,12 @@ const setWidth = (el, width) => {
 
 // Impure because of setTranslationX
 const translateToElement = (translatedEl, referenceEl) => {
-  const distance = elementDistance(translatedEl, referenceEl);
-  const previousTranslation = getTranslationX(translatedEl);
-  setTranslationX(translatedEl, distance + previousTranslation);
+  // Because the highlighter is being
+  // moved around, let's calculate the distance between it's
+  // parent elemen and the referenceEl.
+  const parent = translatedEl.parentElement;
+  const distance = elementLeftDistance(parent, referenceEl);
+  setTranslationX(translatedEl, distance);
 };
 
 const setHighlightedEl = (highlight, el) => {
@@ -60,7 +58,6 @@ export default function handleHighlight(highlight, buttons, activeSelector) {
   };
 
   translateHighlightTo(activeElement, now);
-  // translateHighlightTo(activeElement, now);
   buttons.forEach(btn => {
     btn.addEventListener('mouseover', () => translateHighlightTo(btn, now));
     btn.addEventListener('mouseout', () => translateHighlightTo(activeElement));
