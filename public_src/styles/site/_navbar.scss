@@ -51,9 +51,9 @@
 }
 
 .gew_navbar-logo {
-  // height: 70px;
-  // position: relative;
-  // top: -30px;
+  height: 80px;
+  position: relative;
+  top: -10px;
 }
 
 .gew_navbar-collapse {
@@ -64,7 +64,7 @@
 .gew_navbar-collapse-right {
   white-space: nowrap;
   list-style: none;
-  padding-left: 1em;
+  padding-left: .5em;
 
   li {
     display: inline-block;
