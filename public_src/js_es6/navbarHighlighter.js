@@ -8,7 +8,7 @@ const scheduler = (delay) => {
 };
 
 const getPosition = (el) => el.getBoundingClientRect().left;
-
+const getWidth = el => el.getBoundingClientRect().width;
 const elementLeftDistance = (el1, el2) => getPosition(el2) - getPosition(el1);
 
 // Impure
@@ -36,7 +36,7 @@ const setHighlightedEl = (highlight, el) => {
     const distance = calcTranslationDistance(highlight, el);
     setTranslationX(highlight, distance);
 
-    const width = el.clientWidth;
+    const width = getWidth(el);
     setWidth(highlight, width);
   } else {
     setWidth(highlight, 0);

@@ -1,82 +1,83 @@
-.navbar {
+.gew_navbar {
   background-color: $navbar-bg;
   border: 0;
   z-index: $navbar-z-index;
   padding: 0 5vw;
   position: relative;
+  color: $white;
+  height: $navbar-height;
   transition: background-color .3s ease-in-out;
 
-  // Navbar expanded and expanding.
-  .collapsing, .collapse.in {
-    background-color: $navbar-bg;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+
+.gew_navbar-button {
+	color: inherit;
+	font-weight: lighter;
+	margin: 0 0.5vw;
+  margin: 0;
+  padding: 3.5em .8em;
+
+  @include lg-screen {
+    padding-left: 1.2em;
+    padding-right: 1.2em;
   }
 
-  // Set text options
-  .navbar-nav > li,
-  .navbar-nav > li.active {
-    position: static; // Allow submenu to expand to full page width
-    color: $white;
-    & > a {
-      color: inherit;
-      font-weight: lighter;
-      margin: 0 .5vw;
+	&:focus, &:visited {
+		color: inherit;
+	}
 
-      &:hover {
-        color: $brand-primary;
-      }
-      &:focus {
-        color: inherit;
-      }
-    }
-  }
-
-  // Toggle button
-  .navbar-toggle {
-    &:focus {
-      background-color: transparent;
-    }
-    &:active, &:hover {
-      background-color: $brand-primary;
-    }
-
-    .icon-bar {
-      background-color: white;
-    }
-  }
-
-  // highlight active field
-  .active a{
-    background-color: transparent !important;
-    color: inherit;
-
-    &:after {
-      content: ' ';
-      position: absolute;
-      left: 0;
-      right: 0;
-      border-bottom: 1px solid $brand-primary;
-      transform: translateY(1.7em);
-    }
+  &:hover {
+    color: $brand-primary;
+    text-decoration: none;
+    cursor: pointer;
   }
 }
 
-.navbar-brand {
+.gew_navbar-button-divider {
+  position: relative;
+  &:after {
+    content: '|';
+    position: absolute;
+    right: -.4em;
+  }
+}
+.gew_navbar-brand {
   position: relative; // So that the hightlight is contained within it.
+  padding-right: 1em;
 }
 
 .gew_navbar-logo {
-  height: 70px;
-  position: relative;
-  top: -30px;
+  // height: 70px;
+  // position: relative;
+  // top: -30px;
 }
 
-.gew_navbar-button {
-  position: relative;
+.gew_navbar-collapse {
+  display: flex;
+}
+
+.gew_navbar-collapse-left,
+.gew_navbar-collapse-right {
+  white-space: nowrap;
+  list-style: none;
+  padding-left: 1em;
+
+  li {
+    display: inline-block;
+  }
+}
+
+.gew_navbar-collapse-right {
+  margin-left: auto;
 }
 
 .gew_navbar-highlight {
   position: absolute;
-  bottom: 2em;
+  bottom: -1em;
   left: 0;
   height: 0px;
   width: 0px;
@@ -145,8 +146,8 @@
 // ============= SUBMENU ============== //
 
 .gew_navbar-submenu--visible{
-  .navbar.navbar-default{
-    background-color: $navbar-bg;
+  .gew_navbar.gew_navbar{ // solve specificity problems
+    background-color: $navbar-bg ;
   }
 }
 
@@ -155,6 +156,7 @@ $navbar-submenu-opacity-anim-duration: .3s;
   width: 100%;
   position: absolute;
   left: 0;
+  top: $navbar-height;
 }
 
 .gew_navbar-submenu-pageOverlay {
@@ -184,9 +186,6 @@ $navbar-submenu-opacity-anim-duration: .3s;
    overflow: hidden;
    height: 25vw;
    max-height: calc((100vh - #{$navbar-height}) / 2);
-   @include lg-screen {
-    //  padding-bottom: 15%; // this will guarantee the height of the button
-   }
 }
 
 .gew_navbar-submenu-background {

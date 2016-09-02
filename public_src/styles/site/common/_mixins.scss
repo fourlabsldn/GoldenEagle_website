@@ -4,7 +4,7 @@
 
 // To be included in classes on the body tag.
 @mixin transparentNavbar {
-  .navbar{
+  .gew_navbar{
     background-color: transparent;
     position: absolute;
     top: 0;
@@ -70,7 +70,7 @@
 }
 
 @mixin lg-screen() {
-  @media (min-width: $screen-sm-max) {
+  @media (min-width: $screen-md-max) {
     @content;
   }
 }
