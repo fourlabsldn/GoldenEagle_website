@@ -1,0 +1,75 @@
+<div id="header">
+    <div onmouseover="gew.toggleNavbarSubmenu('hide')" class="gew_navbar-submenu-pageOverlay"></div>
+
+
+    <div role="navigation" class="navbar navbar-default">
+      <div class="container-fluid">
+
+        <!-- Navbar part that shows in mobile view -->
+        <div class="navbar-header">
+          <!-- Toggle navigation -->
+          <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+
+          <!-- Logo Image -->
+          <a href="/" class="navbar-brand">
+            <img
+              class="gew_navbar-logo"
+              sizes="50px"
+              src="{{srcSet 'logo_uiauoz.svg' 50}}"
+              alt="Golden Eagle"
+              height="50px"
+            />
+            <div class="gew_navbar-highlight"></div>
+          </a>
+        </div>
+
+        <!-- Part that collapses -->
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-left">
+              {{# each navLinks}}
+                <li>
+                {{#if submenu}}
+                        <a href="{{ href }}"
+                          class="gew_navbar-button {{#ifeq ../section key}}active{{/ifeq}}"
+                          onmouseover="gew.toggleNavbarSubmenu('show')"
+                          onclick="gew.toggleNavbarSubmenu('hide')"
+                        >
+                          {{ label }}
+                        </a>
+
+                        <div class="gew_navbar-submenu container">
+                          <div class="row">
+                            {{#each submenu}}
+                              <a href="{{ href }}" class="col-sm-6  gew_navbar-submenu-btn">
+                                <img
+                                  class="gew_navbar-submenu-background"
+                                  srcset="{{srcSet background}}"
+                                  sizes="(max-width: 1150px) 100vw, 50vw"
+                                  src="{{srcSet background 700}}"
+                                  alt="{{ label }}"
+                                />
+                                <div class="gew_navbar-submenu-overlay"></div>
+                                <span class="gew_navbar-submenu-title">{{ label }}</span>
+                              </a>
+                            {{/each}}
+                          </div>
+                        </div>
+                {{else}}
+                        <a href="{{ href }}" class="gew_navbar-button" onmouseover="gew.toggleNavbarSubmenu('hide')">
+                          {{ label }}
+                        </a>
+                {{/if}}
+              </li>
+            {{/each}}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a>Language</a></li>
+            <li><a>Search</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
