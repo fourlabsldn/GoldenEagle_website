@@ -8,7 +8,7 @@ const loadTasksFrom = addr => {
   return taskNames;
 };
 
-module.exports = straw({}, (task) => {
+module.exports = straw((task) => {
   const watchTasks = loadTasksFrom(`./${task.name}`);
   gulp.task(task.name, watchTasks);
 });

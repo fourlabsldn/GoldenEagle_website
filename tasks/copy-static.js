@@ -1,8 +1,8 @@
 const gulp = require('gulp');
-const paths = require('./paths');
 const straw = require('./straw');
+const paths = require('../gulpfile');
 
-module.exports = straw(paths, (task) => {
+module.exports = straw((task) => {
   // All paths with an src
   const excludePaths = Object.keys(paths)
     .map(k => paths[k])

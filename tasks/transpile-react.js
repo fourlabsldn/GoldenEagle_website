@@ -12,7 +12,6 @@ Hidden dependencies:
 const gulp = require('gulp');
 const path = require('path');
 const uglify = require('gulp-uglify');
-const paths = require('./paths.json');
 const buffer = require('vinyl-buffer');
 const flatmap = require('gulp-flatmap');
 const rollup = require('rollup-stream');
@@ -27,7 +26,7 @@ const straw = require('./straw');
 // Path resolution for these modules must be included in the pages' require.config
 const extenalDependencies = ['react', 'react-dom', 'lodash/fp'];
 
-module.exports = straw(paths, (task) => {
+module.exports = straw((task) => {
   gulp.task(task.name, () => {
     return gulp.src(task.src)
     .pipe(flatmap(doTranspilation)) // call doTranspilation for each file

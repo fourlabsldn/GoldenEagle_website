@@ -67,14 +67,15 @@ const createReturnObj = (mainTaskName, tasks) => {
   return { src, dest, subTasks, name: mainTaskName };
 };
 
-module.exports = function straw(paths, registrationFunc) {
-  if (!paths) {
+module.exports = function straw(registrationFunc) {
+  const gulpfile = require(path.join(process.cwd(), 'gulpfile'));
+  if (!gulpfile) {
     throw new Error(`No paths object provided for ${filename}`);
   }
 
   const filename = getCallerFileName();
 
-  const tasksObj = paths[filename];
+  const tasksObj = gulpfile[filename];
 
   const mainTasksObj = tasksObj;
   const subTasksObj = subTasksProps(tasksObj);

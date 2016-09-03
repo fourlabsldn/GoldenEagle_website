@@ -5,6 +5,6 @@ const straw = require('./straw');
 
 const tasks = [copyStatic, sass].map(t => t.name);
 
-module.exports = straw({}, (task) => {
+module.exports = straw((task) => {
   gulp.task(task.name, tasks);
 });
