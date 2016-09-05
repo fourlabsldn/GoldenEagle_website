@@ -3,5 +3,5 @@ const sass = require('../sass');
 const straw = require('../straw');
 
 module.exports = straw.register((task) => {
-  gulp.task(task.name, () => gulp.watch(task.src, [sass.name]));
+  gulp.task(task.name, () => gulp.watch(sass.src, [sass.name]));
 });

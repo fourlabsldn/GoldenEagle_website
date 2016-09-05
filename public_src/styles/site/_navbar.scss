@@ -103,44 +103,27 @@
 
 // Make navbar collapse at specific width
 @media (max-width: $navbar-collapsing-width) {
-    // hide divider
-   .navbar-right li:first-child a:after {
-     display: none;
-   }
-    .navbar-header {
-        float: none;
+  .gew_navbar-collapse-left,
+  .gew_navbar-collapse-right {
+    display: none;
+  }
+
+  .gew_navbar-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .gew_navbar-toggle {
+    width: 1em;
+    height: 1em;
+    background-color: $brand-primary;
+
+    .gew_navbar--mobileMenu-visible & {
+      background-color: red;
     }
-    .navbar-left,.navbar-right {
-        float: none !important;
-    }
-    .navbar-toggle {
-        display: block;
-    }
-    .navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    .navbar-fixed-top {
-		top: 0;
-		border-width: 0 0 1px;
-	}
-    .navbar-collapse.collapse {
-        display: none!important;
-    }
-    .navbar-nav {
-        float: none!important;
-		margin-top: 7.5px;
-	}
-	.navbar-nav>li {
-        float: none;
-    }
-    .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .collapse.in{
-  		display:block !important;
-	}
+  }
+
 }
 
 // ============= SUBMENU ============== //

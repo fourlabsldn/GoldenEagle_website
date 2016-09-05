@@ -12,6 +12,9 @@
           var header = document.querySelector('#header');
           var method = showHide === 'show' ? 'add' : 'remove';
           header.classList[method]('gew_navbar-submenu--visible');
+        },
+        toggleMobileNavbar: function () {
+          document.querySelector('#header').classList.toggle('gew_navbar--mobileMenu-visible')
         }
       }
     </script>
