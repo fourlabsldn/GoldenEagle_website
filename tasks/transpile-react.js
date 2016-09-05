@@ -26,7 +26,7 @@ const straw = require('./straw');
 // Path resolution for these modules must be included in the pages' require.config
 const extenalDependencies = ['react', 'react-dom', 'lodash/fp'];
 
-module.exports = straw((task) => {
+module.exports = straw.register((task) => {
   gulp.task(task.name, () => {
     return gulp.src(task.src)
     .pipe(flatmap(doTranspilation)) // call doTranspilation for each file

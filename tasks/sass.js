@@ -5,7 +5,7 @@ const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const straw = require('./straw');
 
-module.exports = straw((task) => {
+module.exports = straw.register((task) => {
   gulp.task(task.name, () => {
     gulp.src(task.src)
     .pipe(sourcemaps.init())
