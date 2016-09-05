@@ -1,3 +1,6 @@
+$navbar-submenu-opacity-anim-duration: .3s;
+$navbar-transition: background-color .3s ease-in-out;
+
 .gew_navbar {
   background-color: $navbar-bg;
   border: 0;
@@ -6,13 +9,12 @@
   position: relative;
   color: $white;
   height: $navbar-height;
-  transition: background-color .3s ease-in-out;
+  transition: $navbar-transition;
 
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
 }
-
 
 .gew_navbar-button {
 	color: inherit;
@@ -101,11 +103,39 @@
   }
 }
 
+// Mobile nav
+
+.gew_navbar-mobileNav {
+  position: absolute;
+  list-style: none;
+  background-color: $navbar-bg;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: $navbar-height;
+  transition: $navbar-transition;
+  @include fade-hidden($navbar-submenu-opacity-anim-duration, ease-in-out);
+}
+
+.gew_navbar-mobileNav-submenu {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-left: 2em;  
+}
+
 // Make navbar collapse at specific width
 @media (max-width: $navbar-collapsing-width) {
   .gew_navbar-collapse-left,
-  .gew_navbar-collapse-right {
+  .gew_navbar-collapse-right,
+  .gew_navbar-highlight {
     display: none;
+  }
+
+  .gew_navbar--mobileMenu-visible {
+    .gew_navbar-mobileNav {
+      display: block;
+      @include fade-visible($navbar-submenu-opacity-anim-duration, ease-in-out);
+    }
   }
 
   .gew_navbar-header {
@@ -118,10 +148,7 @@
     width: 1em;
     height: 1em;
     background-color: $brand-primary;
-
-    .gew_navbar--mobileMenu-visible & {
-      background-color: red;
-    }
+    z-index: 1;
   }
 
 }
@@ -134,7 +161,6 @@
   }
 }
 
-$navbar-submenu-opacity-anim-duration: .3s;
 .gew_navbar-submenu {
   width: 100%;
   position: absolute;
@@ -153,14 +179,9 @@ $navbar-submenu-opacity-anim-duration: .3s;
 
 .gew_navbar-submenu-pageOverlay,
 .gew_navbar-submenu {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility .001s ease ($navbar-submenu-opacity-anim-duration + .1s),
-              opacity $navbar-submenu-opacity-anim-duration ease-in-out .001s;
+  @include fade-hidden($navbar-submenu-opacity-anim-duration);
   .gew_navbar-submenu--visible & {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity $navbar-submenu-opacity-anim-duration ease-in-out;
+    @include fade-visible($navbar-submenu-opacity-anim-duration);
   }
 }
 
@@ -214,24 +235,24 @@ $navbar-submenu-opacity-anim-duration: .3s;
   text-shadow: 0 0 2px rgba(0, 0, 0, .5);
 }
 
-
-// Make navbar collapse at specific width
-@media (max-width: $navbar-collapsing-width) {
-  .gew_navbar-submenu {
-    top: 0;
-    // Let's not influence the animation of the navbar opening
-    overflow: hidden;
-    z-index: 2;
-  }
-
-  .gew_navbar-submenu--visible {
-    height: auto;
-    overflow: visible;
-  }
-
-  .gew_navbar-submenu-btn {
-     display: block;
-     width: 100%;
-     padding-bottom: 25vh;
-   }
-}
+//
+// // Make navbar collapse at specific width
+// @media (max-width: $navbar-collapsing-width) {
+//   .gew_navbar-submenu {
+//     top: 0;
+//     // Let's not influence the animation of the navbar opening
+//     overflow: hidden;
+//     z-index: 2;
+//   }
+//
+//   .gew_navbar-submenu--visible {
+//     height: auto;
+//     overflow: visible;
+//   }
+//
+//   .gew_navbar-submenu-btn {
+//      display: block;
+//      width: 100%;
+//      padding-bottom: 25vh;
+//    }
+// }

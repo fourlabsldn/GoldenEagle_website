@@ -2,6 +2,24 @@
     <div onmouseover="gew.toggleNavbarSubmenu('hide')" class="gew_navbar-submenu-pageOverlay"></div>
 
     <div class="gew_navbar">
+      <!-- Mobile navbar -->
+      <ul class="gew_navbar-mobileNav">
+        {{# each navLinks}}
+          <li>
+            {{#if submenu}}
+              <a href="{{ href }}">{{ label }}</a>
+              <ul class="gew_navbar-mobileNav-submenu">
+                {{#each submenu}}
+                  <a href="{{ href }}" class="gew_navbar-mobileNav-submenu-btn">{{ label }}</a>
+                {{/each}}
+              </ul>
+            {{else}}
+              <a href="{{ href }}">{{ label }}</a>
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+
       <div class="gew_navbar-header">
         <!-- Toggling buttton -->
         <div class="gew_navbar-toggle" onclick="gew.toggleMobileNavbar('hide')"></div>

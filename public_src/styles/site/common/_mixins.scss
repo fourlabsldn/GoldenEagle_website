@@ -57,6 +57,19 @@
   z-index: -1;
 }
 
+@mixin fade-hidden($time: .2s, $easing: ease) {
+  visibility: hidden;
+  opacity: 0;
+  transition: all $time $easing, visibility 0s;
+}
+
+@mixin fade-visible($time: .2s, $easing: ease) {
+  visibility: visible;
+  opacity: 1;
+  transition: all $time $easing, visibility 0s;
+}
+
+
 @mixin sm-screen() {
   @media (max-width: $screen-md-min) {
     @content;
