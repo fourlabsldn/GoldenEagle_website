@@ -3,22 +3,26 @@
 
     <div class="gew_navbar">
       <!-- Mobile navbar -->
-      <ul class="gew_navbar-mobileNav">
-        {{# each navLinks}}
-          <li>
-            {{#if submenu}}
-              <a href="{{ href }}">{{ label }}</a>
-              <ul class="gew_navbar-mobileNav-submenu">
-                {{#each submenu}}
-                  <a href="{{ href }}" class="gew_navbar-mobileNav-submenu-btn">{{ label }}</a>
-                {{/each}}
-              </ul>
-            {{else}}
-              <a href="{{ href }}">{{ label }}</a>
-            {{/if}}
+      <div class="gew_navbar-mobileNav">
+        <ul class="gew_sectionContent-smallPadding">
+          {{# each navLinks}}
+          {{#if submenu}}
+          <li class="gew_navbar-mobileNav-btn-hasSubmenu">
+            <a href="{{ href }}" class="gew_navbar-mobileNav-label">{{ label }}</a>
+            <ul class="gew_navbar-mobileNav-submenu">
+              {{#each submenu}}
+              <a href="{{ href }}" class="gew_navbar-mobileNav-submenu-btn">{{ label }}</a>
+              {{/each}}
+            </ul>
           </li>
-        {{/each}}
-      </ul>
+          {{else}}
+          <li class="gew_navbar-mobileNav-btn">
+            <a href="{{ href }}" class="gew_navbar-mobileNav-label">{{ label }}</a>
+          </li>
+          {{/if}}
+          {{/each}}
+        </ul>
+      </div>
 
       <div class="gew_navbar-header">
         <!-- Toggling buttton -->

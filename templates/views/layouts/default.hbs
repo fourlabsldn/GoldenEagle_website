@@ -134,17 +134,6 @@
     <script src="/js/sticky-polyfill.js"></script>
     <script>require(['zenscroll/zenscroll-min'])</script>
 
-    <script type="text/javascript">
-      var highlight = document.querySelector('.gew_navbar-highlight');
-      var buttons = [].slice.call(document.querySelectorAll('.gew_navbar-button'));
-      var activeSelector = '.gew_navbar-button.active';
-
-      require(['navbarHighlighter'], function(navbarHighlighter) {
-        navbarHighlighter(highlight, buttons, activeSelector);
-      });
-    </script>
-
-
     <script>
       // Update footer London time every minute
       require(['moment-timezone'], function(moment) {
@@ -156,6 +145,14 @@
         setTime();
         setInterval(setTime, 60000);
       })
+    </script>
+
+
+    <!-- NAVBAR CONTROL -->
+    <script type="text/javascript">
+    require(['navbarControl'], function(navbarControl) {
+      navbarControl();
+    })
     </script>
 	</body>
 </html>

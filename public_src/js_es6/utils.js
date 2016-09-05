@@ -5,3 +5,7 @@ export function constrain(val, min, max) {
   const v = val - min;
   return min + (diff + (v % diff)) % diff;
 }
+
+export function toSelector(className) {
+  return `.${className}`;
+}

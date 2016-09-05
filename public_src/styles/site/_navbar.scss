@@ -103,8 +103,7 @@ $navbar-transition: background-color .3s ease-in-out;
   }
 }
 
-// Mobile nav
-
+// ======================= Mobile nav
 .gew_navbar-mobileNav {
   position: absolute;
   list-style: none;
@@ -112,19 +111,68 @@ $navbar-transition: background-color .3s ease-in-out;
   top: 0;
   left: 0;
   width: 100%;
-  padding-top: $navbar-height;
+  min-height: 200vh;
+  line-height: 2em;
+  padding-top: $navbar-mobile-height;
+
   transition: $navbar-transition;
   @include fade-hidden($navbar-submenu-opacity-anim-duration, ease-in-out);
+}
+
+.gew_navbar-mobileNav-btn,
+.gew_navbar-mobileNav-btn-hasSubmenu {
+  position: relative;
+  font-size: $font-size-h2;
+  color: $white;
+  margin: 1em 0;
+  list-style: none;
+
+}
+
+.gew_navbar-mobileNav-label {
+  font-size: inherit;
+  color: inherit;
+  display: inline;
+  &:hover, &:focus {
+    color: $brand-primary;
+    text-decoration: none;
+  }
+
+  .gew_navbar-mobileNav-btn-hasSubmenu &::after {
+    content: '›';
+    display: inline-block;
+    padding: 0 .5em .25em;
+    transition: all .2s ease-in-out;
+    transform-origin: center;
+    transform: rotateZ(90deg);
+  }
+
+  .gew_navbar-mobileNav-btn-hasSubmenu--visible &::after {
+  }
+}
+
+.gew_navbar-mobileNav-btn-hasSubmenu {
 }
 
 .gew_navbar-mobileNav-submenu {
   display: flex;
   flex-flow: column nowrap;
-  padding-left: 2em;  
+  padding-left: 2em;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .3s linear;
+
+  .gew_navbar-mobileNav-btn-hasSubmenu--visible &{
+    max-height: 15em;
+  }
 }
 
 // Make navbar collapse at specific width
 @media (max-width: $navbar-collapsing-width) {
+  .gew_navbar {
+    height: $navbar-mobile-height;
+  }
+
   .gew_navbar-collapse-left,
   .gew_navbar-collapse-right,
   .gew_navbar-highlight {
@@ -151,6 +199,10 @@ $navbar-transition: background-color .3s ease-in-out;
     z-index: 1;
   }
 
+  .gew_navbar-logo {
+    height: $navbar-mobile-height - 20px;
+    top: 0px;
+  }
 }
 
 // ============= SUBMENU ============== //
