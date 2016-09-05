@@ -7,5 +7,6 @@ export default {
     submenu: 'gew_navbar-mobileNav-submenu',
     hasSubmenuVisible: 'gew_navbar-mobileNav-btn-hasSubmenu--visible',
     hasSubmenu: 'gew_navbar-mobileNav-btn-hasSubmenu',
+    toggleBtn: 'gew_navbar-toggle',
   },
 };

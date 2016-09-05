@@ -49,7 +49,6 @@ $navbar-transition: background-color .3s ease-in-out;
 }
 .gew_navbar-brand {
   position: relative; // So that the hightlight is contained within it.
-  padding-right: 1em;
 }
 
 .gew_navbar-logo {
@@ -104,19 +103,72 @@ $navbar-transition: background-color .3s ease-in-out;
 }
 
 // ======================= Mobile nav
+$sliceHeight: 2px;
+.gew_navbar-toggle {
+  display: none;
+  padding: 20px 0;
+  font-size: 12px;
+}
+
+.gew_navbar-toggle-inner {
+  display:block;
+  height: $sliceHeight;
+  width: 2em;
+  background: transparent;
+  position:relative;
+  transition: all .2s ease;
+
+  &:before {
+    content:'';
+    position: absolute;
+    top:-.5em;
+    width: 2em;
+    height: $sliceHeight;
+    background: $white;
+    transition: all .2s ease;
+  }
+  &:after {
+    content:'';
+    position:absolute;
+    top: .5em;
+    width: 2em;
+    height: $sliceHeight;
+    background: $white;
+    transition: all .2s ease;
+  }
+
+  .gew_navbar--mobileMenu-visible & {
+    background:transparent;
+    &:before {
+      -webkit-transform:rotate(45deg);
+      top:0;
+    }
+    &:after {
+      -webkit-transform:rotate(-45deg);
+      top:0;
+    }
+  }
+}
+
 .gew_navbar-mobileNav {
   position: absolute;
   list-style: none;
-  background-color: $navbar-bg;
+  background-color: transparentize($navbar-bg, .05);
   top: 0;
   left: 0;
   width: 100%;
   min-height: 200vh;
   line-height: 2em;
-  padding-top: $navbar-mobile-height;
+  padding: $navbar-mobile-height 0 0 2em;
 
-  transition: $navbar-transition;
+  transform: scale(.95);
+
+  transition: all .3s ease;
   @include fade-hidden($navbar-submenu-opacity-anim-duration, ease-in-out);
+
+  ul {
+    padding-top: 0;
+  }
 }
 
 .gew_navbar-mobileNav-btn,
@@ -161,9 +213,22 @@ $navbar-transition: background-color .3s ease-in-out;
   overflow: hidden;
   max-height: 0;
   transition: max-height .3s linear;
+  color: inherit;
 
   .gew_navbar-mobileNav-btn-hasSubmenu--visible &{
     max-height: 15em;
+  }
+}
+
+.gew_navbar-mobileNav-submenu-btn {
+  color: inherit;
+
+  &:focus, &:active, &:hover {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $brand-primary;
   }
 }
 
@@ -182,6 +247,7 @@ $navbar-transition: background-color .3s ease-in-out;
   .gew_navbar--mobileMenu-visible {
     .gew_navbar-mobileNav {
       display: block;
+      transform: none;
       @include fade-visible($navbar-submenu-opacity-anim-duration, ease-in-out);
     }
   }
@@ -193,10 +259,7 @@ $navbar-transition: background-color .3s ease-in-out;
   }
 
   .gew_navbar-toggle {
-    width: 1em;
-    height: 1em;
-    background-color: $brand-primary;
-    z-index: 1;
+    display: block;
   }
 
   .gew_navbar-logo {

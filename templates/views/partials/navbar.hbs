@@ -4,14 +4,14 @@
     <div class="gew_navbar">
       <!-- Mobile navbar -->
       <div class="gew_navbar-mobileNav">
-        <ul class="gew_sectionContent-smallPadding">
+        <ul class="gew_sectionContent">
           {{# each navLinks}}
           {{#if submenu}}
           <li class="gew_navbar-mobileNav-btn-hasSubmenu">
             <a href="{{ href }}" class="gew_navbar-mobileNav-label">{{ label }}</a>
             <ul class="gew_navbar-mobileNav-submenu">
               {{#each submenu}}
-              <a href="{{ href }}" class="gew_navbar-mobileNav-submenu-btn">{{ label }}</a>
+                <a href="{{ href }}" class="gew_navbar-mobileNav-submenu-btn">{{ label }}</a>
               {{/each}}
             </ul>
           </li>
@@ -26,7 +26,10 @@
 
       <div class="gew_navbar-header">
         <!-- Toggling buttton -->
-        <div class="gew_navbar-toggle" onclick="gew.toggleMobileNavbar('hide')"></div>
+        <a class="gew_navbar-toggle" href="#">
+        	<div class="gew_navbar-toggle-inner"></div>
+        </a>
+
 
         <!-- Logo Image -->
         <a href="/" class="gew_navbar-brand">

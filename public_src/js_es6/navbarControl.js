@@ -12,9 +12,17 @@ function hoverHighlighting() {
 
 function setupMobileSubmenuToggle() {
   const submenuWrappers = document.querySelectorAll(toSelector(css.mobile.hasSubmenu));
+  const toggleBtn = document.querySelector(toSelector(css.mobile.toggleBtn));
+
+  toggleBtn.addEventListener('click', () => {
+    toggleBtn.classList.toggle(css.mobile.toggleBtnActive);
+    document.querySelector('#header').classList.toggle('gew_navbar--mobileMenu-visible');
+  });
 
   submenuWrappers.forEach(w => {
-    w.addEventListener('click', () => w.classList.toggle(css.mobile.hasSubmenuVisible));
+    w.addEventListener('click', () => {
+      w.classList.toggle(css.mobile.hasSubmenuVisible);
+    });
   });
 }
 
