@@ -4,6 +4,7 @@ const defaultOptions = {
 	crop: 'lfill',
 	gravity: 'center',
 	flags: 'progressive',
+  secure: true,
 };
 
 const defaultWidths = [1500, 1240, 1020, 820, 620, 310];
