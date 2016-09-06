@@ -67,11 +67,16 @@ const gather = (arr, prop) => arr
   .map(toArray)
   .reduce((srcs, s) => srcs.concat(s), []);
 
+// createEmptyTask :: String -> Object;
+const createEmptyTask = name => generateConfig(null, { name });
+
 // createTask :: String -> [Object] -> Object
-const createTask = _.curry((mainTaskName, tasks) => {
+const createTask = _.curry((mainTaskName, tasksArr) => {
+  // There must be at least one task, otherwise we create an empty one.
+  const tasks = tasksArr.length > 0 ? tasksArr : [createEmptyTask(mainTaskName)];
+
   const src = gather(tasks, 'src');
   const dest = gather(tasks, 'dest');
-
   return { src, dest, tasks, name: mainTaskName };
 });
 

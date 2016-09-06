@@ -6,5 +6,6 @@ const transpileReact = require('../transpile-react');
 const straw = require('../straw');
 
 module.exports = straw.register((task) => {
-  gulp.task(task.name, () => gulp.watch(transpileReact.src, [transpileReact.name]));
+  const src = [transpileReact.tasks[0].watch, ...transpileReact.src];
+  gulp.task(task.name, () => gulp.watch(src, [transpileReact.name]));
 });
