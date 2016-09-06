@@ -14,6 +14,15 @@ h3 {
   font-size: 1.4em;
 }
 
+a {
+  text-decoration: none;
+  &:hover, &:visited, &:active, &:focus {
+    text-decoration: none;
+  }
+  &:hover {
+    color: $brand-primary
+  }
+}
 .btn {
   padding-left: 2em;
   padding-right: 2em;

@@ -50,6 +50,10 @@
   color: $white;
   padding-bottom: .1em;
   padding-top: $navbar-height;
+  transform: translateY(-50px);
+  &:focus {
+    color: $white;
+  }
 }
 
 // --------------- Section 2 ---------------------//
