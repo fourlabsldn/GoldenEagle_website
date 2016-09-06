@@ -12,7 +12,7 @@ straw.registerAll('./tasks', {
 		'dest': './public/styles/'
 	},
 	'copy-static': {
-		'src': './public_src/**/*',
+		'src': ['./public_src/**/*', './templates/views/partials/propertyCard.hbs'],
 		'dest': './public',
 		'map': {
 			'./public_src/js_static/**/*': 'public/js'

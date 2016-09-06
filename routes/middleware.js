@@ -22,7 +22,7 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'About', key: 'about', href: '/about' },
     { label: 'Properties', key: 'properties', href: '#',
       submenu: [
-        { label: 'Sales', href: '#', background: 'navbar-2_nigkjw.jpg' },
+        { label: 'Sales', href: 'sales', background: 'navbar-2_nigkjw.jpg' },
         { label: 'Lettings', href: '#', background: 'navbar-1_tzsnp6.jpg' },
         { label: 'Commercial', href: '/commercial', background: 'navbar-4_cikuiu.jpg' },
         { label: 'International', href: '/international', background: 'navbar-3_efnlov.jpg' },

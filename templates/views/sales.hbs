@@ -1,0 +1,17 @@
+<section class="gew_bg-light">
+  <section class="gew_sectionContent gew_searchModuleContainer">
+  </section>
+</section>
+
+
+<section class="bg-primary">
+  <div class="gew_sectionContent-extraPadding text-center">
+    {{>subscribeFields color="light"}}
+  </div>
+</section>
+
+<script>
+  require(['searchModule'], function(searchModule) {
+    searchModule('.gew_searchModuleContainer', 'sales');
+  });
+</script>

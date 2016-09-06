@@ -20,10 +20,10 @@ module.exports = straw.register((task) => {
   });
 });
 
-
 function copy(orig, dest, exclude) {
   const toExclude = exclude.map(p => `!${p}`);
 
+  console.log('Copying:', [orig, ...toExclude]);
   gulp.src([orig, ...toExclude])
 		.pipe(gulp.dest(dest));
 }
