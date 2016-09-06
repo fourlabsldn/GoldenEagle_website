@@ -22,20 +22,22 @@ const replace = require('rollup-plugin-replace');
 const commonjs = require('rollup-plugin-commonjs');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const straw = require('./straw');
+const { curry } = require('lodash/fp');
 
 // Path resolution for these modules must be included in the pages' require.config
-const extenalDependencies = ['react', 'react-dom', 'lodash/fp'];
 
 module.exports = straw.register((task) => {
+  const extenalDependencies = task.extenalDependencies;
+
   gulp.task(task.name, () => {
     return gulp.src(task.src)
-    .pipe(flatmap(doTranspilation)) // call doTranspilation for each file
+    .pipe(flatmap(doTranspilation(extenalDependencies))) // call doTranspilation for each file
     .pipe(gulp.dest(task.dest));
   });
 });
 
 
-function doTranspilation(stream, file) {
+const doTranspilation = curry((extenalDependencies, stream, file) => {
   const fileName = path.parse(file.path).base;
   return rollup({
     entry: file.path,
@@ -71,4 +73,4 @@ function doTranspilation(stream, file) {
   .pipe(uglify())
 	// write the sourcemap alongside the output file.
 	.pipe(sourcemaps.write('.'));
-}
+});
