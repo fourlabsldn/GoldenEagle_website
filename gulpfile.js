@@ -21,7 +21,8 @@ straw.registerAll('./tasks', {
 	'transpile-react': {
 		'watch': './public_src/js_es6/**/*.js',
 		'src': './public_src/js_es6/*.js',
-		'dest': './public/js'
+		'dest': './public/js',
+    'extenalDependencies': ['react', 'react-dom', 'lodash/fp', 'handlebars'],
 	},
 	'link-dependencies': {
 		'dest': './public/js'

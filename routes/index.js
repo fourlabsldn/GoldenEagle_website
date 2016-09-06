@@ -29,27 +29,29 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 const routes = {
-	views: importRoutes('./views'),
+  views: importRoutes('./views'),
+  rest: importRoutes('./rest'),
 };
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
   // gzip compress responses
-	app.use(compression());
+  app.use(compression());
 
   // Views
-	app.get('/', routes.views.index);
-	app.get('/blog/:category?', routes.views.blog);
-	app.get('/blog/post/:post', routes.views.post);
-	app.get('/gallery', routes.views.gallery);
-	app.get('/commercial', routes.views.commercial);
-	app.get('/international', routes.views.international);
-	app.get('/developments', routes.views.developments);
-	app.get('/investments', routes.views.investments);
+  app.get('/', routes.views.index);
+  app.get('/blog/:category?', routes.views.blog);
+  app.get('/blog/post/:post', routes.views.post);
+  app.get('/gallery', routes.views.gallery);
+  app.get('/commercial', routes.views.commercial);
+  app.get('/international', routes.views.international);
+  app.get('/developments', routes.views.developments);
+  app.get('/investments', routes.views.investments);
   app.get('/management', routes.views.management);
-	app.get('/sales', routes.views.sales);
-	app.get('/about', routes.views.about);
-	app.all('/contact', routes.views.contact);
+  app.get('/sales', routes.views.sales);
+  app.get('/about', routes.views.about);
+  app.get('/search', routes.rest.search);
+  app.all('/contact', routes.views.contact);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

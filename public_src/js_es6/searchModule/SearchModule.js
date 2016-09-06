@@ -1,5 +1,7 @@
 import React from 'react';
 import FiltersBar from './FiltersBar';
+import PropertyCard from './PropertyCard';
+import propertyExample from './propertyExample';
 
 export default class SearchModule extends React.Component {
   render() {
@@ -15,6 +17,7 @@ export default class SearchModule extends React.Component {
           currency={0}
         />
         Imagine some more content
+        <PropertyCard info={propertyExample} />
       </ div>
     );
   }
