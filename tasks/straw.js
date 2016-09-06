@@ -1,173 +1,143 @@
-const fs = require('fs');
-const path = require('path');
-const gulp = require('gulp');
 const requireDir = require('require-dir-all');
+const { processPaths, createTask } = require('./taskHandling');
+const _ = require('lodash/fp');
+const path = require('path');
+const fs = require('fs');
+const gulp = require('gulp');
 
-const gather = (arr, prop) => arr
-  .map(v => v[prop])
-  .map(v => (Array.isArray(v) ? v : [v]))
-  .reduce((srcs, s) => srcs.concat(s), []);
+const requireGulpfile = () => {
+  const projectRoot = process.cwd();
+  const gulpFilename = fs.readdirSync(projectRoot).find(f => /^gulpfile.js$/i.test(f));
+  return require(path.join(projectRoot, gulpFilename)); // eslint-disable-line global-require
+};
 
-class Files {
-  // Impure
-  // File that invoked this script right now
-  static invokingFilePath() {
-    const originalFunc = Error.prepareStackTrace;
-    let filename;
-    try {
-      const err = new Error();
-
-      Error.prepareStackTrace = (e, stack) => stack;
-      const currentFile = err.stack[0].getFileName();
-
-      let callerFile;
-      let needle = 0;
-      while (err.stack[needle]) {
-        callerFile = err.stack[needle].getFileName();
-        if (callerFile !== currentFile) {
-          filename = callerFile;
-          break;
-        }
-        needle++;
+const tasksPaths = (function () {
+  let paths = null;
+  let pathRequestCount = 0;
+  return {
+    set: (p) => (paths = processPaths(p)),
+    get: () => {
+      if (paths) { return paths; }
+      if (pathRequestCount > 0) {
+        throw new Error('Path not set in Gulpfile.');
       }
-    } catch (err) {
-      throw new Error('Error getting task file name');
+      requireGulpfile(); // Gulpfile should call a function to set the paths
+      pathRequestCount++;
+      if (!paths) {
+        throw new Error('Path not set in Gulpfile.');
+      } else {
+        return paths;
+      }
+    },
+  };
+}());
+
+// Impure
+// File to first require this script
+const primaryInvokingFilePath = () => {
+  return module.parent ? module.parent.filename : null;
+};
+
+// Impure
+// File that invoked this script right now
+const invokingFilePath = () => {
+  const originalFunc = Error.prepareStackTrace;
+  let filename;
+  try {
+    const err = new Error();
+
+    Error.prepareStackTrace = (e, stack) => stack;
+    const currentFile = err.stack[0].getFileName();
+
+    let callerFile;
+    let needle = 0;
+    while (err.stack[needle]) {
+      callerFile = err.stack[needle].getFileName();
+      if (callerFile !== currentFile) {
+        filename = callerFile;
+        break;
+      }
+      needle++;
     }
-
-    Error.prepareStackTrace = originalFunc;
-    return filename;
+  } catch (err) {
+    throw new Error('Error getting task file name');
   }
 
-  // Impure
-  // File to first require this script
-  static primaryInvokingFilePath() {
-    return module.parent ? module.parent.filename : null;
-  }
+  Error.prepareStackTrace = originalFunc;
+  return filename;
+};
 
-  static requireFolder(folder) {
-    const options = { recursive: true };
-    return requireDir(folder, options);
-  }
+const getFileName = (filePath) => path.parse(filePath).name;
 
-  static requireFolderRelativeToInvokingFile(folder) {
-    const p = Files.invokingFilePath();
+const isFirstInvocation = () => invokingFilePath() === primaryInvokingFilePath();
+
+// Load all npm modules of a folder
+const requireFolder = (folder) => {
+  const options = { recursive: true };
+  return requireDir(folder, options);
+};
+
+function registerAll(tasksFolder, paths) {
+  tasksPaths.set(paths);
+
+  if (isFirstInvocation()) {
+    const p = invokingFilePath();
     const invokingDir = path.parse(p).dir;
-    const tasksDirAbsolute = path.join(invokingDir, folder);
+    const tasksFolderAbsolute = path.join(invokingDir, tasksFolder);
     // load tasks
-    return Files.requireFolder(tasksDirAbsolute);
-  }
-  static invokingFileName() {
-    return path.parse(Files.invokingFilePath()).name;
+    requireFolder(tasksFolderAbsolute);
   }
 }
 
-class TaskPaths {
-  constructor() {
-    this.paths = null;
-    this.gulpfileLoaded = false;
-    Object.preventExtensions(this);
+
+// Register task --------------------------------------------------------------
+// registerTask :: Object -> function -> void
+const registerTask = _.curry((paths, func, conf) => {
+  conf && func(conf, paths); // eslint-disable-line no-unused-expressions, max-len
+});
+
+// Whether the array contains subtasks or just one main task.
+// isJustMaintask :: String -> [Object] -> Boolean
+const isJustMainTask = _.curry((mainTaskName, tasks) => {
+  return tasks.length === 1 && tasks[0].name === mainTaskName;
+});
+
+// Registers the function for one main task and its subTasks
+// Returns an object describing the function
+// register :: Function -> Object
+function register(registrationFunc) {
+  const paths = tasksPaths.get();
+  const taskName = getFileName(invokingFilePath());
+
+  // We do allow empty tasks
+  const task = paths[taskName] || createTask(taskName, []);
+
+  if (!isJustMainTask(taskName, task.tasks)) {
+    gulp.task(taskName, task.tasks.map(_.get('name')));
   }
 
-  set(paths) {
-    this.paths = paths;
-  }
-
-  get() {
-    if (this.paths) { return this.paths; }
-    this.loadPaths(); // Gulpfile should call a function to set the paths
-    if (!this.paths) { throw new Error('Path not set in GulpFiles.js'); }
-    return this.paths;
-  }
-
-  // @private
-  loadPaths() {
-    if (this.gulpfileLoaded) { throw new Error('Path not set in GulpFiles.js'); }
-    const projectRoot = process.cwd();
-    const rootFiles = fs.readdirSync(projectRoot);
-    const gulpFilename = rootFiles.find(f => /^gulpFiles.js$/i.test(f));
-
-    require(path.join(projectRoot, gulpFilename)); // eslint-disable-line global-require
-    this.gulpfileLoaded = true;
-  }
-
+  // Put tasks in an array
+  const allTasks = _.values(paths);
+  task.tasks.map(registerTask(allTasks, registrationFunc));
+  return task;
 }
 
-class TaskConfig {
-  static findSubTasks(obj) {
-    return obj
-      ? Object.keys(obj)
-        .filter(k => obj[k] && (obj[k].src || obj[k].dest))
-        .reduce((result, prop) => Object.assign(result, { [prop]: obj[prop] }), {})
-      : [];
-  }
+// -----------------------------------------------------------------------------
 
-  static create(name, obj) {
-    return Object.assign({}, obj, { name });
-  }
+const getDirectory = p => path.parse(p).dir;
 
-  static registerTask(conf, func) {
-    conf && func(conf); // eslint-disable-line no-unused-expressions, max-len
-  }
+const requireFolderRelativeToInvokingFile = folder => {
+  const p = invokingFilePath();
+  const invokingDir = getDirectory(p);
+  const tasksDirAbsolute = path.join(invokingDir, folder);
+  // load tasks
+  return requireFolder(tasksDirAbsolute);
+};
+
+function loadFrom(folderPath) {
+  const tasksObj = requireFolderRelativeToInvokingFile(folderPath);
+  const tasksArray = _.values(tasksObj);
+  return tasksArray;
 }
 
-class Straw {
-  constructor() {
-    this.paths = new TaskPaths();
-    Object.preventExtensions(this);
-  }
-
-  // Register folders and task paths
-  registerAll(tasksDir, paths) {
-    // Set tasks paths
-    this.paths.set(paths);
-
-    // If this method is being called when this module was loaded for the
-    // first time, then it is our Gulpfile calling and we must load
-    // all tasks. If not, then let's not load anything.
-    const isFirstInvocation = Files.invokingFilePath() === Files.primaryInvokingFilePath();
-    if (isFirstInvocation) {
-      // load tasks
-      Files.requireFolderRelativeToInvokingFile(tasksDir);
-    }
-  }
-
-  register(registrationFunc) {
-    const paths = this.paths.get();
-    const filename = Files.invokingFileName();
-    const tasksObj = paths[filename];
-    const mainTasksObj = tasksObj;
-    const subTasksObj = TaskConfig.findSubTasks(tasksObj);
-
-    const mainName = filename;
-    const subNames = Object.keys(subTasksObj).map(n => `${mainName}:${n}`);
-
-    const mainInfo = mainTasksObj;
-    const subInfos = Object.keys(subTasksObj).map(k => subTasksObj[k]);
-
-    const mainConfig = TaskConfig.create(mainName, mainInfo);
-    const subConfigs = subInfos.map((info, idx) => TaskConfig.create(subNames[idx], info));
-
-    let tasks;
-    if (subConfigs.length > 0) {
-      tasks = subConfigs;
-      gulp.task(filename, subConfigs.map(c => c.name));
-    } else {
-      tasks = [mainConfig];
-    }
-
-    tasks.map(config => TaskConfig.registerTask(config, registrationFunc));
-
-    const src = gather(tasks, 'src');
-    const dest = gather(tasks, 'dest');
-    const subTasks = tasks.reduce((state, t) => Object.assign({ [t.name]: t }, state), {});
-    return { src, dest, subTasks, name: mainName };
-  }
-
-  loadFrom(folderPath) {
-    const tasksObj = Files.requireFolderRelativeToInvokingFile(folderPath);
-    const tasksArray = Object.keys(tasksObj).map(k => tasksObj[k]);
-    return tasksArray;
-  }
-}
-
-module.exports = new Straw();
+module.exports = { registerAll, register, loadFrom };
