@@ -73,7 +73,7 @@ export default class SearchModule extends React.Component {
         />
         Imagine some more content
 
-        <div dangerouslySetInnerHTML={{__html: this.state.propertiesHTML}} />
+        <div className="row" dangerouslySetInnerHTML={{__html: this.state.propertiesHTML}} />
       </ div>
     );
   }
