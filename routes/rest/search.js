@@ -25,6 +25,8 @@ const sendJson = curry((res, response) => res.json(response));
 const prepareResponse = properties => ({ properties });
 
 exports = module.exports = function search(req, res) {
+  console.log(req.query);
+
   const renderPropertyCard = render(viewName, res);
   getProperties()
   .then(map(renderPropertyCard))

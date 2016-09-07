@@ -15,6 +15,10 @@ export default class SearchModule extends React.Component {
     this.state = {
       propertiesHTML: [], // Array of objects
       lastLoadTime: new Date(),
+      paginationParams: {
+        pageNumber: 0,
+        pageMax: 3,
+      },
       searchParams: {},
     };
 
@@ -49,7 +53,7 @@ export default class SearchModule extends React.Component {
    * loadProperties
    * @param {Object} params
    */
-  loadProperties(params) {
+  loadProperties(searchParams) {
     const insertIntoDOM = curry((loadTime, properties) => {
       const anotherLoadEventHappened = this.state.lastLoadTime > loadTime;
       console.log('anotherLoadEventHappened', anotherLoadEventHappened);
@@ -58,9 +62,13 @@ export default class SearchModule extends React.Component {
       }
     });
 
+    // Create an object with all variables needed for our search
+    const requestParams = Object.assign({}, this.state.paginationParams, searchParams);
+    // We will use loadTime to see if we should process our response when
+    // it arrives or whether another request was made.
     const loadTime = new Date();
     this.setLastLoadTime(loadTime);
-    request(searchEndpoint, params)
+    request(searchEndpoint, requestParams)
       .then(r => r.json())
       .then(get('properties'))
       .then(map(sanitise))
