@@ -9,20 +9,43 @@ const searchEndpoint = '/search';
 // sanitise :: String -> Object
 const sanitise = html => ({ __html: html });
 
+// Creates a new object with properties of the old one
+// overshadowed by properties of the new object.
+// No new properties of the new Object are added.
+// overshadow Object -> Object -> Object
+const overshadow = (oldObj, newObj)=> {
+  return Object.keys(oldObj)
+    .reduce((result, key) => {
+      result[key] = newObj[key] || oldObj[key]; // eslint-disable-line no-param-reassign
+      return result;
+    }, {});
+};
+
 export default class SearchModule extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {
       propertiesHTML: [], // Array of objects
       lastLoadTime: new Date(),
+      // Pagination info to be sent with requests
       paginationParams: {
         pageNumber: 0,
-        pageMax: 9,
+        pageMax: 3,
+        pageCount: 1,
       },
+      // Search info to be sent with requests
       searchParams: {},
     };
 
     this.loadProperties(this.state.searchParams);
+
+    this.setLastLoadTime = this.setLastLoadTime.bind(this);
+    this.setPropertiesHTML = this.setPropertiesHTML.bind(this);
+    this.setSearchParams = this.setSearchParams.bind(this);
+    this.setPaginationParams = this.setPaginationParams.bind(this);
+    this.loadProperties = this.loadProperties.bind(this);
+    this.processResponse = this.processResponse.bind(this);
+    this.nextPage = this.nextPage.bind(this);
   }
 
   /**
@@ -46,7 +69,18 @@ export default class SearchModule extends React.Component {
    * @param {Object} params
    */
   setSearchParams(params) {
-    this.setState({ searchParams: params });
+    const searchParams = overshadow(this.state.searchParams, params);
+    this.setState({ searchParams });
+  }
+
+  /**
+   * setSearchParams
+   * @param {Object} params
+   */
+  setPaginationParams(params) {
+    console.log(params);
+    const paginationParams = overshadow(this.state.paginationParams, params);
+    this.setState({ paginationParams });
   }
 
   /**
@@ -54,13 +88,8 @@ export default class SearchModule extends React.Component {
    * @param {Object} params
    */
   loadProperties(searchParams) {
-    const insertIntoDOM = curry((loadTime, properties) => {
-      const anotherLoadEventHappened = this.state.lastLoadTime > loadTime;
-      if (!anotherLoadEventHappened) {
-        this.setPropertiesHTML(properties);
-      }
-    });
-
+    // anotherLoadEventHappened :: Date -> Boolean
+    const anotherLoadEventHappened = loadTime => !!this.state.lastLoadTime > loadTime;
     // Create an object with all variables needed for our search
     const requestParams = Object.assign({}, this.state.paginationParams, searchParams);
     // We will use loadTime to see if we should process our response when
@@ -69,9 +98,23 @@ export default class SearchModule extends React.Component {
     this.setLastLoadTime(loadTime);
     request(searchEndpoint, requestParams)
       .then(r => r.json())
-      .then(get('properties'))
-      .then(map(sanitise))
-      .then(insertIntoDOM(loadTime));
+      .then(r => (anotherLoadEventHappened(loadTime) ? null : this.processResponse(r)));
+  }
+
+  processResponse(response) {
+    // insert properties into DOM
+    const propertiesHTML = response.properties;
+    this.setPropertiesHTML(propertiesHTML.map(sanitise));
+    // Update pagination parameters
+    this.setPaginationParams(response);
+  }
+
+  nextPage() {
+    const pagination = this.state.paginationParams;
+    this.setPaginationParams({
+      pageNumber: Math.min(pagination.pageNumber + 1, pagination.pageCount),
+    });
+    this.loadProperties(this.state.searchParams);
   }
 
   render() {
@@ -92,6 +135,9 @@ export default class SearchModule extends React.Component {
             <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={property} />
           ))}
         </ div>
+
+        <p>Page <b>{this.state.paginationParams.pageNumber + 1}</b></p>
+        <button onClick={this.nextPage} value=">" />
       </ div>
     );
   }
