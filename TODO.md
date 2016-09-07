@@ -1,3 +1,2 @@
  - On focus animation in landing section search bar
- - Appropriate styles for navbar
- - Add correct time count in footer
+ - Navbar highlighter should stay in menu item when submenu is showing

@@ -11,7 +11,8 @@ function hoverHighlighting() {
 }
 
 function setupMobileSubmenuToggle() {
-  const submenuWrappers = document.querySelectorAll(toSelector(css.mobile.hasSubmenu));
+  const submenuWrappersHTMLCol = document.querySelectorAll(toSelector(css.mobile.hasSubmenu));
+  const submenuWrappers = Array.from(submenuWrappersHTMLCol);
   const toggleBtn = document.querySelector(toSelector(css.mobile.toggleBtn));
 
   toggleBtn.addEventListener('click', () => {
@@ -25,7 +26,6 @@ function setupMobileSubmenuToggle() {
     });
   });
 }
-
 
 export default function () {
   hoverHighlighting();

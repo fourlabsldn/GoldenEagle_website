@@ -129,7 +129,7 @@ $sliceHeight: 2px;
   }
   &:after {
     content:'';
-    position:absolute;
+    position: absolute;
     top: .5em;
     width: 2em;
     height: $sliceHeight;
@@ -140,11 +140,11 @@ $sliceHeight: 2px;
   .gew_navbar--mobileMenu-visible & {
     background:transparent;
     &:before {
-      -webkit-transform:rotate(45deg);
+      transform: rotate(45deg);
       top:0;
     }
     &:after {
-      -webkit-transform:rotate(-45deg);
+      transform: rotate(-45deg);
       top:0;
     }
   }
