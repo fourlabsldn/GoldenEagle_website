@@ -17,7 +17,7 @@ export default class SearchModule extends React.Component {
       lastLoadTime: new Date(),
       paginationParams: {
         pageNumber: 0,
-        pageMax: 3,
+        pageMax: 9,
       },
       searchParams: {},
     };
@@ -56,7 +56,6 @@ export default class SearchModule extends React.Component {
   loadProperties(searchParams) {
     const insertIntoDOM = curry((loadTime, properties) => {
       const anotherLoadEventHappened = this.state.lastLoadTime > loadTime;
-      console.log('anotherLoadEventHappened', anotherLoadEventHappened);
       if (!anotherLoadEventHappened) {
         this.setPropertiesHTML(properties);
       }
@@ -76,7 +75,6 @@ export default class SearchModule extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <FiltersBar

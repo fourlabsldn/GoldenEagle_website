@@ -1,6 +1,10 @@
 const keystone = require('keystone');
 const viewName = 'search';
-const { map, curry } = require('lodash/fp');
+const { curry, flow } = require('lodash/fp');
+const defaultFilters = {
+  pageNumber: 0,
+  pageMax: 6,
+};
 
 function getProperties() {
   return keystone.list('Property').getAll();
@@ -20,18 +24,53 @@ function handleResponse(resolve, reject) {
   return (err, data) => (err ? reject(err) : resolve(data));
 }
 
-const waitForPromises = p => Promise.all(p);
+
+// sendJson :: ExpressResponse -> Object -> void
 const sendJson = curry((res, response) => res.json(response));
+
+// prepareResponse :: [String] -> Object
 const prepareResponse = properties => ({ properties });
 
-exports = module.exports = function search(req, res) {
-  console.log(req.query);
+// ----------------------- Filters -------------------------------
 
+const pagination = curry((filters, response) => {
+  const content = response.properties;
+  const beginning = filters.pageMax * filters.pageNumber;
+  const end = filters.pageMax * (filters.pageNumber + 1);
+
+  const newContent = content.slice(beginning, end);
+  const pageCount = Math.ceil(content.length / filters.pageMax);
+  return Object.assign({}, response, { pageCount, properties: newContent });
+});
+
+// applyFilters :: Object -> Object -> Object
+const applyFilters = curry((reqFilters, response) => {
+  const filters = Object.assign({}, defaultFilters, reqFilters);
+  return flow(
+    pagination(filters)
+  )(response);
+});
+
+// ----------------------- end of filters -----------------------
+
+const insertIntoTemplate = curry((renderFunc, response) => {
+  // Apply render function
+  const templatePromises = response.properties.map(renderFunc);
+  return Promise.all(templatePromises)
+    .then(templates => {
+      // Replace objects for templatez
+      return Object.assign({}, response, { properties: templates });
+    });
+});
+
+exports = module.exports = function search(req, res) {
+  const filters = req.query;
   const renderPropertyCard = render(viewName, res);
+
   getProperties()
-  .then(map(renderPropertyCard))
-  .then(waitForPromises)
   .then(prepareResponse)
+  .then(applyFilters(filters))
+  .then(insertIntoTemplate(renderPropertyCard))
   .then(sendJson(res))
   .catch((err) => res.status(500).send({ err }));
 };
