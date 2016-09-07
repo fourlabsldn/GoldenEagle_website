@@ -1,29 +1,24 @@
 const keystone = require('keystone');
-const handlebars = require('handlebars');
 
 exports = module.exports = function search(req, res) {
   const view = new keystone.View(req, res);
-  const locals = res.locals;
-
-  // locals.section is used to set the currently selected
-  // item in the header navigation.
-  locals.section = 'search';
-  locals.data = {};
-
-  // Load page content from database
-  view.on('init', next => {
-  	keystone.list('Property').getAll()
-  		.then((properties) => {
-  			locals.properties = properties;
-  			return next();
-  		})
-  		.catch(next);
-  });
-
   const viewName = 'search';
+  const toTemplate = templateCreator(res, view, viewName);
 
-	// Render the view
-  view.render(viewName, {
-    layout: false,
-  });
+  getProperties()
+    .then(props => Promise.all(props.map(toTemplate)))
+    .then(templates => {
+      console.dir('Sending response:', templates);
+      res.json(templates);
+    });
 };
+
+function getProperties() {
+  return keystone.list('Property').getAll();
+}
+
+function templateCreator(res, viewName) {
+  return function toTemplate(obj) {
+    return new Promise(resolve => res.render(viewName, obj, resolve));
+  };
+}
