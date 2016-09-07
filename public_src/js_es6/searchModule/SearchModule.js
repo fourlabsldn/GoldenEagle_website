@@ -1,13 +1,19 @@
 import React from 'react';
 import FiltersBar from './FiltersBar';
 import { request } from '../utils';
+import { map, get, curry } from 'lodash/fp';
 
 const searchEndpoint = '/search';
+
+// Prepares input for dangerouslySetInnerHTML
+// sanitise :: String -> Object
+const sanitise = html => ({ __html: html });
+
 export default class SearchModule extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      propertiesHTML: '', // String
+      propertiesHTML: [], // Array of objects
       lastLoadTime: new Date(),
       searchParams: {},
     };
@@ -44,22 +50,25 @@ export default class SearchModule extends React.Component {
    * @param {Object} params
    */
   loadProperties(params) {
+    const insertIntoDOM = curry((loadTime, properties) => {
+      const anotherLoadEventHappened = this.state.lastLoadTime > loadTime;
+      console.log('anotherLoadEventHappened', anotherLoadEventHappened);
+      if (!anotherLoadEventHappened) {
+        this.setPropertiesHTML(properties);
+      }
+    });
+
     const loadTime = new Date();
     this.setLastLoadTime(loadTime);
-
-    const processHTML = html => {
-      const anotherLoadEventHappened = this.state.lastLoadTime > loadTime;
-      if (!anotherLoadEventHappened) {
-        this.setPropertiesHTML(html);
-      }
-    };
-
     request(searchEndpoint, params)
-      .then(r => r.text())
-      .then(processHTML);
+      .then(r => r.json())
+      .then(get('properties'))
+      .then(map(sanitise))
+      .then(insertIntoDOM(loadTime));
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <FiltersBar
@@ -71,9 +80,12 @@ export default class SearchModule extends React.Component {
           moreFilters={0}
           currency={0}
         />
-        Imagine some more content
 
-        <div className="row" dangerouslySetInnerHTML={{__html: this.state.propertiesHTML}} />
+        <div className="row">
+          {this.state.propertiesHTML.map(property => (
+            <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={property} />
+          ))}
+        </ div>
       </ div>
     );
   }

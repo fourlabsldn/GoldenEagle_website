@@ -8,10 +8,11 @@ function getProperties() {
 
 const render = curry((vName, res, content) => {
   const defaultOptions = { layout: false };
-  const locals = Object.assign({}, defaultOptions, content);
+  const context = { data: content };
+  const options = Object.assign({}, defaultOptions, context);
 
   return new Promise((resolve, reject) => {
-    res.render(vName, locals, handleResponse(resolve, reject));
+    res.render(vName, options, handleResponse(resolve, reject));
   });
 });
 
