@@ -35,11 +35,15 @@ const prepareResponse = properties => ({ properties });
 
 const pagination = curry((filters, response) => {
   const content = response.properties;
-  const beginning = filters.pageMax * filters.pageNumber;
-  const end = filters.pageMax * (filters.pageNumber + 1);
+  // Make sure we will never divide by 0
+  const max = Math.max(1, filters.pageMax);
+  // >= 0
+  const beginning = Math.max(0, max * filters.pageNumber);
+  // >= `beginning`
+  const end = Math.max(beginning, max * (filters.pageNumber + 1));
 
   const newContent = content.slice(beginning, end);
-  const pageCount = Math.ceil(content.length / filters.pageMax);
+  const pageCount = Math.ceil(content.length / max);
   return Object.assign({}, response, { pageCount, properties: newContent });
 });
 
