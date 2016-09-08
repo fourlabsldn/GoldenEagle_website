@@ -1,13 +1,20 @@
 const keystone = require('keystone');
+const { curry, flow, clamp } = require('lodash/fp');
+const { overshadow } = require('./utils');
+
 const viewName = 'search';
-const { curry, flow } = require('lodash/fp');
 const defaultFilters = {
   pageNumber: 0,
   pageMax: 6,
+  pageCount: 1,
 };
 
 function getProperties() {
   return keystone.list('Property').getAll();
+}
+
+function handleResponse(resolve, reject) {
+  return (err, data) => (err ? reject(err) : resolve(data));
 }
 
 const render = curry((vName, res, content) => {
@@ -20,11 +27,6 @@ const render = curry((vName, res, content) => {
   });
 });
 
-function handleResponse(resolve, reject) {
-  return (err, data) => (err ? reject(err) : resolve(data));
-}
-
-
 // sendJson :: ExpressResponse -> Object -> void
 const sendJson = curry((res, response) => res.json(response));
 
@@ -32,24 +34,53 @@ const sendJson = curry((res, response) => res.json(response));
 const prepareResponse = properties => ({ properties });
 
 // ----------------------- Filters -------------------------------
+// Creates new object with all property values of the parameter object
+// converted to int. Throws if not possible
+// valuesToInt :: Object -> Object;
+const valuesToInt = obj => {
+  return Object.keys(obj).reduce((result, key) => {
+    const value = obj[key];
+    const parsed = parseInt(value, 10);
+    if (isNaN(parsed)) {
+      throw new Error(`Invalid property value for ${key}: ${value}`);
+    }
+    result[key] = parsed; // eslint-disable-line no-param-reassign
+    return result;
+  }, {});
+};
 
 const pagination = curry((filters, response) => {
   const content = response.properties;
+
   // Make sure we will never divide by 0
-  const max = Math.max(1, filters.pageMax);
+  const maxPages = Math.max(1, filters.pageMax);
+
+  const pageCount = Math.ceil(content.length / maxPages);
+  // pageNumber between 0 and pageCount -1.
+  // pageCount - 1 because pageNumber starts from 0 and pageCount starts from 1
+  const pageNumber = clamp(0, pageCount - 1, filters.pageNumber);
+
   // >= 0
-  const beginning = Math.max(0, max * filters.pageNumber);
+  const beginning = Math.max(0, maxPages * pageNumber);
   // >= `beginning`
-  const end = Math.max(beginning, max * (filters.pageNumber + 1));
+  const end = Math.max(beginning, maxPages * (pageNumber + 1));
 
   const newContent = content.slice(beginning, end);
-  const pageCount = Math.ceil(content.length / max);
-  return Object.assign({}, response, { pageCount, properties: newContent });
+
+  return Object.assign({}, response, {
+    pageNumber,
+    pageCount,
+    properties: newContent,
+  });
 });
 
 // applyFilters :: Object -> Object -> Object
 const applyFilters = curry((reqFilters, response) => {
-  const filters = Object.assign({}, defaultFilters, reqFilters);
+  const filters = flow(
+    overshadow(defaultFilters),
+    valuesToInt
+  )(reqFilters);
+
   return flow(
     pagination(filters)
   )(response);
