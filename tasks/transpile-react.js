@@ -70,7 +70,9 @@ const doTranspilation = curry((extenalDependencies, stream, file) => {
 	// tell gulp-sourcemaps to load the inline sourcemap produced by rollup-stream.
 	.pipe(sourcemaps.init({ loadMaps: true }))
 	// Further modify the file here if needed
-  .pipe(uglify())
+
+  // TODO: enable uglifying for production
+  // .pipe(uglify())
 	// write the sourcemap alongside the output file.
 	.pipe(sourcemaps.write('.'));
 });

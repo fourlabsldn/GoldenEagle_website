@@ -30,3 +30,41 @@ export function request(url, params, options) {
   const reqOptions = Object.assign({}, defaultOptions, options);
   return fetch(reqUrl, reqOptions);
 }
+
+/**
+ * interruptibleRequest
+ * @return {Function} makeRequest - Just like `request` but if another request
+ *                                happens before the first one is finished,
+ *                                the first one will not be processed.
+ */
+export function interruptibleRequest() {
+  let lastLoadTime;
+
+  // anotherRequestHappenedSince :: Date -> Boolean
+  const anotherRequestHappenedSince = loadTime => lastLoadTime > loadTime;
+
+  return function makeRequest(...args) {
+    // We will use loadTime to see if we should process our response when
+    // it arrives or whether another request was made.
+    const loadTime = new Date();
+    lastLoadTime = loadTime;
+    return request(...args)
+    .then(r => {
+      return anotherRequestHappenedSince(loadTime)
+        ? Promise.reject('Request cancelled by new request')
+        : Promise.resolve(r);
+    });
+  };
+}
+
+ // Creates a new object with properties of the old one
+// ovewritten by properties of the new object.
+// No new properties of the new Object are added.
+// overshadow Object -> Object -> Object
+export function overshadow(oldObj, newObj) {
+  return Object.keys(oldObj)
+    .reduce((result, key) => {
+      result[key] = newObj[key] || oldObj[key]; // eslint-disable-line no-param-reassign
+      return result;
+    }, {});
+}

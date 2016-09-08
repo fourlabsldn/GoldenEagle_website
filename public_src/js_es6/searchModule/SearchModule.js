@@ -1,7 +1,7 @@
 import React from 'react';
 import FiltersBar from './FiltersBar';
-import { request } from '../utils';
-import { map, get, curry } from 'lodash/fp';
+import { interruptibleRequest, overshadow } from '../utils';
+import { curry } from 'lodash/fp';
 
 const searchEndpoint = '/search';
 
@@ -9,115 +9,63 @@ const searchEndpoint = '/search';
 // sanitise :: String -> Object
 const sanitise = html => ({ __html: html });
 
-// Creates a new object with properties of the old one
-// overshadowed by properties of the new object.
-// No new properties of the new Object are added.
-// overshadow Object -> Object -> Object
-const overshadow = (oldObj, newObj)=> {
-  return Object.keys(oldObj)
-    .reduce((result, key) => {
-      result[key] = newObj[key] || oldObj[key]; // eslint-disable-line no-param-reassign
-      return result;
-    }, {});
-};
+const request = interruptibleRequest();
+
+const loadJson = (...args) => request(...args).then(r => r.json());
+
+/**
+ * processServerResponse
+ * @param {Object} state - Current application state
+ * @param {Object} response
+ * @return {Object} new application state
+ */
+const processServerResponse = curry((state, response) => {
+  // Extract the parameters we need
+  const pagination = overshadow(state.pagination, response);
+  const search = overshadow(state.search, response);
+  const properties = response.properties;
+
+  // Create a new state with our new values
+  return overshadow(state, { pagination, search, properties });
+});
 
 export default class SearchModule extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      propertiesHTML: [], // Array of objects
-      lastLoadTime: new Date(),
+      properties: [], // Array of objects
       // Pagination info to be sent with requests
-      paginationParams: {
+      pagination: {
         pageNumber: 0,
         pageMax: 3,
         pageCount: 1,
       },
       // Search info to be sent with requests
-      searchParams: {},
+      search: {},
     };
 
-    this.loadProperties(this.state.searchParams);
-
-    this.setLastLoadTime = this.setLastLoadTime.bind(this);
-    this.setPropertiesHTML = this.setPropertiesHTML.bind(this);
-    this.setSearchParams = this.setSearchParams.bind(this);
-    this.setPaginationParams = this.setPaginationParams.bind(this);
-    this.loadProperties = this.loadProperties.bind(this);
-    this.processResponse = this.processResponse.bind(this);
-    this.nextPage = this.nextPage.bind(this);
+    this.goToPage(0);
+    this.goToPage = this.goToPage.bind(this);
   }
 
-  /**
-   * setLastLoadTime
-   * @param {Date} time
-   */
-  setLastLoadTime(time) {
-    this.setState({ lastLoadTime: time });
-  }
+  goToPage(pageNumber) {
+    // Create a new pagination object with the next page as pageNumber
+    const pagination = overshadow(this.state.pagination, { pageNumber });
+    const search = this.state.search;
 
-  /**
-   * setPropertiesHTML
-   * @param {String} html
-   */
-  setPropertiesHTML(html) {
-    this.setState({ propertiesHTML: html });
-  }
-
-  /**
-   * setSearchParams
-   * @param {Object} params
-   */
-  setSearchParams(params) {
-    const searchParams = overshadow(this.state.searchParams, params);
-    this.setState({ searchParams });
-  }
-
-  /**
-   * setSearchParams
-   * @param {Object} params
-   */
-  setPaginationParams(params) {
-    console.log(params);
-    const paginationParams = overshadow(this.state.paginationParams, params);
-    this.setState({ paginationParams });
-  }
-
-  /**
-   * loadProperties
-   * @param {Object} params
-   */
-  loadProperties(searchParams) {
-    // anotherLoadEventHappened :: Date -> Boolean
-    const anotherLoadEventHappened = loadTime => !!this.state.lastLoadTime > loadTime;
-    // Create an object with all variables needed for our search
-    const requestParams = Object.assign({}, this.state.paginationParams, searchParams);
-    // We will use loadTime to see if we should process our response when
-    // it arrives or whether another request was made.
-    const loadTime = new Date();
-    this.setLastLoadTime(loadTime);
-    request(searchEndpoint, requestParams)
-      .then(r => r.json())
-      .then(r => (anotherLoadEventHappened(loadTime) ? null : this.processResponse(r)));
-  }
-
-  processResponse(response) {
-    // insert properties into DOM
-    const propertiesHTML = response.properties;
-    this.setPropertiesHTML(propertiesHTML.map(sanitise));
-    // Update pagination parameters
-    this.setPaginationParams(response);
-  }
-
-  nextPage() {
-    const pagination = this.state.paginationParams;
-    this.setPaginationParams({
-      pageNumber: Math.min(pagination.pageNumber + 1, pagination.pageCount),
-    });
-    this.loadProperties(this.state.searchParams);
+    // Merge pagination and search variables to use all of these
+    // as search parameters for the server
+    const searchParams = Object.assign({}, search, pagination);
+    loadJson(searchEndpoint, searchParams)
+      .then(processServerResponse(this.state))
+      .then(s => this.setState(s))
+      .catch(() => console.log);
   }
 
   render() {
+    const currPage = this.state.pagination.pageNumber;
+    const nextPage = () => this.goToPage(currPage + 1);
+    const prevPage = () => this.goToPage(currPage - 1);
     return (
       <div>
         <FiltersBar
@@ -131,13 +79,14 @@ export default class SearchModule extends React.Component {
         />
 
         <div className="row">
-          {this.state.propertiesHTML.map(property => (
-            <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={property} />
+          {this.state.properties.map(property => (
+            <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={sanitise(property)} />
           ))}
         </ div>
 
-        <p>Page <b>{this.state.paginationParams.pageNumber + 1}</b></p>
-        <button onClick={this.nextPage} value=">" />
+        <p>Page <b>{this.state.pagination.pageNumber + 1}</b></p>
+        <button onClick={prevPage}> Prev </button>
+        <button onClick={nextPage}> Next </button>
       </ div>
     );
   }
