@@ -81,8 +81,26 @@ const sendJson = curry((res, response) => res.json(response));
 const prepareResponse = properties => ({ properties });
 
 // ----------------------- Filters -------------------------------
+/**
+ * filterBeds
+ * @param {Object} filters
+ * @param {Object} response
+ */
+const filterBeds = curry((filters, response) => {
+  if (!filters.beds) { return response; }
+  const beds = Math.max(1, filters.beds);
+  // We use this negation because if prop.beds is undefined the outcome
+  // will be fault in any comparison and we want it to be included.
+  const properties = response.properties.filter(prop => !(prop.bedrooms !== filters.beds));
+  return Object.assign({}, response, { beds, properties });
+});
 
-const pagination = curry((filters, response) => {
+/**
+ * filterPagination
+ * @param {Object} filters
+ * @param {Object} response
+ */
+const filterPagination = curry((filters, response) => {
   const content = response.properties;
   // Make sure we will never divide by 0
   const maxPerPage = Math.max(1, filters.maxPerPage);
@@ -111,7 +129,8 @@ const pagination = curry((filters, response) => {
 const applyFilters = curry((reqFilters, response) => {
   const filters = parseFilters(reqFilters);
   return flow(
-    pagination(filters)
+    filterBeds(filters),
+    filterPagination(filters)
   )(response);
 });
 

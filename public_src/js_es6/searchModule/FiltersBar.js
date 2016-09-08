@@ -42,11 +42,12 @@ const FiltersBar = props => {
 
       <select value={props.beds} onChange={e => change.beds(e.target.value)}>
         <option disabled selected>Beds</option>
+        <option value={0}>Any</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
-        <option>More than 4</option>
+        <option value={undefined}>More than 4</option>
       </select>
 
       <select value={props.baths} onChange={e => change.baths(e.target.value)}>
