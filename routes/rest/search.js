@@ -1,13 +1,60 @@
 const keystone = require('keystone');
-const { curry, flow, clamp } = require('lodash/fp');
-const { overshadow } = require('./utils');
+const { curry, flow, clamp, isUndefined, omitBy } = require('lodash/fp');
+const { overshadow, mapObj } = require('./utils');
 
 const viewName = 'search';
+
 const defaultFilters = {
   pageNumber: 0,
-  pageMax: 6,
+  maxPerPage: 6,
   pageCount: 1,
+  keywords: '',
+  letType: 'short', // 'short' 'long'
+  priceMin: undefined,
+  priceMax: undefined,
+  beds: undefined,
+  baths: undefined,
 };
+
+const toInt = v => {
+  const parsed = parseInt(v, 10);
+  if (isNaN(parsed)) {
+    throw new Error(`Cannot convert '${v}' to integer.`);
+  }
+  return parsed;
+};
+
+const filterConversion = {
+  pageNumber: toInt,
+  maxPerPage: toInt,
+  pageCount: toInt,
+  keywords: String,
+  letType: String, // 'short' 'long'
+  priceMin: toInt,
+  priceMax: toInt,
+  beds: toInt,
+  baths: toInt,
+};
+
+// convert :: Object ->
+const convert = curry((conversions, target) => {
+  const f = (key, value) => {
+    try {
+      return conversions[key](value);
+    } catch (e) {
+      throw new Error(`Error parsing ${key}: ${e.message}`);
+    }
+  };
+  return mapObj(f, target);
+});
+
+function parseFilters(filters) {
+  return flow(
+    overshadow(defaultFilters),
+    omitBy(isUndefined), // Omit all undefined values
+    convert(filterConversion)
+  )(filters);
+}
 
 function getProperties() {
   return keystone.list('Property').getAll();
@@ -34,53 +81,35 @@ const sendJson = curry((res, response) => res.json(response));
 const prepareResponse = properties => ({ properties });
 
 // ----------------------- Filters -------------------------------
-// Creates new object with all property values of the parameter object
-// converted to int. Throws if not possible
-// valuesToInt :: Object -> Object;
-const valuesToInt = obj => {
-  return Object.keys(obj).reduce((result, key) => {
-    const value = obj[key];
-    const parsed = parseInt(value, 10);
-    if (isNaN(parsed)) {
-      throw new Error(`Invalid property value for ${key}: ${value}`);
-    }
-    result[key] = parsed; // eslint-disable-line no-param-reassign
-    return result;
-  }, {});
-};
 
 const pagination = curry((filters, response) => {
   const content = response.properties;
-
   // Make sure we will never divide by 0
-  const maxPages = Math.max(1, filters.pageMax);
+  const maxPerPage = Math.max(1, filters.maxPerPage);
 
-  const pageCount = Math.ceil(content.length / maxPages);
+  const pageCount = Math.ceil(content.length / maxPerPage);
   // pageNumber between 0 and pageCount -1.
   // pageCount - 1 because pageNumber starts from 0 and pageCount starts from 1
   const pageNumber = clamp(0, pageCount - 1, filters.pageNumber);
 
   // >= 0
-  const beginning = Math.max(0, maxPages * pageNumber);
+  const beginning = Math.max(0, maxPerPage * pageNumber);
   // >= `beginning`
-  const end = Math.max(beginning, maxPages * (pageNumber + 1));
+  const end = Math.max(beginning, maxPerPage * (pageNumber + 1));
 
   const newContent = content.slice(beginning, end);
 
   return Object.assign({}, response, {
     pageNumber,
     pageCount,
+    maxPerPage,
     properties: newContent,
   });
 });
 
 // applyFilters :: Object -> Object -> Object
 const applyFilters = curry((reqFilters, response) => {
-  const filters = flow(
-    overshadow(defaultFilters),
-    valuesToInt
-  )(reqFilters);
-
+  const filters = parseFilters(reqFilters);
   return flow(
     pagination(filters)
   )(response);
@@ -107,5 +136,5 @@ exports = module.exports = function search(req, res) {
   .then(applyFilters(filters))
   .then(insertIntoTemplate(renderPropertyCard))
   .then(sendJson(res))
-  .catch((err) => res.status(500).send({ err }));
+  .catch((err) => res.status(400).send({ err: err.message }));
 };

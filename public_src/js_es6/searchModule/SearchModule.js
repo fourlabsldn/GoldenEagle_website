@@ -29,6 +29,12 @@ const processServerResponse = curry((state, response) => {
   return overshadow(state, { pagination, search, properties });
 });
 
+const sequenceArray = (beginning, end) => {
+  // Plus one because we include both ends.
+  const span = Math.max(0, end + 1 - beginning);
+  return [...Array(span).keys()].map(v => v + beginning);
+};
+
 export default class SearchModule extends React.Component {
   constructor(...args) {
     super(...args);
@@ -37,11 +43,18 @@ export default class SearchModule extends React.Component {
       // Pagination info to be sent with requests
       pagination: {
         pageNumber: 0,
-        pageMax: 3,
+        maxPerPage: 3,
         pageCount: 1,
       },
       // Search info to be sent with requests
-      search: {},
+      search: {
+        keywords: '',
+        letType: 'short', // 'short' 'long'
+        priceMin: undefined,
+        priceMax: undefined,
+        beds: undefined,
+        baths: undefined,
+      },
     };
 
     this.goToPage(0);
@@ -59,13 +72,18 @@ export default class SearchModule extends React.Component {
     loadJson(searchEndpoint, searchParams)
       .then(processServerResponse(this.state))
       .then(s => this.setState(s))
-      .catch(() => console.log);
+      .catch(console.log);
   }
 
   render() {
     const currPage = this.state.pagination.pageNumber;
     const nextPage = () => this.goToPage(currPage + 1);
     const prevPage = () => this.goToPage(currPage - 1);
+
+    // Pages array with current page in bold
+    // p - 1 because current page starts from 0
+    const pages = sequenceArray(1, this.state.pagination.pageCount)
+                    .map(p => (p - 1 === currPage ? <b>{p}</b> : p));
     return (
       <div>
         <FiltersBar
@@ -84,7 +102,7 @@ export default class SearchModule extends React.Component {
           ))}
         </ div>
 
-        <p>Page <b>{this.state.pagination.pageNumber + 1}</b></p>
+        <p>Page {pages}</p>
         <button onClick={prevPage}> Prev </button>
         <button onClick={nextPage}> Next </button>
       </ div>
