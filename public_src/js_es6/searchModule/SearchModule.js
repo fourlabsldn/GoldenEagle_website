@@ -43,7 +43,7 @@ export default class SearchModule extends React.Component {
       // Pagination info to be sent with requests
       pagination: {
         pageNumber: 0,
-        maxPerPage: 3,
+        maxPerPage: 6,
         pageCount: 1,
       },
       // Search info to be sent with requests
@@ -57,8 +57,16 @@ export default class SearchModule extends React.Component {
       },
     };
 
-    this.goToPage(0);
+    this.mergeSearchParams = this.mergeSearchParams.bind(this);
     this.goToPage = this.goToPage.bind(this);
+    this.loadProperties = this.loadProperties.bind(this);
+    this.goToPage(0);
+  }
+
+  mergeSearchParams(params) {
+    console.log('Setting search to', params);
+    const searchParams = overshadow(this.state.search, params);
+    this.loadProperties(searchParams);
   }
 
   goToPage(pageNumber) {
@@ -69,6 +77,10 @@ export default class SearchModule extends React.Component {
     // Merge pagination and search variables to use all of these
     // as search parameters for the server
     const searchParams = Object.assign({}, search, pagination);
+    this.loadProperties(searchParams);
+  }
+
+  loadProperties(searchParams) {
     loadJson(searchEndpoint, searchParams)
       .then(processServerResponse(this.state))
       .then(s => this.setState(s))
@@ -76,6 +88,7 @@ export default class SearchModule extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     const currPage = this.state.pagination.pageNumber;
     const nextPage = () => this.goToPage(currPage + 1);
     const prevPage = () => this.goToPage(currPage - 1);
@@ -87,13 +100,8 @@ export default class SearchModule extends React.Component {
     return (
       <div>
         <FiltersBar
-          search="Testd"
-          letTime={0}
-          priceRange={0}
-          bedrooms={0}
-          baths={0}
-          moreFilters={0}
-          currency={0}
+          {...this.state.search}
+          mergeSearchParams={this.mergeSearchParams}
         />
 
         <div className="row">

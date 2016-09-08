@@ -10,6 +10,5 @@ import assert from 'fl-assert';
 export default function searchModule(selector, category) {
   const container = document.querySelector(selector);
   assert(!!container, `No container element found using selector ${selector}`);
-  console.log(container);
   ReactDOM.render(<SearchModule category={category} />, container);
 }
