@@ -11,12 +11,14 @@ export function toSelector(className) {
 
 /**
  * Forms a URL parameters string from an object
+ * Ignores undefined properties
  * @method encodeData
  * @param  {object} data
  * @return {String}
  */
 export function encodeData(data) {
   return Object.keys(data)
+    .filter(key => data[key] !== undefined)
     .map(key => [key, data[key]].map(encodeURIComponent).join('='))
     .join('&');
 }
@@ -64,7 +66,7 @@ export function interruptibleRequest() {
 export function overshadow(oldObj, newObj) {
   return Object.keys(oldObj)
     .reduce((result, key) => {
-      result[key] = newObj[key] || oldObj[key]; // eslint-disable-line no-param-reassign
+      result[key] = newObj[key] === undefined ? oldObj[key] : newObj[key]; // eslint-disable-line no-param-reassign, max-len
       return result;
     }, {});
 }
