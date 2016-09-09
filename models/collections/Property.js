@@ -96,11 +96,11 @@ Property.schema.pre('save', setPropertyCoordinates);
 
 /**
  * @method getFeatured
- * @return {Promise} Will resolve into an array or featured properties
+ * @return {Promise} Will resolve into an array of featured properties
  */
 Property.getFeatured = function () {
   return this.findWhere({
-    $or: [{ 'buy.featured': true }, { 'rent.featured': true }]
+    $or: [{ 'buy.featured': true }, { 'rent.featured': true }],
   })
   .then(results => {
     if (!Array.isArray(results)) {
@@ -110,6 +110,33 @@ Property.getFeatured = function () {
   });
 };
 
+/**
+ * @method getToBuy
+ * @return {Promise} Will resolve into an array of properties for sale
+ */
+Property.getToBuy = function () {
+  return this.findWhere({ 'buy.available': true })
+  .then(results => {
+    if (!Array.isArray(results)) {
+      return [];
+    }
+    return results;
+  });
+};
+
+/**
+ * @method getForRent
+ * @return {Promise} Will resolve into an array of properties available for renting.
+ */
+Property.getForRent = function () {
+  return this.findWhere({ 'rent.available': true })
+  .then(results => {
+    if (!Array.isArray(results)) {
+      return [];
+    }
+    return results;
+  });
+};
 
 Property.defaultColumns = 'location|70%, type|20%';
 Property.register();
