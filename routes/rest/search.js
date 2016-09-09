@@ -14,6 +14,7 @@ const defaultFilters = {
   priceMax: undefined,
   beds: undefined,
   baths: undefined,
+  buyRent: 'buy', // 'rent', 'buy'
 };
 
 const toInt = v => {
@@ -34,6 +35,7 @@ const filterConversion = {
   priceMax: toInt,
   beds: toInt,
   baths: toInt,
+  buyRent: String,
 };
 
 // convert :: Object ->
@@ -87,12 +89,26 @@ const prepareResponse = properties => ({ properties });
  * @param {Object} response
  */
 const filterBeds = curry((filters, response) => {
-  if (!filters.beds) { return response; }
-  const beds = Math.max(1, filters.beds);
+  const beds = filters.beds; // may be undefined
   // We use this negation because if prop.beds is undefined the outcome
-  // will be fault in any comparison and we want it to be included.
-  const properties = response.properties.filter(prop => !(prop.bedrooms !== filters.beds));
+  // will be false in any comparison and we want it to be included.
+  // properties with `beds` or more bedrooms
+  const properties = isUndefined(filters.beds)
+    ? response.properties
+    : response.properties.filter(prop => !(prop.bedrooms < beds));
   return Object.assign({}, response, { beds, properties });
+});
+
+const filterPrice = curry((filters, response) => {
+  const buyRent = filters.buyRent; // never undefined
+  const priceMin = filters.priceMin; // may be undefined
+  const priceMax = filters.priceMax; // may be undefined
+  const properties = response.properties.filter(prop => {
+    const aboveMin = !(prop[buyRent].price < priceMin);
+    const belowMax = !(prop[buyRent].price > priceMax);
+    return aboveMin && belowMax;
+  });
+  return Object.assign({}, response, { priceMin, priceMax, properties });
 });
 
 /**
@@ -130,6 +146,7 @@ const applyFilters = curry((reqFilters, response) => {
   const filters = parseFilters(reqFilters);
   return flow(
     filterBeds(filters),
+    filterPrice(filters),
     filterPagination(filters)
   )(response);
 });
