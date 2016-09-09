@@ -68,6 +68,13 @@ const FiltersBar = props => {
     props.mergeSearchParams(values);
   };
 
+  const changeSearch = e => props.mergeSearchParams({ keywords: e.target.value });
+
+  const searchKeyPress = e => {
+    const enterKeyCode = 13;
+    if (e.keyCode === enterKeyCode) { changeSearch(e); }
+  };
+
   const selectedIndexes = mapValues(
     fieldOptions => fieldOptions.findIndex(isSameOption(props.searchParams)),
     options
@@ -78,8 +85,8 @@ const FiltersBar = props => {
       <input
         type="text"
         placeholder="Search"
-        onBlur={e => props.mergeSearchParams({ keywords: e.target.value })}
-        // value={props.searchParams.keywords}
+        onBlur={changeSearch}
+        onKeyUp={searchKeyPress}
       />
 
       <select value={selectedIndexes.letType} onChange={e => change('letType', e.target.value)}>
