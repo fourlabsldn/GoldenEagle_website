@@ -19,6 +19,7 @@ const defaults = {
     beds: undefined,
     baths: undefined,
     moreFilters: undefined,
+    buyRent: 'rent', // 'buy' 'rent'
   },
 };
 

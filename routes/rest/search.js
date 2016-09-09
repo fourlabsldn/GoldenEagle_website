@@ -15,7 +15,7 @@ const defaultFilters = {
   priceMax: undefined,
   beds: undefined,
   baths: undefined,
-  buyRent: 'buy', // 'rent', 'buy'
+  buyRent: 'rent', // 'rent', 'buy'
 };
 
 const toInt = v => {
@@ -68,7 +68,8 @@ function handleResponse(resolve, reject) {
 }
 
 const render = curry((vName, res, content) => {
-  const defaultOptions = { layout: false };
+  // TODO: use filter value for buyRent here
+  const defaultOptions = { layout: false, buyRent: 'rent' };
   const context = { data: content };
   const options = Object.assign({}, defaultOptions, context);
 
@@ -226,5 +227,8 @@ exports = module.exports = function search(req, res) {
   .then(applyFilters(filters))
   .then(insertIntoTemplate(renderPropertyCard))
   .then(sendJson(res))
-  .catch((err) => res.status(400).send({ err: err.message }));
+  .catch((err) => {
+    console.log(err);
+    res.status(400).send({ err: err.message });
+  });
 };

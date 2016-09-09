@@ -1,13 +1,12 @@
-<!-- go through this and replace "buy.price" for something that could give
-the buy price or the rent price -->
+<!-- Uses buy price as default. uses global variables 'buyRent' and 'data' -->
 
 <div class="gew_propertyCard">
-  <a href="/property/{{#if buy.featured}}buy/{{else}}rent/{{/if}}{{slug}}">
+  <a href="/property/{{#is buyRent 'buy'}}buy/{{else}}rent/{{/is}}{{slug}}">
     <img
       class="gew_propertyCard-image"
-      srcset="{{srcSet images.[0].url}}"
+      srcset="{{srcSet data.images.[0].url}}"
       sizes="(max-width: 768px) 100vw, 50vw"
-      src="{{cloudinaryUrl images.[0] width=700 crop='lfill' gravity='center'}}"
+      src="{{cloudinaryUrl data.images.[0] width=700 crop='lfill' gravity='center'}}"
       alt="{{location.street1}}"
     />
   </a>
@@ -15,16 +14,21 @@ the buy price or the rent price -->
   <div class="gew_propertyCard-info-addressWrapper">
     <div class="gew_propertyCard-info-address">
       <p class="gew_propertyCard-info-address-line">
-        {{location.street1}}
+        {{data.location.street1}}
       </p>
       <p class="gew_propertyCard-info-address-line">
-        {{location.suburb}}
+        {{data.location.suburb}}
       </p>
     </div>
     <button class="btn btn-primary gew_propertyCard-info-viewBtn">View</button>
   </div>
 
   <p class="gew_propertyCard-price">
-    Price {{formatCurrency buy.price}}
+    Price
+    {{#is buyRent 'buy'}}
+      {{formatCurrency data.buy.price}}
+    {{else}}
+      {{formatCurrency data.rent.price}}
+    {{/is}}
   </p>
 </div>
