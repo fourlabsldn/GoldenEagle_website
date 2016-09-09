@@ -37,9 +37,16 @@ export default function navbarSubmenu() {
     500
   );
 
+  const toggleSubmenu = () => cancellable(
+    () => header.classList.toggle(CSS.showSubmenu),
+    15
+  );
+
   [...noSubmenuButtons, backgroundOverlay].forEach(
     btn => btn.addEventListener('mouseover', hideSubmenu)
   );
   submenuBtn.addEventListener('mouseover', showSubmenu);
-  submenuBtn.addEventListener('click', hideSubmenu);
+  submenuBtn.addEventListener('click', toggleSubmenu);
+  // Cancel any timeout when leaving head
+  header.addEventListener('mouseout', () => cancellable(() => null, 0));
 }
