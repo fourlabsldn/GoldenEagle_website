@@ -4,6 +4,23 @@ import { interruptibleRequest, overshadow } from '../utils';
 import { curry } from 'lodash/fp';
 
 const searchEndpoint = '/search';
+const defaults = {
+  pagination: {
+    pageNumber: 0,
+    maxPerPage: 6,
+    pageCount: 1,
+  },
+  // Search info to be sent with requests
+  search: {
+    keywords: '',
+    letType: 'short', // 'short' 'long'
+    priceMin: undefined,
+    priceMax: undefined,
+    beds: undefined,
+    baths: undefined,
+    moreFilters: undefined,
+  },
+};
 
 // Prepares input for dangerouslySetInnerHTML
 // sanitise :: String -> Object
@@ -21,8 +38,8 @@ const loadJson = (...args) => request(...args).then(r => r.json());
  */
 const processServerResponse = curry((state, response) => {
   // Extract the parameters we need
-  const pagination = overshadow(state.pagination, response);
-  const search = overshadow(state.search, response);
+  const pagination = overshadow(defaults.pagination, response);
+  const search = overshadow(defaults.search, response);
   const properties = response.properties;
 
   // Create a new state with our new values
@@ -41,21 +58,9 @@ export default class SearchModule extends React.Component {
     this.state = {
       properties: [], // Array of objects
       // Pagination info to be sent with requests
-      pagination: {
-        pageNumber: 0,
-        maxPerPage: 6,
-        pageCount: 1,
-      },
+      pagination: defaults.pagination,
       // Search info to be sent with requests
-      search: {
-        keywords: '',
-        letType: 'short', // 'short' 'long'
-        priceMin: undefined,
-        priceMax: undefined,
-        beds: undefined,
-        baths: undefined,
-        moreFilters: undefined,
-      },
+      search: defaults.search,
     };
 
     this.mergeSearchParams = this.mergeSearchParams.bind(this);
