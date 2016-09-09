@@ -78,7 +78,7 @@ const FiltersBar = props => {
       <input
         type="text"
         placeholder="Search"
-        onBlur={e => props.mergeSearchParams({ search: e.target.value })}
+        onBlur={e => props.mergeSearchParams({ keywords: e.target.value })}
         // value={props.searchParams.keywords}
       />
 

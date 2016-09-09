@@ -54,6 +54,7 @@ export default class SearchModule extends React.Component {
         priceMax: undefined,
         beds: undefined,
         baths: undefined,
+        moreFilters: undefined,
       },
     };
 
