@@ -33,6 +33,7 @@ Property.add({
     price: { type: Types.Money, currency: 'en-gb', label: 'Lettings Price' }
   },
   bedrooms: { type: Number },
+  bathrooms: { type: Number },
   size: { type: Number, label: 'Size (sq ft)' },
   type: {
     type: Types.Select,

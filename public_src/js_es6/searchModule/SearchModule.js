@@ -37,6 +37,7 @@ const loadJson = (...args) => request(...args).then(r => r.json());
  * @return {Object} new application state
  */
 const processServerResponse = curry((state, response) => {
+  console.log('Server responsded', response);
   // Extract the parameters we need
   const pagination = overshadow(defaults.pagination, response);
   const search = overshadow(defaults.search, response);

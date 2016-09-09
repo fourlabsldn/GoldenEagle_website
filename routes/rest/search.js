@@ -1,6 +1,7 @@
 const keystone = require('keystone');
-const { curry, flow, clamp, isUndefined, omitBy } = require('lodash/fp');
+const { curry, flow, clamp, isUndefined, omitBy, isString } = require('lodash/fp');
 const { overshadow, mapObj } = require('./utils');
+const FuzzySet = require('fuzzyset.js');
 
 const viewName = 'search';
 
@@ -84,6 +85,7 @@ const prepareResponse = properties => ({ properties });
 
 // ----------------------- Filters -------------------------------
 /**
+ * Filter by exact number of bedrooms
  * filterBeds
  * @param {Object} filters
  * @param {Object} response
@@ -93,12 +95,31 @@ const filterBeds = curry((filters, response) => {
   // We use this negation because if prop.beds is undefined the outcome
   // will be false in any comparison and we want it to be included.
   // properties with `beds` or more bedrooms
-  const properties = isUndefined(filters.beds)
+  const properties = isUndefined(beds)
     ? response.properties
-    : response.properties.filter(prop => !(prop.bedrooms < beds));
+    : response.properties.filter(prop => !(prop.bedrooms !== beds));
   return Object.assign({}, response, { beds, properties });
 });
 
+/**
+ * Filter by minimum number of bathrooms
+ * filterBaths
+ * @param {Object} filters
+ * @param {Object} response
+ */
+const filterBaths = curry((filters, response) => {
+  const baths = filters.baths; // may be undefined
+  const properties = isUndefined(baths)
+    ? response.properties
+    : response.properties.filter(prop => !(prop.bathrooms < baths));
+  return Object.assign({}, response, { baths, properties });
+});
+
+/**
+ * filterPrice
+ * @param {Object} filters
+ * @param {Object} response
+ */
 const filterPrice = curry((filters, response) => {
   const buyRent = filters.buyRent; // never undefined
   const priceMin = filters.priceMin; // may be undefined
@@ -111,6 +132,37 @@ const filterPrice = curry((filters, response) => {
   return Object.assign({}, response, { priceMin, priceMax, properties });
 });
 
+/**
+ * Filter by minimum number of bathrooms
+ * filterKeywords
+ * @param {Object} filters
+ * @param {Object} response
+ */
+const filterKeywords = curry((filters, response) => {
+  const keywords = filters.keywords || undefined; // may be empty array;
+  const properties = isUndefined(keywords)
+    ? response.properties
+    : response.properties.filter(prop => {
+      const whatToMatch = [
+        prop.location.postcode,
+        prop.location.state,
+        prop.location.suburb,
+        prop.location.street1,
+        prop.location.country,
+        prop.locationDescription,
+        prop.ownership,
+        prop.summary,
+        prop.type,
+      ].filter(isString);
+      const matcher = FuzzySet(whatToMatch); // eslint-disable-line new-cap
+      const results = matcher.get(keywords) || [];
+      // Results are in arrays with accuracy and the string, we want
+      // to remove any item with accuracy smaller than 0.5
+      const filtered = results.filter(r => r[0] > 0.3);
+      return filtered.length > 0;
+    });
+  return Object.assign({}, response, { keywords, properties });
+});
 /**
  * filterPagination
  * @param {Object} filters
@@ -145,8 +197,10 @@ const filterPagination = curry((filters, response) => {
 const applyFilters = curry((reqFilters, response) => {
   const filters = parseFilters(reqFilters);
   return flow(
+    filterBaths(filters),
     filterBeds(filters),
     filterPrice(filters),
+    filterKeywords(filters),
     filterPagination(filters)
   )(response);
 });

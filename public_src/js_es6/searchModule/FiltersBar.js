@@ -27,12 +27,12 @@ const options = {
     { priceMin: 2000000, priceMax: 3000000, label: priceFunc.between },
     { priceMin: 3000000, priceMax: undefined, label: priceFunc.above },
   ],
-  bath: [
-    { bath: undefined, label: 'Baths' },
-    { bath: 1, label: 'More than 1' },
-    { bath: 2, label: 'More than 2' },
-    { bath: 3, label: 'More than 3' },
-    { bath: 4, label: 'More than 4' },
+  baths: [
+    { baths: undefined, label: 'Baths' },
+    { baths: 1, label: 'More than 1' },
+    { baths: 2, label: 'More than 2' },
+    { baths: 3, label: 'More than 3' },
+    { baths: 4, label: 'More than 4' },
   ],
   letType: [
     { letType: undefined, label: 'Let time' },
@@ -101,8 +101,8 @@ const FiltersBar = props => {
         {createOptions(options.beds)}
       </select>
 
-      <select value={selectedIndexes.bath} onChange={e => change('bath', e.target.value)}>
-        {createOptions(options.bath)}
+      <select value={selectedIndexes.baths} onChange={e => change('baths', e.target.value)}>
+        {createOptions(options.baths)}
       </select>
 
       <select
