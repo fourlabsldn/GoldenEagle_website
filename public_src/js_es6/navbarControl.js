@@ -1,4 +1,6 @@
 import navbarHighlighter from './navbarControl/navbarHighlighter';
+import navbarSubmenuController from './navbarControl/navbarSubmenu';
+import navbarMobileSubmenuController from './navbarControl/navbarMobileSubmenu';
 import css from './navbarControl/navbarCSS';
 import { toSelector } from './utils';
 
@@ -10,24 +12,8 @@ function hoverHighlighting() {
   navbarHighlighter(highlight, buttons, activeSelector);
 }
 
-function setupMobileSubmenuToggle() {
-  const submenuWrappersHTMLCol = document.querySelectorAll(toSelector(css.mobile.hasSubmenu));
-  const submenuWrappers = Array.from(submenuWrappersHTMLCol);
-  const toggleBtn = document.querySelector(toSelector(css.mobile.toggleBtn));
-
-  toggleBtn.addEventListener('click', () => {
-    toggleBtn.classList.toggle(css.mobile.toggleBtnActive);
-    document.querySelector('#header').classList.toggle('gew_navbar--mobileMenu-visible');
-  });
-
-  submenuWrappers.forEach(w => {
-    w.addEventListener('click', () => {
-      w.classList.toggle(css.mobile.hasSubmenuVisible);
-    });
-  });
-}
-
 export default function () {
   hoverHighlighting();
-  setupMobileSubmenuToggle();
+  navbarMobileSubmenuController();
+  navbarSubmenuController();
 }

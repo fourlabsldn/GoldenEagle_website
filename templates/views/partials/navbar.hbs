@@ -1,5 +1,5 @@
 <div id="header">
-    <div onmouseover="gew.toggleNavbarSubmenu('hide')" class="gew_navbar-submenu-pageOverlay"></div>
+    <div class="gew_navbar-submenu-pageOverlay"></div>
 
     <div class="gew_navbar">
       <!-- Mobile navbar -->
@@ -50,9 +50,7 @@
             <li>
             {{#if submenu}}
                     <a href="{{ href }}"
-                      class="gew_navbar-button"
-                      onmouseover="gew.toggleNavbarSubmenu('show')"
-                      onclick="gew.toggleNavbarSubmenu('hide')"
+                      class="gew_navbar-button gew_navbar-button--hasSubmenu"
                     >
 
                       {{ label }}
@@ -79,7 +77,7 @@
                     <a
                       href="{{ href }}"
                       class="gew_navbar-button {{#ifeq ../section key}}active{{/ifeq}}"
-                      onmouseover="gew.toggleNavbarSubmenu('hide')">
+                      >
                       {{ label }}
                     </a>
             {{/if}}

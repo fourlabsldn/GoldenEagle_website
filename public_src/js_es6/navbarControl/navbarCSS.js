@@ -9,4 +9,9 @@ export default {
     hasSubmenu: 'gew_navbar-mobileNav-btn-hasSubmenu',
     toggleBtn: 'gew_navbar-toggle',
   },
+
+  globalWrapper: '#header',
+  overlay: 'gew_navbar-submenu-pageOverlay',
+  buttonHasSubmenu: 'gew_navbar-button--hasSubmenu',
+  showSubmenu: 'gew_navbar-submenu--visible',
 };
