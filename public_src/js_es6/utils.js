@@ -1,4 +1,6 @@
-	// Returns int that is min <= val <= max
+import { curry, flow, map, toPairs, fromPairs } from 'lodash/fp';
+
+// Returns int that is min <= val <= max
 export function constrain(val, min, max) {
   const diff = max - min + 1; // plus one so that val is <=max and not <max
   const v = val - min;
@@ -66,7 +68,21 @@ export function interruptibleRequest() {
 export function overshadow(oldObj, newObj) {
   return Object.keys(oldObj)
     .reduce((result, key) => {
-      result[key] = newObj[key] === undefined ? oldObj[key] : newObj[key]; // eslint-disable-line no-param-reassign, max-len
+      // We want to use values from newObj even if the value is set to undefined,
+      // but not use it if it is not set at all. That's why we use hasOwnProperty.
+      result[key] = newObj.hasOwnProperty(key) ? newObj[key] : oldObj[key]; // eslint-disable-line no-param-reassign, max-len
       return result;
     }, {});
 }
+
+// Applies a function to all values of an object and Returns
+// a new object with same keys
+// The function takes the property key and value as parameters.
+// mapObj :: Function -> Object -> Object
+export const mapObj = curry((f, o) => {
+  return flow(
+    toPairs,
+    map(([key, value]) => [key, f(key, value)]),
+    fromPairs
+  )(o);
+});

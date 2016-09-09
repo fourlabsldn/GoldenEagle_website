@@ -1,71 +1,113 @@
 import React from 'react';
+import { curry, omit, mapValues } from 'lodash/fp';
 
-const valueCount = 4;
-const valueGap = 500000;
-const valueStart = 0;
-const maxPrices = [...Array(valueCount - 1).keys()] // array of values from 0 to valueCount - 1
-  .map(v => (v + 1) * valueGap + valueStart); // Minimum values in pounds
+const currency = val => `£${val}`;
 
-const priceOption = (label, priceMin, priceMax) => ({ label, priceMin, priceMax });
+// Compares two option objects by comparing all of their properties apart
+// from the 'label' property.
+// isSameOption :: Object -> Object
+const isSameOption = curry((opt1, opt2) => {
+  const keys = Object.keys(opt2).filter(k => k !== 'label');
+  return keys.reduce((result, k) => result && opt1[k] === opt2[k], true);
+});
+
+const priceFunc = {
+  between() { return `${currency(this.priceMin)} - ${currency(this.priceMax)}`; },
+  upTo() { return `Up to ${currency(this.priceMax)}`; },
+  above() { return `Above ${currency(this.priceMin)}`; },
+};
+
+const options = {
+  price: [
+    { priceMin: undefined, priceMax: undefined, label: () => 'Price' },
+    { priceMin: undefined, priceMax: 500000, label: priceFunc.upTo },
+    { priceMin: 500000, priceMax: 1000000, label: priceFunc.between },
+    { priceMin: 1000000, priceMax: 1500000, label: priceFunc.between },
+    { priceMin: 1500000, priceMax: 2000000, label: priceFunc.between },
+    { priceMin: 2000000, priceMax: 3000000, label: priceFunc.between },
+    { priceMin: 3000000, priceMax: undefined, label: priceFunc.above },
+  ],
+  bath: [
+    { bath: undefined, label: 'Baths' },
+    { bath: 1, label: 'More than 1' },
+    { bath: 2, label: 'More than 2' },
+    { bath: 3, label: 'More than 3' },
+    { bath: 4, label: 'More than 4' },
+  ],
+  letType: [
+    { letType: undefined, label: 'Let time' },
+    { letType: 'short', label: 'Short' },
+    { letType: 'long', label: 'Long' },
+  ],
+  beds: [
+    { beds: undefined, label: 'Bedrooms' },
+    { beds: 1, label: '1 Bedrooms' },
+    { beds: 2, label: '2 Bedrooms' },
+    { beds: 3, label: '3 Bedrooms' },
+    { beds: 4, label: '4 Bedrooms' },
+  ],
+  moreFilters: [
+    { moreFilters: undefined, label: 'More Filters' },
+    { moreFilters: 'garage', label: 'Garage' },
+    { moreFilters: 'pool', label: 'Pool' },
+    { moreFilters: 'garden', label: 'Garden' },
+  ],
+};
+
+const createOptions = opts => {
+  return opts.map((opt, idx) => {
+    const label = typeof opt.label === 'function' ? opt.label() : opt.label;
+    return <option value={idx}> {label} </option>;
+  });
+};
 
 const FiltersBar = props => {
-  const priceOptions = maxPrices
-    .map(v => priceOption(`Up to ${v}`, undefined, v));
-    // .concat(priceOption(`Over ${last(maxPrices)}`, last(maxPrices), undefined));
-
-  const set = (...args) => props.mergeSearchParams(...args);
-  const change = {
-    letTime: letType => set({ letType }),
-    priceRange: priceMax => set({ priceMax }),
-    beds: beds => set({ beds }),
-    baths: baths => set({ baths }),
+  const change = (optionName, idx) => {
+    const option = options[optionName][idx];
+    const values = omit(['label'], option);
+    props.mergeSearchParams(values);
   };
+
+  const selectedIndexes = mapValues(
+    fieldOptions => fieldOptions.findIndex(isSameOption(props.searchParams)),
+    options
+  );
 
   return (
     <div>
       <input
         type="text"
         placeholder="Search"
-        value={props.keywords}
+        onBlur={e => props.mergeSearchParams({ search: e.target.value })}
+        // value={props.searchParams.keywords}
       />
 
-      <select value={props.letTime} onChange={e => change.letTime(e.target.value)}>
-        <option disabled selected>Let time</option>
-        <option value="short">Short let</option>
-        <option value="long">Long let</option>
+      <select value={selectedIndexes.letType} onChange={e => change('letType', e.target.value)}>
+        {createOptions(options.letType)}
       </select>
 
-      <select value={props.priceMax} onChange={e => change.priceRange(e.target.value)}>
-        <option disabled selected>Price Range</option>
-        {priceOptions.map(op => <option value={op.priceMax}>op.label</option>)}
+      <select value={selectedIndexes.price} onChange={e => change('price', e.target.value)}>
+        {createOptions(options.price)}
       </select>
 
-      <select value={props.beds} onChange={e => change.beds(e.target.value)}>
-        <option disabled selected>Beds</option>
-        <option value={0}>Any</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option value={undefined}>More than 4</option>
+      <select value={selectedIndexes.beds} onChange={e => change('beds', e.target.value)}>
+        {createOptions(options.beds)}
       </select>
 
-      <select value={props.baths} onChange={e => change.baths(e.target.value)}>
-        <option disabled selected>Baths</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>More than 3</option>
+      <select value={selectedIndexes.bath} onChange={e => change('bath', e.target.value)}>
+        {createOptions(options.bath)}
       </select>
 
-      {/* TODO: Add content to 'More filters'*/}
-      <select value={props.moreFilters}>
-        <option disabled selected>More Filters</option>
-        <option>Garage</option>
+      <select
+        value={selectedIndexes.moreFilters}
+        onChange={e => change('moreFilters', e.target.value)}
+      >
+        {createOptions(options.moreFilters)}
       </select>
+
 
       {/*  TODO: Allow people to choose whichever currency they want.*/}
-      <select value={props.currency}>
+      <select value={props.searchParams}>
         <option disabled selected>£</option>
         <option>British Pound</option>
         <option>Euro</option>
@@ -75,14 +117,17 @@ const FiltersBar = props => {
 };
 
 FiltersBar.propTypes = {
-  keywords: React.PropTypes.string,
-  letTime: React.PropTypes.number,
-  priceMin: React.PropTypes.number,
-  priceMax: React.PropTypes.number,
-  beds: React.PropTypes.number,
-  baths: React.PropTypes.number,
-  moreFilters: React.PropTypes.number,
-  currency: React.PropTypes.number,
+  searchParams: React.PropTypes.shape({
+    keywords: React.PropTypes.string,
+    letType: React.PropTypes.number,
+    priceMin: React.PropTypes.number,
+    priceMax: React.PropTypes.number,
+    beds: React.PropTypes.number,
+    baths: React.PropTypes.number,
+    moreFilters: React.PropTypes.number,
+    currency: React.PropTypes.number,
+  }),
+  mergeSearchParams: React.PropTypes.func,
 };
 
 export default FiltersBar;

@@ -81,6 +81,7 @@ export default class SearchModule extends React.Component {
   }
 
   loadProperties(searchParams) {
+    console.log(searchParams);
     loadJson(searchEndpoint, searchParams)
       .then(processServerResponse(this.state))
       .then(s => this.setState(s))
@@ -88,7 +89,6 @@ export default class SearchModule extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     const currPage = this.state.pagination.pageNumber;
     const nextPage = () => this.goToPage(currPage + 1);
     const prevPage = () => this.goToPage(currPage - 1);
@@ -100,7 +100,7 @@ export default class SearchModule extends React.Component {
     return (
       <div>
         <FiltersBar
-          {...this.state.search}
+          searchParams={this.state.search}
           mergeSearchParams={this.mergeSearchParams}
         />
 
