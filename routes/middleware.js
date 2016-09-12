@@ -35,6 +35,8 @@ exports.initLocals = function (req, res, next) {
     // { label: 'Blog', key: 'blog', href: '/blog' },
     // { label: 'Gallery', key: 'gallery', href: '/gallery' },
 	];
+
+  res.locals.googleMapsKey = process.env.GOOGLE_BROWSER_KEY;
 	res.locals.user = req.user;
 	next();
 };
