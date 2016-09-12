@@ -20,12 +20,12 @@ const priceFunc = {
 const options = {
   price: [
     { priceMin: undefined, priceMax: undefined, label: () => 'Price' },
-    { priceMin: undefined, priceMax: 500000, label: priceFunc.upTo },
-    { priceMin: 500000, priceMax: 1000000, label: priceFunc.between },
-    { priceMin: 1000000, priceMax: 1500000, label: priceFunc.between },
-    { priceMin: 1500000, priceMax: 2000000, label: priceFunc.between },
-    { priceMin: 2000000, priceMax: 3000000, label: priceFunc.between },
-    { priceMin: 3000000, priceMax: undefined, label: priceFunc.above },
+    { priceMin: undefined, priceMax: 500, label: priceFunc.upTo },
+    { priceMin: 500, priceMax: 1000, label: priceFunc.between },
+    { priceMin: 1000, priceMax: 1500, label: priceFunc.between },
+    { priceMin: 1500, priceMax: 2000, label: priceFunc.between },
+    { priceMin: 2000, priceMax: 3000, label: priceFunc.between },
+    { priceMin: 3000, priceMax: undefined, label: priceFunc.above },
   ],
   baths: [
     { baths: undefined, label: 'Baths' },

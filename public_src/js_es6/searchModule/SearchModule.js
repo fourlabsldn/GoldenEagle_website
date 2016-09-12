@@ -7,7 +7,7 @@ const searchEndpoint = '/search';
 const defaults = {
   pagination: {
     pageNumber: 0,
-    maxPerPage: 2,
+    maxPerPage: 9,
     pageCount: 1,
   },
   // Search info to be sent with requests
