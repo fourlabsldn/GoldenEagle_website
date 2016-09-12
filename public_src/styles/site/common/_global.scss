@@ -71,7 +71,7 @@ a {
 .gew_titleRow {
   padding-top:2em;
   padding-bottom: 2em;
-  border-bottom: 2px solid desaturate(darken($gray-light, 5%), 25%);
+  border-bottom: 2px solid $gray-desaturated;
 }
 
 .gew_titleRow-title {

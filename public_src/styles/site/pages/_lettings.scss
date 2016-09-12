@@ -1,0 +1,34 @@
+// React search bar
+.gew_search-widthLimiter {
+  @extend .gew_sectionContent;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.gew_search-filtersBar {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  align-content: stretch;
+  border-bottom: 2px solid $gray-desaturated;
+}
+
+.gew_search-filter {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  padding: .4em 1em .5em;
+  font-size: $font-size-small;
+  font-weight: normal;
+  background-color: transparent;
+  border: 0;
+  border-right: 2px solid $gray-desaturated;
+  box-shadow: none;
+
+  &:first-child {
+    border-left: 2px solid $gray-desaturated;
+  }
+
+  @include placeholder {
+    color: inherit;
+  }
+}

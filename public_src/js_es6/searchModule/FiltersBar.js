@@ -81,31 +81,45 @@ const FiltersBar = props => {
   );
 
   return (
-    <div>
+    <div className="gew_search-filtersBar gew_search-widthLimiter">
       <input
+        className="gew_search-filter"
         type="text"
         placeholder="Search"
         onBlur={changeSearch}
         onKeyUp={searchKeyPress}
       />
 
-      <select value={selectedIndexes.letType} onChange={e => change('letType', e.target.value)}>
+      <select
+        className="gew_search-filter"
+        value={selectedIndexes.letType} onChange={e => change('letType', e.target.value)}
+      >
         {createOptions(options.letType)}
       </select>
 
-      <select value={selectedIndexes.price} onChange={e => change('price', e.target.value)}>
+      <select
+        className="gew_search-filter"
+        value={selectedIndexes.price} onChange={e => change('price', e.target.value)}
+      >
         {createOptions(options.price)}
       </select>
 
-      <select value={selectedIndexes.beds} onChange={e => change('beds', e.target.value)}>
+      <select
+        className="gew_search-filter"
+        value={selectedIndexes.beds} onChange={e => change('beds', e.target.value)}
+      >
         {createOptions(options.beds)}
       </select>
 
-      <select value={selectedIndexes.baths} onChange={e => change('baths', e.target.value)}>
+      <select
+        className="gew_search-filter"
+        value={selectedIndexes.baths} onChange={e => change('baths', e.target.value)}
+      >
         {createOptions(options.baths)}
       </select>
 
       <select
+        className="gew_search-filter"
         value={selectedIndexes.moreFilters}
         onChange={e => change('moreFilters', e.target.value)}
       >
@@ -114,7 +128,9 @@ const FiltersBar = props => {
 
 
       {/*  TODO: Allow people to choose whichever currency they want.*/}
-      <select value={props.searchParams}>
+      <select
+        className="gew_search-filter"
+        value={props.searchParams}>
         <option disabled selected>£</option>
         <option>British Pound</option>
         <option>Euro</option>

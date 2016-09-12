@@ -17,6 +17,7 @@ $max-section-width: 2050px;
 $gray-base: #000;
 $gray-light: #f4ede7;
 $gray-lighter: #f5f1ed;
+$gray-desaturated: desaturate(darken($gray-light, 12%), 25%);
 $white: #fff;
 
 $text-color: $gray-base;
