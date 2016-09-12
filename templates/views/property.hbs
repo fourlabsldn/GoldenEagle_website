@@ -1,6 +1,6 @@
 <!-- Uses buy price as default. uses global variables 'buyRent' and 'data' -->
 
-<div class="container gew_landingSection">
+<div class="container gew_landingSection" id="property-images">
   <img
     class="gew_background-cover"
     srcset="{{srcSet data.images.[0].url}}"
@@ -10,9 +10,39 @@
   />
 </div>
 
-<section class="gew_sectionContent-smallPadding gew_bg-dark">
-  Lorem Ipsum </br>
-  Dolor sit emen
+<section class="row gew_property-actions gew_sectionContent-smallPadding gew_bg-dark">
+  <div class="col-sm-6">
+    <span class="gew_property-address">
+      {{data.location.street1}}, {{data.location.suburb}}
+    </span>
+    <span class="gew_property-detailsSummary">
+      {{#is acquisitionMode 'buy'}}
+        {{formatCurrency data.buy.price}}
+      {{else}}
+        {{formatCurrency data.rent.price}}
+      {{/is}}
+    </span>
+  </div>
+  <div class="col-sm-6">
+    <div class="gew_property-actionsBar">
+      <a class="gew_property-actionsBar-action" href="#property-floorPlan">
+        <i class="fa fa-cube" aria-hidden="true"> </i>
+      </a>
+      <a class="gew_property-actionsBar-action" href="#property-video">
+        <i class="fa fa-file-video-o" aria-hidden="true"> </i>
+      </a>
+      <a class="gew_property-actionsBar-action" href="#property-images">
+        <i class="fa fa-camera-retro" aria-hidden="true"> </i>
+      </a>
+      <a class="gew_property-actionsBar-action">
+        <i class="fa fa-arrows-alt" aria-hidden="true"> </i>
+      </a>
+      <a class="gew_property-actionsBar-action" href="#property-location">
+        <i class="fa fa-map-marker" aria-hidden="true"> </i>
+      </a>
+      <a class="btn btn-primary gew_property-actionsBar-button" >Contact Agent</a>
+    </div>
+  </div>
 </section>
 
 <section class="gew_bg-light gew_property-doubleColumn">
@@ -39,7 +69,7 @@
 </section>
 
 {{#if data.floorPlan.url}}
-  <section class="gew_bg-light gew_property-doubleColumn">
+  <section class="gew_bg-light gew_property-doubleColumn" id="property-floorPlan">
     <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
       <div class="row">
         <div class="col-sm-4 gew_doubleColumn-col1">
@@ -64,7 +94,7 @@
 
 
 {{#if data.videoUrl}}
-  <section class="gew_bg-light gew_property-doubleColumn">
+  <section class="gew_bg-light gew_property-doubleColumn" id="property-video">
     <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
       <div class="row">
         <div class="col-sm-4 gew_doubleColumn-col1">
@@ -86,12 +116,19 @@
   </section>
 {{/if}}
 
-
-<p class="gew_propertyCard-price">
-  Price
-  {{#is buyRent 'buy'}}
-    {{formatCurrency data.buy.price}}
-  {{else}}
-    {{formatCurrency data.rent.price}}
-  {{/is}}
-</p>
+{{#if data.location.postcode}}
+  <section class="gew_bg-light gew_property-doubleColumn" id="property-location">
+    <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
+      <div class="row">
+        <div class="col-sm-4 gew_doubleColumn-col1">
+          <h2 class="gew_property-h2">Map</h2>
+        </div>
+        <div class="col-sm-8 gew_doubleColumn-col2">
+        </div>
+      </div>
+    </div>
+    <div class="gew_sectionContent-noPadding">
+      <div class="gew_border-bottom"></div>
+    </div>
+  </section>
+{{/if}}
