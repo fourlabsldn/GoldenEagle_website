@@ -112,7 +112,7 @@ export default class SearchModule extends React.Component {
           mergeSearchParams={this.mergeSearchParams}
         />
 
-        <div className="gew_search-widthLimiter">
+        <div className="gew_sectionContent-smallPadding">
           <div className="row">
             {this.state.properties.map(property => (
               <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={sanitise(property)} />

@@ -23,6 +23,8 @@
   border: 0;
   border-right: 2px solid $gray-desaturated;
   box-shadow: none;
+  cursor: pointer;
+  outline-color: $brand-primary;
 
   &:first-child {
     border-left: 2px solid $gray-desaturated;
