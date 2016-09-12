@@ -52,6 +52,8 @@ exports = module.exports = function (app) {
   app.get('/lettings', routes.views.lettings);
   app.get('/about', routes.views.about);
   app.get('/search', routes.rest.search);
+  app.get('/property/rent/:slug', (req, res) => routes.views.property(req, res, 'rent'));
+  app.get('/property/buy/:slug', (req, res) => routes.views.property(req, res, 'buy'));
   app.all('/contact', routes.views.contact);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

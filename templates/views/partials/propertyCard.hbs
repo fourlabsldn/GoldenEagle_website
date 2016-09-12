@@ -1,15 +1,14 @@
 <!-- Uses buy price as default. uses global variables 'buyRent' and 'data' -->
 
-<div class="gew_propertyCard">
-  <a href="/property/{{#is buyRent 'buy'}}buy/{{else}}rent/{{/is}}{{slug}}">
-    <img
-      class="gew_propertyCard-image"
-      srcset="{{srcSet data.images.[0].url}}"
-      sizes="(max-width: 768px) 100vw, 50vw"
-      src="{{cloudinaryUrl data.images.[0] width=700 crop='lfill' gravity='center'}}"
-      alt="{{location.street1}}"
-    />
-  </a>
+<a href="/property/{{#is buyRent 'buy'}}buy{{else}}rent{{/is}}/{{data.slug}}"
+  class="gew_propertyCard">
+  <img
+    class="gew_propertyCard-image"
+    srcset="{{srcSet data.images.[0].url}}"
+    sizes="(max-width: 768px) 100vw, 50vw"
+    src="{{cloudinaryUrl data.images.[0] width=700 crop='lfill' gravity='center'}}"
+    alt="{{location.street1}}"
+  />
 
   <div class="gew_propertyCard-info-addressWrapper">
     <div class="gew_propertyCard-info-address">
@@ -31,4 +30,4 @@
       {{formatCurrency data.rent.price}}
     {{/is}}
   </p>
-</div>
+</a>
