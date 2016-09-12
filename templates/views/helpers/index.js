@@ -41,6 +41,7 @@ module.exports = function () {
 	// =========================================================================
   _helpers.srcSet = require('./custom/srcSet');
   _helpers.formatCurrency = require('./custom/formatCurrency');
+  _helpers.toYoutubeEmbedUrl = require('./custom/toYoutubeEmbedUrl');
 
 	// Register library helpers
 	const helperRegisterer = {

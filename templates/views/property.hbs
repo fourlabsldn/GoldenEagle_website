@@ -62,31 +62,29 @@
   </section>
 {{/if}}
 
-{{#if data.videoUrl}}
-  <iframe width="854" height="480" src="{{data.videoUrl}}" frameborder="0" allowfullscreen></iframe>
-{{/if}}
 
-<section class="gew_bg-light gew_property-doubleColumn">
-  <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
-    <div class="row">
-      <div class="col-sm-4 gew_doubleColumn-col1">
-        <h2 class="gew_property-h2">Video</h2>
-      </div>
-      <div class="col-sm-8 gew_doubleColumn-col2">
-        <img
-        style="width: 100%"
-          srcset="{{srcSet data.floorPlan.url}}"
-          sizes="50vw"
-          src="{{cloudinaryUrl data.images.[0] width=700 crop='lfill' gravity='center'}}"
-          alt="Floor plan"
-        />
+{{#if data.videoUrl}}
+  <section class="gew_bg-light gew_property-doubleColumn">
+    <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
+      <div class="row">
+        <div class="col-sm-4 gew_doubleColumn-col1">
+          <h2 class="gew_property-h2">Video</h2>
+        </div>
+        <div class="col-sm-8 gew_doubleColumn-col2">
+          <iframe
+            class="gew_property-video"
+            src="{{toYoutubeEmbedUrl data.videoUrl}}"
+            frameborder="0"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="gew_sectionContent-noPadding">
-    <div class="gew_border-bottom"></div>
-  </div>
-</section>
+    <div class="gew_sectionContent-noPadding">
+      <div class="gew_border-bottom"></div>
+    </div>
+  </section>
+{{/if}}
 
 
 <p class="gew_propertyCard-price">

@@ -3,8 +3,12 @@
 }
 
 .gew_property-h2 {
+  margin-top: .5em;
   margin-bottom: 4em;
-  margin-top: 0;
+  @include sm-screen {
+    margin-bottom: 2em;
+  }
+
 }
 
 .gew_property-doubleColumn {
@@ -14,5 +18,18 @@
     font-weight: inherit;
     font-size: inherit;
     line-height: inherit;
+  }
+}
+
+.gew_property-video {
+  width: 100%;
+  height: 300px;
+
+  @include lg-screen {
+    height: 370px;
+  }
+
+  @include xl-screen {
+    height: 450px;
   }
 }
