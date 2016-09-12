@@ -1,3 +1,99 @@
-<section class="gew_bg-light">
-  {{> propertyCard data=data.property buyRent=acquisitionMode}}
+<!-- Uses buy price as default. uses global variables 'buyRent' and 'data' -->
+
+<div class="container gew_landingSection">
+  <img
+    class="gew_background-cover"
+    srcset="{{srcSet data.images.[0].url}}"
+    sizes="100vw"
+    src="{{cloudinaryUrl data.images.[0] width=700 crop='lfill' gravity='center'}}"
+    alt="{{location.street1}}"
+  />
+</div>
+
+<section class="gew_sectionContent-smallPadding gew_bg-dark">
+  Lorem Ipsum </br>
+  Dolor sit emen
 </section>
+
+<section class="gew_bg-light gew_property-doubleColumn">
+  <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
+    <div class="row">
+      <div class="col-sm-4 gew_doubleColumn-col1">
+        <h2 class="gew_property-h2">Key Details</h2>
+        <p>
+          Beds: {{data.bedrooms}} <br>
+          Baths: {{data.bathrooms}} <br>
+          Location: {{data.location.suburb}} <br>
+          Size: {{data.size}}sq ft <br>
+        </p>
+      </div>
+      <div class="col-sm-8 gew_doubleColumn-col2">
+        <h2 class="gew_property-h2">Description</h2>
+        {{{data.description}}}
+      </div>
+    </div>
+  </div>
+  <div class="gew_sectionContent-noPadding">
+    <div class="gew_border-bottom"></div>
+  </div>
+</section>
+
+{{#if data.floorPlan.url}}
+  <section class="gew_bg-light gew_property-doubleColumn">
+    <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
+      <div class="row">
+        <div class="col-sm-4 gew_doubleColumn-col1">
+          <h2 class="gew_property-h2">Floor Plan</h2>
+        </div>
+        <div class="col-sm-8 gew_doubleColumn-col2">
+          <img
+          style="width: 100%"
+            srcset="{{srcSet data.floorPlan.url}}"
+            sizes="50vw"
+            src="{{cloudinaryUrl data.images.[0] width=700 crop='lfill' gravity='center'}}"
+            alt="Floor plan"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="gew_sectionContent-noPadding">
+      <div class="gew_border-bottom"></div>
+    </div>
+  </section>
+{{/if}}
+
+{{#if data.videoUrl}}
+  <iframe width="854" height="480" src="{{data.videoUrl}}" frameborder="0" allowfullscreen></iframe>
+{{/if}}
+
+<section class="gew_bg-light gew_property-doubleColumn">
+  <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
+    <div class="row">
+      <div class="col-sm-4 gew_doubleColumn-col1">
+        <h2 class="gew_property-h2">Video</h2>
+      </div>
+      <div class="col-sm-8 gew_doubleColumn-col2">
+        <img
+        style="width: 100%"
+          srcset="{{srcSet data.floorPlan.url}}"
+          sizes="50vw"
+          src="{{cloudinaryUrl data.images.[0] width=700 crop='lfill' gravity='center'}}"
+          alt="Floor plan"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="gew_sectionContent-noPadding">
+    <div class="gew_border-bottom"></div>
+  </div>
+</section>
+
+
+<p class="gew_propertyCard-price">
+  Price
+  {{#is buyRent 'buy'}}
+    {{formatCurrency data.buy.price}}
+  {{else}}
+    {{formatCurrency data.rent.price}}
+  {{/is}}
+</p>

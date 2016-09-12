@@ -16,7 +16,6 @@ exports = module.exports = (req, res, acquisitionMode) => {
 	// item in the header navigation.
 	locals.section = 'property';
 	locals.acquisitionMode = acquisitionMode;
-	locals.data = {};
 	locals.filters = {
 		slug: req.params.slug
 	};
@@ -30,7 +29,7 @@ exports = module.exports = (req, res, acquisitionMode) => {
 
 		propertyQuery.exec((err, result) => {
 			if (result) {
-				locals.data.property = result;
+				locals.data = result;
 				locals.title = result.location.street1;
 				next(err);
 			} else {

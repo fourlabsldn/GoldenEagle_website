@@ -6,6 +6,11 @@
   @include background-cover();
 }
 
+.gew_bg-dark {
+  background-color: $gray-base;
+  color: $white;
+}
+
 .gew_bg-lighter {
   background-color: $gray-lighter;
 }
@@ -20,6 +25,10 @@
 
 .gew_dark-text {
   color: $text-color;
+}
+
+.gew_border-bottom {
+  border-bottom: 2px solid $gray-desaturated;
 }
 
 // Horizontally align

@@ -19,9 +19,10 @@ Property.add({
     required: true,
     initial: true
   },
-	images: { type: Types.CloudinaryImages },
+  images: { type: Types.CloudinaryImages },
 	floorPlan: { type: Types.CloudinaryImage },
 	epc: { type: Types.CloudinaryImage },
+  videoUrl: { type: Types.Url, label: 'Video URL' },
   buy: {
     available: { type: Boolean, label: 'Available for sale' },
 		featured: { type: Boolean, label: 'Sales Featured' },

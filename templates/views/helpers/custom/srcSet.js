@@ -7,7 +7,7 @@ const defaultOptions = {
   secure: true,
 };
 
-const defaultWidths = [1500, 1240, 1020, 820, 620, 310];
+const defaultWidths = [2000, 1500, 1240, 1020, 820, 620, 310];
 
 /**
  * @param  {String} imgName - Either the image url or the image name
