@@ -7,7 +7,7 @@ const searchEndpoint = '/search';
 const defaults = {
   pagination: {
     pageNumber: 0,
-    maxPerPage: 6,
+    maxPerPage: 2,
     pageCount: 1,
   },
   // Search info to be sent with requests
@@ -112,15 +112,27 @@ export default class SearchModule extends React.Component {
           mergeSearchParams={this.mergeSearchParams}
         />
 
-        <div className="row gew_search-widthLimiter">
-          {this.state.properties.map(property => (
-            <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={sanitise(property)} />
-          ))}
-        </ div>
+        <div className="gew_search-widthLimiter">
+          <div className="row">
+            {this.state.properties.map(property => (
+              <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={sanitise(property)} />
+            ))}
+          </ div>
 
-        <p>Page {pages}</p>
-        <button onClick={prevPage}> Prev </button>
-        <button onClick={nextPage}> Next </button>
+          <p className="gew_search-pagination">Page
+            <span className="gew_search-pagination-pages">
+              {pages}
+            </span>
+            <button
+              className="btn btn-default gew_search-pagination-button"
+              onClick={prevPage}
+            > Prev </button>
+            <button
+              className="btn btn-default gew_search-pagination-button"
+              onClick={nextPage}
+            > Next </button>
+          </p>
+        </div>
       </ div>
     );
   }

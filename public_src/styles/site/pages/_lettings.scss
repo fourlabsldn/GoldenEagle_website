@@ -32,3 +32,17 @@
     color: inherit;
   }
 }
+
+.gew_search-pagination {
+  font-size: $font-size-small;
+}
+
+.gew_search-pagination-pages {
+  letter-spacing: .6em;
+  margin-left: .5em;
+}
+
+.gew_search-pagination-button {
+  font-size: $font-size-small;
+  margin-left: .5em;
+}

@@ -130,9 +130,9 @@ const FiltersBar = props => {
       {/*  TODO: Allow people to choose whichever currency they want.*/}
       <select
         className="gew_search-filter"
-        value={props.searchParams}>
+        value={props.searchParams}
+      >
         <option disabled selected>£</option>
-        <option>British Pound</option>
         <option>Euro</option>
       </select>
     </ div>
