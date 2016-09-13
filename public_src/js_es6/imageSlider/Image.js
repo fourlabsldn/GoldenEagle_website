@@ -1,18 +1,26 @@
 import React from 'react';
 import css from './css';
 
-const Image = ({ url, displacement }) => (
+const Image = ({ fields, displacement }) => (
   <div
     className={css.image}
     style={{
+      overflow: 'hidden',
       transform: `translateX(${displacement * -100}%)`,
-      backgroundImage: `url(${url})`,
     }}
-  />
+  >
+    <img
+      className={css.backgroundCover}
+      srcSet={fields.srcset}
+      sizes={fields.sizes}
+      src={fields.src}
+      alt={fields.alt}
+    />
+  </div>
 );
 
 Image.propTypes = {
-  url: React.PropTypes.string,
+  fields: React.PropTypes.object,
   displacement: React.PropTypes.number,
 };
 

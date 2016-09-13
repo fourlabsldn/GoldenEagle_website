@@ -10,4 +10,5 @@ export default {
   imageContainer: bem('imageContainer'),
   bigImages: bem('bigImages'),
   thumbnails: bem('thumbnails'),
+  backgroundCover: 'gew_background-cover',
 };

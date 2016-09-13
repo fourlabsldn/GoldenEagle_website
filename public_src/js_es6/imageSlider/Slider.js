@@ -19,40 +19,49 @@ class Slider extends React.Component {
     return () => {
       [this.state.activeSlide]
         .map(v => { return nextPrev === 'next' ? v + 1 : v - 1; })
-        .map(v => constrain(v, 0, this.props.urls.length - 1))
+        .map(v => constrain(v, 0, this.props.images.length - 1))
         .map(v => this.setState({ activeSlide: v }));
     };
   }
 
   render() {
-    const renderImages = (urls, imagesToFit, activeSlide) => {
-      return urls.map(url => (
+    const renderImages = (images, imagesToFit, activeSlide) => {
+      return images.map(image => (
         <Image
-          url={url}
-          displacement={displacement(urls.length, imagesToFit, activeSlide)}
+          fields={image}
+          displacement={displacement(images.length, imagesToFit, activeSlide)}
         />
       ));
     };
 
+    let thumbnails = null;
+    if (this.props.options.thumbnails) {
+      thumbnails = (
+        <div className={css.thumbnails} >
+          {renderImages(this.props.images, 3, this.state.activeSlide)}
+        </div>
+      );
+    }
     return (
       <div className={css.main}>
         <button className={css.btnNext} onClick={this.slideMove('next')}>❯</button>
         <button className={css.btnPrev} onClick={this.slideMove('prev')}>❮</button>
 
         <div className={css.bigImages} >
-          {renderImages(this.props.urls, 1, this.state.activeSlide)}
+          {renderImages(this.props.images, 1, this.state.activeSlide)}
         </div>
 
-        <div className={css.thumbnails} >
-          {renderImages(this.props.urls, 3, this.state.activeSlide)}
-        </div>
+        {thumbnails}
+
       </div>
     );
   }
 }
 
 Slider.propTypes = {
+  images: React.PropTypes.object,
   name: React.PropTypes.string,
+  options: React.PropTypes.object,
 };
 
 export default Slider;
