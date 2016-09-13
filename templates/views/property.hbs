@@ -124,7 +124,13 @@
 <section class="bg-primary gew_sectionContent gew_dark-text">
   <h2 class="text-center">Related properties</h2>
 
-  
+  <div class="row gew_property-related">
+    {{#each data.related}}
+      <div class="col-md-4">
+        {{> propertyCard data=this buyRent=../acquisitionMode}}
+      </div>
+    {{/each}}
+  </div>
 </section>
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{googleMapsKey}}"></script>

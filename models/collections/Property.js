@@ -139,5 +139,27 @@ Property.getForRent = function () {
   });
 };
 
+
+/**
+ * @method getRelated
+ * @param  {Object} property - Database record
+ * @param  {String} acquisitionMode - 'buy' or 'rent'
+ * @return {Array<Object>} - Array of Database records
+ */
+Property.getRelated = function (property, acquisitionMode) {
+  const range = acquisitionMode === 'buy' ? 500000 : 500;
+  return this.findWhere({
+    $and: [
+      { [`${acquisitionMode}.available`]: true },
+      { [`${acquisitionMode}.price`]: {
+        $gt: property[acquisitionMode].price - range / 3,
+        $lt: property[acquisitionMode].price + range,
+      },
+     },
+    ],
+  })
+  .then(results => (Array.isArray(results) ? results : []));
+};
+
 Property.defaultColumns = 'location|70%, type|20%';
 Property.register();

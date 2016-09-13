@@ -16,26 +16,22 @@ exports = module.exports = (req, res, acquisitionMode) => {
   // item in the header navigation.
   locals.section = 'property';
   locals.acquisitionMode = acquisitionMode;
-  locals.filters = {
-    slug: req.params.slug
-  };
 
   // Load correct property
   view.on('init', (next) => {
-    keystone.list('Property').findWhere({
-    	slug: locals.filters.slug
-    })
+    keystone.list('Property').findWhere({ slug: req.params.slug })
     .then(result => {
-    	if (result && result[0]) {
-        const property = result[0];
-        locals.data = property;
-        locals.title = property.location.street1;
-      	next();
-      } else {
-      	res.render('404');
-      }
+      if (!(result && result[0])) { return res.render('404'); }
+      const property = result[0];
+      locals.data = property;
+      locals.title = property.location.street1;
+      return keystone.list('Property').getRelated(property, acquisitionMode);
     })
-    .catch(e => console.log);
+    .then(related => {
+      locals.data.related = related || [];
+      next();
+    })
+    .catch(console.log);
   });
 
 	// Render the view
