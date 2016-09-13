@@ -1,8 +1,8 @@
 .gew_footer{
-  font-size: $font-size-h4;
   background-color: $gray-base;
   font-weight: lighter;
   padding: 1px; // Prevent collapsing margins
+  padding-top: 30px; // Prevent collapsing margins
   color: $gray-lighter;
 
   a {
@@ -17,7 +17,7 @@
 // }
 .gew_footer-biggerFont{
   font-size: 1.2em;
-  margin-bottom: 1.7em;
+  margin-bottom: 2.5em;
 }
 
 .gew_footer-logo{
