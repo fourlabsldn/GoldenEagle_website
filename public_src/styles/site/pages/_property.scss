@@ -59,6 +59,7 @@
   margin: auto;
   float: right;
   flex-flow: row nowrap;
+  font-size: 1.2em;
   @include sm-screen {
     float: none;
     flex-flow: row wrap;
@@ -68,6 +69,8 @@
 .gew_property-actionsBar-button {
   flex-grow: 5;
   flex-basis: 100%;
+  font-size: $font-size-base;
+  padding-top: .65em;
   @include sm-screen {
     flex-grow: 1;
   }
@@ -77,8 +80,8 @@
   border: 1px solid $white;
   border-left-width: 0;
   margin: 0;
-  padding: .8em;
-  font-size: $font-size-base;
+  padding: .7em;
+  font-size: inherit;
   color: inherit;
   display: inline-flex;
   align-items: center;

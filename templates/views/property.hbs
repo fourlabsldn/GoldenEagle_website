@@ -121,8 +121,15 @@
   </section>
 {{/if}}
 
+<section class="bg-primary gew_sectionContent gew_dark-text">
+  <h2 class="text-center">Related properties</h2>
+
+  
+</section>
+
 <script src="https://maps.googleapis.com/maps/api/js?key={{googleMapsKey}}"></script>
 <script type="text/javascript">
+  // Map options
   var mapContainer = document.querySelector('.gew_property-map');
   var options = {
     center: { lat: {{data.location.latitude}}, lng: {{data.location.longitude}} },
@@ -132,8 +139,10 @@
     maxZoom: 17
   };
 
+  // Create map
   var map = new google.maps.Map(mapContainer, options);
 
+  // Add markers
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng({{data.location.latitude}}, {{data.location.longitude}}),
     map: map,
