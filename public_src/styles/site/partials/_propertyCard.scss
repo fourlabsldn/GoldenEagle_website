@@ -5,9 +5,6 @@
   font-size: .8em;
   color: $gray-base;
 
-  @include sm-screen {
-    padding: 0em;
-  }
 
   &:hover {
     background-color: darken($gray-light, 1.8);
@@ -20,7 +17,7 @@
 }
 .gew_propertyCard-image {
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 1em;
 }
 .gew_propertyCard-info-addressWrapper {
   display: flex;
@@ -39,7 +36,7 @@
   text-overflow: ellipsis;
   font-weight: normal;
   margin: 0;
-  line-height: 1.5em;
+  line-height: 1.4em;
 }
 
 .gew_propertyCard-info-viewBtn {
@@ -53,5 +50,4 @@
 
 .gew_propertyCard-price {
   font-weight: lighter;
-  font-size: .9em;
 }

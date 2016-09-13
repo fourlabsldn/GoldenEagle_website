@@ -68,6 +68,12 @@ a {
   padding-bottom: 20px;
 }
 
+.gew_sectionContent-mediumPadding {
+  @extend .gew_sectionContent;
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
 .gew_sectionContent-noPadding {
   @extend .gew_sectionContent;
   padding-top: 0px;

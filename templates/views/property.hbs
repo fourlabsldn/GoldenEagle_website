@@ -10,7 +10,7 @@
 
 <section class="gew_bg-dark">
   <div class="row gew_property-actions gew_sectionContent-smallPadding ">
-    <div class="col-sm-6">
+    <div class="gew_property-actions-details">
       <span class="gew_property-address">
         {{data.location.street1}}, {{data.location.suburb}}
       </span>
@@ -24,7 +24,7 @@
         {{data.bathrooms}} Bath
       </span>
     </div>
-    <div class="col-sm-6">
+    <div class="gew_property-actions-actionBar">
       <div class="gew_property-actionsBar">
         <a class="gew_property-actionsBar-action" href="#property-floorPlan">
           <i class="fa fa-cube" aria-hidden="true"> </i>
@@ -47,10 +47,10 @@
   </div>
 </section>
 
-<section class="gew_bg-light gew_property-doubleColumn">
-  <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
+<section class="gew_bg-light">
+  <div class="container gew_sectionContent-mediumPadding">
     <div class="row">
-      <div class="col-sm-4 gew_doubleColumn-col1">
+      <div class="col-sm-4">
         <h2 class="gew_property-h2">Key Details</h2>
         <p>
           <i class="fa fa-map-o" aria-hidden="true"></i> {{data.bedrooms}} <br>
@@ -59,25 +59,26 @@
           <i class="fa fa-map-o" aria-hidden="true"></i> {{data.size}}sq ft <br>
         </p>
       </div>
-      <div class="col-sm-8 gew_doubleColumn-col2">
+      <div class="col-sm-8">
         <h2 class="gew_property-h2">Description</h2>
         {{{data.description}}}
       </div>
     </div>
   </div>
-  <div class="gew_sectionContent-noPadding">
-    <div class="gew_border-bottom"></div>
-  </div>
 </section>
 
 {{#if data.floorPlan.url}}
-  <section class="gew_bg-light gew_property-doubleColumn" id="property-floorPlan">
-    <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
+  <section class="gew_bg-light" id="property-floorPlan">
+    <div class="gew_sectionContent-noPadding ">
+      <div class="gew_border-top"></div>
+    </div>
+
+    <div class="container gew_sectionContent-mediumPadding">
       <div class="row">
-        <div class="col-sm-4 gew_doubleColumn-col1">
+        <div class="col-sm-4">
           <h2 class="gew_property-h2">Floor Plan</h2>
         </div>
-        <div class="col-sm-8 gew_doubleColumn-col2">
+        <div class="col-sm-8">
           <img
           style="width: 100%"
             srcset="{{srcSet data.floorPlan.url}}"
@@ -88,21 +89,22 @@
         </div>
       </div>
     </div>
-    <div class="gew_sectionContent-noPadding">
-      <div class="gew_border-bottom"></div>
-    </div>
   </section>
 {{/if}}
 
 
 {{#if data.videoUrl}}
-  <section class="gew_bg-light gew_property-doubleColumn" id="property-video">
-    <div class="container gew_sectionContent-smallPadding gew_doubleColumn">
+  <div class="gew_sectionContent-noPadding ">
+    <div class="gew_border-top"></div>
+  </div>
+  <section class="gew_bg-light" id="property-video">
+
+    <div class="container gew_sectionContent-mediumPadding">
       <div class="row">
-        <div class="col-sm-4 gew_doubleColumn-col1">
+        <div class="col-sm-4">
           <h2 class="gew_property-h2">Video</h2>
         </div>
-        <div class="col-sm-8 gew_doubleColumn-col2">
+        <div class="col-sm-8">
           <iframe
             class="gew_property-video"
             src="{{toYoutubeEmbedUrl data.videoUrl}}"
@@ -117,7 +119,6 @@
 
 {{#if data.location.postcode}}
   <section class="gew_bg-light" id="property-location">
-    <div class="gew_sectionContent-smallPadding"></div>
     <div class="gew_property-map"></div>
   </section>
 {{/if}}
