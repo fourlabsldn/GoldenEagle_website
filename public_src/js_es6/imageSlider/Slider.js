@@ -35,13 +35,14 @@ class Slider extends React.Component {
     };
 
     let thumbnails = null;
-    if (this.props.options.thumbnails) {
+    if (this.props.options.showThumbnails) {
       thumbnails = (
         <div className={css.thumbnails} >
           {renderImages(this.props.images, 3, this.state.activeSlide)}
         </div>
       );
     }
+
     return (
       <div className={css.main}>
         <button className={css.btnNext} onClick={this.slideMove('next')}>❯</button>
