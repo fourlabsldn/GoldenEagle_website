@@ -110,3 +110,16 @@
   width: 100%;
   height: 450px;
 }
+
+.gew_property-related {
+  .gew_propertyCard-info-viewBtn {
+    background-color: $gray-base;
+    color: $white;
+  }
+
+  .gew_propertyCard:hover {
+    background-color: lighten($brand-primary, 3%);
+  }
+
+
+}
