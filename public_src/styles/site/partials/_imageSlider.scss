@@ -41,7 +41,7 @@ $imageSlider-bigImgHeight: 60%;
 .gew_imageSlider-btn-prev {
   position: absolute;
   font-size: 1.5em;
-  top: calc(#{$imageSlider-bigImgHeight} / 2 + .7em);
+  top: 50%;
   background-color: transparent;
   color: $white;
   z-index: 2;

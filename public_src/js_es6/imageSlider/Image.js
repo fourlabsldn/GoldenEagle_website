@@ -6,6 +6,7 @@ const Image = ({ fields, displacement }) => (
     className={css.image}
     style={{
       overflow: 'hidden',
+      position: 'relative',
       transform: `translateX(${displacement * -100}%)`,
     }}
   >
@@ -15,6 +16,7 @@ const Image = ({ fields, displacement }) => (
       sizes={fields.sizes}
       src={fields.src}
       alt={fields.alt}
+      style={{ maxWidth: '100%' }}
     />
   </div>
 );

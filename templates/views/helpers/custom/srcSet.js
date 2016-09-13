@@ -27,7 +27,7 @@ module.exports = function srcSet(imgUrl, ...args) {
 		.map((url, idx, arr) => {
 			return arr.length === 1 ? url : `${url} ${widths[idx]}w`;
 		})
-		.join(', \n');
+		.join(', ');
 
 	return urlSet;
 };

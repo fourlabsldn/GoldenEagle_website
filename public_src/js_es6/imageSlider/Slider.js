@@ -43,12 +43,21 @@ class Slider extends React.Component {
       );
     }
 
+    let arrows = null;
+    if (this.props.images.length > 1) {
+      arrows = (
+        <div style={{ width: '100%', height: '100%' }}>
+          <button className={css.btnNext} onClick={this.slideMove('next')}>❯</button>
+          <button className={css.btnPrev} onClick={this.slideMove('prev')}>❮</button>
+        </div>
+      );
+    }
+
     return (
       <div className={css.main}>
-        <button className={css.btnNext} onClick={this.slideMove('next')}>❯</button>
-        <button className={css.btnPrev} onClick={this.slideMove('prev')}>❮</button>
 
         <div className={css.bigImages} >
+          {arrows}
           {renderImages(this.props.images, 1, this.state.activeSlide)}
         </div>
 

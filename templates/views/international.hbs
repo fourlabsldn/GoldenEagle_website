@@ -59,10 +59,18 @@
           require(['imageSlider'], function(imageSlider) {
             const container = document.querySelector('.image-slider');
             const urls = [
-              "{{srcSet 'fsfbkfdgv6voxsltspce.jpg' 500}}",
-              "{{srcSet 'ye62wu6rmgknc8ek5v1v.jpg' 500}}",
-              "{{srcSet 'ajnxbirn9kzypelgvs0n.jpg' 500}}",
-              "{{srcSet 'j01ss71bjxklqvapxuew.jpg' 500}}",
+                { srcset: "{{srcSet 'fsfbkfdgv6voxsltspce.jpg'}}",
+                  sizes: '(max-width: 1000) 100vw, 40vw',
+                },
+                { srcset: "{{srcSet 'ye62wu6rmgknc8ek5v1v.jpg'}}",
+                  sizes: '(max-width: 1000) 100vw, 40vw',
+                },
+                { srcset: "{{srcSet 'ajnxbirn9kzypelgvs0n.jpg'}}",
+                  sizes: '(max-width: 1000) 100vw, 40vw',
+                },
+                { srcset: "{{srcSet 'j01ss71bjxklqvapxuew.jpg'}}",
+                  sizes: '(max-width: 1000) 100vw, 40vw',
+                },
             ];
             imageSlider(urls, container);
           });
