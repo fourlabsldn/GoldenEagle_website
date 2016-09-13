@@ -8,37 +8,41 @@
   />
 </div>
 
-<section class="row gew_property-actions gew_sectionContent-smallPadding gew_bg-dark">
-  <div class="col-sm-6">
-    <span class="gew_property-address">
-      {{data.location.street1}}, {{data.location.suburb}}
-    </span>
-    <span class="gew_property-detailsSummary">
-      {{#is acquisitionMode 'buy'}}
+<section class="gew_bg-dark">
+  <div class="row gew_property-actions gew_sectionContent-smallPadding ">
+    <div class="col-sm-6">
+      <span class="gew_property-address">
+        {{data.location.street1}}, {{data.location.suburb}}
+      </span>
+      <span class="gew_property-detailsSummary">
+        {{#is acquisitionMode 'buy'}}
         {{formatCurrency data.buy.price}}
-      {{else}}
+        {{else}}
         {{formatCurrency data.rent.price}}
-      {{/is}}
-    </span>
-  </div>
-  <div class="col-sm-6">
-    <div class="gew_property-actionsBar">
-      <a class="gew_property-actionsBar-action" href="#property-floorPlan">
-        <i class="fa fa-cube" aria-hidden="true"> </i>
-      </a>
-      <a class="gew_property-actionsBar-action" href="#property-video">
-        <i class="fa fa-file-video-o" aria-hidden="true"> </i>
-      </a>
-      <a class="gew_property-actionsBar-action" href="#property-images">
-        <i class="fa fa-camera-retro" aria-hidden="true"> </i>
-      </a>
-      <a class="gew_property-actionsBar-action">
-        <i class="fa fa-arrows-alt" aria-hidden="true"> </i>
-      </a>
-      <a class="gew_property-actionsBar-action" href="#property-location">
-        <i class="fa fa-map-marker" aria-hidden="true"> </i>
-      </a>
-      <a class="btn btn-primary gew_property-actionsBar-button" >Contact Agent</a>
+        {{/is}}
+        {{data.bedrooms}} Bed
+        {{data.bathrooms}} Bath
+      </span>
+    </div>
+    <div class="col-sm-6">
+      <div class="gew_property-actionsBar">
+        <a class="gew_property-actionsBar-action" href="#property-floorPlan">
+          <i class="fa fa-cube" aria-hidden="true"> </i>
+        </a>
+        <a class="gew_property-actionsBar-action" href="#property-video">
+          <i class="fa fa-file-video-o" aria-hidden="true"> </i>
+        </a>
+        <a class="gew_property-actionsBar-action" href="#property-images">
+          <i class="fa fa-camera-retro" aria-hidden="true"> </i>
+        </a>
+        <a class="gew_property-actionsBar-action">
+          <i class="fa fa-arrows-alt" aria-hidden="true"> </i>
+        </a>
+        <a class="gew_property-actionsBar-action" href="#property-location">
+          <i class="fa fa-map-marker" aria-hidden="true"> </i>
+        </a>
+        <a class="btn btn-primary gew_property-actionsBar-button" >Contact Agent</a>
+      </div>
     </div>
   </div>
 </section>
@@ -49,10 +53,10 @@
       <div class="col-sm-4 gew_doubleColumn-col1">
         <h2 class="gew_property-h2">Key Details</h2>
         <p>
-          Beds: {{data.bedrooms}} <br>
-          Baths: {{data.bathrooms}} <br>
-          Location: {{data.location.suburb}} <br>
-          Size: {{data.size}}sq ft <br>
+          <i class="fa fa-map-o" aria-hidden="true"></i> {{data.bedrooms}} <br>
+          <i class="fa fa-map-o" aria-hidden="true"></i> {{data.bathrooms}} <br>
+          <i class="fa fa-map-o" aria-hidden="true"></i> {{data.location.postcode}} <br>
+          <i class="fa fa-map-o" aria-hidden="true"></i> {{data.size}}sq ft <br>
         </p>
       </div>
       <div class="col-sm-8 gew_doubleColumn-col2">
@@ -108,9 +112,6 @@
         </div>
       </div>
     </div>
-    <div class="gew_sectionContent-noPadding">
-      <div class="gew_border-bottom"></div>
-    </div>
   </section>
 {{/if}}
 
@@ -121,15 +122,17 @@
   </section>
 {{/if}}
 
-<section class="bg-primary gew_sectionContent gew_dark-text">
-  <h2 class="text-center">Related properties</h2>
+<section class="bg-primary">
+  <div class="gew_sectionContent gew_dark-text">
+    <h2 class="text-center">Related properties</h2>
 
-  <div class="row gew_property-related">
-    {{#each data.related}}
+    <div class="row gew_property-related">
+      {{#each data.related}}
       <div class="col-md-4">
         {{> propertyCard data=this buyRent=../acquisitionMode}}
       </div>
-    {{/each}}
+      {{/each}}
+    </div>
   </div>
 </section>
 

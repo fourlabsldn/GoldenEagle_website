@@ -4,7 +4,7 @@
 
 .gew_property-h2 {
   margin-top: .5em;
-  margin-bottom: 4em;
+  margin-bottom: 2em;
   @include sm-screen {
     margin-bottom: 2em;
   }
@@ -41,8 +41,11 @@
 }
 
 .gew_property-address {
-  font-weight: normal;
+  font-weight: bold;
+  font-size: 1.1em;
   display: block;
+  letter-spacing: .05em;
+  font-variant-ligatures: none;
 }
 
 .gew_property-detailsSummary {

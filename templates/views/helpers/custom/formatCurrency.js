@@ -1,7 +1,21 @@
+const { flow } = require('lodash/fp');
+
+const million = 1000000;
+const thousand = 1000;
+function shrink(num) {
+  if (num > million) {
+    return `${num / million}m`;
+  }
+  if (num > thousand) {
+    return `${num / thousand}k`;
+  }
+  return num;
+}
+
 module.exports = function formatCurrency(rawNumber) {
-  const num = Number(rawNumber);
-  const result = num
-    ? num.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })
-    : '';
-  return result;
+  return flow(
+    Number,
+    shrink,
+    String
+  )(rawNumber);
 };
