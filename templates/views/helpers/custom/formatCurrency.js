@@ -1,4 +1,4 @@
-const { flow } = require('lodash/fp');
+const { flow, curry } = require('lodash/fp');
 
 const million = 1000000;
 const thousand = 1000;
@@ -12,10 +12,16 @@ function shrink(num) {
   return num;
 }
 
+// TODO: make this function actually work
+const convertTo = curry((currency, value) => {
+  return `£${value}`;
+});
+
 module.exports = function formatCurrency(rawNumber) {
   return flow(
     Number,
     shrink,
-    String
+    String,
+    convertTo('GBP')
   )(rawNumber);
 };
