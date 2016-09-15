@@ -81,61 +81,63 @@ const FiltersBar = props => {
   );
 
   return (
-    <div className="gew_search-filtersBar gew_search-widthLimiter">
-      <input
-        className="gew_search-filter"
-        type="text"
-        placeholder="Search"
-        onBlur={changeSearch}
-        onKeyUp={searchKeyPress}
-        defaultValue={props.searchParams.keywords}
-      />
+    <div className="gew_search-filtersBar">
+      <div className="gew_search-widthLimiter">
+        <input
+          className="gew_search-filter"
+          type="text"
+          placeholder="Search"
+          onBlur={changeSearch}
+          onKeyUp={searchKeyPress}
+          defaultValue={props.searchParams.keywords}
+        />
 
-      <select
-        className="gew_search-filter"
-        value={selectedIndexes.letType} onChange={e => change('letType', e.target.value)}
-      >
-        {createOptions(options.letType)}
-      </select>
+        <select
+          className="gew_search-filter"
+          value={selectedIndexes.letType} onChange={e => change('letType', e.target.value)}
+        >
+          {createOptions(options.letType)}
+        </select>
 
-      <select
-        className="gew_search-filter"
-        value={selectedIndexes.price} onChange={e => change('price', e.target.value)}
-      >
-        {createOptions(options.price)}
-      </select>
+        <select
+          className="gew_search-filter"
+          value={selectedIndexes.price} onChange={e => change('price', e.target.value)}
+        >
+          {createOptions(options.price)}
+        </select>
 
-      <select
-        className="gew_search-filter"
-        value={selectedIndexes.beds} onChange={e => change('beds', e.target.value)}
-      >
-        {createOptions(options.beds)}
-      </select>
+        <select
+          className="gew_search-filter"
+          value={selectedIndexes.beds} onChange={e => change('beds', e.target.value)}
+        >
+          {createOptions(options.beds)}
+        </select>
 
-      <select
-        className="gew_search-filter"
-        value={selectedIndexes.baths} onChange={e => change('baths', e.target.value)}
-      >
-        {createOptions(options.baths)}
-      </select>
+        <select
+          className="gew_search-filter"
+          value={selectedIndexes.baths} onChange={e => change('baths', e.target.value)}
+        >
+          {createOptions(options.baths)}
+        </select>
 
-      <select
-        className="gew_search-filter"
-        value={selectedIndexes.moreFilters}
-        onChange={e => change('moreFilters', e.target.value)}
-      >
-        {createOptions(options.moreFilters)}
-      </select>
+        <select
+          className="gew_search-filter"
+          value={selectedIndexes.moreFilters}
+          onChange={e => change('moreFilters', e.target.value)}
+        >
+          {createOptions(options.moreFilters)}
+        </select>
 
 
-      {/*  TODO: Allow people to choose whichever currency they want.*/}
-      <select
-        className="gew_search-filter"
-        value={props.searchParams}
-      >
-        <option disabled selected>£</option>
-        <option>Euro</option>
-      </select>
+        {/*  TODO: Allow people to choose whichever currency they want.*/}
+        <select
+          className="gew_search-filter"
+          value={props.searchParams}
+        >
+          <option disabled selected>£</option>
+          <option>Euro</option>
+        </select>
+      </ div>
     </ div>
   );
 };
