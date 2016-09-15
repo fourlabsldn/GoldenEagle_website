@@ -13,7 +13,7 @@ const defaults = {
   // Search info to be sent with requests
   search: {
     keywords: '',
-    letType: 'short', // 'short' 'long'
+    letType: undefined, // 'short' 'long'
     priceMin: undefined,
     priceMax: undefined,
     beds: undefined,

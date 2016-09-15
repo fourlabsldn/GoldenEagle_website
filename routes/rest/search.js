@@ -5,12 +5,13 @@ const FuzzySet = require('fuzzyset.js');
 
 const viewName = 'search';
 
+// When any filter value is unspecified, this value will be used.
 const defaultFilters = {
   pageNumber: 0,
   maxPerPage: 6,
   pageCount: 1,
   keywords: '',
-  letType: 'short', // 'short' 'long'
+  letType: undefined, // 'short' 'long'
   priceMin: undefined,
   priceMax: undefined,
   beds: undefined,
