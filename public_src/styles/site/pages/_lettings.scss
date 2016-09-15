@@ -5,12 +5,21 @@
   padding-bottom: 0;
 }
 
+.gew_search-borders {
+  border: 2px solid $gray-desaturated;
+  border-left: 0;
+  border-right: 0;
+  margin-top: -2px;
+}
+
 .gew_search-filtersBar {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: stretch;
   align-content: stretch;
-  border-bottom: 2px solid $gray-desaturated;
+  @include sm-screen {
+    flex-flow: column nowrap;
+  }
 }
 
 .gew_search-filter {
@@ -20,8 +29,9 @@
   font-size: $font-size-small;
   font-weight: normal;
   background-color: transparent;
-  border: 0;
-  border-right: 2px solid $gray-desaturated;
+  border: 2px solid $gray-desaturated;
+  border-bottom-color: transparent;
+  margin: -2px 0 -2px -2px;
   box-shadow: none;
   cursor: pointer;
   outline-color: $brand-primary;

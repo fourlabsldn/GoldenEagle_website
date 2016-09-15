@@ -81,8 +81,8 @@ const FiltersBar = props => {
   );
 
   return (
-    <div className="gew_search-filtersBar">
-      <div className="gew_search-widthLimiter">
+    <div className="gew_search-borders">
+      <div className="gew_search-filtersBar gew_search-widthLimiter">
         <input
           className="gew_search-filter"
           type="text"
