@@ -2,12 +2,12 @@
 
   <h2 class="gew_subscribeFields-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
 
-  <form class="form-inline">
+  <form class="form-inline" method="POST" action="/contact">
     <div class="form-group">
-      <input type="text" class="form-control gew_formField gew_formField-{{color}}" placeholder="Name">
+      <input name="name" type="text" class="form-control gew_formField gew_formField-{{color}}" placeholder="Name">
     </div>
     <div class="form-group">
-      <input type="email" class="form-control gew_formField gew_formField-{{color}}" placeholder="Email">
+      <input name="email" type="email" class="form-control gew_formField gew_formField-{{color}}" placeholder="Email">
     </div>
     <button type="submit" class="btn btn-default gew_formField gew_formField-{{color}}">Submit</button>
   </form>

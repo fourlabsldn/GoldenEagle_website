@@ -22,7 +22,7 @@ const keystone = require('keystone');
 const middleware = require('./middleware');
 const importRoutes = keystone.importer(__dirname);
 const compression = require('compression');
-
+const bodyParser = require('body-parser');
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
@@ -37,6 +37,10 @@ const routes = {
 exports = module.exports = function (app) {
   // gzip compress responses
   app.use(compression());
+  // Post body parsing
+  app.use(bodyParser.urlencoded({ extended: true }));
+
+  app.use(bodyParser.json())
 
   // Views
   app.get('/', routes.views.index);

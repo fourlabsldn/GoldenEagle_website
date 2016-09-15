@@ -1,3 +1,11 @@
+{{#if postMessage}}
+  <section class="bg-primary">
+    <h2 class="gew_sectionContent-smallPadding text-center gew_dark-text">
+      {{postMessage}}
+    </h2>
+  </section>
+{{/if}}
+
 <section class="gew_sectionContent-smallPadding container">
   <div class="row">
     <div class="col-sm-4">
@@ -43,7 +51,7 @@
         </div>
       </div>
 
-      <div class="gew_contact-subscribe">
+      <div id="contactForm" class="gew_contact-subscribe">
         {{>subscribeFields color="dark"}}
       </div>
     </div>
