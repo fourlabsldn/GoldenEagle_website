@@ -38,7 +38,6 @@ const loadJson = (...args) => request(...args).then(r => r.json());
  * @return {Object} new application state
  */
 const processServerResponse = curry((state, response) => {
-  console.log('Server responsded', response);
   // Extract the parameters we need
   const pagination = overshadow(defaults.pagination, response);
   const search = overshadow(defaults.search, response);
@@ -73,7 +72,6 @@ export default class SearchModule extends React.Component {
   }
 
   mergeSearchParams(params) {
-    console.log('Setting search to', params);
     const searchParams = overshadow(this.state.search, params);
     this.loadProperties(searchParams);
   }
@@ -101,7 +99,6 @@ export default class SearchModule extends React.Component {
   }
 
   loadProperties(searchParams) {
-    console.log(searchParams);
     loadJson(searchEndpoint, searchParams)
       .then(processServerResponse(this.state))
       .then(this.pushHistoryState)
