@@ -105,6 +105,7 @@ a {
 .gew_formField-light {
   border-color: white;
   color: $white;
+  outline-color: $brand-primary;
   @include placeholder {
     color: $white;
   }

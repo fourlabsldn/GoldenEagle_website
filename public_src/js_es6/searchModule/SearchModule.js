@@ -1,6 +1,6 @@
 import React from 'react';
 import FiltersBar from './FiltersBar';
-import { interruptibleRequest, overshadow } from '../utils';
+import { interruptibleRequest, overshadow, encodeData } from '../utils';
 import { curry } from 'lodash/fp';
 
 const searchEndpoint = '/search';
@@ -88,10 +88,22 @@ export default class SearchModule extends React.Component {
     this.loadProperties(searchParams);
   }
 
+  pushHistoryState(state) {
+    // URL up to the first ?
+    const address = window.location.href.match(/([^\?]+)\??/)[1];
+    window.history.pushState(
+      {},
+      'title',
+      `${address}?${encodeData(state.search)}`,
+    );
+    return state;
+  }
+
   loadProperties(searchParams) {
     console.log(searchParams);
     loadJson(searchEndpoint, searchParams)
       .then(processServerResponse(this.state))
+      .then(this.pushHistoryState)
       .then(s => this.setState(s))
       .catch(console.log);
   }
