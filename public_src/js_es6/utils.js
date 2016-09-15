@@ -86,3 +86,32 @@ export const mapObj = curry((f, o) => {
     fromPairs
   )(o);
 });
+
+export const getUrlParameters = () => {
+  const query = location.search.substr(1);
+  const result = {};
+  query.split('&').forEach(rawPart => {
+    if (!rawPart) { return; }
+    const part = rawPart.split('+').join(' '); // replace every + with space, regexp-free version
+    const eq = part.indexOf('=');
+    const encodedKey = eq > -1 ? part.substr(0, eq) : part;
+    const val = eq > -1 ? decodeURIComponent(part.substr(eq + 1)) : '';
+    const from = encodedKey.indexOf('[');
+    if (from === -1) {
+      result[decodeURIComponent(encodedKey)] = val;
+    } else {
+      const to = encodedKey.indexOf(']');
+      const index = decodeURIComponent(encodedKey.substring(from + 1, to));
+      const key = decodeURIComponent(encodedKey.substring(0, from));
+      if (!result[key]) {
+        result[key] = [];
+      }
+      if (!index) {
+        result[key].push(val);
+      } else {
+        result[key][index] = val;
+      }
+    }
+  });
+  return result;
+};

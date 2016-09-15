@@ -62,13 +62,14 @@ export default class SearchModule extends React.Component {
       // Pagination info to be sent with requests
       pagination: defaults.pagination,
       // Search info to be sent with requests
-      search: defaults.search,
+      search: overshadow(defaults.search, this.props.initialSearch),
     };
 
     this.mergeSearchParams = this.mergeSearchParams.bind(this);
     this.goToPage = this.goToPage.bind(this);
     this.loadProperties = this.loadProperties.bind(this);
-    this.goToPage(0);
+
+    this.mergeSearchParams(this.state.search);
   }
 
   mergeSearchParams(params) {
@@ -149,3 +150,7 @@ export default class SearchModule extends React.Component {
     );
   }
 }
+
+SearchModule.propTypes = {
+  initialSearch: React.PropTypes.object,
+};

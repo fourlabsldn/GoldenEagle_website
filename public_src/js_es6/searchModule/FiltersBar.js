@@ -80,6 +80,8 @@ const FiltersBar = props => {
     options
   );
 
+  console.log('RENDERING SEAR BAR', props.searchParams)
+
   return (
     <div className="gew_search-filtersBar gew_search-widthLimiter">
       <input
@@ -88,6 +90,7 @@ const FiltersBar = props => {
         placeholder="Search"
         onBlur={changeSearch}
         onKeyUp={searchKeyPress}
+        defaultValue={props.searchParams.keywords}
       />
 
       <select
