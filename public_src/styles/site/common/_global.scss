@@ -209,13 +209,13 @@ a {
   color: $gray-base;
   border: 0;
   margin: 0;
-  padding: 2em 1.2em;
+  padding: 2em 1.2em !important;
   font-size: .9em;
   letter-spacing: .02em;
   display: block;
   font-weight: normal;
 
-  &:hover {
+  .active > &, &:hover {
     // When text goes thicker, it occupies more space,
     // corrected letter-spacing fixes that
     font-weight: bold;
@@ -225,6 +225,7 @@ a {
   &, &:visited, &:focus, &:hover {
     color: $gray-base;
     text-decoration: none;
+    background-color: transparent !important;
   }
 }
 
