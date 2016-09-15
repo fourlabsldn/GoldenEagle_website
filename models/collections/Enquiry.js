@@ -1,5 +1,7 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+const keystone = require('keystone');
+const Types = keystone.Field.Types;
+const email = require('../utils/email');
+const databaseRecordToHtml = require('../utils/databaseRecordToHtml');
 
 /**
  * Enquiry Model
@@ -35,26 +37,21 @@ Enquiry.schema.post('save', function () {
 });
 
 Enquiry.schema.methods.sendNotificationEmail = function (callback) {
-	if (typeof callback !== 'function') {
-		callback = function () {};
+  if (typeof callback !== 'function') {
+		callback = () => {};
 	}
-	var enquiry = this;
-	keystone.list('User').model.find().where('isAdmin', true).exec(function (err, admins) {
-		if (err) return callback(err);
-		new keystone.Email({
-			templateExt: 'hbs',
-			templateEngine: require('express-handlebars'),
-			templateName: 'enquiry-notification',
-		}).send({
-			to: admins,
-			from: {
-				name: 'GoldenEagle_website',
-				email: 'contact@goldeneagle_website.com',
-			},
-			subject: 'New Enquiry for GoldenEagle_website',
-			enquiry: enquiry,
-		}, callback);
-	});
+
+  const emailSubject = 'New Enquiry for Evolv';
+  const emailHeading = `<h3>${emailSubject}</h3>`;
+  const emailBody = databaseRecordToHtml(Enquiry, this);
+  const emailContent = emailHeading + emailBody;
+
+  email.send({
+      to: 'marcelo@fourlabs.co.uk',
+      subject: emailSubject,
+      html: emailContent
+  })
+  .then(callback);
 };
 
 Enquiry.defaultSort = '-createdAt';
