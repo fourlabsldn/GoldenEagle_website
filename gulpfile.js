@@ -1,6 +1,6 @@
 // List all available tasks
-const straw = require('./tasks/straw');
-straw.registerAll('./tasks', {
+const organiser = require('gulp-organiser');
+organiser.registerAll('./tasks', {
 	'src': [
 		'./models/**/*.js',
 		'./routes/**/*.js',

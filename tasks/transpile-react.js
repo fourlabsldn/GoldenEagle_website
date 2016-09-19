@@ -21,12 +21,12 @@ const sourcemaps = require('gulp-sourcemaps');
 const replace = require('rollup-plugin-replace');
 const commonjs = require('rollup-plugin-commonjs');
 const nodeResolve = require('rollup-plugin-node-resolve');
-const straw = require('./straw');
+const organiser = require('gulp-organiser');
 const { curry } = require('lodash/fp');
 
 // Path resolution for these modules must be included in the pages' require.config
 
-module.exports = straw.register((task) => {
+module.exports = organiser.register((task) => {
   const extenalDependencies = task.extenalDependencies;
 
   gulp.task(task.name, () => {
