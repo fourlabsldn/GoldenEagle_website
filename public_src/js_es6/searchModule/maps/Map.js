@@ -43,12 +43,23 @@ export default class Map extends React.Component {
       return null;
     }
 
-    return React.Children.map(children, c => {
+    const mapBounds = new window.google.maps.LatLngBounds();
+    const addToBounds = child => {
+      if (child && child.marker) {
+        mapBounds.extend(child.marker.getPosition());
+        this.state.map.fitBounds(mapBounds);
+      }
+    };
+
+    const rChildren = React.Children.map(children, c => {
       return React.cloneElement(c, {
         map: this.state.map,
         google: this.props.google,
+        ref: addToBounds,
       });
     });
+
+    return rChildren;
   }
 
   render() {
@@ -65,4 +76,5 @@ export default class Map extends React.Component {
 Map.propTypes = {
   google: React.PropTypes.object.isRequired,
   options: React.PropTypes.object,
+  children: React.PropTypes.array,
 };

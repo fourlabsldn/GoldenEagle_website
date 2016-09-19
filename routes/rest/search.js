@@ -1,5 +1,5 @@
 const keystone = require('keystone');
-const { curry, flow, clamp, isUndefined, omitBy, isString } = require('lodash/fp');
+const { curry, flow, clamp, isUndefined, omitBy, isString, pick, assignIn } = require('lodash/fp');
 const { overshadow, mapObj } = require('./utils');
 const FuzzySet = require('fuzzyset.js');
 
@@ -61,7 +61,8 @@ function parseFilters(filters) {
 }
 
 function getProperties() {
-  return keystone.list('Property').getAll();
+  const allprops = keystone.list('Property').getAll();
+  return allprops;
 }
 
 function handleResponse(resolve, reject) {
@@ -209,14 +210,36 @@ const applyFilters = curry((reqFilters, response) => {
 
 // ----------------------- end of filters -----------------------
 
-const insertIntoTemplate = curry((renderFunc, response) => {
+// Adds an 'html' attribute containing the property template
+const addTemplate = curry((renderFunc, response) => {
   // Apply render function
   const templatePromises = response.properties.map(renderFunc);
   return Promise.all(templatePromises)
     .then(templates => {
+      const propertiesWithTemplate = response.properties.map(
+          (prop, idx) => assignIn({ html: templates[idx] }, prop)
+      );
+
       // Replace objects for templatez
-      return Object.assign({}, response, { properties: templates });
+      return Object.assign({}, response, { properties: propertiesWithTemplate });
     });
+});
+
+const addLocation = response => {
+  const properties = response.properties.map(prop => Object.assign({}, prop, {
+    location: {
+      lat: prop.location.latitude,
+      lng: prop.location.longitude,
+    },
+  }));
+
+  return Object.assign({}, response, { properties });
+};
+
+// keepPropertyKeys :: [String] => Object => [Object]
+const keepPropertyKeys = curry((keys, response) => {
+  const properties = response.properties.map(pick(keys));
+  return Object.assign({}, response, { properties });
 });
 
 exports = module.exports = function search(req, res) {
@@ -226,7 +249,9 @@ exports = module.exports = function search(req, res) {
   getProperties()
   .then(prepareResponse)
   .then(applyFilters(filters))
-  .then(insertIntoTemplate(renderPropertyCard))
+  .then(addTemplate(renderPropertyCard))
+  .then(addLocation)
+  .then(keepPropertyKeys(['html', 'location']))
   .then(sendJson(res))
   .catch((err) => {
     console.log(err);

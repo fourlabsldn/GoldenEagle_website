@@ -2,7 +2,7 @@ import React from 'react';
 import FiltersBar from './FiltersBar';
 import PropertiesMap from './PropertiesMap';
 import { interruptibleRequest, overshadow, encodeData } from '../utils';
-import { curry } from 'lodash/fp';
+import { curry, pick } from 'lodash/fp';
 
 const searchEndpoint = '/search';
 const defaults = {
@@ -136,21 +136,31 @@ export default class SearchModule extends React.Component {
 
         <div className="gew_sectionContent-smallPadding">
           <div className="text-right">
-            <button className="gew_search-toggleView btn btn-default fa fa-th" onClick={() => this.setView('list')}> </button>
-            <button className="gew_search-toggleView btn btn-default fa fa-map-marker" onClick={() => this.setView('map')}> </button>
+            <button
+              className="gew_search-toggleView btn btn-default fa fa-th"
+              onClick={() => this.setView('list')}
+            />
+            <button
+              className="gew_search-toggleView btn btn-default fa fa-map-marker"
+              onClick={() => this.setView('map')}
+            />
           </div>
 
           <span className="gew_search-resultCount">{resultCount}</span>
 
 
           { // Map
-            this.state.view === 'map' && <PropertiesMap />}
+            this.state.view === 'map' && (
+              <PropertiesMap
+              locations={this.state.properties.map(l => l.location).filter(l => l.lat !== undefined)} />
+            )
+          }
 
           { // Content
             this.state.view === 'list' && (
               <div className="row">
                 {this.state.properties.map(property => (
-                  <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={sanitise(property)} />
+                  <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={sanitise(property.html)} />
                 ))}
               </ div>
           )}
