@@ -1,8 +1,8 @@
 import React from 'react';
 import FiltersBar from './FiltersBar';
+import PropertiesMap from './PropertiesMap';
 import { interruptibleRequest, overshadow, encodeData } from '../utils';
 import { curry } from 'lodash/fp';
-import { Map, Marker } from './maps';
 
 const searchEndpoint = '/search';
 const defaults = {
@@ -63,11 +63,13 @@ export default class SearchModule extends React.Component {
       pagination: defaults.pagination,
       // Search info to be sent with requests
       search: overshadow(defaults.search, this.props.initialSearch),
+      view: 'list', // possible values: 'list' and 'map'
     };
 
     this.mergeSearchParams = this.mergeSearchParams.bind(this);
     this.goToPage = this.goToPage.bind(this);
     this.loadProperties = this.loadProperties.bind(this);
+    this.setView = this.setView.bind(this);
 
     this.mergeSearchParams(this.state.search);
   }
@@ -107,6 +109,10 @@ export default class SearchModule extends React.Component {
       .catch(console.log);
   }
 
+  setView(viewName) {
+    this.setState({ view: viewName });
+  }
+
   render() {
     const currPage = this.state.pagination.pageNumber;
     const nextPage = () => this.goToPage(currPage + 1);
@@ -116,6 +122,11 @@ export default class SearchModule extends React.Component {
     // p - 1 because current page starts from 0
     const pages = sequenceArray(1, this.state.pagination.pageCount)
                     .map(p => (p - 1 === currPage ? <b>{p}</b> : p));
+
+    const resultCount = this.state.properties.length > 1
+      ? `${this.state.properties.length} results`
+      : `${this.state.properties.length} result`;
+
     return (
       <div>
         <FiltersBar
@@ -124,26 +135,25 @@ export default class SearchModule extends React.Component {
         />
 
         <div className="gew_sectionContent-smallPadding">
-
-          <div
-            style={{ width: '100%', height: '500px', backgroundColor: 'green' }}
-          >
-            <Map google={window.google} >
-
-              <Marker
-                onClick={this.onMarkerClick}
-                google={window.google}
-                pos={{ lat: 51.496322, lng: -0.178736 }}
-                icon="http://res.cloudinary.com/golden-eagle/image/upload/v1473755159/g4172_lefldr.png"
-              />
-            </Map>
+          <div className="text-right">
+            <button className="gew_search-toggleView btn btn-default fa fa-th" onClick={() => this.setView('list')}> </button>
+            <button className="gew_search-toggleView btn btn-default fa fa-map-marker" onClick={() => this.setView('map')}> </button>
           </div>
 
-          <div className="row">
-            {this.state.properties.map(property => (
-              <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={sanitise(property)} />
-            ))}
-          </ div>
+          <span className="gew_search-resultCount">{resultCount}</span>
+
+
+          { // Map
+            this.state.view === 'map' && <PropertiesMap />}
+
+          { // Content
+            this.state.view === 'list' && (
+              <div className="row">
+                {this.state.properties.map(property => (
+                  <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={sanitise(property)} />
+                ))}
+              </ div>
+          )}
 
           <p className="gew_search-pagination">Page
             <span className="gew_search-pagination-pages">

@@ -1,3 +1,4 @@
+$filter-border-width: 2px;
 // React search bar
 .gew_search-widthLimiter {
   @extend .gew_sectionContent;
@@ -6,10 +7,10 @@
 }
 
 .gew_search-borders {
-  border: 2px solid $gray-desaturated;
+  border: $filter-border-width solid $gray-desaturated;
   border-left: 0;
   border-right: 0;
-  margin-top: -2px;
+  margin-top: -$filter-border-width;
 }
 
 .gew_search-filtersBar {
@@ -29,20 +30,40 @@
   font-size: $font-size-small;
   font-weight: normal;
   background-color: transparent;
-  border: 2px solid $gray-desaturated;
+  border: $filter-border-width solid $gray-desaturated;
   border-bottom-color: transparent;
-  margin: -2px 0 0 -2px;
+  margin: -$filter-border-width;
+  margin-right: 0;
   box-shadow: none;
   cursor: pointer;
   outline-color: $brand-primary;
 
   &:first-child {
-    border-left: 2px solid $gray-desaturated;
+    border-left: $filter-border-width solid $gray-desaturated;
   }
 
   @include placeholder {
     color: inherit;
   }
+}
+
+.gew_search-toggleView {
+  margin-right: -$filter-border-width;
+  border: $filter-border-width solid $gray-desaturated;
+  background-color: transparent;
+  font-size: 1.2em;
+  padding: .2em .6em .1em;
+
+  &:first-child:hover ~ &,
+  &:first-child:active ~ &,
+  &:first-child:focus ~ & {
+    border-left-color: transparent;
+  }
+}
+
+.gew_search-resultCount {
+  font-size: $font-size-small;
+  font-weight: normal;
 }
 
 .gew_search-pagination {
