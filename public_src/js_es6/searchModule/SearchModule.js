@@ -2,6 +2,7 @@ import React from 'react';
 import FiltersBar from './FiltersBar';
 import { interruptibleRequest, overshadow, encodeData } from '../utils';
 import { curry } from 'lodash/fp';
+import { Map, Marker } from './maps';
 
 const searchEndpoint = '/search';
 const defaults = {
@@ -123,6 +124,21 @@ export default class SearchModule extends React.Component {
         />
 
         <div className="gew_sectionContent-smallPadding">
+
+          <div
+            style={{ width: '100%', height: '500px', backgroundColor: 'green' }}
+          >
+            <Map google={window.google} >
+
+              <Marker
+                onClick={this.onMarkerClick}
+                google={window.google}
+                pos={{ lat: 51.496322, lng: -0.178736 }}
+                icon="http://res.cloudinary.com/golden-eagle/image/upload/v1473755159/g4172_lefldr.png"
+              />
+            </Map>
+          </div>
+
           <div className="row">
             {this.state.properties.map(property => (
               <div className="col-md-4 col-sm-6" dangerouslySetInnerHTML={sanitise(property)} />

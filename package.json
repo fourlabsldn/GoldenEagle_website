@@ -8,6 +8,7 @@
     "cloudinary": "^1.2.4",
     "dotenv": "^2.0.0",
     "express-handlebars": "^3.0.0",
+    "fl-google-maps-react": "^0.1.1",
     "handlebars": "^4.0.5",
     "keystone": "^4.0.0-beta.1",
     "lodash": "^4.15.0",

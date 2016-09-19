@@ -22,7 +22,7 @@ organiser.registerAll('./tasks', {
 		'watch': './public_src/js_es6/**/*.js',
 		'src': './public_src/js_es6/*.js',
 		'dest': './public/js',
-    'extenalDependencies': ['react', 'react-dom', 'lodash/fp', 'handlebars'],
+    'extenalDependencies': ['react', 'react-dom', 'react-dom/server', 'lodash/fp', 'handlebars'],
 	},
 	'link-dependencies': {
 		'dest': './public/js'
