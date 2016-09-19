@@ -1,3 +1,8 @@
+.gew_property-image-slider .gew_imageSlider{
+  // 100 px for gew_property-actions height
+  max-height: calc(100vh - #{$navbar-height} - 100px);
+}
+
 .gew_property-image {
   margin: 0;
 }
