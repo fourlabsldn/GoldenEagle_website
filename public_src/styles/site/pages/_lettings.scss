@@ -66,6 +66,11 @@ $filter-border-width: 2px;
   font-weight: normal;
 }
 
+// Google maps info window
+.gew_search-mapInfoWindow {
+  max-width: 300px;
+  padding: 10px 0 10px 20px;
+}
 .gew_search-pagination {
   font-size: $font-size-small;
 }

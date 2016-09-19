@@ -45,8 +45,8 @@ class PropertiesMap extends React.Component{
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
           >
-            <div style={{ maxWidth: '300px' }}>
-              <div  dangerouslySetInnerHTML={{ __html: this.state.selectedPlace }} />
+            <div className="gew_search-mapInfoWindow">
+              <div dangerouslySetInnerHTML={{ __html: this.state.selectedPlace }} />
             </div>
           </InfoWindow>
         </Map>

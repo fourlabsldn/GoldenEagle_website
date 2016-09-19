@@ -161,20 +161,23 @@ export default class SearchModule extends React.Component {
                 ))}
               </ div>
           )}
+          { // pagination
+            this.state.view === 'list' && (
 
-          <p className="gew_search-pagination">Page
-            <span className="gew_search-pagination-pages">
-              {pages}
-            </span>
-            <button
-              className="btn btn-default gew_search-pagination-button"
-              onClick={prevPage}
-            > Prev </button>
-            <button
-              className="btn btn-default gew_search-pagination-button"
-              onClick={nextPage}
-            > Next </button>
-          </p>
+              <p className="gew_search-pagination">Page
+                <span className="gew_search-pagination-pages">
+                  {pages}
+                </span>
+                <button
+                  className="btn btn-default gew_search-pagination-button"
+                  onClick={prevPage}
+                > Prev </button>
+                <button
+                  className="btn btn-default gew_search-pagination-button"
+                  onClick={nextPage}
+                > Next </button>
+              </p>
+        )}
         </div>
       </ div>
     );
