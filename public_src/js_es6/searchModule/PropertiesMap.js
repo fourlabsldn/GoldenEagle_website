@@ -14,10 +14,10 @@ class PropertiesMap extends React.Component{
     this.render = this.render.bind(this);
   }
 
-  onMarkerClick(marker) {
+  onMarkerClick(marker, propInfo) {
     console.log('Clicked:', marker);
     this.setState({
-      selectedPlace: 'Anything',
+      selectedPlace: propInfo.html,
       activeMarker: marker,
       showingInfoWindow: true,
     });
@@ -25,16 +25,17 @@ class PropertiesMap extends React.Component{
 
   render() {
     const props = this.props;
+    const filteredProperties = props.properties.filter(propInfo => propInfo.location && propInfo.location.lat)
     return (
       <div style={{ width: '100%', height: '500px' }}>
         <Map google={window.google} >
 
           {
-            props.locations.map(loc => console.log(loc) || (
+            filteredProperties.map(propInfo => (
               <Marker
-                onClick={this.onMarkerClick}
+                onClick={(marker) => this.onMarkerClick(marker, propInfo)}
                 google={window.google}
-                pos={loc}
+                pos={propInfo.location}
                 icon="http://res.cloudinary.com/golden-eagle/image/upload/v1473755159/g4172_lefldr.png"
               />
             ))
@@ -44,9 +45,9 @@ class PropertiesMap extends React.Component{
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
           >
-              <div>
-                <h1>{this.state.selectedPlace}</h1>
-              </div>
+            <div style={{ maxWidth: '300px' }}>
+              <div  dangerouslySetInnerHTML={{ __html: this.state.selectedPlace }} />
+            </div>
           </InfoWindow>
         </Map>
       </div>

@@ -150,10 +150,7 @@ export default class SearchModule extends React.Component {
 
 
           { // Map
-            this.state.view === 'map' && (
-              <PropertiesMap
-              locations={this.state.properties.map(l => l.location).filter(l => l.lat !== undefined)} />
-            )
+            this.state.view === 'map' && <PropertiesMap properties={this.state.properties} />
           }
 
           { // Content
