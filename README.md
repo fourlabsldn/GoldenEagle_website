@@ -1,16 +1,17 @@
 ## Front-End JS
 ### How to pack a module
-### How to use libraries
+JS code transpilation is exporting everything as an AMD module.
+Write code like this:
+``` javascript
+// myModule.js
+export default function myModule() {
+  console.log(`Hello`);
+}
+```
 
-# Search API
-## Endpoint
-`/search`
-
-## Variables:
-  - `pageNumber`
-  - `pageMax`
-  -
-
-## Response content
-  - `properties` - Array of HTML strings
-  - `pageCount` - Total amount of pages
+Use it in the browser as such:
+``` javascript
+require(['myModule'], function(myModule) {
+  myModule();
+})
+```
