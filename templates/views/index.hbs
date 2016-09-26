@@ -19,8 +19,9 @@
   </form>
 
   <script type="text/javascript">
-    const input = document.querySelector('input.gew_home-landing-search-component');
-    const formGroup = document.querySelector('.input-group.gew_home-landing-search');
+    // Make search bar increase size when focused.
+    var input = document.querySelector('input.gew_home-landing-search-component');
+    var formGroup = document.querySelector('.input-group.gew_home-landing-search');
     input.addEventListener('focus', function () {
       formGroup.style.width = formGroup.offsetWidth * 1.25 + 'px';
     });
