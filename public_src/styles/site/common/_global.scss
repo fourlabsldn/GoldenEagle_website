@@ -97,6 +97,29 @@ a {
   font-size: $font-size-base;
 }
 
+// ===================== ICONS ===================== //
+.gew_icon:before {
+  content: ' ';
+  display: inline-block;
+  width: 1.4em;
+  height: 1.2em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+
+.gew_icon-sofa:before  {
+  background-image: url('http://res.cloudinary.com/golden-eagle/image/upload/v1474906703/sofa_suwqf1.svg');
+}
+
+.gew_icon-bed:before  {
+  background-image: url('http://res.cloudinary.com/golden-eagle/image/upload/v1474908282/beds_ynqzjx.svg');
+}
+
+.gew_icon-bath:before  {
+  background-image: url('http://res.cloudinary.com/golden-eagle/image/upload/v1474908276/baths_uysgnq.svg');
+}
+
 // ================== FORM FIELD =================== //
 
 .gew_formField {
