@@ -36,6 +36,13 @@ a {
   font-weight: lighter;
 }
 
+.btn-dark {
+  background-color: $gray-base;
+  color: $white;
+  &:hover {
+    color: $brand-primary;
+  }
+}
 .gew_sectionContent {
   width: 100%;
   padding-top: 50px;

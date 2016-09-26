@@ -1,0 +1,72 @@
+<section class="bg-primary gew_sectionContent-noPadding gew_caseStudyHeader gew_dark-text">
+    <div class="gew_caseStudyHeader-address">
+      <span class="gew_caseStudyHeader-address-line1">{{data.location.street1}}</span>
+      <span class="gew_caseStudyHeader-address-line2">{{data.location.suburb}} {{data.location.postcode}}</span>
+    </div>
+    <a class="btn btn-dark">Request Info</a>
+</section>
+
+<div class="gew_caseStudy-image-slider"> </div>
+<script type="text/javascript">
+  require(['imageSlider'], function(imageSlider) {
+    const container = document.querySelector('.gew_caseStudy-image-slider');
+    const sizes = '100vw';
+    const urls = [
+      {{#each data.images}}
+        { srcset: `{{srcSet url}}`,
+          src: `{{cloudinaryUrl this width=1000 crop='lfill' gravity='center'}}`,
+          sizes: sizes,
+        },
+      {{/each}}
+    ];
+    imageSlider(urls, container, { showThumbnails: false });
+  });
+</script>
+
+<section class="gew_bg-light">
+  <div class="container gew_sectionContent-mediumPadding">
+    <div class="row">
+      <div class="col-sm-4">
+        <h2 class="gew_property-h2">Key Details</h2>
+        <p>
+          <i class="fa fa-map-o" aria-hidden="true"></i> {{data.bedrooms}} <br>
+          <i class="fa fa-map-o" aria-hidden="true"></i> {{data.bathrooms}} <br>
+          <i class="fa fa-map-o" aria-hidden="true"></i> {{data.location.postcode}} <br>
+          <i class="fa fa-map-o" aria-hidden="true"></i> {{data.size}}sq ft <br>
+        </p>
+      </div>
+      <div class="col-sm-8">
+        <h2 class="gew_property-h2">Description</h2>
+        {{{data.expanded_description}}}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{#if data.hasGeoInfo}}
+  <section class="gew_bg-light" id="property-location">
+    <div class="gew_property-map"></div>
+  </section>
+  <script src="https://maps.googleapis.com/maps/api/js?key={{googleMapsKey}}"></script>
+  <script type="text/javascript">
+    // Map options
+    var mapContainer = document.querySelector('.gew_property-map');
+    var options = {
+      center: { lat: {{data.location.latitude}}, lng: {{data.location.longitude}} },
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      zoom: 14,
+      scrollwheel: false,
+      maxZoom: 17
+    };
+
+    // Create map
+    var map = new google.maps.Map(mapContainer, options);
+
+    // Add markers
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng({{data.location.latitude}}, {{data.location.longitude}}),
+      map: map,
+      icon: 'http://res.cloudinary.com/golden-eagle/image/upload/v1473755159/g4172_lefldr.png'
+    });
+  </script>
+{{/if}}

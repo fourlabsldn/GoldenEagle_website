@@ -51,6 +51,7 @@ exports = module.exports = function (app) {
   app.get('/international', routes.views.international);
   app.get('/developments', routes.views.developments);
   app.get('/investments', routes.views.investments);
+  app.get('/investments/case/:slug', routes.views.caseStudy);
   app.get('/management', routes.views.management);
   app.get('/sales', routes.views.sales);
   app.get('/lettings', routes.views.lettings);

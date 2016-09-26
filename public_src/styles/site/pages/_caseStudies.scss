@@ -1,0 +1,24 @@
+
+.gew_caseStudyHeader {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.gew_caseStudyHeader-address-line1 {
+  font-weight: bold;
+}
+
+.gew_caseStudyHeader-address-line1,
+.gew_caseStudyHeader-address-line2 {
+  display: block;
+  margin: 0;
+  line-height: 1.3em;
+}
+
+.gew_caseStudy-image-slider .gew_imageSlider-image {
+  padding-top: 40%;
+}
