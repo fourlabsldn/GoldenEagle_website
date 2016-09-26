@@ -13,10 +13,13 @@ const CaseStudy = new keystone.List('CaseStudy', {
 
 CaseStudy.add({
   title: {
-      type: String,
-      required: true,
+    type: String,
+    required: true,
   },
   images: { type: Types.CloudinaryImages },
+  bedrooms: { type: Number },
+  livingrooms: { type: Number },
+  bathrooms: { type: Number },
   short_description: {
     type: Types.Textarea,
     height: 500,
