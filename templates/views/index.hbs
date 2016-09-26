@@ -1,12 +1,10 @@
 {{!< default}}
 <div class="container gew_home-landing gew_landingSection">
 
-  <img
-    class="gew_background-cover"
-    srcset="{{srcSet 'pexels-photo-2_q8x3nv.jpg'}}"
-    sizes="100vw"
-    src="{{srcSet 'pexels-photo-2_q8x3nv.jpg' 1000}}"
-  />
+  <video playsinline autoplay="autoplay" muted loop poster="polina.jpg" class="gew_background-cover">
+    <source src="http://res.cloudinary.com/golden-eagle/video/upload/v1474898421/index_bg_dvhhsv.webm" type="video/webm">
+  </video>
+
 
   <p class="gew_heroText gew_home-landing-text">
     {{ data.section_1.content_1 }}
