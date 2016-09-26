@@ -1,7 +1,7 @@
 {{!< default}}
 <div class="container gew_home-landing gew_landingSection">
 
-  <video playsinline autoplay="autoplay" muted loop poster="polina.jpg" class="gew_background-cover">
+  <video playsinline autoplay="autoplay" muted loop class="gew_background-cover">
     <source src="http://res.cloudinary.com/golden-eagle/video/upload/v1474898421/index_bg_dvhhsv.webm" type="video/webm">
   </video>
 
@@ -18,6 +18,17 @@
     </div>
   </form>
 
+  <script type="text/javascript">
+    const input = document.querySelector('input.gew_home-landing-search-component');
+    const formGroup = document.querySelector('.input-group.gew_home-landing-search');
+    input.addEventListener('focus', function () {
+      formGroup.style.width = formGroup.offsetWidth * 1.25 + 'px';
+    });
+
+    input.addEventListener('blur', function () {
+      formGroup.style = {};
+    });
+  </script>
   <a href="#section2"class="glyphicon glyphicon-menu-down gew_home-landing-goDown"></a>
 </div>
 
