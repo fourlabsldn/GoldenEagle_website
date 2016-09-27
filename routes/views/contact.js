@@ -7,6 +7,9 @@ function handleSubmission(next, req, res) {
   const newEnquiry = new Enquiry.model({ // eslint-disable-line new-cap
     name: { full: data.name },
     email: data.email,
+    phone: data.phone,
+    message: data.message,
+    enquiryType: data.enquiryType,
   });
 
   newEnquiry.save(err => {

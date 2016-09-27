@@ -3,8 +3,9 @@
       <span class="gew_caseStudyHeader-address-line1">{{data.location.street1}}</span>
       <span class="gew_caseStudyHeader-address-line2">{{data.location.suburb}} {{data.location.postcode}}</span>
     </div>
-    <a class="btn btn-dark">Request Info</a>
+    <a class="btn btn-dark" data-toggle="modal" data-target="#requestInfoModal">Request Info</a>
 </section>
+
 
 <div class="gew_caseStudy-image-slider"> </div>
 <script type="text/javascript">
@@ -29,10 +30,10 @@
       <div class="col-sm-4">
         <h2 class="gew_property-h2">Key Details</h2>
         <p>
-          <i class="gew_icon gew_icon-bed" aria-hidden="true"></i>  {{data.bedrooms}} <br>
-          <i class="gew_icon gew_icon-sofa" aria-hidden="true"></i>  {{data.livingrooms}} <br>
-          <i class="gew_icon gew_icon-bath" aria-hidden="true"></i>  {{data.bathrooms}} <br>
-          <i class="fa fa-map-o" aria-hidden="true"></i> {{data.location.postcode}} <br>
+          <i class="gew_icon gew_icon-bed gew_caseStudy-keyDetailIcon" aria-hidden="true"></i>  {{data.bedrooms}} <br>
+          <i class="gew_icon gew_icon-sofa gew_caseStudy-keyDetailIcon" aria-hidden="true"></i>  {{data.livingrooms}} <br>
+          <i class="gew_icon gew_icon-bath gew_caseStudy-keyDetailIcon" aria-hidden="true"></i>  {{data.bathrooms}} <br>
+          <i class="fa fa-map-o gew_caseStudy-keyDetailIcon" aria-hidden="true"></i> {{data.location.postcode}} <br>
         </p>
       </div>
       <div class="col-sm-8">
@@ -70,3 +71,31 @@
     });
   </script>
 {{/if}}
+
+<!-- MODAL -->
+<div class="modal fade" tabindex="-1" role="dialog" id="requestInfoModal">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Request Info</h4>
+      </div>
+      <div class="modal-body text-center">
+        <form class="form-inline" method="POST" action="/contact">
+          <p>{{data.location.street1}} {{data.location.suburb}} {{data.location.postcode}}</p>
+          <input type="hidden" name="message" value="More info about {{data.location.street1}} {{data.location.suburb}} {{data.location.postcode}}">
+          <div class="form-group">
+            <input name="name" type="text" class="form-control gew_formField gew_formField-dark" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <input name="email" type="email" class="form-control gew_formField gew_formField-dark" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input name="phone" type="tel" class="form-control gew_formField gew_formField-dark" placeholder="Telephone">
+          </div>
+          <button type="submit" class="btn btn-primary gew_formField">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
