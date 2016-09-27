@@ -48,11 +48,16 @@
         <a class="gew_property-actionsBar-action" href="#property-location">
           <i class="fa fa-map-marker" aria-hidden="true"> </i>
         </a>
-        <a class="btn btn-primary gew_property-actionsBar-button" >Contact Agent</a>
+        <a
+          class="btn btn-primary gew_property-actionsBar-button"
+          data-toggle="modal"
+          data-target="#contactModal"
+        >Contact Agent</a>
       </div>
     </div>
   </div>
 </section>
+{{>contactModal}}
 
 <section class="gew_bg-light">
   <div class="container gew_sectionContent-mediumPadding">

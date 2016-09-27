@@ -5,7 +5,9 @@ function handleSubmission(next, req, res) {
   const data = req.body;
   const Enquiry = keystone.list('Enquiry');
   const newEnquiry = new Enquiry.model({ // eslint-disable-line new-cap
-    name: { full: data.name },
+    name: {
+      full: data.name || `${data.firstName} ${data.lastName}`,
+    },
     email: data.email,
     phone: data.phone,
     message: data.message,

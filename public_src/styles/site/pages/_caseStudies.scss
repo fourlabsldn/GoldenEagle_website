@@ -48,15 +48,15 @@
   border-bottom: 2px solid $gray-inactive-light;
   color: inherit;
   font-size: $font-size-small;
-  transition: padding .2s ease-in-out;
+  transition: padding .2s ease-in-out, border-color .2s ease-in-out;
 
   @include placeholder {
   }
   &:focus {
     padding-bottom: 1em;
     outline: none;
-    border-color: $gray-inactive;
     box-shadow: none;
+    border-color: $gray-base;
   }
 }
 

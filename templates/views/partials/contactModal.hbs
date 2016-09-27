@@ -1,0 +1,33 @@
+<!-- MODAL -->
+<div class="modal fade" tabindex="-1" role="dialog" id="contactModal">
+  <div class="modal-dialog gew_caseStudy-modal" role="document">
+    <div class="modal-content">
+      <div class="gew_caseStudy-modal-header gew_caseStudy-modal-content">
+        <h2 class="modal-title">
+          Contact us <br>
+          <small style="color: inherit">Fill in the form below and we will get back to you.</small>
+        </h2>
+      </div>
+      <form class="form gew_caseStudy-modal-content" method="POST" action="/contact">
+        <input type="hidden" name="message" value="More info about {{data.location.street1}} {{data.location.suburb}} {{data.location.postcode}}">
+        <div class="form-group">
+          <input name="firstName" type="text" class="form-control gew_modal-formField" placeholder="First Name" required>
+        </div>
+        <div class="form-group">
+          <input name="lastName" type="text" class="form-control gew_modal-formField" placeholder="Last Name" required>
+        </div>
+        <div class="form-group">
+          <input name="email" type="email" class="form-control gew_modal-formField" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <input name="phone" type="tel" class="form-control gew_modal-formField" placeholder="Telephone">
+        </div>
+
+        <p class="gew_modal-footNote">
+          By signing up you confirm that you accept the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </p>
+        <button type="submit" class="btn btn-primary gew_light-text" style="width: 100%">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
