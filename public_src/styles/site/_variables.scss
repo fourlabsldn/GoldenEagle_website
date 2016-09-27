@@ -20,7 +20,10 @@ $gray-base: #000;
 $gray-light: #f4ede7;
 $gray-lighter: #f5f1ed;
 $gray-desaturated: desaturate(darken($gray-light, 12%), 25%);
+$gray-inactive: #ddd;
+$gray-inactive-light: #eee;
 $white: #fff;
+$blue: #006ce5;
 
 $text-color: $gray-base;
 $body-bg: $gray-lighter;

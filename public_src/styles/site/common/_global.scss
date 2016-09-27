@@ -3,6 +3,10 @@ body {
   font-weight: lighter;
 }
 
+@include placeholder {
+  color: inherit;
+}
+
 h2 {
   font-weight: 600;
 }
