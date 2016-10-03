@@ -34,6 +34,7 @@
     "eslint-config-keystone": "^2.3.1",
     "eslint-plugin-react": "^5.1.1",
     "fl-assert": "^1.0.10",
+    "fuzzyset.js": "0.0.1",
     "gulp": "^3.7.0",
     "gulp-flatmap": "^1.0.0",
     "gulp-organiser": "^1.0.1",
