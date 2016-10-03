@@ -14,7 +14,7 @@ var handlebars = require('express-handlebars');
 keystone.init({
 	'name': 'Golden Eagle',
 	'brand': 'Golden Eagle',
-
+  'admin path': 'admin',
 	'sass': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
