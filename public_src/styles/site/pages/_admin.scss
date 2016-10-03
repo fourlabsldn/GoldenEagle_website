@@ -1,20 +1,30 @@
 #react-root {
   font-size: 14px;
+  background-color: $gray-inactive-light;
+}
+
+.primary-navbar {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .primary-navbar,
-.MobileNavigation__bar {
-  background-color: $brand-primary;
-  color: $text-color;
+.MobileNavigation__bar,
+.MobileNavigation__menu {
+  background-color: $gray-base;
+  color: $brand-primary;
 
   .primary-navbar__link,
   .MobileNavigation__bar__button,
+  .primary-navbar__link,
   .app-nav--primary:hover {
     color: inherit;
+    border-radius: 0px;
   }
 
   .primary-navbar__link:hover {
-    color: white;
+    color: $gray-base;
+    background-color: $brand-primary;
   }
 }
 
@@ -44,15 +54,18 @@
 .primary-navbar__item--active {
   border-color: transparent !important;
   box-shadow: none !important;
-  background-color: transparentize($white, .85);
+  background-color: $brand-primary;
+  color: $gray-base;
 }
 
 .keystone-body .FormInput:focus {
   border-color: $brand-primary;
 }
 
-.primary-navbar__brand .primary-navbar__link {
-  padding-left: 1.5em;
+.primary-navbar__link,
+.primary-navbar__link {
+  padding-left: 1.5em !important;
+  padding-right: 1.5em !important;
 }
 
 // Save bar
