@@ -20,7 +20,7 @@ keystone.init({
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'hbs',
-
+  'signin logo': ['http://res.cloudinary.com/golden-eagle/image/upload/v1472555697/logo_uiauoz.svg', 150, 200],
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',
 		partialsDir: 'templates/views/partials',

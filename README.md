@@ -15,3 +15,6 @@ require(['myModule'], function(myModule) {
   myModule();
 })
 ```
+
+## Admin UI Style
+For admin UI styling to work you need to add `<link rel="stylesheet" href="/styles/site.css">` to the end of the `<head>` of `node_modules/keystone/admin/server/templates/index.html`.

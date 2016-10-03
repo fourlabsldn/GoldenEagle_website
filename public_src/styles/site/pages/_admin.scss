@@ -1,0 +1,64 @@
+#react-root {
+  font-size: 14px;
+}
+
+.primary-navbar,
+.MobileNavigation__bar {
+  background-color: $brand-primary;
+  color: $text-color;
+
+  .primary-navbar__link,
+  .MobileNavigation__bar__button,
+  .app-nav--primary:hover {
+    color: inherit;
+  }
+
+  .primary-navbar__link:hover {
+    color: white;
+  }
+}
+
+.dashboard-group__list-label {
+  color: $text-color;
+}
+
+.keystone-body {
+}
+
+.dashboard-group__list-inner:hover>.dashboard-group__list-tile,
+.is-focused .mce-edit-area {
+  border-color: transparent !important;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.075),0 0 0 1px opacify($brand-primary, .54) !important;
+}
+
+.dashboard-group__list-tile:hover .dashboard-group__list-label {
+  border-bottom-color: transparent;
+}
+
+.dashboard-group__list-tile {
+  border-radius: 2px;
+  line-height: 1.5em;
+}
+
+.primary-navbar__item--active .primary-navbar__link,
+.primary-navbar__item--active {
+  border-color: transparent !important;
+  box-shadow: none !important;
+  background-color: transparentize($white, .85);
+}
+
+.keystone-body .FormInput:focus {
+  border-color: $brand-primary;
+}
+
+.primary-navbar__brand .primary-navbar__link {
+  padding-left: 1.5em;
+}
+
+// Save bar
+.EditForm-container > div:last-child > div {
+  padding-right: 1em;
+  padding-left: 1em;
+  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 0px 2px !important;
+  border-radius: 4px;
+}
