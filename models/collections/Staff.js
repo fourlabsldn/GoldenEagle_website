@@ -5,7 +5,9 @@ const Types = keystone.Field.Types;
  * ==========
  */
 
-const Staff = new keystone.List('Staff');
+const Staff = new keystone.List('Staff', {
+  plural: 'Staff', // Never show 'Abouts' in admin UI
+});
 
 Staff.add({
   portrait: { type: Types.CloudinaryImage },

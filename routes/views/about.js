@@ -15,13 +15,17 @@ exports = module.exports = function about(req, res) {
 	// item in the header navigation.
 	locals.section = 'about';
 	locals.data = {};
-  locals.staff = staff;
 
 	// Load page content from database
 	view.on('init', next => {
-		keystone.list('About').getAll()
-		.then((pageContent) => {
+
+    Promise.all([
+      keystone.list('About').getAll(),
+      keystone.list('Staff').getAll(),
+    ])
+		.then(([pageContent, staff]) => {
 			locals.data = pageContent[0];
+      locals.staff = staff;
 			return next();
 		})
 		.catch(next);

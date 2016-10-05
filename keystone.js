@@ -100,6 +100,7 @@ keystone.set('nav', {
     'properties',
     'galleries',
     'case-studies',
+    'staffs',
   ],
   users: 'users',
 });
