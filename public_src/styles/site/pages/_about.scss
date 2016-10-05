@@ -31,6 +31,8 @@
   padding-bottom: 0px;
 }
 
+// ------- Staff Card
+
 .gew_about-staffCard {
   padding: 0 1.5em;
 }
@@ -71,11 +73,52 @@
 
 .gew_about-staffCard-buttons{
   padding-bottom: .5em;
-    
+
   .btn{
     font-size: inherit;
     padding-left: 1em;
     padding-right: 1em;
+  }
+}
+
+// ------- Staff Overlay
+
+.gew_about-staffOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  background-color: $gray-base;
+  z-index: 9999;
+  color: $white;
+  overflow: scroll;
+}
+
+.gew_about-staffOverlay-closeBtn {
+  float: right;
+  background-color: transparent;
+  border-width: 0;
+  outline: none;
+  fill: $white;
+  transform-origin: center;
+  transition: transform .1s ease;
+
+  &:hover {
+    fill: darken($white, 30%);
+  }
+
+  &:active {
+    fill: darken($white, 60%);
+    transform: scale(.8);
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: transparent;
+    border-width: 0;
+    outline: none;
   }
 }
 // ==================== History Section ================== //
