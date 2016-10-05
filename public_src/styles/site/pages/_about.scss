@@ -39,6 +39,7 @@
 
 .gew_about-staffCard-photo {
   max-width: 100%;
+  cursor: pointer;
 }
 
 .gew_about-staffCard-footer {
@@ -89,6 +90,7 @@
   left: 0;
   bottom: 0;
   right: 0;
+  transition-duration: .5s !important;
 
   background-color: $gray-base;
   z-index: 9999;
@@ -121,6 +123,7 @@
     outline: none;
   }
 }
+
 .gew_about-staffOverlay-columns {
   display: flex;
   flex-flow: row nowrap;
@@ -139,6 +142,11 @@
   display: block
 }
 
+
+.gew_about-staffOverlay-photo {
+  max-width: 100%;
+}
+
 .gew_about-staffOverlay-longInfo {
   line-height: 1.7em;
   p {
@@ -148,6 +156,10 @@
 
 .gew_about-staffOverlay-longInfo-muted {
   opacity: .8;
+}
+
+.gew_about-staffOverlay-buttons {
+  margin-right: .5em;
 }
 // ==================== History Section ================== //
 

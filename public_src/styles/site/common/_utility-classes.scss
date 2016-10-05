@@ -41,6 +41,14 @@
   font-size: $font-size-small;
 }
 
+.gew_fadeHidden {
+  @include fade-hidden();
+}
+
+.gew_fadeVisible {
+  @include fade-visible();  
+}
+
 // --- end of vertically-aligning --- /;
 .gew_heroText {
   font-family: $font-family-serif;

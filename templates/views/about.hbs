@@ -78,7 +78,7 @@
           sizes="(max-width: 768px) 100vw, 50vw"
           src="{{srcSet portrait.url 700}}"
           alt="{{name}}"
-          onClick="document.querySelector('#staffOverlay{{@index}}').classList.toggle('hidden')"
+          onClick="document.querySelector('#staffOverlay{{@index}}').classList.toggle('gew_fadeVisible')"
         />
 
         <div class="gew_about-staffCard-footer">
@@ -94,12 +94,12 @@
       </div>
 
       <!-- This will be toggled by removing the 'hidden' class.-->
-      <div class="row gew_about-staffOverlay hidden" id="staffOverlay{{@index}}">
+      <div class="row gew_about-staffOverlay gew_fadeHidden" id="staffOverlay{{@index}}">
         <div class="gew_sectionContent">
             <div>
               <button
                 class="gew_about-staffOverlay-closeBtn"
-                onClick="document.querySelector('#staffOverlay{{@index}}').classList.toggle('hidden')"
+                onClick="document.querySelector('#staffOverlay{{@index}}').classList.toggle('gew_fadeVisible')"
               >
                 <!-- svg for 'X' button-->
                 <svg
@@ -123,7 +123,7 @@
                 <span class="gew_about-staffOverlay-info-tel">{{phone}}</span>
               </div>
               <img
-              class="gew_about-staffCard-photo"
+              class="gew_about-staffOverlay-photo"
               srcset="{{srcSet portrait.url}}"
               sizes="(max-width: 768px) 100vw, 50vw"
               src="{{srcSet portrait.url 700}}"
@@ -140,6 +140,24 @@
               <div class="gew_about-staffOverlay-buttons">
                 <a href="{{email}}" class="btn btn-primary">Email</a>
                 <a href="{{linkedin}}" class="btn btn-primary">LinkedIn</a>
+                <a href="#" id="staffOverlay-seeNext{{@index}}">See next</a>
+                <script type="text/javascript">
+                  document.addEventListener('DOMContentLoaded', function () {
+                    var cardNo = {{@index}};
+                    var nxtBtn = document.querySelector("#staffOverlay-seeNext{{@index}}");
+                    var nextProfile = document.querySelector('#staffOverlay' + (cardNo + 1));
+                    var currProfile = document.querySelector('#staffOverlay' + cardNo);
+
+                    if (nextProfile) {
+                      nxtBtn.addEventListener('click', function () {
+                        nextProfile.classList.toggle('gew_fadeVisible');
+                        currProfile.classList.toggle('gew_fadeVisible');
+                      });
+                    } else {
+                      nxtBtn.remove();
+                    }
+                  })
+                </script>
               </div>
             </div>
           </div> <!-- doubleColumn -->
