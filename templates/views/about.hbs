@@ -74,21 +74,21 @@
 
         <img
           class="gew_about-staffCard-photo"
-          srcset="{{srcSet photo}}"
+          srcset="{{srcSet portrait.url}}"
           sizes="(max-width: 768px) 100vw, 50vw"
-          src="{{srcSet photo 700}}"
+          src="{{srcSet portrait.url 700}}"
           alt="{{name}}"
           onClick="document.querySelector('#staffOverlay{{@index}}').classList.toggle('hidden')"
         />
 
         <div class="gew_about-staffCard-footer">
           <div class="gew_about-staffCard-info">
-            <span class="gew_about-staffCard-info-name">{{name}}</span>
-            <span class="gew_about-staffCard-info-tel">{{tel}}</span>
+            <span class="gew_about-staffCard-info-name">{{name.full}}</span>
+            <span class="gew_about-staffCard-info-tel">{{phone}}</span>
           </div>
           <div class="gew_about-staffCard-buttons">
-            <button type="button" name="button" class="btn btn-primary">Email</button>
-            <button type="button" name="button" class="btn btn-primary">LinkedIn</button>
+            <a href="{{email}}" class="btn btn-primary">Email</a>
+            <a href="{{linkedin}}" class="btn btn-primary">LinkedIn</a>
           </div>
         </div>
       </div>
@@ -119,14 +119,14 @@
 
             <div class="col-sm-6 gew_doubleColumn-col1">
               <div class="gew_about-staffOverlay-info">
-                <span class="gew_about-staffOverlay-info-name">{{name}}</span>
-                <span class="gew_about-staffOverlay-info-tel">{{tel}}</span>
+                <span class="gew_about-staffOverlay-info-name">{{name.full}}</span>
+                <span class="gew_about-staffOverlay-info-tel">{{phone}}</span>
               </div>
               <img
               class="gew_about-staffCard-photo"
-              srcset="{{srcSet photo}}"
+              srcset="{{srcSet portrait.url}}"
               sizes="(max-width: 768px) 100vw, 50vw"
-              src="{{srcSet photo 700}}"
+              src="{{srcSet portrait.url 700}}"
               alt="{{name}}"
               />
             </div>
@@ -134,12 +134,12 @@
             <div class="col-sm-6 gew_doubleColumn-col2">
               <p class="muted">
                 Direct Telephone <br>
-                {{tel}}
+                {{phone}}
               </p>
               <p>{{info}}</p>
               <div class="gew_about-staffOverlay-buttons">
-                <button type="button" name="button" class="btn btn-primary">Email</button>
-                <button type="button" name="button" class="btn btn-primary">LinkedIn</button>
+                <a href="{{email}}" class="btn btn-primary">Email</a>
+                <a href="{{linkedin}}" class="btn btn-primary">LinkedIn</a>
               </div>
             </div>
           </div> <!-- doubleColumn -->
