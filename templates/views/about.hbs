@@ -104,8 +104,8 @@
                 <!-- svg for 'X' button-->
                 <svg
                   viewBox="0 0 31.588177 29.999998"
-                  height="8.4666662mm"
-                  width="8.9148855mm"
+                  height="6.4666662mm"
+                  width="6.9148855mm"
                 >
                   <g transform="translate(-14.205271,-6.6024003)">
                     <path
@@ -115,9 +115,9 @@
             </button>
           </div>
 
-          <div class="row gew_doubleColumn">
+          <div class="row gew_doubleColumn gew_about-staffOverlay-columns">
 
-            <div class="col-sm-6 gew_doubleColumn-col1">
+            <div class="col-sm-6 gew_doubleColumn-col1 gew_about-staffOverlay-rightColumn">
               <div class="gew_about-staffOverlay-info">
                 <span class="gew_about-staffOverlay-info-name">{{name.full}}</span>
                 <span class="gew_about-staffOverlay-info-tel">{{phone}}</span>
@@ -131,12 +131,12 @@
               />
             </div>
 
-            <div class="col-sm-6 gew_doubleColumn-col2">
-              <p class="muted">
+            <div class="col-sm-6 gew_doubleColumn-col2 gew_about-staffOverlay-longInfo">
+              <p class="gew_about-staffOverlay-longInfo-muted">
                 Direct Telephone <br>
                 {{phone}}
               </p>
-              <p>{{info}}</p>
+              <p>{{{info}}}</p>
               <div class="gew_about-staffOverlay-buttons">
                 <a href="{{email}}" class="btn btn-primary">Email</a>
                 <a href="{{linkedin}}" class="btn btn-primary">LinkedIn</a>

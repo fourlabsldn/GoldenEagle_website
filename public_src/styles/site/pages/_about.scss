@@ -121,6 +121,34 @@
     outline: none;
   }
 }
+.gew_about-staffOverlay-columns {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.gew_about-staffOverlay-rightColumn {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.gew_about-staffOverlay-info {
+}
+
+.gew_about-staffOverlay-info-name,
+.gew_about-staffOverlay-info-tel {
+  display: block
+}
+
+.gew_about-staffOverlay-longInfo {
+  line-height: 1.7em;
+  p {
+    margin-bottom: 2em;
+  }
+}
+
+.gew_about-staffOverlay-longInfo-muted {
+  opacity: .8;
+}
 // ==================== History Section ================== //
 
 .gew_about-historySlider {

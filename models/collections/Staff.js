@@ -13,7 +13,7 @@ Staff.add({
   portrait: { type: Types.CloudinaryImage },
   name: { type: Types.Name },
   role: { type: Types.Text },
-  info: { type: Types.Textarea, height: 150 },
+  info: { type: Types.Html, wysiwyg: true, height: 150 },
   phone: { type: Types.Text },
   email: { type: Types.Email },
   linkedin: { type: Types.Url },
