@@ -10,19 +10,16 @@ const databaseRecordToHtml = require('../utils/databaseRecordToHtml');
 
 var Enquiry = new keystone.List('Enquiry', {
 	nocreate: true,
-	noedit: true,
+	noedit: false,
 });
 
 Enquiry.add({
-	name: { type: Types.Name, required: true },
-	email: { type: Types.Email, required: true },
-	phone: { type: String },
-	enquiryType: { type: Types.Select, options: [
-		{ value: 'message', label: 'Just leaving a message' },
-		{ value: 'question', label: 'I\'ve got a question' },
-	] },
-	message: { type: Types.Textarea, required: false },
-	createdAt: { type: Date, default: Date.now },
+	name: { type: Types.Name, required: true, noedit: true },
+	email: { type: Types.Email, required: true, noedit: true },
+	phone: { type: String, noedit: true },
+	message: { type: Types.Textarea, required: false, noedit: true },
+	createdAt: { type: Date, default: Date.now, noedit: true },
+  answered: { type: Boolean, default: false },
 });
 
 Enquiry.schema.pre('save', function (next) {
@@ -55,5 +52,5 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 };
 
 Enquiry.defaultSort = '-createdAt';
-Enquiry.defaultColumns = 'name, email, enquiryType, createdAt';
+Enquiry.defaultColumns = 'name, email, answered, createdAt';
 Enquiry.register();
